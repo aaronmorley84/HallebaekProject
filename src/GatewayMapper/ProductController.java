@@ -1,3 +1,5 @@
+package GatewayMapper;
+
 
 import DBConnection.ConnectionTools;
 import java.sql.Connection;
@@ -10,12 +12,12 @@ import java.util.ArrayList;
  *
  * @author Kris
  */
-public class ProductrController {
+public class ProductController {
 
     ArrayList<Product> products;
     ArrayList<Package> packages;
 
-    public ProductrController() {
+    public ProductController() {
         products = new ArrayList<>();
         packages = new ArrayList<>();
     }

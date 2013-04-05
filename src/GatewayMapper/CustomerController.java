@@ -2,11 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+package GatewayMapper;
 
 /**
  *
- * @author Kris
+ * @author Andrew
  */
-public class Assembler {
+public class CustomerController {
     
 }
