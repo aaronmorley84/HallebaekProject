@@ -4,12 +4,28 @@
  */
 package GatewayMapper;
 import Resources.Customer;
+import DBConnection.ConnectionTools;
+import java.sql.Connection;
+import java.util.ArrayList;
 /**
  *
  * @author Andrew
  */
 public class CustomerGateway {
+   
+    ArrayList<Customer> listOfCustomers = new ArrayList<>();
     
-    Customer cum = new Customer(0,"","",0,"");
     
+/*Used to build a list of customers. */
+public void buildCustomerList(){
+Connection con = ConnectionTools.getInstance().getCurrentConnection();
+String SQLStatment1 = "Select * from Customer";
+
+
+
+}//end of buildCustomer
+
+
+
+
 }
