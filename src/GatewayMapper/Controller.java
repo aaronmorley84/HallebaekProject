@@ -22,4 +22,10 @@ public class Controller {
     public boolean getAllProducts() {
         return prodController.getAllProducts();
     }
+    public boolean searchForProduct(String name) {
+        return prodController.searchForProduct(name);
+    }
+    public boolean searchForProduct(int ID) {
+        return prodController.searchForProduct(ID);
+    }
 }
