@@ -150,9 +150,16 @@ public class FoxyTestPresen extends javax.swing.JFrame {
     }//GEN-LAST:event_CustomerIDActionPerformed
 
     private void AddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCustomerActionPerformed
+        CustomerGateway cg = new CustomerGateway();
+        
         int cusID = Integer.parseInt(CustomerID.getText());
         String cusName = CustomerName.getText();
-        String cusAddress  = CustomerAddress();
+        String cusAddress  = CustomerAddress.getText();
+        int phoneID = Integer.parseInt(PhoneID.getText());
+        String cusEmail = CustomerEmail.getText();
+        
+        
+        cg.addCustomer(cusID,cusName,cusAddress,phoneID,cusEmail);
     }//GEN-LAST:event_AddCustomerActionPerformed
 
     /**

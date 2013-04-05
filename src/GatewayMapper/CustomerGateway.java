@@ -56,11 +56,12 @@ public class CustomerGateway {
         return success;
     }//end of buildCustomer
     
-    public boolean addCustomer(Customer c){
+    public boolean addCustomer(int cusID, String name, String address, int phoneID, String email){
+        Customer c = new Customer(cusID,name,address,phoneID,email);
         boolean success = false;
         int rowsInserted = 0;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "INPUT INTO customers VALUE (?,?,?,?,?);"; 
+        String SQLString1 = "INSERT INTO customers VALUES (?,?,?,?,?)"; 
         
         PreparedStatement statement = null;
         try {
