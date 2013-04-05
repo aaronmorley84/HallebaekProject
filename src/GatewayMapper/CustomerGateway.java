@@ -55,10 +55,49 @@ public class CustomerGateway {
 
         return success;
     }//end of buildCustomer
+    
+    public boolean addCustomer(Customer c){
+        boolean success = false;
+        int rowsInserted = 0;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "INPUT INTO customers VALUE (?,?,?,?,?);"; 
+        
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(SQLString1);
+            
+                
+            statement.setInt(1, c.getCustomerID());
+            statement.setString(2, c.getName());
+            statement.setString(3, c.getAdress());
+            statement.setInt(4, c.getPhoneID());
+            statement.setString(5, c.getEmail());
+            rowsInserted += statement.executeUpdate();
+            
+            success = true;
+            
+            
+        } catch (Exception e) {
+            System.out.println("Something wrong build" + e.getMessage());
+            success = false;
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println("Statment close error\n" + e.getMessage());
+            }
+        }
 
-    public void printList() {
+        return success;
+        
+    }
+
+    public String printList() {
+        String customerList = null;
         for (int i = 0; i < listOfCustomers.size(); i++) {
             System.out.println(listOfCustomers.get(i).toString());
+            customerList = listOfCustomers.get(i).toString();
         }
+        return customerList;
     }
 }
