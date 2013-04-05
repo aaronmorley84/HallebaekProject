@@ -7,8 +7,8 @@ public class Controller {
     public Controller() {
         prodController = new ProductGateway();
     }
-    public void addProduct(Product product){
-        prodController.addProduct(product);
+    public boolean addProduct(int ID, String name, int volume, int quantity, String description, int price){
+        return prodController.addProduct(ID, name, volume, quantity, description, price);
     }
     public int getProductListsize() {
         return prodController.getProductListsize();
