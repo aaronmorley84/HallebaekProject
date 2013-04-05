@@ -84,6 +84,7 @@ public class ProductGateway {
         return success;
     }
     public boolean searchForProduct(int ID) {
+        products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         boolean success = false;
         String SQLString2 = "SELECT * "
@@ -120,6 +121,7 @@ public class ProductGateway {
     }
 
     public boolean getAllProducts() {
+        products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         boolean success = false;
         String SQLstring = "SELECT * "
