@@ -46,6 +46,36 @@ public class ProductGateway {
         }
     }
 
+    public boolean addProduct(int ID, String name, int volume, int quantity, String description, int price) {
+        boolean success = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "INSERT into products "
+                            + "VALUES (?,?,?,?,?,?)" ;
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(SQLString1);
+            statement.setInt(1, ID);
+            statement.setString(2, name);
+            statement.setInt(3,volume);
+            statement.setInt(4, quantity);
+            statement.setString(5, description);
+            statement.setInt(6, price);
+            statement.executeUpdate();
+            success = true;
+        }catch (Exception e){
+            System.out.println("Insertion error!");
+            System.out.println(e.getMessage());
+        }finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println("Statement close error!");
+                System.out.println(e.getMessage());
+            }
+        }
+        return success;
+    }
+    
     public boolean searchForProduct(String name) {
         products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
@@ -68,6 +98,7 @@ public class ProductGateway {
                         rs.getString(5),
                         rs.getInt(6)));
             }
+            success = true;
         }catch (Exception e) {
             System.out.println("Retrieval error!");
             System.out.println(e.getMessage());
@@ -103,6 +134,7 @@ public class ProductGateway {
                         rs.getString(5),
                         rs.getInt(6)));
             }
+            success = true;
         }catch (Exception e) {
             System.out.println("Retrieval error!");
             System.out.println(e.getMessage());
