@@ -76,6 +76,41 @@ public class ProductGateway {
         return success;
     }
     
+    public boolean editProduct(int ID, String name, int volume, int quantity, String description, int price) {
+        boolean success = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "UPDATE products"
+                            + "SET pname = ?, "
+                            + "pvolume = ?, "
+                            + "pquantity = ?, "
+                            + "pdescription = ?, "
+                            + "pprice = ? "
+                            + "WHERE productID = ?";
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(SQLString1);
+            statement.setString(1, name);
+            statement.setInt(2,volume);
+            statement.setInt(3, quantity);
+            statement.setString(4, description);
+            statement.setInt(5, price);
+            statement.setInt(6, ID);
+            statement.executeUpdate();
+            success = true;
+        }catch (Exception e){
+            System.out.println("Insertion error!");
+            System.out.println(e.getMessage());
+        }finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println("Statement close error!");
+                System.out.println(e.getMessage());
+            }
+        }
+        return success;
+    }
+    
     public boolean searchForProduct(String name) {
         products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
