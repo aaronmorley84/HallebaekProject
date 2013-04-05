@@ -10,6 +10,9 @@ public class Controller {
     public boolean addProduct(int ID, String name, int volume, int quantity, String description, int price){
         return prodController.addProduct(ID, name, volume, quantity, description, price);
     }
+    public boolean editProduct(int ID, String name, int volume, int quantity, String description, int price){
+        return prodController.editProduct(ID, name, volume, quantity, description, price);
+    }
     public int getProductListsize() {
         return prodController.getProductListsize();
     }
