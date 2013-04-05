@@ -7,11 +7,13 @@ import javax.swing.DefaultListModel;
  */
 public class UserFrame extends javax.swing.JFrame {
 
-    DefaultListModel model1 = new DefaultListModel();
+    DefaultListModel model1,model2;
     
     Controller control = new Controller();
     public UserFrame() {
         initComponents();
+        model1 = new DefaultListModel();
+        model2 = new DefaultListModel();
     }
 
     /**
@@ -26,7 +28,16 @@ public class UserFrame extends javax.swing.JFrame {
         jFrame1 = new javax.swing.JFrame();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList();
+        jFrame2 = new javax.swing.JFrame();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
         jButton1 = new javax.swing.JButton();
+        textFieldSearchName = new javax.swing.JTextField();
+        textFieldSearchNumber = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        buttonShowAllProducts = new javax.swing.JButton();
+        buttonSearchProduct = new javax.swing.JButton();
 
         jFrame1.setMinimumSize(new java.awt.Dimension(200, 200));
 
@@ -54,12 +65,70 @@ public class UserFrame extends javax.swing.JFrame {
                 .addContainerGap(135, Short.MAX_VALUE))
         );
 
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        jButton1.setText("Search");
+
+        jLabel1.setText("Product name:");
+
+        jLabel2.setText("Product number:");
+
+        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
+        jFrame2.getContentPane().setLayout(jFrame2Layout);
+        jFrame2Layout.setHorizontalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame2Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(textFieldSearchNumber)
+                    .addComponent(textFieldSearchName))
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+        jFrame2Layout.setVerticalGroup(
+            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame2Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame2Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldSearchName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(36, 36, 36)
+                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldSearchNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(60, 60, 60))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonShowAllProducts.setText("Show all Products");
+        buttonShowAllProducts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonShowAllProductsActionPerformed(evt);
+            }
+        });
+
+        buttonSearchProduct.setText("Search for a product");
+        buttonSearchProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSearchProductActionPerformed(evt);
             }
         });
 
@@ -69,21 +138,25 @@ public class UserFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jButton1)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addComponent(buttonShowAllProducts)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addComponent(buttonSearchProduct)
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonShowAllProducts)
+                    .addComponent(buttonSearchProduct))
                 .addContainerGap(267, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonShowAllProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowAllProductsActionPerformed
         if (control.getAllProducts()){
         jFrame1.setVisible(true);
         int counter = 0;
@@ -94,7 +167,13 @@ public class UserFrame extends javax.swing.JFrame {
         }
         jList2.setModel(model1);
         }else {System.out.println("you fucked up");}
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonShowAllProductsActionPerformed
+
+    private void buttonSearchProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchProductActionPerformed
+        jFrame2.setVisible(true);
+        model2.clear();
+        
+    }//GEN-LAST:event_buttonSearchProductActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,9 +210,18 @@ public class UserFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonSearchProduct;
+    private javax.swing.JButton buttonShowAllProducts;
     private javax.swing.JButton jButton1;
     private javax.swing.JFrame jFrame1;
+    private javax.swing.JFrame jFrame2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JList jList1;
     private javax.swing.JList jList2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField textFieldSearchName;
+    private javax.swing.JTextField textFieldSearchNumber;
     // End of variables declaration//GEN-END:variables
 }
