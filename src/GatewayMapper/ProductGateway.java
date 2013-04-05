@@ -68,6 +68,7 @@ public class ProductGateway {
                         rs.getString(5),
                         rs.getInt(6)));
             }
+            success = true;
         }catch (Exception e) {
             System.out.println("Retrieval error!");
             System.out.println(e.getMessage());
@@ -102,6 +103,7 @@ public class ProductGateway {
                         rs.getString(5),
                         rs.getInt(6)));
             }
+            success = true;
         }catch (Exception e) {
             System.out.println("Retrieval error!");
             System.out.println(e.getMessage());
