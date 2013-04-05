@@ -1,11 +1,11 @@
 package GatewayMapper;
-
+import Resources.*;
 
 public class Controller {
-    ProductController prodController;
+    ProductGateway prodController;
 
     public Controller() {
-        prodController = new ProductController();
+        prodController = new ProductGateway();
     }
     public void addProduct(Product product){
         prodController.addProduct(product);
