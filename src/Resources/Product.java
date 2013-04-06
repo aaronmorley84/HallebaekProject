@@ -7,10 +7,10 @@ package Resources;
 public class Product {
     
     public int productID, volume, quantity;
-    public double price;
+    public int price;
     public String name, description;    
     
-    public Product(int productID, String name, int volume, int quantity, String description, double price) {
+    public Product(int productID, String name, int volume, int quantity, String description, int price) {
         this.productID = productID;
         this.volume = volume;
         this.quantity = quantity;
