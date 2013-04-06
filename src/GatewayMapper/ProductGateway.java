@@ -81,10 +81,10 @@ public class ProductGateway {
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "UPDATE products"
                             + "SET pname = ?, "
-                            + "pvolume = ?, "
-                            + "pquantity = ?, "
-                            + "pdescription = ?, "
-                            + "pprice = ? "
+                            + "SET pvolume = ?, "
+                            + "SET pquantity = ?, "
+                            + "SET pdescription = ?, "
+                            + "SET pprice = ? "
                             + "WHERE productID = ?";
         PreparedStatement statement = null;
         try {
