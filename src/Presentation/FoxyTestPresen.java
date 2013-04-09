@@ -197,6 +197,9 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         EditCustomer.setEnabled(true);
         SaveChanges.setEnabled(false);
         DeleteCustomer.setEnabled(true);
+        System.out.println("Unique ID1: " + cg.getUniqueCustomerID());
+        System.out.println("Unique ID2: " + cg.getUniqueCustomerID());
+        System.out.println("Unique ID3: " + cg.getUniqueCustomerID());
     }//GEN-LAST:event_GetCutomerListActionPerformed
 
     private void CustomerIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerIDActionPerformed
