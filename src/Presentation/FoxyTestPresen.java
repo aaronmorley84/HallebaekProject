@@ -171,6 +171,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
 
     private void GetCutomerListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetCutomerListActionPerformed
       model1.clear();
+      jList1.setModel(model1);
        cg.buildCustomerList();
         for (int i = 0; i < cg.getListSize(); i++) {
             
@@ -222,6 +223,15 @@ public class FoxyTestPresen extends javax.swing.JFrame {
     }//GEN-LAST:event_EditCustomerActionPerformed
 
     private void SaveChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveChangesActionPerformed
+        int cusID = Integer.parseInt(CustomerID.getText());
+        String cusName = CustomerName.getText();
+        String cusAddress  = CustomerAddress.getText();
+        int phoneID = Integer.parseInt(PhoneID.getText());
+        String cusEmail = CustomerEmail.getText();
+        
+        
+        cg.saveEditedCustomer(cusID,cusName,cusAddress,phoneID,cusEmail);
+        
         AddCustomer.setEnabled(true);
         GetCutomerList.setEnabled(true);
         EditCustomer.setEnabled(false);
