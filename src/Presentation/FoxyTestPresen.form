@@ -46,10 +46,13 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="DeleteCustomer" pref="160" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" pref="160" max="32767" attributes="0"/>
-                  <Component id="EditCustomer" max="32767" attributes="0"/>
-                  <Component id="SaveChanges" max="32767" attributes="0"/>
+                  <Component id="PhoneNumbers" pref="160" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="DeleteCustomer" pref="160" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="160" max="32767" attributes="0"/>
+                      <Component id="EditCustomer" max="32767" attributes="0"/>
+                      <Component id="SaveChanges" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
@@ -92,6 +95,8 @@
                   <Component id="GetCutomerList" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="SaveChanges" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="PhoneNumbers" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="DeleteCustomer" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -199,6 +204,12 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteCustomerActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="PhoneNumbers">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="See Edit Phone Numbers"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
