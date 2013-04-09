@@ -266,6 +266,12 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         
         cg.deleteCustomer(cusID);
         GetCutomerListActionPerformed(evt);
+        
+        AddCustomer.setEnabled(true);
+        GetCutomerList.setEnabled(true);
+        EditCustomer.setEnabled(true);
+        SaveChanges.setEnabled(false);
+        DeleteCustomer.setEnabled(true);
     }//GEN-LAST:event_DeleteCustomerActionPerformed
 
     /**
