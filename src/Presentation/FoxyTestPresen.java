@@ -64,11 +64,14 @@ public class FoxyTestPresen extends javax.swing.JFrame {
             }
         });
 
+        CustomerID.setEditable(false);
         CustomerID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CustomerIDActionPerformed(evt);
             }
         });
+
+        PhoneID.setEditable(false);
 
         jLabel1.setText("CustomerID");
 
@@ -135,10 +138,9 @@ public class FoxyTestPresen extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(DeleteCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                        .addComponent(EditCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SaveChanges, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(EditCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SaveChanges, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -208,15 +210,12 @@ public class FoxyTestPresen extends javax.swing.JFrame {
 
     private void AddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCustomerActionPerformed
         
-        
-        int cusID = Integer.parseInt(CustomerID.getText());
         String cusName = CustomerName.getText();
         String cusAddress  = CustomerAddress.getText();
-        int phoneID = Integer.parseInt(PhoneID.getText());
         String cusEmail = CustomerEmail.getText();
         
         
-        cg.addCustomer(cusID,cusName,cusAddress,phoneID,cusEmail);
+        cg.addCustomer(cusName,cusAddress,cusEmail);
         GetCutomerListActionPerformed(evt);
         
         CustomerID.setText(null);

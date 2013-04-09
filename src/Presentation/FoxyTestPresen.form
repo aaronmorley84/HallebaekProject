@@ -109,6 +109,9 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="CustomerID">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CustomerIDActionPerformed"/>
       </Events>
@@ -118,6 +121,9 @@
     <Component class="javax.swing.JTextField" name="CustomerAddress">
     </Component>
     <Component class="javax.swing.JTextField" name="PhoneID">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="CustomerEmail">
     </Component>
