@@ -79,10 +79,11 @@ public class ProductGateway {
     public boolean editProduct(int ID, String name, int volume, int quantity, String description, int price) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-//        String SQLString2 = "SELECT * "
-//                            + "FROM products"
-//                            + "WHERE productID = ?"
-//                            + "for update";
+        String SQLString2 = "SELECT * "
+                            + "FROM products"
+                            + "WHERE productID = ?"
+                            + "for update NOWAIT";
+        
         String SQLString1 = "UPDATE products "
                             + "SET pname = ?, "
                             + "pvolume = ?, "
@@ -92,6 +93,9 @@ public class ProductGateway {
                             + "WHERE productID = ?";
         PreparedStatement statement = null;
         try {
+            statement = con.prepareStatement(SQLString2);
+            statement.setInt(1, ID);
+            if (statement.execute()){
             statement = con.prepareStatement(SQLString1);
             statement.setString(1, name);
             statement.setInt(2,volume);
@@ -100,7 +104,8 @@ public class ProductGateway {
             statement.setInt(5, price);
             statement.setInt(6, ID);
             statement.executeUpdate(); //stops here for some reason
-            success = true;            
+            success = true;         
+            }
         }catch (Exception e){
             System.out.println("Insertion error!");
             System.out.println(e.getMessage());
