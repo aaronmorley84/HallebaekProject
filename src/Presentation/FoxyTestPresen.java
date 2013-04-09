@@ -25,6 +25,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         GetCutomerList.setEnabled(true);
         EditCustomer.setEnabled(false);
         SaveChanges.setEnabled(false);
+        DeleteCustomer.setEnabled(false);
     }
 
     /**
@@ -52,6 +53,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         jList1 = new javax.swing.JList();
         EditCustomer = new javax.swing.JButton();
         SaveChanges = new javax.swing.JButton();
+        DeleteCustomer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,6 +103,13 @@ public class FoxyTestPresen extends javax.swing.JFrame {
             }
         });
 
+        DeleteCustomer.setText("Delete Customer");
+        DeleteCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteCustomerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,9 +134,11 @@ public class FoxyTestPresen extends javax.swing.JFrame {
                         .addComponent(AddCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                    .addComponent(EditCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(SaveChanges, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(DeleteCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                        .addComponent(EditCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SaveChanges, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -163,6 +174,8 @@ public class FoxyTestPresen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(GetCutomerList)
                     .addComponent(SaveChanges))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(DeleteCustomer)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -183,6 +196,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         GetCutomerList.setEnabled(true);
         EditCustomer.setEnabled(true);
         SaveChanges.setEnabled(false);
+        DeleteCustomer.setEnabled(true);
     }//GEN-LAST:event_GetCutomerListActionPerformed
 
     private void CustomerIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerIDActionPerformed
@@ -218,7 +232,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         
         AddCustomer.setEnabled(false);
         GetCutomerList.setEnabled(false);
-        EditCustomer.setEnabled(false);
+        EditCustomer.setEnabled(true);
         SaveChanges.setEnabled(true);
     }//GEN-LAST:event_EditCustomerActionPerformed
 
@@ -231,10 +245,11 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         
         
         cg.saveEditedCustomer(cusID,cusName,cusAddress,phoneID,cusEmail);
+        GetCutomerListActionPerformed(evt);
         
         AddCustomer.setEnabled(true);
         GetCutomerList.setEnabled(true);
-        EditCustomer.setEnabled(false);
+        EditCustomer.setEnabled(true);
         SaveChanges.setEnabled(false);
         
         CustomerID.setText(null);
@@ -242,7 +257,14 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         CustomerAddress.setText(null);
         PhoneID.setText(null);
         CustomerEmail.setText(null);
+        DeleteCustomer.setEnabled(false);
     }//GEN-LAST:event_SaveChangesActionPerformed
+
+    private void DeleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerActionPerformed
+        int cusID = Integer.parseInt(CustomerID.getText());
+        
+        
+    }//GEN-LAST:event_DeleteCustomerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,6 +306,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
     private javax.swing.JTextField CustomerEmail;
     private javax.swing.JTextField CustomerID;
     private javax.swing.JTextField CustomerName;
+    private javax.swing.JButton DeleteCustomer;
     private javax.swing.JButton EditCustomer;
     private javax.swing.JButton GetCutomerList;
     private javax.swing.JTextField PhoneID;
