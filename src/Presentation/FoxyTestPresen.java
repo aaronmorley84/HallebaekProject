@@ -161,7 +161,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
        jTextArea1.append(cg.printList());
         for (int i = 0; i < cg.getListSize(); i++) {
             
-       model1.addElement(cg.getlist(i).toString());
+       model1.addElement("ID: "+cg.getlist(i).getCustomerID() + "\nName: "+ cg.getlist(i).getName());
         }
         jList1.setModel(model1);
     }//GEN-LAST:event_GetCutomerListActionPerformed
