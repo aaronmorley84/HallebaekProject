@@ -32,8 +32,8 @@ public class CustomerGateway {
     public int getUniqueCustomerID(){
        int temp = 0;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "SELECT customerseq.nextval" +
-"FROM dual";
+        String SQLString1 = "SELECT customerseq.nextval " +
+"FROM dual ";
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
