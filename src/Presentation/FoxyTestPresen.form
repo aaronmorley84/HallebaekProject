@@ -47,11 +47,9 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="DeleteCustomer" pref="160" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPane2" pref="160" max="32767" attributes="0"/>
-                      <Component id="EditCustomer" max="32767" attributes="0"/>
-                      <Component id="SaveChanges" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane2" pref="160" max="32767" attributes="0"/>
+                  <Component id="EditCustomer" max="32767" attributes="0"/>
+                  <Component id="SaveChanges" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
