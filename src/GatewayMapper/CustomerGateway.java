@@ -20,7 +20,14 @@ import java.util.ArrayList;
 public class CustomerGateway {
 
     ArrayList<Customer> listOfCustomers = new ArrayList<>();
+    
+    public Customer getlist(int i){
+        return listOfCustomers.get(i);
+    }
 
+    public int getListSize(){
+        return listOfCustomers.size();
+    }
     /*Used to build a list of customers. */
     public boolean buildCustomerList() {
         boolean success = false;
