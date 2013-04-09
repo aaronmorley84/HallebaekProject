@@ -20,6 +20,11 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         
         model1 = new DefaultListModel();
         model2 = new DefaultListModel();
+        
+        AddCustomer.setEnabled(true);
+        GetCutomerList.setEnabled(true);
+        EditCustomer.setEnabled(false);
+        SaveChanges.setEnabled(false);
     }
 
     /**
@@ -43,10 +48,10 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         AddCustomer = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
+        EditCustomer = new javax.swing.JButton();
+        SaveChanges = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,16 +85,21 @@ public class FoxyTestPresen extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(jList1);
+
+        EditCustomer.setText("Edit Customer");
+        EditCustomer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditCustomerActionPerformed(evt);
+            }
+        });
+
+        SaveChanges.setText("Save Changes");
+        SaveChanges.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveChangesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,18 +124,18 @@ public class FoxyTestPresen extends javax.swing.JFrame {
                         .addComponent(GetCutomerList, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                         .addComponent(AddCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(EditCustomer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SaveChanges, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(CustomerID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(7, 7, 7)
@@ -143,13 +153,17 @@ public class FoxyTestPresen extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addGap(5, 5, 5)
-                        .addComponent(CustomerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(AddCustomer)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(GetCutomerList))
-                    .addComponent(jScrollPane1))
-                .addContainerGap())
+                        .addComponent(CustomerEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AddCustomer)
+                    .addComponent(EditCustomer))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GetCutomerList)
+                    .addComponent(SaveChanges))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -158,12 +172,16 @@ public class FoxyTestPresen extends javax.swing.JFrame {
     private void GetCutomerListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetCutomerListActionPerformed
       model1.clear();
        cg.buildCustomerList();
-       jTextArea1.append(cg.printList());
         for (int i = 0; i < cg.getListSize(); i++) {
             
-       model1.addElement(cg.getlist(i).toString());
+       model1.addElement("ID: "+cg.getlist(i).getCustomerID() + "Name: "+ cg.getlist(i).getName());
         }
         jList1.setModel(model1);
+        
+        AddCustomer.setEnabled(true);
+        GetCutomerList.setEnabled(true);
+        EditCustomer.setEnabled(true);
+        SaveChanges.setEnabled(false);
     }//GEN-LAST:event_GetCutomerListActionPerformed
 
     private void CustomerIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerIDActionPerformed
@@ -171,7 +189,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
     }//GEN-LAST:event_CustomerIDActionPerformed
 
     private void AddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCustomerActionPerformed
-        CustomerGateway cg = new CustomerGateway();
+        
         
         int cusID = Integer.parseInt(CustomerID.getText());
         String cusName = CustomerName.getText();
@@ -181,7 +199,34 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         
         
         cg.addCustomer(cusID,cusName,cusAddress,phoneID,cusEmail);
+        
+        CustomerID.setText(null);
+        CustomerName.setText(null);
+        CustomerAddress.setText(null);
+        PhoneID.setText(null);
+        CustomerEmail.setText(null);
     }//GEN-LAST:event_AddCustomerActionPerformed
+
+    private void EditCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditCustomerActionPerformed
+        cg.getlist(jList1.getSelectedIndex());
+        CustomerID.setText(""+cg.getlist(jList1.getSelectedIndex()).getCustomerID());
+        CustomerName.setText(cg.getlist(jList1.getSelectedIndex()).getName());
+        CustomerAddress.setText(cg.getlist(jList1.getSelectedIndex()).getAdress());
+        PhoneID.setText(""+cg.getlist(jList1.getSelectedIndex()).getPhoneID());
+        CustomerEmail.setText(cg.getlist(jList1.getSelectedIndex()).getEmail());
+        
+        AddCustomer.setEnabled(false);
+        GetCutomerList.setEnabled(false);
+        EditCustomer.setEnabled(false);
+        SaveChanges.setEnabled(true);
+    }//GEN-LAST:event_EditCustomerActionPerformed
+
+    private void SaveChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveChangesActionPerformed
+        AddCustomer.setEnabled(true);
+        GetCutomerList.setEnabled(true);
+        EditCustomer.setEnabled(false);
+        SaveChanges.setEnabled(false);
+    }//GEN-LAST:event_SaveChangesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,16 +268,16 @@ public class FoxyTestPresen extends javax.swing.JFrame {
     private javax.swing.JTextField CustomerEmail;
     private javax.swing.JTextField CustomerID;
     private javax.swing.JTextField CustomerName;
+    private javax.swing.JButton EditCustomer;
     private javax.swing.JButton GetCutomerList;
     private javax.swing.JTextField PhoneID;
+    private javax.swing.JButton SaveChanges;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JList jList1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
