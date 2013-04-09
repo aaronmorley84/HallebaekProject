@@ -133,6 +133,24 @@ public class CustomerGateway {
         }
         return success;
     }
+    
+    public boolean deleteCustomer(int cusID){
+        boolean success = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "DELETE from customers "
+                            + "WHERE customerID = ? ";
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(SQLString1);
+            statement.setInt(1, cusID);
+            statement.executeUpdate();
+            success = true;
+        }catch (Exception e) {
+            System.out.println("Error in deleting!");
+            System.out.println(e.getMessage());
+        }
+        return success;
+    }
 
     public String printList() {
         String customerList = null;
