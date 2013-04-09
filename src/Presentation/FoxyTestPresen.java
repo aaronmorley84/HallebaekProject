@@ -236,6 +236,12 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         GetCutomerList.setEnabled(true);
         EditCustomer.setEnabled(false);
         SaveChanges.setEnabled(false);
+        
+        CustomerID.setText(null);
+        CustomerName.setText(null);
+        CustomerAddress.setText(null);
+        PhoneID.setText(null);
+        CustomerEmail.setText(null);
     }//GEN-LAST:event_SaveChangesActionPerformed
 
     /**
