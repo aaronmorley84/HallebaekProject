@@ -33,13 +33,15 @@ public class CustomerGateway {
        int temp = 0;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT customerseq.nextval " +
-"FROM dual ";
+"FROM dual";
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
                ResultSet rs = statement.executeQuery();
-            temp = rs.getInt(1);
-            return temp;
+            if (rs.next()) {
+                temp = rs.getInt(1);
+            }
+            
         } catch (Exception e) {
             System.out.println("Something wrong build" + e.getMessage());
            
