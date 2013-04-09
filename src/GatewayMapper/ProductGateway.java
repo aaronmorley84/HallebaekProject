@@ -79,6 +79,10 @@ public class ProductGateway {
     public boolean editProduct(int ID, String name, int volume, int quantity, String description, int price) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
+//        String SQLString2 = "SELECT * "
+//                            + "FROM products"
+//                            + "WHERE productID = ?"
+//                            + "for update";
         String SQLString1 = "UPDATE products "
                             + "SET pname = ?, "
                             + "pvolume = ?, "
@@ -110,7 +114,23 @@ public class ProductGateway {
         }
         return success;
     }
-    
+    public boolean deleteProduct(int ID){
+        boolean success = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "DELETE from products "
+                            + "WHERE productID = ? ";
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(SQLString1);
+            statement.setInt(1, ID);
+            statement.executeUpdate();
+            success = true;
+        }catch (Exception e) {
+            System.out.println("Error in deleting!");
+            System.out.println(e.getMessage());
+        }
+        return success;
+    }
     public boolean searchForProduct(String name) {
         products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
