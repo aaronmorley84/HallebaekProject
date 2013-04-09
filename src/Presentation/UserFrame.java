@@ -33,6 +33,7 @@ public class UserFrame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         listAllProducts = new javax.swing.JList();
         buttonEditProduct = new javax.swing.JButton();
+        buttonDeleteProd = new javax.swing.JButton();
         jFrame2 = new javax.swing.JFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
         listSearchResult = new javax.swing.JList();
@@ -89,6 +90,13 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
 
+        buttonDeleteProd.setText("Delete product");
+        buttonDeleteProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteProdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
         jFrame1Layout.setHorizontalGroup(
@@ -97,15 +105,20 @@ public class UserFrame extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
-                .addComponent(buttonEditProduct)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buttonEditProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonDeleteProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         jFrame1Layout.setVerticalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrame1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonEditProduct)
+                    .addGroup(jFrame1Layout.createSequentialGroup()
+                        .addComponent(buttonEditProduct)
+                        .addGap(18, 18, 18)
+                        .addComponent(buttonDeleteProd))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(166, Short.MAX_VALUE))
         );
@@ -528,6 +541,18 @@ public class UserFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonSaveProdChangesActionPerformed
 
+    private void buttonDeleteProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteProdActionPerformed
+        Product deleteProd;
+        deleteProd = (Product) listAllProducts.getSelectedValue();
+        
+        int ID = deleteProd.getProductID();
+        if (control.deleteProduct(ID)){
+            JOptionPane.showMessageDialog(this, "Product deleted!", "DELETED!", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(this, "Could not delete product!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonDeleteProdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -564,6 +589,7 @@ public class UserFrame extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAddNewProd;
+    private javax.swing.JButton buttonDeleteProd;
     private javax.swing.JButton buttonEditProduct;
     private javax.swing.JButton buttonSaveProdChanges;
     private javax.swing.JButton buttonSearchProducts;
