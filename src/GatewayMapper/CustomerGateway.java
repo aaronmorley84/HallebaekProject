@@ -30,6 +30,7 @@ public class CustomerGateway {
     }
     /*Used to build a list of customers. */
     public boolean buildCustomerList() {
+        listOfCustomers.clear();
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * " 
@@ -98,6 +99,39 @@ public class CustomerGateway {
 
         return success;
         
+    }
+    
+    public boolean saveEditedCustomer(int cusID,String cusName,String cusAddress,int phoneID,String cusEmail){
+         boolean success = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "UPDATE customers "
+                            + "SET name = ?, "
+                            + "address = ?, "
+                            + "phoneid = ?, "
+                            + "email = ? "
+                            + "WHERE customerID = ?";
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(SQLString1);
+            statement.setString(1, cusName);
+            statement.setString(2,cusAddress);
+            statement.setInt(3, phoneID);
+            statement.setString(4, cusEmail);
+            statement.setInt(5, cusID);
+            statement.executeUpdate(); //stops here for some reason
+            success = true;            
+        }catch (Exception e){
+            System.out.println("Insertion error!");
+            System.out.println(e.getMessage());
+        }finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println("Statement close error!");
+                System.out.println(e.getMessage());
+            }
+        }
+        return success;
     }
 
     public String printList() {
