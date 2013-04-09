@@ -7,6 +7,9 @@ public class Controller {
     public Controller() {
         prodController = new ProductGateway();
     }
+    public Product getProduct(int ID){
+        return prodController.getProduct(ID);
+    }
     public boolean addProduct(int ID, String name, int volume, int quantity, String description, int price){
         return prodController.addProduct(ID, name, volume, quantity, description, price);
     }

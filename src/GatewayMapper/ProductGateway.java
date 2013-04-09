@@ -80,8 +80,8 @@ public class ProductGateway {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString2 = "SELECT * "
-                            + "FROM products"
-                            + "WHERE productID = ?"
+                            + "FROM products "
+                            + "WHERE productID = ? "
                             + "for update NOWAIT";
         
         String SQLString1 = "UPDATE products "
@@ -96,15 +96,15 @@ public class ProductGateway {
             statement = con.prepareStatement(SQLString2);
             statement.setInt(1, ID);
             if (statement.execute()){
-            statement = con.prepareStatement(SQLString1);
-            statement.setString(1, name);
-            statement.setInt(2,volume);
-            statement.setInt(3, quantity);
-            statement.setString(4, description);
-            statement.setInt(5, price);
-            statement.setInt(6, ID);
-            statement.executeUpdate(); //stops here for some reason
-            success = true;         
+                statement = con.prepareStatement(SQLString1);
+                statement.setString(1, name);
+                statement.setInt(2,volume);
+                statement.setInt(3, quantity);
+                statement.setString(4, description);
+                statement.setInt(5, price);
+                statement.setInt(6, ID);
+                statement.executeUpdate();
+                success = true;         
             }
         }catch (Exception e){
             System.out.println("Insertion error!");
@@ -209,7 +209,14 @@ public class ProductGateway {
         }
         return success;
     }
-
+    public Product getProduct(int ID){
+        for (int i = 0; i < products.size(); i++) {
+            if(products.get(i).getProductID() == ID){
+                return products.get(i);
+            }
+        }
+        return null;
+    }
     public boolean getAllProducts() {
         products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
