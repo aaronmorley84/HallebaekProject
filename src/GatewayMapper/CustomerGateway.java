@@ -92,22 +92,24 @@ public class CustomerGateway {
         return success;
     }//end of buildCustomer
     
-    public boolean addCustomer(int cusID, String name, String address, int phoneID, String email){
-        Customer c = new Customer(cusID,name,address,phoneID,email);
+    public boolean addCustomer( String name, String address, String email){
+        Customer c = new Customer(0,name,address,0,email);
         boolean success = false;
         int rowsInserted = 0;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT INTO customers VALUES (?,?,?,?,?)"; 
+        
+        int uniqueID = getUniqueCustomerID();
         
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
             
                 
-            statement.setInt(1, c.getCustomerID());
+            statement.setInt(1, uniqueID);
             statement.setString(2, c.getName());
             statement.setString(3, c.getAdress());
-            statement.setInt(4, c.getPhoneID());
+            statement.setInt(4, uniqueID);
             statement.setString(5, c.getEmail());
             rowsInserted += statement.executeUpdate();
             
