@@ -214,6 +214,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         
         
         cg.addCustomer(cusID,cusName,cusAddress,phoneID,cusEmail);
+        GetCutomerListActionPerformed(evt);
         
         CustomerID.setText(null);
         CustomerName.setText(null);
@@ -223,7 +224,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
     }//GEN-LAST:event_AddCustomerActionPerformed
 
     private void EditCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditCustomerActionPerformed
-        cg.getlist(jList1.getSelectedIndex());
+        
         CustomerID.setText(""+cg.getlist(jList1.getSelectedIndex()).getCustomerID());
         CustomerName.setText(cg.getlist(jList1.getSelectedIndex()).getName());
         CustomerAddress.setText(cg.getlist(jList1.getSelectedIndex()).getAdress());
@@ -261,9 +262,10 @@ public class FoxyTestPresen extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveChangesActionPerformed
 
     private void DeleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerActionPerformed
-        int cusID = Integer.parseInt(CustomerID.getText());
+        int cusID = cg.getlist(jList1.getSelectedIndex()).getCustomerID();
         
-        
+        cg.deleteCustomer(cusID);
+        GetCutomerListActionPerformed(evt);
     }//GEN-LAST:event_DeleteCustomerActionPerformed
 
     /**
