@@ -38,6 +38,32 @@ public class ProductGateway {
         return packages.size();
     }
 
+    public Product searchProdByID(int ID) {
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getProductID() == ID) {
+
+                return products.get(i);
+
+            }
+
+        }
+        return null;
+    }
+
+    public Product searchProdByName(String name) {
+        String found = "not found";
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getName().equals(name)) {
+                found = "found";
+                return products.get(i);
+
+            }
+
+        }
+        System.out.println(found);
+        return null;
+    }
+
     public Product showProducts(int index) {
         if (index < products.size()) {
             return products.get(index);
@@ -50,22 +76,22 @@ public class ProductGateway {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into products "
-                            + "VALUES (?,?,?,?,?,?)" ;
+                + "VALUES (?,?,?,?,?,?)";
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
             statement.setInt(1, ID);
             statement.setString(2, name);
-            statement.setInt(3,volume);
+            statement.setInt(3, volume);
             statement.setInt(4, quantity);
             statement.setString(5, description);
             statement.setInt(6, price);
             statement.executeUpdate();
             success = true;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Insertion error!");
             System.out.println(e.getMessage());
-        }finally {
+        } finally {
             try {
                 statement.close();
             } catch (SQLException e) {
@@ -75,41 +101,41 @@ public class ProductGateway {
         }
         return success;
     }
-    
+
     public boolean editProduct(int ID, String name, int volume, int quantity, String description, int price) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString2 = "SELECT * "
-                            + "FROM products "
-                            + "WHERE productID = ? "
-                            + "for update NOWAIT";
-        
+                + "FROM products "
+                + "WHERE productID = ? "
+                + "for update NOWAIT";
+
         String SQLString1 = "UPDATE products "
-                            + "SET pname = ?, "
-                            + "pvolume = ?, "
-                            + "pquantity = ?, "
-                            + "pdescription = ?, "
-                            + "pprice = ? "
-                            + "WHERE productID = ?";
+                + "SET pname = ?, "
+                + "pvolume = ?, "
+                + "pquantity = ?, "
+                + "pdescription = ?, "
+                + "pprice = ? "
+                + "WHERE productID = ?";
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString2);
             statement.setInt(1, ID);
-            if (statement.execute()){
+            if (statement.execute()) {
                 statement = con.prepareStatement(SQLString1);
                 statement.setString(1, name);
-                statement.setInt(2,volume);
+                statement.setInt(2, volume);
                 statement.setInt(3, quantity);
                 statement.setString(4, description);
                 statement.setInt(5, price);
                 statement.setInt(6, ID);
                 statement.executeUpdate();
-                success = true;         
+                success = true;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Insertion error!");
             System.out.println(e.getMessage());
-        }finally {
+        } finally {
             try {
                 statement.close();
             } catch (SQLException e) {
@@ -119,23 +145,25 @@ public class ProductGateway {
         }
         return success;
     }
-    public boolean deleteProduct(int ID){
+
+    public boolean deleteProduct(int ID) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "DELETE from products "
-                            + "WHERE productID = ? ";
+                + "WHERE productID = ? ";
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
             statement.setInt(1, ID);
             statement.executeUpdate();
             success = true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Error in deleting!");
             System.out.println(e.getMessage());
         }
         return success;
     }
+
     public boolean searchForProduct(String name) {
         products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
@@ -143,7 +171,7 @@ public class ProductGateway {
         String SQLString1 = "SELECT * "
                 + "FROM products "
                 + "WHERE pname = ? ";
-        
+
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
@@ -159,11 +187,11 @@ public class ProductGateway {
                         rs.getInt(6)));
             }
             success = true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Retrieval error!");
             System.out.println(e.getMessage());
             success = false;
-        }finally {
+        } finally {
             try {
                 statement.close();
             } catch (SQLException e) {
@@ -173,6 +201,7 @@ public class ProductGateway {
         }
         return success;
     }
+
     public boolean searchForProduct(int ID) {
         products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
@@ -195,11 +224,11 @@ public class ProductGateway {
                         rs.getInt(6)));
             }
             success = true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Retrieval error!");
             System.out.println(e.getMessage());
             success = false;
-        }finally {
+        } finally {
             try {
                 statement.close();
             } catch (SQLException e) {
@@ -209,14 +238,16 @@ public class ProductGateway {
         }
         return success;
     }
-    public Product getProduct(int ID){
+
+    public Product getProduct(int ID) {
         for (int i = 0; i < products.size(); i++) {
-            if(products.get(i).getProductID() == ID){
+            if (products.get(i).getProductID() == ID) {
                 return products.get(i);
             }
         }
         return null;
     }
+
     public boolean getAllProducts() {
         products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
