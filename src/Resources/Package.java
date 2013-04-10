@@ -6,10 +6,10 @@ package Resources;
  */
 public class Package {
             
-    public int packageID, price;
-    public String name, description;
+    private int packageID, price;
+    private String name, description;
 
-    public Package(int packageID, int price, String name, String description) {
+    public Package(int packageID, String name, String description, int price) {
         this.packageID = packageID;
         this.price = price;
         this.name = name;
@@ -50,7 +50,7 @@ public class Package {
 
     @Override
     public String toString() {
-        return "Package{" + "packageID=" + packageID + ", price=" + price + ", name=" + name + ", description=" + description + '}';
+        return "Package{" + "packageID=" + getPackageID() + ", price=" + getPrice() + ", name=" + getName() + ", description=" + getDescription() + "}";
     }
     
 }
