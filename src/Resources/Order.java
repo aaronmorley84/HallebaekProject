@@ -8,12 +8,12 @@ import java.util.ArrayList;
  */
 public class Order {
     ArrayList<Product> orderList = new ArrayList<>();
-    Customer cust;
+    int cust;
     int dateArrival, datePickUp;
     int trucksforDelivery, assemblersNeeded;
     int orderID;
 
-    public Order(Customer cust, int dateArrival, int datePickUp, int trucksforDelivery, int assemblersNeeded, int orderId) {
+    public Order(int cust, int dateArrival, int datePickUp, int trucksforDelivery, int assemblersNeeded, int orderId) {
         this.cust = cust;
         this.dateArrival = dateArrival;
         this.datePickUp = datePickUp;
@@ -22,11 +22,29 @@ public class Order {
         this.orderID = orderId;
     }
     
-    public void setCustomer (Customer cust) {
+   
+    public boolean addItemToList(Product prod){
+       boolean success=false;
+        if(!checkForDuplicate(prod.getProductID())){
+           success = true;
+           orderList.add(prod);
+        }
+        return success;
+    }
+    public boolean checkForDuplicate(int ID){
+        boolean same = false;
+        for (int i = 0; i < orderList.size(); i++) {
+            if(orderList.get(i).getProductID() == ID){
+                same = true;
+            }
+        }
+        return same;
+    }
+    public void setCustomer (int cust) {
         this.cust = cust;
     }
     
-    public Customer getCustomer(){
+    public int getCustomer(){
         return cust;
     }
     
@@ -72,7 +90,7 @@ public class Order {
     
     @Override
     public String toString() {
-        return cust.getCustomerID()+cust.getAdress()+orderList.toString()+dateArrival+datePickUp;
+        return orderList.toString()+dateArrival+datePickUp;
     }
     
 }
