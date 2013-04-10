@@ -7,8 +7,8 @@ import java.sql.*;
  * @author Kris
  */
 public class Connector {
-    private static String id = "CLDATA12E2";
-    private static String pw = "CLDATA12E2";
+    private static String id = "CPHAM13";
+    private static String pw = "CPHAM13";
     
     public Connection getConnection() {
         Connection con = null;
