@@ -10,6 +10,9 @@ public class Controller {
     public Product getProduct(int ID){
         return prodController.getProduct(ID);
     }
+    public Product searchProdByName(String name) {
+        return prodController.searchProdByName(name);
+    }
     public boolean addProduct(int ID, String name, int volume, int quantity, String description, int price){
         return prodController.addProduct(ID, name, volume, quantity, description, price);
     }
