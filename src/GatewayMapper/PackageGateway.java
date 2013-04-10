@@ -23,7 +23,7 @@ public class PackageGateway {
         boolean succes = false;
        Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * " 
-                + "FROM Packages ";
+                + "FROM Packages";
 
 
         PreparedStatement statement = null;
@@ -33,9 +33,10 @@ public class PackageGateway {
            while(rs.next()){
                packageList.add(new Package(
                        rs.getInt(1),
-                       rs.getInt(2),
+                       
+                       rs.getString(2),
                        rs.getString(3),
-                       rs.getString(4)
+                       rs.getInt(4)
                        ));
            }
            succes = true;
@@ -50,7 +51,17 @@ public class PackageGateway {
                System.out.println("Could'nt close Package connection: " + e.getMessage());
            }
        }
+      
        return succes;
     }//end of buildPackageList
     
+    public String printList(){
+        String temp = "";
+        for (int i = 0; i < packageList.size(); i++) {
+            temp = packageList.get(i).toString();
+            System.out.println("Temp" + temp);
+            return temp;
+        }
+        return temp;
+    }
 }//end of PackageGateway
