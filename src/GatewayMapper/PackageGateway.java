@@ -55,12 +55,41 @@ public class PackageGateway {
        return succes;
     }//end of buildPackageList
     
+    public boolean addPackage(int packageID, String name, String description, int price){
+        boolean succes = false;
+       Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "INSERT INTO Packages VALUES (?,?,?,?)";
+
+
+        PreparedStatement statement = null;
+       try{
+           statement = con.prepareStatement(SQLString1);
+            statement.setInt(1, packageID);
+            statement.setString(2, name);
+            statement.setString(3, description);
+            statement.setInt(4, price);
+            statement.executeQuery();
+           succes = true;
+       }catch(Exception e){
+           System.out.println("Something went wrong building Packagelist" + e.getMessage());
+           succes = false;
+       }
+       finally{
+           try{
+               statement.close();
+           }catch(SQLException e){
+               System.out.println("Could'nt close Package connection: " + e.getMessage());
+           }
+       }
+      
+       return succes;
+    }
+    
     public String printList(){
         String temp = "";
         for (int i = 0; i < packageList.size(); i++) {
             temp = packageList.get(i).toString();
-            System.out.println("Temp" + temp);
-            return temp;
+            
         }
         return temp;
     }
