@@ -8,13 +8,13 @@ import java.util.ArrayList;
  */
 public class Order {
     ArrayList<Product> orderList = new ArrayList<>();
-    int cust;
+    int customerID;
     int dateArrival, datePickUp;
     int trucksforDelivery, assemblersNeeded;
     int orderID;
 
-    public Order(int cust, int dateArrival, int datePickUp, int trucksforDelivery, int assemblersNeeded, int orderId) {
-        this.cust = cust;
+    public Order(int customerID, int dateArrival, int datePickUp, int trucksforDelivery, int assemblersNeeded, int orderId) {
+        this.customerID = customerID;
         this.dateArrival = dateArrival;
         this.datePickUp = datePickUp;
         this.trucksforDelivery = trucksforDelivery;
@@ -40,12 +40,12 @@ public class Order {
         }
         return same;
     }
-    public void setCustomer (int cust) {
-        this.cust = cust;
+    public void setCustomer (int customerID) {
+        this.customerID = customerID;
     }
     
     public int getCustomer(){
-        return cust;
+        return customerID;
     }
     
     public int getDateArrival() {
@@ -87,7 +87,9 @@ public class Order {
     public int getOrderID() {
         return orderID;
     }
-    
+    public ArrayList<Product> getListInstance(){
+        return orderList;
+    }
     @Override
     public String toString() {
         return orderList.toString()+dateArrival+datePickUp;
