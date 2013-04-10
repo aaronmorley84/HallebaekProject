@@ -185,9 +185,9 @@ public class CustomerGateway {
     public String printList() {
         String customerList = null;
         for (int i = 0; i < listOfCustomers.size(); i++) {
-            System.out.println(listOfCustomers.get(i).toString());
-            customerList = listOfCustomers.get(i).toString();
+           customerList = listOfCustomers.get(i).toString();
         }
         return customerList;
     }
+    
 }
