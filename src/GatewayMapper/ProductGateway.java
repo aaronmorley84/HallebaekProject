@@ -10,12 +10,12 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Kris
+ * @author Adrian & Kris
  */
 public class ProductGateway {
 
     ArrayList<Product> products;
-    ArrayList<Package> packages;
+    ArrayList<Package> packages;    //Not neccessary?
 
     public ProductGateway() {
         products = new ArrayList<>();
@@ -37,15 +37,15 @@ public class ProductGateway {
     public int getPackagetListsize() {
         return packages.size();
     }
-
+    /*
+     * Methods for searching through and displaying all or  products
+     * Not using DB connection.
+     */
     public Product searchProdByID(int ID) {
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getProductID() == ID) {
-
                 return products.get(i);
-
             }
-
         }
         return null;
     }
@@ -56,9 +56,7 @@ public class ProductGateway {
             if (products.get(i).getName().equals(name)) {
                 found = "found";
                 return products.get(i);
-
             }
-
         }
         System.out.println(found);
         return null;
@@ -71,7 +69,21 @@ public class ProductGateway {
             return null;
         }
     }
-
+                                                    //these two do the same??
+    public Product getProduct(int ID) {
+        for (int i = 0; i < products.size(); i++) {
+            if (products.get(i).getProductID() == ID) {
+                return products.get(i);
+            }
+        }
+        return null;
+    }
+    
+    /*
+     * US 2.1
+     * Admin can add product to
+     * product table.
+     */
     public boolean addProduct(int ID, String name, int volume, int quantity, String description, int price) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
@@ -101,7 +113,12 @@ public class ProductGateway {
         }
         return success;
     }
-
+    
+    /*
+     * US 2.2
+     * Admin can edit product in 
+     * product table.
+     */
     public boolean editProduct(int ID, String name, int volume, int quantity, String description, int price) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
@@ -145,7 +162,12 @@ public class ProductGateway {
         }
         return success;
     }
-
+    
+    /*
+     * US 2.3
+     * Admin can delete product from
+     * product table
+     */
     public boolean deleteProduct(int ID) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
@@ -163,7 +185,13 @@ public class ProductGateway {
         }
         return success;
     }
-
+    
+    /*
+     * US 1.2
+     * Admin can search for a specic
+     * product within the product table
+     * by name or item number.
+     */
     public boolean searchForProduct(String name) {
         products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
@@ -239,15 +267,12 @@ public class ProductGateway {
         return success;
     }
 
-    public Product getProduct(int ID) {
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getProductID() == ID) {
-                return products.get(i);
-            }
-        }
-        return null;
-    }
-
+    /*
+     * US 1.1
+     * Admin can access a inventory list
+     * of all items within the Product
+     * table.
+     */
     public boolean getAllProducts() {
         products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
@@ -282,5 +307,33 @@ public class ProductGateway {
             }
         }
         return success;
+    }
+    
+    /*Fetches a unique indentifier for each product.*/
+    public int getUniqueProductId(){
+        int temp = 0;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "SELECT orderseq.nextval "
+                + "FROM dual";
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(SQLString1);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                temp = rs.getInt(1);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Something wrong build" + e.getMessage());
+
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println("Statment close error\n" + e.getMessage());
+            }
+        }
+
+        return temp;
     }
 }
