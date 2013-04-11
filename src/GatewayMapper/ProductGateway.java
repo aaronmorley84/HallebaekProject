@@ -15,27 +15,17 @@ import java.util.ArrayList;
 public class ProductGateway {
 
     ArrayList<Product> products;
-    ArrayList<Package> packages;    //Not neccessary?
 
     public ProductGateway() {
         products = new ArrayList<>();
-        packages = new ArrayList<>();
-    }
+            }
 
     public void addProduct(Product product) {
         products.add(product);
     }
 
-    public void addPackage(Package pack) {
-        packages.add(pack);
-    }
-
     public int getProductListsize() {
         return products.size();
-    }
-
-    public int getPackagetListsize() {
-        return packages.size();
     }
     /*
      * Methods for searching through and displaying all or  products
@@ -69,7 +59,6 @@ public class ProductGateway {
             return null;
         }
     }
-                                                    //these two do the same??
     public Product getProduct(int ID) {
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getProductID() == ID) {
