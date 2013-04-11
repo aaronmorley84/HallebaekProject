@@ -348,14 +348,8 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="PackageID">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="PackageName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField2"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -393,9 +387,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="PackagePrice">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField3"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

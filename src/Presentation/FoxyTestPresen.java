@@ -209,10 +209,6 @@ public class FoxyTestPresen extends javax.swing.JFrame {
             }
         });
 
-        PackageID.setText("jTextField1");
-
-        PackageName.setText("jTextField2");
-
         jLabel6.setText("Package ID");
 
         jLabel7.setText("Name");
@@ -224,8 +220,6 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         jScrollPane1.setViewportView(PackageDescrip);
 
         jLabel9.setText("Price");
-
-        PackagePrice.setText("jTextField3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
