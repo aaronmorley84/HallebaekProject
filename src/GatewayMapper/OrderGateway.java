@@ -17,11 +17,13 @@ import java.util.ArrayList;
  */
 public class OrderGateway {
 
-    ArrayList<Truck> trucks = new ArrayList();
-    ArrayList<Order> orders = new ArrayList();
+    private ArrayList<Truck> trucks;
+    private ArrayList<Order> orders;
     private Order currentOrder;
 
     public OrderGateway() {     //for a constructer?? Is this neccessary?
+    trucks = new ArrayList();
+    orders = new ArrayList();
     }
     
     /*
