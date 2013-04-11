@@ -83,10 +83,6 @@ public class Order {
         this.trucksforDelivery = trucksforDelivery;
     }
     
-    public void addToOrder(Product prod){
-        orderList.add(prod);
-    }   //we can delete right?
-    
     public void setOrderId (int orderId) {
         this.orderID = orderId;
     }
