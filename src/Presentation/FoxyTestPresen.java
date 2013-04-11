@@ -28,10 +28,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         EditCustomer.setEnabled(false);
         SaveChanges.setEnabled(false);
         DeleteCustomer.setEnabled(false);
-        PackageID.setVisible(false);
-        PackageName.setVisible(false);
-        PackagePrice.setVisible(false);
-        PackageDescrip.setVisible(false);
+
     }
 
     /**
@@ -391,13 +388,12 @@ public class FoxyTestPresen extends javax.swing.JFrame {
     }//GEN-LAST:event_EditCustomerActionPerformed
 
     private void SaveChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveChangesActionPerformed
-        int cusID = Integer.parseInt(CustomerID.getText());
+             int cusID = Integer.parseInt(CustomerID.getText());
         String cusName = CustomerName.getText();
         String cusAddress  = CustomerAddress.getText();
         int phoneID = Integer.parseInt(PhoneID.getText());
         String cusEmail = CustomerEmail.getText();
         
-        if(CustomerName !=null){
         cg.saveEditedCustomer(cusID,cusName,cusAddress,phoneID,cusEmail);
         GetCutomerListActionPerformed(evt);
         
@@ -412,17 +408,6 @@ public class FoxyTestPresen extends javax.swing.JFrame {
         PhoneID.setText(null);
         CustomerEmail.setText(null);
         DeleteCustomer.setEnabled(false);
-        }else{
-            if(PackageID.getText() != null){
-                
-                int packageID = Integer.parseInt(PackageID.getText());
-                String packagename = PackageName.getText();
-                String packageDesrip = PackageDescrip.getText();
-                int price = Integer.parseInt(PackagePrice.getText());
-                pg.addPackage(packageID, packagename, packageDesrip, price);
-            }
-        }
-        
     }//GEN-LAST:event_SaveChangesActionPerformed
 
     private void DeleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerActionPerformed
@@ -440,10 +425,13 @@ public class FoxyTestPresen extends javax.swing.JFrame {
 
     private void PackagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackagesActionPerformed
         // TODO add your handling code here:
-        PackageID.setVisible(true);
-        PackageName.setVisible(true);
-        PackagePrice.setVisible(true);
-        PackageDescrip.setVisible(true);
+        int pid = Integer.parseInt(PackageID.getText());
+        String name = PackageName.getText();
+        String descrip = PackageDescrip.getText();
+        int price = Integer.parseInt(PackagePrice.getText());
+        pg.addPackage(pid, name, descrip, price);
+        
+        
     }//GEN-LAST:event_PackagesActionPerformed
 
     /**
