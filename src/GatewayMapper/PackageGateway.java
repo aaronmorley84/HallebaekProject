@@ -12,13 +12,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 /**
  *
- * @author Andrew and Aaron, v0.01 10-04-2013
+ * @author Andrew and Aaron, v0.02 11-04-2013
  */
 public class PackageGateway {
     
     ArrayList<Package>packageList = new ArrayList<Package>();
    
-    //This method builds an arrayList of Packages. 
+    /*This method builds an arrayList of Packages from the database. */
     public boolean buildPackageList(){
         boolean succes = false;
        Connection con = ConnectionTools.getInstance().getCurrentConnection();
@@ -55,6 +55,7 @@ public class PackageGateway {
        return succes;
     }//end of buildPackageList
     
+    /*This methode adds a package to the database*/
     public boolean addPackage(int packageID, String name, String description, int price){
         boolean succes = false;
        Connection con = ConnectionTools.getInstance().getCurrentConnection();
@@ -83,8 +84,8 @@ public class PackageGateway {
        }
       
        return succes;
-    }
-    
+    }//end of addPackage
+    /*This methode is for printing a list of the packages*/
     public String printList(){
         String temp = "";
         for (int i = 0; i < packageList.size(); i++) {
@@ -92,5 +93,5 @@ public class PackageGateway {
             
         }
         return temp;
-    }
+    }//end of printlist
 }//end of PackageGateway
