@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Kris
+ * @author Adrian & Kris
  */
 public class Order {
     ArrayList<Product> orderList = new ArrayList<>();
@@ -22,7 +22,12 @@ public class Order {
         this.orderID = orderId;
     }
     
-   
+   /*
+    * No connection to DB. 
+    * Solely for manipulating 
+    * the ArrayList for the 
+    * current order.
+    */
     public boolean addItemToList(Product prod){
        boolean success=false;
         if(!checkForDuplicate(prod.getProductID())){
@@ -31,6 +36,11 @@ public class Order {
         }
         return success;
     }
+    
+    public void removeFromOrder(Product prod) {
+        orderList.remove(prod);
+    }
+    
     public boolean checkForDuplicate(int ID){
         boolean same = false;
         for (int i = 0; i < orderList.size(); i++) {
@@ -40,6 +50,7 @@ public class Order {
         }
         return same;
     }
+            
     public void setCustomer (int customerID) {
         this.customerID = customerID;
     }
@@ -74,12 +85,8 @@ public class Order {
     
     public void addToOrder(Product prod){
         orderList.add(prod);
-    }
+    }   //we can delete right?
     
-    public void removeFromOrder(Product prod) {
-        orderList.remove(prod);
-    }
-
     public void setOrderId (int orderId) {
         this.orderID = orderId;
     }
@@ -87,12 +94,15 @@ public class Order {
     public int getOrderID() {
         return orderID;
     }
+    
     public ArrayList<Product> getListInstance(){
         return orderList;
     }
+    
     @Override
     public String toString() {
-        return orderList.toString()+dateArrival+datePickUp;
+        return "CustomerID: "+customerID+"OrderID: "+orderID+"Start date: "+dateArrival+"End date: "+datePickUp
+                +"Trucks: "+trucksforDelivery+"Assemblers: "+assemblersNeeded;
     }
     
 }
