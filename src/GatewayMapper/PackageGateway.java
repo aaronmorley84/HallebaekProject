@@ -82,7 +82,7 @@ public class PackageGateway {
                System.out.println("Could'nt close Package connection: " + e.getMessage());
            }
        }
-      
+        System.out.println("New Package Added");
        return succes;
     }//end of addPackage
     /*This methode is for printing a list of the packages*/
