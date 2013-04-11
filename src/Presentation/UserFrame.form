@@ -148,13 +148,7 @@
             <Component class="javax.swing.JList" name="listSearchResult">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                    <StringItem index="4" value="Item 5"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -455,7 +449,7 @@
     <Container class="javax.swing.JFrame" name="jFrame5">
       <Properties>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[500, 500]"/>
+          <Dimension value="[900, 500]"/>
         </Property>
       </Properties>
 
@@ -465,34 +459,40 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="textFieldSearchForOrder" min="-2" pref="92" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="buttonSearchProdForOrder" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="228" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="textFieldSearchForOrder" min="-2" pref="92" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="buttonSearchProdForOrder" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jScrollPane3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jScrollPane3" min="-2" pref="92" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="spinnerQuantityToOrder" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="buttonAddToOrder" min="-2" pref="87" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="buttonRemoveFromOrder" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="76" max="32767" attributes="0"/>
-                                  <Component id="spinnerQuantityFromOrder" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="buttonSaveOrder" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane4" min="-2" pref="95" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
+                  </Group>
+                  <Component id="labelTrucksRequiredForOrder" min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="buttonRemoveFromOrder" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="spinnerQuantityFromOrder" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="spinnerQuantityToOrder" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="buttonAddToOrder" min="-2" pref="87" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="buttonSaveOrder" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPane4" alignment="1" min="-2" pref="213" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               </Group>
@@ -524,7 +524,12 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="labelTrucksRequiredForOrder" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Component id="buttonSaveOrder" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="54" max="32767" attributes="0"/>
               </Group>
@@ -564,13 +569,7 @@
             <Component class="javax.swing.JList" name="jList2">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                    <StringItem index="4" value="Item 5"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
             </Component>
@@ -617,6 +616,13 @@
         </Component>
         <Component class="javax.swing.JSpinner" name="spinnerQuantityFromOrder">
         </Component>
+        <Component class="javax.swing.JLabel" name="labelTrucksRequiredForOrder">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel19">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Trucks required"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="jFrame6">
@@ -630,22 +636,26 @@
                       <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="textFieldNewOrderCustID" min="-2" max="-2" attributes="0"/>
-                      <Component id="textFieldNewOrderArrDate" min="-2" max="-2" attributes="0"/>
-                      <Component id="textFieldNewOrderPickUpDate" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="textFieldNewOrderEndDate" pref="58" max="32767" attributes="0"/>
+                      <Component id="textFieldNewOrderStartDate" alignment="0" max="32767" attributes="0"/>
+                      <Component id="textFieldNewOrderCustID" alignment="0" max="32767" attributes="0"/>
+                      <Component id="textFieldTrucksForOrder" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="58" pref="58" max="-2" attributes="0"/>
+                  <EmptySpace pref="43" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="buttonCommitNewOrder" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton4" min="-2" max="-2" attributes="0"/>
-                      </Group>
                       <Component id="jScrollPane6" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
+                      <Component id="jButton4" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="buttonCommitNewOrder" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -662,20 +672,25 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="textFieldNewOrderArrDate" min="-2" max="-2" attributes="0"/>
+                              <Component id="textFieldNewOrderStartDate" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
-                              <Component id="textFieldNewOrderPickUpDate" min="-2" max="-2" attributes="0"/>
+                              <Component id="textFieldNewOrderEndDate" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textFieldTrucksForOrder" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="jScrollPane6" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="buttonCommitNewOrder" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="60" max="32767" attributes="0"/>
+                  <EmptySpace pref="61" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -687,29 +702,23 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textFieldNewOrderCustID">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Arriaval date:"/>
+            <Property name="text" type="java.lang.String" value="Start date:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textFieldNewOrderArrDate">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField2"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="textFieldNewOrderStartDate">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldNewOrderStartDateActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pickup date:"/>
+            <Property name="text" type="java.lang.String" value="End date:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textFieldNewOrderPickUpDate">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField3"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="textFieldNewOrderEndDate">
         </Component>
         <Component class="javax.swing.JButton" name="buttonCommitNewOrder">
           <Properties>
@@ -749,6 +758,13 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="jLabel18">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Trucks:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="textFieldTrucksForOrder">
+        </Component>
       </SubComponents>
     </Container>
   </NonVisualComponents>

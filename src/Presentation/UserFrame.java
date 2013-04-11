@@ -12,10 +12,11 @@ import javax.swing.JOptionPane;
 public class UserFrame extends javax.swing.JFrame {
 
     DefaultListModel model1, model2;
-    ProductGateway control = new ProductGateway();
-OrderGateway control2 = new OrderGateway();
+    ProductGateway control1 = new ProductGateway();
+    OrderGateway control2 = new OrderGateway();
     CustomerGateway cg = new CustomerGateway();
-public UserFrame() {
+
+    public UserFrame() {
         initComponents();
         model1 = new DefaultListModel();
         model2 = new DefaultListModel();
@@ -83,17 +84,21 @@ public UserFrame() {
         buttonRemoveFromOrder = new javax.swing.JButton();
         spinnerQuantityToOrder = new javax.swing.JSpinner();
         spinnerQuantityFromOrder = new javax.swing.JSpinner();
+        labelTrucksRequiredForOrder = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         jFrame6 = new javax.swing.JFrame();
         jLabel15 = new javax.swing.JLabel();
         textFieldNewOrderCustID = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        textFieldNewOrderArrDate = new javax.swing.JTextField();
+        textFieldNewOrderStartDate = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        textFieldNewOrderPickUpDate = new javax.swing.JTextField();
+        textFieldNewOrderEndDate = new javax.swing.JTextField();
         buttonCommitNewOrder = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList();
+        jLabel18 = new javax.swing.JLabel();
+        textFieldTrucksForOrder = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -150,11 +155,6 @@ public UserFrame() {
 
         jFrame2.setMinimumSize(new java.awt.Dimension(547, 430));
 
-        listSearchResult.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(listSearchResult);
 
         buttonSearchProducts.setText("Search");
@@ -376,7 +376,7 @@ public UserFrame() {
                 .addGap(54, 54, 54))
         );
 
-        jFrame5.setMinimumSize(new java.awt.Dimension(500, 500));
+        jFrame5.setMinimumSize(new java.awt.Dimension(900, 500));
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -385,11 +385,6 @@ public UserFrame() {
         });
         jScrollPane3.setViewportView(jList1);
 
-        jList2.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane4.setViewportView(jList2);
 
         buttonSearchProdForOrder.setText("Search");
@@ -422,6 +417,8 @@ public UserFrame() {
             }
         });
 
+        jLabel19.setText("Trucks required");
+
         javax.swing.GroupLayout jFrame5Layout = new javax.swing.GroupLayout(jFrame5.getContentPane());
         jFrame5.getContentPane().setLayout(jFrame5Layout);
         jFrame5Layout.setHorizontalGroup(
@@ -430,27 +427,31 @@ public UserFrame() {
                 .addContainerGap()
                 .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jFrame5Layout.createSequentialGroup()
-                        .addComponent(textFieldSearchForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonSearchProdForOrder)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jFrame5Layout.createSequentialGroup()
+                                .addComponent(textFieldSearchForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(buttonSearchProdForOrder))
+                            .addComponent(jScrollPane3))
+                        .addGap(28, 28, 28))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame5Layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jFrame5Layout.createSequentialGroup()
-                                .addComponent(spinnerQuantityToOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonAddToOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jFrame5Layout.createSequentialGroup()
-                                .addComponent(buttonRemoveFromOrder)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                                .addComponent(spinnerQuantityFromOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)))
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(labelTrucksRequiredForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrame5Layout.createSequentialGroup()
+                        .addComponent(buttonRemoveFromOrder)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(buttonSaveOrder)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(spinnerQuantityFromOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jFrame5Layout.createSequentialGroup()
+                        .addComponent(spinnerQuantityToOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonAddToOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonSaveOrder, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9))
         );
         jFrame5Layout.setVerticalGroup(
@@ -473,22 +474,26 @@ public UserFrame() {
                         .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buttonRemoveFromOrder)
                             .addComponent(spinnerQuantityFromOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
+                .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTrucksRequiredForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addGap(2, 2, 2)
                 .addComponent(buttonSaveOrder)
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
         jLabel15.setText("Customer ID:");
 
-        textFieldNewOrderCustID.setText("jTextField1");
+        jLabel16.setText("Start date:");
 
-        jLabel16.setText("Arriaval date:");
+        textFieldNewOrderStartDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNewOrderStartDateActionPerformed(evt);
+            }
+        });
 
-        textFieldNewOrderArrDate.setText("jTextField2");
-
-        jLabel17.setText("Pickup date:");
-
-        textFieldNewOrderPickUpDate.setText("jTextField3");
+        jLabel17.setText("End date:");
 
         buttonCommitNewOrder.setText("Commit");
         buttonCommitNewOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -511,6 +516,8 @@ public UserFrame() {
         });
         jScrollPane6.setViewportView(jList3);
 
+        jLabel18.setText("Trucks:");
+
         javax.swing.GroupLayout jFrame6Layout = new javax.swing.GroupLayout(jFrame6.getContentPane());
         jFrame6.getContentPane().setLayout(jFrame6Layout);
         jFrame6Layout.setHorizontalGroup(
@@ -520,19 +527,23 @@ public UserFrame() {
                 .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel17)
                     .addComponent(jLabel16)
-                    .addComponent(jLabel15))
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel18))
                 .addGap(44, 44, 44)
-                .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(textFieldNewOrderCustID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldNewOrderArrDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldNewOrderPickUpDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(textFieldNewOrderEndDate, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                    .addComponent(textFieldNewOrderStartDate)
+                    .addComponent(textFieldNewOrderCustID)
+                    .addComponent(textFieldTrucksForOrder))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(buttonCommitNewOrder)
-                        .addComponent(jButton4))
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(36, 36, 36))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonCommitNewOrder)
+                .addGap(64, 64, 64))
         );
         jFrame6Layout.setVerticalGroup(
             jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -546,16 +557,20 @@ public UserFrame() {
                 .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jFrame6Layout.createSequentialGroup()
                         .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textFieldNewOrderArrDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldNewOrderStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel16))
                         .addGap(19, 19, 19)
                         .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel17)
-                            .addComponent(textFieldNewOrderPickUpDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(textFieldNewOrderEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(textFieldTrucksForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addComponent(buttonCommitNewOrder)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -620,13 +635,14 @@ public UserFrame() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /*US 1.1 Demo */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (control.getAllProducts()) {
+        if (control1.getAllProducts()) {
             jFrame1.setVisible(true);
             int counter = 0;
             model1.clear();
-            while (counter < control.getProductListsize()) {
-                model1.addElement(control.showProducts(counter));
+            while (counter < control1.getProductListsize()) {
+                model1.addElement(control1.showProducts(counter));
                 counter++;
             }
             listAllProducts.setModel(model1);
@@ -642,6 +658,7 @@ public UserFrame() {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /*US 1.2 Demo */
     private void buttonSearchProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchProductsActionPerformed
         String name = textFieldSearchName.getText();
         int ID = 0;
@@ -649,11 +666,11 @@ public UserFrame() {
             ID = Integer.parseInt(textFieldSearchID.getText());
         }
         if (name.isEmpty() && ID > 0) {
-            if (control.searchForProduct(ID)) {
+            if (control1.searchForProduct(ID)) {
                 int counter = 0;
                 model2.clear();
-                while (counter < control.getProductListsize()) {
-                    model2.addElement(control.showProducts(counter));
+                while (counter < control1.getProductListsize()) {
+                    model2.addElement(control1.showProducts(counter));
                     counter++;
                 }
                 listSearchResult.setModel(model2);
@@ -661,11 +678,11 @@ public UserFrame() {
             }
         }
         if (!name.isEmpty()) {
-            if (control.searchForProduct(name)) {
+            if (control1.searchForProduct(name)) {
                 int counter = 0;
                 model2.clear();
-                while (counter < control.getProductListsize()) {
-                    model2.addElement(control.showProducts(counter));
+                while (counter < control1.getProductListsize()) {
+                    model2.addElement(control1.showProducts(counter));
                     counter++;
                 }
                 listSearchResult.setModel(model2);
@@ -674,11 +691,11 @@ public UserFrame() {
             }
         } else {
             if (ID > 0) {
-                if (control.searchForProduct(ID)) {
+                if (control1.searchForProduct(ID)) {
                     int counter = 0;
                     model2.clear();
-                    while (counter < control.getProductListsize()) {
-                        model2.addElement(control.showProducts(counter));
+                    while (counter < control1.getProductListsize()) {
+                        model2.addElement(control1.showProducts(counter));
                         counter++;
                     }
                     listSearchResult.setModel(model2);
@@ -694,8 +711,11 @@ public UserFrame() {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jFrame3.setVisible(true);
+        textFieldNewProdID.setText(""+control1.getUniqueProductId());
+        textFieldNewProdID.setEditable(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /*US 2.1 Demo */
     private void buttonAddNewProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddNewProdActionPerformed
         if (!textFieldNewProdName.equals("") && !textFieldNewProdID.equals("") && !textFieldNewProdVolume.equals("")
                 && !textFieldNewProdQuantity.equals("") && !textFieldNewProdDescription.equals("")
@@ -706,8 +726,9 @@ public UserFrame() {
             int quantity = Integer.parseInt(textFieldNewProdQuantity.getText());
             String description = textFieldNewProdDescription.getText();
             int price = Integer.parseInt(textFieldNewProdPrice.getText());
-            if (control.addProduct(ID, name, volume, quantity, description, price)) {
+            if (control1.addProduct(ID, name, volume, quantity, description, price)) {
                 JOptionPane.showMessageDialog(this, "Product added!", "ADDED", JOptionPane.INFORMATION_MESSAGE);
+                jFrame3.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(this, "Could not add product!", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -717,6 +738,7 @@ public UserFrame() {
         }
     }//GEN-LAST:event_buttonAddNewProdActionPerformed
 
+    /*US 2.2 Demo */
     private void buttonEditProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditProductActionPerformed
         Product editProd;
         editProd = (Product) listAllProducts.getSelectedValue();
@@ -749,7 +771,7 @@ public UserFrame() {
         if (!textFieldEditProdName.equals("") && !textFieldEditProdID.equals("") && !textFieldEditProdVolume.equals("")
                 && !textFieldEditProdQuantity.equals("") && !textFieldEditProdDescription.equals("")
                 && !textFieldEditProdPrice.equals("")) {
-            if (control.editProduct(ID, name, volume, quantity, description, price)) {
+            if (control1.editProduct(ID, name, volume, quantity, description, price)) {
                 JOptionPane.showMessageDialog(this, "Product edited!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Could not save product!", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -759,12 +781,13 @@ public UserFrame() {
         }
     }//GEN-LAST:event_buttonSaveProdChangesActionPerformed
 
+    /*US 2.3 Demo */
     private void buttonDeleteProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteProdActionPerformed
         Product deleteProd;
         deleteProd = (Product) listAllProducts.getSelectedValue();
 
         int ID = deleteProd.getProductID();
-        if (control.deleteProduct(ID)) {
+        if (control1.deleteProduct(ID)) {
             JOptionPane.showMessageDialog(this, "Product deleted!", "DELETED!", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Could not delete product!", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -773,51 +796,74 @@ public UserFrame() {
 
     private void buttonNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewOrderActionPerformed
         control2.currentOrder();
-        control.getAllProducts();
+        control1.getAllProducts();
         int counter = 0;
         model1.clear();
-        while (counter < control.getProductListsize()) {
-            model1.addElement(control.showProducts(counter));
+        while (counter < control1.getProductListsize()) {
+            model1.addElement(control1.showProducts(counter));
             counter++;
         }
         jList1.setModel(model1);
         jFrame5.setVisible(true);
-        
+
     }//GEN-LAST:event_buttonNewOrderActionPerformed
 
+    /*US 3.1 Demo(extra feature : still does not remove a specified quantity but the whole product) */
     private void buttonRemoveFromOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoveFromOrderActionPerformed
         Product prodForRemoval = (Product) jList2.getSelectedValue();
-        int tempQuant =control.searchProdByID(prodForRemoval.getProductID()).getQuantity() + prodForRemoval.getQuantity();
-        control.searchProdByID(prodForRemoval.getProductID()).setQuantity(tempQuant);
+        int tempQuant = control1.searchProdByID(prodForRemoval.getProductID()).getQuantity() + prodForRemoval.getQuantity();
+        control1.searchProdByID(prodForRemoval.getProductID()).setQuantity(tempQuant);
         control2.removeFromOrder(prodForRemoval);
         model2.removeElement(prodForRemoval);
         jList2.setModel(model2);
         int counter = 0;
         model1.clear();
-        while (counter < control.getProductListsize()) {
-            model1.addElement(control.showProducts(counter));
+        while (counter < control1.getProductListsize()) {
+            model1.addElement(control1.showProducts(counter));
             counter++;
         }
         jList1.setModel(model1);
+        int totalVolume=0;
+        for (int i = 0; i < model2.size(); i++) {
+            totalVolume =+ ((Product)model2.get(i)).getVolume();
+        }
+        labelTrucksRequiredForOrder.setText(""+control2.getTrucksRequired(totalVolume));
     }//GEN-LAST:event_buttonRemoveFromOrderActionPerformed
 
+    /*US 3.1 Demo */
     private void buttonAddToOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddToOrderActionPerformed
-        Product prodForOrder,newProduct;
+        Product prodForOrder, newProduct;
         prodForOrder = (Product) jList1.getSelectedValue();
-        if(prodForOrder.getQuantity() >= (int)spinnerQuantityToOrder.getValue() ){
+        if (prodForOrder.getQuantity() >= (int) spinnerQuantityToOrder.getValue()) {
             newProduct = new Product(prodForOrder.getProductID(),
-                prodForOrder.getName(), prodForOrder.getVolume(), (int) spinnerQuantityToOrder.getValue(),
-                prodForOrder.getDescription(), prodForOrder.getPrice());
-            if(control2.addItemToList(newProduct)){
+                    prodForOrder.getName(), prodForOrder.getVolume(), (int) spinnerQuantityToOrder.getValue(),
+                    prodForOrder.getDescription(), prodForOrder.getPrice());
+            if (control2.addItemToList(newProduct)) {
                 model2.addElement(newProduct);
                 jList2.setModel(model2);
                 prodForOrder.setQuantity(prodForOrder.getQuantity() - (int) spinnerQuantityToOrder.getValue());
-            }else{
+                control1.getProduct(prodForOrder.getProductID()).setQuantity(prodForOrder.getQuantity());
+                model1.clear();
+                int counter = 0;
+                while (counter < control1.getProductListsize()) {
+                    model1.addElement(control1.showProducts(counter));
+                    counter++;
+                }
+                listAllProducts.setModel(model1);
+            } else {
                 JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
+        /* US 3.2 User can see number of trucks
+           needed for delivery from size of
+           products in customer order table */
+        int totalVolume=0;
+        for (int i = 0; i < model2.size(); i++) {
+            totalVolume =+ ((Product)model2.get(i)).getVolume();
+        }
+        labelTrucksRequiredForOrder.setText(""+control2.getTrucksRequired(totalVolume));
     }//GEN-LAST:event_buttonAddToOrderActionPerformed
 
     private void buttonSearchProdForOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchProdForOrderActionPerformed
@@ -826,46 +872,62 @@ public UserFrame() {
         if (name.isEmpty()) {
             int counter = 0;
             model1.clear();
-            while (counter < control.getProductListsize()) {
-                model1.addElement(control.showProducts(counter));
+            while (counter < control1.getProductListsize()) {
+                model1.addElement(control1.showProducts(counter));
                 counter++;
             }
             jList1.setModel(model1);
         } else {
-            model1.addElement(control.searchProdByName(name));
+            model1.addElement(control1.searchProdByName(name));
             jList1.setModel(model1);
             textFieldSearchForOrder.setText("");
         }
+        
     }//GEN-LAST:event_buttonSearchProdForOrderActionPerformed
 
     private void buttonSaveOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveOrderActionPerformed
-       jFrame6.setVisible(true);
+        jFrame6.setVisible(true);
     }//GEN-LAST:event_buttonSaveOrderActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         model1.clear();
-      jList3.setModel(model1);
-       cg.buildCustomerList();
+        jList3.setModel(model1);
+        cg.buildCustomerList();
         for (int i = 0; i < cg.getListSize(); i++) {
-            
-       model1.addElement(cg.getlist(i).getCustomerID() + "-"+ cg.getlist(i).getName());
+
+            model1.addElement(cg.getlist(i).getCustomerID() + "-" + cg.getlist(i).getName());
         }
         jList3.setModel(model1);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void buttonCommitNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCommitNewOrderActionPerformed
- String customerID = textFieldNewOrderCustID.getText();
- String startDate = textFieldNewOrderArrDate.getText();
- String finishDate = textFieldNewOrderPickUpDate.getText();
- 
- if(!customerID.equals("") && !startDate.equals("") && !finishDate.equals("")){
-     control2.addToCustomerOrderTable(Integer.parseInt(customerID), startDate, finishDate);
-     JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
- }else{
-     JOptionPane.showMessageDialog(this, "Could not save to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
- }
- 
+        String customerID = textFieldNewOrderCustID.getText();
+        String startDate = textFieldNewOrderStartDate.getText();
+        String finishDate = textFieldNewOrderEndDate.getText();
+
+        if (!customerID.equals("") && !startDate.equals("") && !finishDate.equals("")) {
+            control2.addToCustomerOrderTable(Integer.parseInt(customerID), startDate, finishDate);
+            JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Could not save to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        /*US 3.4 User can book delivery truck(s)
+          for customer order (if available)*/
+        int trucksForOrder = Integer.parseInt(textFieldTrucksForOrder.getText());
+        if (control2.bookTrucks(trucksForOrder)){
+            if (control2.commitTruckOrder()){
+                JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(this, "Could not save truck order to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }else {
+            JOptionPane.showMessageDialog(this, "Not enough trucks for delivery!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_buttonCommitNewOrderActionPerformed
+
+    private void textFieldNewOrderStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewOrderStartDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldNewOrderStartDateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -932,6 +994,8 @@ public UserFrame() {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -948,6 +1012,7 @@ public UserFrame() {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JLabel labelTrucksRequiredForOrder;
     private javax.swing.JList listAllProducts;
     private javax.swing.JList listSearchResult;
     private javax.swing.JSpinner spinnerQuantityFromOrder;
@@ -958,9 +1023,9 @@ public UserFrame() {
     private javax.swing.JTextField textFieldEditProdPrice;
     private javax.swing.JTextField textFieldEditProdQuantity;
     private javax.swing.JTextField textFieldEditProdVolume;
-    private javax.swing.JTextField textFieldNewOrderArrDate;
     private javax.swing.JTextField textFieldNewOrderCustID;
-    private javax.swing.JTextField textFieldNewOrderPickUpDate;
+    private javax.swing.JTextField textFieldNewOrderEndDate;
+    private javax.swing.JTextField textFieldNewOrderStartDate;
     private javax.swing.JTextField textFieldNewProdDescription;
     private javax.swing.JTextField textFieldNewProdID;
     private javax.swing.JTextField textFieldNewProdName;
@@ -970,5 +1035,6 @@ public UserFrame() {
     private javax.swing.JTextField textFieldSearchForOrder;
     private javax.swing.JTextField textFieldSearchID;
     private javax.swing.JTextField textFieldSearchName;
+    private javax.swing.JTextField textFieldTrucksForOrder;
     // End of variables declaration//GEN-END:variables
 }
