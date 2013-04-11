@@ -2,7 +2,7 @@ package Resources;
 
 /**
  *
- * @author Kris
+ * @author Adrian & Kris
  */
 public class Product {
     
