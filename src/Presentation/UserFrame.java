@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  */
 public class UserFrame extends javax.swing.JFrame {
 
-    DefaultListModel model1, model2;
+    DefaultListModel model1, model2, model3;
     ProductGateway control1 = new ProductGateway();
     OrderGateway control2 = new OrderGateway();
     CustomerGateway cg = new CustomerGateway();
@@ -20,6 +20,7 @@ public class UserFrame extends javax.swing.JFrame {
         initComponents();
         model1 = new DefaultListModel();
         model2 = new DefaultListModel();
+        model3 = new DefaultListModel();
     }
 
     /**
@@ -99,6 +100,8 @@ public class UserFrame extends javax.swing.JFrame {
         jList3 = new javax.swing.JList();
         jLabel18 = new javax.swing.JLabel();
         textFieldTrucksForOrder = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -483,6 +486,8 @@ public class UserFrame extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
         );
 
+        jFrame6.setMinimumSize(new java.awt.Dimension(500, 500));
+
         jLabel15.setText("Customer ID:");
 
         jLabel16.setText("Start date:");
@@ -518,59 +523,73 @@ public class UserFrame extends javax.swing.JFrame {
 
         jLabel18.setText("Trucks:");
 
+        jLabel20.setText("YYYY-MM-DD");
+
+        jLabel21.setText("YYYY-MM-DD");
+
         javax.swing.GroupLayout jFrame6Layout = new javax.swing.GroupLayout(jFrame6.getContentPane());
         jFrame6.getContentPane().setLayout(jFrame6Layout);
         jFrame6Layout.setHorizontalGroup(
             jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonCommitNewOrder)
+                .addGap(64, 64, 64))
             .addGroup(jFrame6Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel17)
                     .addComponent(jLabel16)
                     .addComponent(jLabel15)
                     .addComponent(jLabel18))
-                .addGap(44, 44, 44)
-                .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(textFieldNewOrderEndDate, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                    .addComponent(textFieldNewOrderStartDate)
-                    .addComponent(textFieldNewOrderCustID)
-                    .addComponent(textFieldTrucksForOrder))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(textFieldTrucksForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jFrame6Layout.createSequentialGroup()
+                        .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(textFieldNewOrderCustID, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                            .addComponent(textFieldNewOrderEndDate, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textFieldNewOrderStartDate, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
+                        .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel20))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                 .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(36, 36, 36))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonCommitNewOrder)
-                .addGap(64, 64, 64))
         );
         jFrame6Layout.setVerticalGroup(
             jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrame6Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(textFieldNewOrderCustID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4))
-                .addGap(18, 18, 18)
-                .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jFrame6Layout.createSequentialGroup()
-                        .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButton4)
+                        .addGap(2, 2, 2)
+                        .addComponent(textFieldNewOrderCustID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jFrame6Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addGap(15, 15, 15)
+                        .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
                             .addComponent(textFieldNewOrderStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16))
-                        .addGap(19, 19, 19)
-                        .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel20))
+                        .addGap(13, 13, 13)
+                        .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(textFieldNewOrderEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textFieldNewOrderEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel21))
                         .addGap(18, 18, 18)
                         .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
-                            .addComponent(textFieldTrucksForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                            .addComponent(textFieldTrucksForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)))
                 .addComponent(buttonCommitNewOrder)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -779,6 +798,8 @@ public class UserFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "One or more fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        jButton1.doClick();
+        jFrame4.setVisible(false);
     }//GEN-LAST:event_buttonSaveProdChangesActionPerformed
 
     /*US 2.3 Demo */
@@ -792,6 +813,7 @@ public class UserFrame extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Could not delete product!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
+        jButton1.doClick();        
     }//GEN-LAST:event_buttonDeleteProdActionPerformed
 
     private void buttonNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewOrderActionPerformed
@@ -886,18 +908,19 @@ public class UserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSearchProdForOrderActionPerformed
 
     private void buttonSaveOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveOrderActionPerformed
+        textFieldTrucksForOrder.setText(labelTrucksRequiredForOrder.getText());
         jFrame6.setVisible(true);
     }//GEN-LAST:event_buttonSaveOrderActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        model1.clear();
-        jList3.setModel(model1);
+        model3.clear();
+        jList3.setModel(model3);
         cg.buildCustomerList();
         for (int i = 0; i < cg.getListSize(); i++) {
 
-            model1.addElement(cg.getlist(i).getCustomerID() + "-" + cg.getlist(i).getName());
+            model3.addElement(cg.getlist(i).getCustomerID() + "-" + cg.getlist(i).getName());
         }
-        jList3.setModel(model1);
+        jList3.setModel(model3);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void buttonCommitNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCommitNewOrderActionPerformed
@@ -997,6 +1020,8 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
