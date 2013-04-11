@@ -25,9 +25,6 @@ public class Controller {
     public int getProductListsize() {
         return prodController.getProductListsize();
     }
-    public int getPackagetListsize() {
-        return prodController.getPackagetListsize();
-    }
     public Product showProducts(int index) {
         return prodController.showProducts(index);
     }
