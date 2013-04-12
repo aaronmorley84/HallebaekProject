@@ -23,8 +23,8 @@ public class Controller implements ControllerInterface{
     public Product searchProdByName(String name) {
         return prodController.searchProdByName(name);
     }
-    public boolean addProduct(int ID, String name, int volume, int quantity, String description, int price){
-        return prodController.addProduct(ID, name, volume, quantity, description, price);
+    public boolean addProduct(String name, int volume, int quantity, String description, int price){
+        return prodController.addProduct(name, volume, quantity, description, price);
     }
     public boolean editProduct(int ID, String name, int volume, int quantity, String description, int price){
         return prodController.editProduct(ID, name, volume, quantity, description, price);

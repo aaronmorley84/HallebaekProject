@@ -73,20 +73,19 @@ public class ProductGateway {
      * Admin can add product to
      * product table.
      */
-    public boolean addProduct(int ID, String name, int volume, int quantity, String description, int price) {
+    public boolean addProduct(String name, int volume, int quantity, String description, int price) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into products "
-                + "VALUES (?,?,?,?,?,?)";
+                + "VALUES (productseq.nextval,?,?,?,?,?)";
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, ID);
-            statement.setString(2, name);
-            statement.setInt(3, volume);
-            statement.setInt(4, quantity);
-            statement.setString(5, description);
-            statement.setInt(6, price);
+            statement.setString(1, name);
+            statement.setInt(2, volume);
+            statement.setInt(3, quantity);
+            statement.setString(4, description);
+            statement.setInt(5, price);
             statement.executeUpdate();
             success = true;
         } catch (Exception e) {

@@ -16,7 +16,7 @@ public interface ControllerInterface {
     /*ProductGateway methods*/
     Product getProduct(int ID);
     Product searchProdByName(String name);
-    boolean addProduct(int ID, String name, int volume, int quantity, String description, int price);
+    boolean addProduct(String name, int volume, int quantity, String description, int price);
     boolean editProduct(int ID, String name, int volume, int quantity, String description, int price);
     boolean deleteProduct(int ID);
     int getProductListsize();
