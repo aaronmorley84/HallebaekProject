@@ -131,13 +131,13 @@ public class CustomerGateway {
         
     }
     
-    public boolean saveEditedCustomer(int cusID,String cusName,String cusAddress,int phoneID,String cusEmail){
+    public boolean saveEditedCustomer(int cusID,String cusName,String cusAddress,String cusEmail){
          boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "UPDATE customers "
                             + "SET name = ?, "
                             + "address = ?, "
-                            + "phoneid = ?, "
+                            
                             + "email = ? "
                             + "WHERE customerID = ?";
         PreparedStatement statement = null;
@@ -145,9 +145,8 @@ public class CustomerGateway {
             statement = con.prepareStatement(SQLString1);
             statement.setString(1, cusName);
             statement.setString(2,cusAddress);
-            statement.setInt(3, phoneID);
-            statement.setString(4, cusEmail);
-            statement.setInt(5, cusID);
+            statement.setString(3, cusEmail);
+            statement.setInt(4, cusID);
             statement.executeUpdate(); //stops here for some reason
             success = true;            
         }catch (Exception e){
