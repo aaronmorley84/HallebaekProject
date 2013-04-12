@@ -745,7 +745,7 @@ public class UserFrame extends javax.swing.JFrame {
             int quantity = Integer.parseInt(textFieldNewProdQuantity.getText());
             String description = textFieldNewProdDescription.getText();
             int price = Integer.parseInt(textFieldNewProdPrice.getText());
-            if (control1.addProduct(ID, name, volume, quantity, description, price)) {
+            if (control1.addProduct(name, volume, quantity, description, price)) {
                 JOptionPane.showMessageDialog(this, "Product added!", "ADDED", JOptionPane.INFORMATION_MESSAGE);
                 jFrame3.setVisible(false);
             } else {

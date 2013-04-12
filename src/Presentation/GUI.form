@@ -432,18 +432,75 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
-                  <Component id="ProductMenuLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="198" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="ProductIDLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                              <Component id="ProductNameLabel" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
+                              <Component id="ProductVolumeLabel" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                              <Component id="ProductQtyLabel" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                              <Component id="ProductPriceLabel" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="125" max="32767" attributes="0"/>
+                          <Component id="ProductMenuLabel" min="-2" pref="339" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="274" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="AddProductButton" alignment="0" pref="199" max="32767" attributes="0"/>
+                              <Component id="ProductDescriptionField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ProductPriceField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ProductQuanityField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ProductVolumeField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ProductIDField" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                              <Component id="ProductNameField" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                  <Component id="ProductMenuLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="211" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
+                          <Component id="ProductMenuLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                          <Component id="ProductIDLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ProductIDField" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ProductNameLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ProductNameField" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ProductVolumeLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ProductVolumeField" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ProductQtyLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ProductQuanityField" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ProductPriceLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="ProductPriceField" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="ProductDescriptionField" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="AddProductButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="156" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -451,8 +508,68 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="ProductMenuLabel">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="36" style="1"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Product Menu"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="ProductIDField">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="cc" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="ProductIDLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Product ID"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="ProductNameLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Product Name"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="ProductNameField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="ProductVolumeLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Product Volume"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="ProductVolumeField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="ProductQtyLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Product Quanity "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="ProductQuanityField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="ProductPriceLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Product Price"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="ProductPriceField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Product Description"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="ProductDescriptionField">
+        </Component>
+        <Component class="javax.swing.JButton" name="AddProductButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Add New Product"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddProductButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
