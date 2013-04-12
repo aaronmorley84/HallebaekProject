@@ -509,7 +509,7 @@ public class GUI extends javax.swing.JFrame {
         
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
-        DeleteCustomerbutton.setEnabled(true);
+        DeleteCustomerbutton.setEnabled(false);
         EditCustomerButton.setEnabled(true);
         GetCustomerButton.setEnabled(true);
         SaveCustomerChangeButton.setEnabled(false);
