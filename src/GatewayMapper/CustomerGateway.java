@@ -28,34 +28,34 @@ public class CustomerGateway {
     public int getListSize(){
         return listOfCustomers.size();
     }
-    
-    public int getUniqueCustomerID(){
-       int temp = 0;
-        Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "SELECT customerseq.nextval " +
-"FROM dual";
-        PreparedStatement statement = null;
-        try {
-            statement = con.prepareStatement(SQLString1);
-               ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                temp = rs.getInt(1);
-            }
-            
-        } catch (Exception e) {
-            System.out.println("Something wrong build" + e.getMessage());
-           
-        } finally {
-            try {
-                statement.close();
-            } catch (SQLException e) {
-                System.out.println("Statment close error\n" + e.getMessage());
-            }
-        }
-        
-        return temp;
-        
-    }
+//    
+//    public int getUniqueCustomerID(){
+//       int temp = 0;
+//        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+//        String SQLString1 = "SELECT customerseq.nextval " +
+//"FROM dual";
+//        PreparedStatement statement = null;
+//        try {
+//            statement = con.prepareStatement(SQLString1);
+//               ResultSet rs = statement.executeQuery();
+//            if (rs.next()) {
+//                temp = rs.getInt(1);
+//            }
+//            
+//        } catch (Exception e) {
+//            System.out.println("Something wrong build" + e.getMessage());
+//           
+//        } finally {
+//            try {
+//                statement.close();
+//            } catch (SQLException e) {
+//                System.out.println("Statment close error\n" + e.getMessage());
+//            }
+//        }
+//        
+//        return temp;
+//        
+//    }
     /*Used to build a list of customers. */
     public boolean buildCustomerList() {
         listOfCustomers.clear();
@@ -97,20 +97,15 @@ public class CustomerGateway {
         boolean success = false;
         int rowsInserted = 0;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "INSERT INTO customers VALUES (?,?,?,?,?)"; 
+        String SQLString1 = "INSERT INTO customers VALUES (customerseq.nextval,?,customerseq.currval,?,?)"; 
         
-        int uniqueID = getUniqueCustomerID();
         
         PreparedStatement statement = null;
         try {
-            statement = con.prepareStatement(SQLString1);
-            
-                
-            statement.setInt(1, uniqueID);
-            statement.setString(2, c.getName());
-            statement.setString(3, c.getAdress());
-            statement.setInt(4, uniqueID);
-            statement.setString(5, c.getEmail());
+            statement = con.prepareStatement(SQLString1);            
+            statement.setString(1, c.getName());
+            statement.setString(2, c.getAdress());
+            statement.setString(3, c.getEmail());
             rowsInserted += statement.executeUpdate();
             
             success = true;

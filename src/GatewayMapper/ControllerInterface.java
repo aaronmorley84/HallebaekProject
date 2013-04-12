@@ -39,7 +39,6 @@ public interface ControllerInterface {
     /*CustomerGateway methods*/
     Customer getlist(int i);
     int getListSize();
-    int getUniqueCustomerID();
     boolean buildCustomerList();
     boolean addCustomer( String name, String address, String email);
     boolean saveEditedCustomer(int cusID,String cusName,String cusAddress,String cusEmail);

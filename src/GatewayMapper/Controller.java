@@ -90,9 +90,7 @@ public class Controller implements ControllerInterface{
     public int getListSize() {
         return customerController.getListSize();
     }
-    public int getUniqueCustomerID() {
-        return customerController.getUniqueCustomerID();
-    }
+    
     public boolean buildCustomerList() {
         return customerController.buildCustomerList();
     }
