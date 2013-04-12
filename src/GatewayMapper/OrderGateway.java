@@ -21,9 +21,9 @@ public class OrderGateway {
     private ArrayList<Order> orders;
     private Order currentOrder;
 
-    public OrderGateway() {     //for a constructer?? Is this neccessary?
-    trucks = new ArrayList();
-    orders = new ArrayList();
+    public OrderGateway() {    
+        trucks = new ArrayList();
+        orders = new ArrayList();
     }
     
     /*
