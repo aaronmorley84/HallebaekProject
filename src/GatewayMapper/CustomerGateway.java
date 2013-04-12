@@ -97,7 +97,7 @@ public class CustomerGateway {
         boolean success = false;
         int rowsInserted = 0;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "INSERT INTO customers VALUES (customerseq.nextval,?,customerseq.currval,?,?)"; 
+        String SQLString1 = "INSERT INTO customers VALUES (customerseq.nextval,?,?,customerseq.currval,?)"; 
         
         
         PreparedStatement statement = null;
