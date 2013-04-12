@@ -33,6 +33,23 @@ public class GUI extends javax.swing.JFrame {
         MainMenuLabel = new javax.swing.JLabel();
         CustomerPanel = new javax.swing.JPanel();
         CustomerMenuLabel = new javax.swing.JLabel();
+        CutomerIDLabel = new javax.swing.JLabel();
+        CutomerIDField = new javax.swing.JTextField();
+        CustomerNameLabel = new javax.swing.JLabel();
+        CustomerNameField = new javax.swing.JTextField();
+        CustomerAddressLabel = new javax.swing.JLabel();
+        CustomerAddressField = new javax.swing.JTextField();
+        CustomerEmailLabel = new javax.swing.JLabel();
+        CustomerEmailfield = new javax.swing.JTextField();
+        CustPhoneLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        CustPhoneTextArea = new javax.swing.JTextArea();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
+        jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         ProductPanel = new javax.swing.JPanel();
         ProductMenuLabel = new javax.swing.JLabel();
         OrderPanel = new javax.swing.JPanel();
@@ -47,9 +64,9 @@ public class GUI extends javax.swing.JFrame {
         OrdNavDrop = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setBounds(new java.awt.Rectangle(100, 50, 850, 600));
-        setMinimumSize(new java.awt.Dimension(850, 600));
-        setPreferredSize(new java.awt.Dimension(850, 600));
+        setBounds(new java.awt.Rectangle(200, 50, 950, 700));
+        setMinimumSize(new java.awt.Dimension(950, 700));
+        setPreferredSize(new java.awt.Dimension(950, 700));
         getContentPane().setLayout(null);
 
         CustomerMenuButton.setText("Customers");
@@ -73,6 +90,8 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        MainMenuLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        MainMenuLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         MainMenuLabel.setText("Main Menu");
 
         javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
@@ -82,54 +101,141 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(MainPanelLayout.createSequentialGroup()
                 .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CustomerMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addComponent(ProductMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(OrderMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(257, 257, 257)
+                        .addComponent(MainMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(MainPanelLayout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(MainMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(136, Short.MAX_VALUE))
+                        .addGap(295, 295, 295)
+                        .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(CustomerMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                            .addComponent(ProductMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(OrderMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(358, Short.MAX_VALUE))
         );
         MainPanelLayout.setVerticalGroup(
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainPanelLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(57, 57, 57)
                 .addComponent(MainMenuLabel)
-                .addGap(36, 36, 36)
-                .addComponent(CustomerMenuButton)
-                .addGap(11, 11, 11)
-                .addComponent(ProductMenuButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(OrderMenuButton)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
+                .addComponent(CustomerMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(ProductMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(OrderMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(275, Short.MAX_VALUE))
         );
 
         getContentPane().add(MainPanel);
-        MainPanel.setBounds(0, 0, 400, 280);
+        MainPanel.setBounds(0, 0, 900, 650);
 
+        CustomerMenuLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        CustomerMenuLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CustomerMenuLabel.setText("Customer Menu");
+
+        CutomerIDLabel.setText("Customer ID");
+
+        CutomerIDField.setEditable(false);
+        CutomerIDField.setBackground(new java.awt.Color(204, 204, 255));
+
+        CustomerNameLabel.setText("Customer Name");
+
+        CustomerAddressLabel.setText("Customer Address");
+
+        CustomerEmailLabel.setText("Customer Email");
+
+        CustPhoneLabel.setText("Customer Phone Numbers");
+
+        CustPhoneTextArea.setColumns(20);
+        CustPhoneTextArea.setRows(5);
+        jScrollPane1.setViewportView(CustPhoneTextArea);
+
+        jButton1.setText("jButton1");
+
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList1);
+
+        jLabel1.setText("jLabel1");
+
+        jButton2.setText("jButton2");
+
+        jButton3.setText("jButton3");
 
         javax.swing.GroupLayout CustomerPanelLayout = new javax.swing.GroupLayout(CustomerPanel);
         CustomerPanel.setLayout(CustomerPanelLayout);
         CustomerPanelLayout.setHorizontalGroup(
             CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CustomerPanelLayout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addComponent(CustomerMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addGroup(CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CustomerPanelLayout.createSequentialGroup()
+                        .addGap(263, 263, 263)
+                        .addComponent(CustomerMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CustomerPanelLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(CustPhoneLabel)
+                            .addComponent(CustomerEmailLabel)
+                            .addComponent(CutomerIDLabel)
+                            .addComponent(CutomerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CustomerNameLabel)
+                            .addComponent(CustomerNameField)
+                            .addComponent(CustomerAddressLabel)
+                            .addComponent(CustomerAddressField)
+                            .addComponent(CustomerEmailfield)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(117, 117, 117)
+                        .addGroup(CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
         CustomerPanelLayout.setVerticalGroup(
             CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CustomerPanelLayout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(63, 63, 63)
                 .addComponent(CustomerMenuLabel)
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CutomerIDLabel)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CustomerPanelLayout.createSequentialGroup()
+                        .addComponent(CutomerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(CustomerNameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CustomerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(CustomerAddressLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CustomerAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(CustomerEmailLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CustomerEmailfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(CustPhoneLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         getContentPane().add(CustomerPanel);
-        CustomerPanel.setBounds(0, 0, 410, 280);
+        CustomerPanel.setBounds(0, 0, 900, 620);
 
         ProductMenuLabel.setText("Product Menu");
 
@@ -317,9 +423,19 @@ public class GUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem CustNavDrop;
+    private javax.swing.JLabel CustPhoneLabel;
+    private javax.swing.JTextArea CustPhoneTextArea;
+    private javax.swing.JTextField CustomerAddressField;
+    private javax.swing.JLabel CustomerAddressLabel;
+    private javax.swing.JLabel CustomerEmailLabel;
+    private javax.swing.JTextField CustomerEmailfield;
     private javax.swing.JButton CustomerMenuButton;
     private javax.swing.JLabel CustomerMenuLabel;
+    private javax.swing.JTextField CustomerNameField;
+    private javax.swing.JLabel CustomerNameLabel;
     private javax.swing.JPanel CustomerPanel;
+    private javax.swing.JTextField CutomerIDField;
+    private javax.swing.JLabel CutomerIDLabel;
     private javax.swing.JMenuItem ExitDrop;
     private javax.swing.JLabel MainMenuLabel;
     private javax.swing.JMenuItem MainNavDrop;
@@ -332,8 +448,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton ProductMenuButton;
     private javax.swing.JLabel ProductMenuLabel;
     private javax.swing.JPanel ProductPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JList jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
