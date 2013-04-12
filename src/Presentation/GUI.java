@@ -412,6 +412,13 @@ public class GUI extends javax.swing.JFrame {
         CustomerPanel.setVisible(true);
         ProductPanel.setVisible(false);
         OrderPanel.setVisible(false);
+        
+        AddCustomerButton.setEnabled(true);
+        AddEditPhoneButton.setEnabled(false);
+        DeleteCustomerbutton.setEnabled(false);
+        EditCustomerButton.setEnabled(false);
+        GetCustomerButton.setEnabled(true);
+        SaveCustomerChangeButton.setEnabled(false);
     }//GEN-LAST:event_CustomerMenuButtonActionPerformed
 
     private void OrderMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderMenuButtonActionPerformed
@@ -427,11 +434,12 @@ public class GUI extends javax.swing.JFrame {
         ProductPanel.setVisible(false);
         OrderPanel.setVisible(false);
         
-        AddCustomerButton.setVisible(false);
-        AddEditPhoneButton.setVisible(false);
-        DeleteCustomerbutton.setVisible(false);
-        //EditCustomerButton
-        
+        AddCustomerButton.setEnabled(true);
+        AddEditPhoneButton.setEnabled(false);
+        DeleteCustomerbutton.setEnabled(false);
+        EditCustomerButton.setEnabled(false);
+        GetCustomerButton.setEnabled(true);
+        SaveCustomerChangeButton.setEnabled(false);
     }//GEN-LAST:event_CustNavDropActionPerformed
 
     private void OrdNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrdNavDropActionPerformed
@@ -464,11 +472,12 @@ public class GUI extends javax.swing.JFrame {
         }
         CustomerJList.setModel(model1);
 
-//        AddCustomer.setEnabled(true);
-//        GetCutomerList.setEnabled(true);
-//        EditCustomer.setEnabled(true);
-//        SaveChanges.setEnabled(false);
-//        DeleteCustomer.setEnabled(true);
+        AddCustomerButton.setEnabled(true);
+        AddEditPhoneButton.setEnabled(false);
+        DeleteCustomerbutton.setEnabled(false);
+        EditCustomerButton.setEnabled(true);
+        GetCustomerButton.setEnabled(true);
+        SaveCustomerChangeButton.setEnabled(false);
     }//GEN-LAST:event_GetCustomerButtonActionPerformed
 
     private void EditCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditCustomerButtonActionPerformed
@@ -478,10 +487,12 @@ public class GUI extends javax.swing.JFrame {
 //        PhoneID.setText(""+cg.getlist(jList1.getSelectedIndex()).getPhoneID());
         CustomerEmailField.setText(con.getlist(CustomerJList.getSelectedIndex()).getEmail());
         
-//        AddCustomer.setEnabled(false);
-//        GetCutomerList.setEnabled(false);
-//        EditCustomer.setEnabled(true);
-//        SaveChanges.setEnabled(true);
+        AddCustomerButton.setEnabled(false);
+        AddEditPhoneButton.setEnabled(false);
+        DeleteCustomerbutton.setEnabled(true);
+        EditCustomerButton.setEnabled(true);
+        GetCustomerButton.setEnabled(false);
+        SaveCustomerChangeButton.setEnabled(true);
     }//GEN-LAST:event_EditCustomerButtonActionPerformed
 
     private void DeleteCustomerbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerbuttonActionPerformed
@@ -496,12 +507,12 @@ public class GUI extends javax.swing.JFrame {
         CustPhoneTextArea.setText(null);
         CustomerEmailField.setText(null);
         
-        
-//        AddCustomer.setEnabled(true);
-//        GetCutomerList.setEnabled(true);
-//        EditCustomer.setEnabled(true);
-//        SaveChanges.setEnabled(false);
-//        DeleteCustomer.setEnabled(true);
+        AddCustomerButton.setEnabled(true);
+        AddEditPhoneButton.setEnabled(false);
+        DeleteCustomerbutton.setEnabled(true);
+        EditCustomerButton.setEnabled(true);
+        GetCustomerButton.setEnabled(true);
+        SaveCustomerChangeButton.setEnabled(false);
     }//GEN-LAST:event_DeleteCustomerbuttonActionPerformed
 
     private void AddCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCustomerButtonActionPerformed
@@ -529,16 +540,18 @@ public class GUI extends javax.swing.JFrame {
         con.saveEditedCustomer(cusID,cusName,cusAddress,cusEmail);
         GetCustomerButtonActionPerformed(evt);
         
-//        AddCustomer.setEnabled(true);
-//        GetCutomerList.setEnabled(true);
-//        EditCustomer.setEnabled(true);
-//        SaveChanges.setEnabled(false);
-        
         CustomerIDField.setText(null);
         CustomerNameField.setText(null);
         CustomerAddressField.setText(null);
         CustPhoneTextArea.setText(null);
         CustomerEmailField.setText(null);
+        
+        AddCustomerButton.setEnabled(true);
+        AddEditPhoneButton.setEnabled(false);
+        DeleteCustomerbutton.setEnabled(false);
+        EditCustomerButton.setEnabled(true);
+        GetCustomerButton.setEnabled(true);
+        SaveCustomerChangeButton.setEnabled(false);
     }//GEN-LAST:event_SaveCustomerChangeButtonActionPerformed
 
     /**
