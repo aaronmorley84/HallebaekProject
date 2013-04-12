@@ -99,8 +99,8 @@ public class Controller implements ControllerInterface{
     public boolean addCustomer(String name, String address, String email) {
         return customerController.addCustomer(name, address, email);
     }
-    public boolean saveEditedCustomer(int cusID, String cusName, String cusAddress, int phoneID, String cusEmail) {
-        return customerController.saveEditedCustomer(cusID, cusName, cusAddress, phoneID, cusEmail);
+    public boolean saveEditedCustomer(int cusID, String cusName, String cusAddress, String cusEmail) {
+        return customerController.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
     }
     public boolean deleteCustomer(int cusID) {
         return customerController.deleteCustomer(cusID);
