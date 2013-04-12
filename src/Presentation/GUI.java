@@ -310,6 +310,8 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().add(CustomerPanel);
         CustomerPanel.setBounds(0, 0, 900, 620);
 
+        ProductPanel.setMinimumSize(new java.awt.Dimension(850, 700));
+
         ProductMenuLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         ProductMenuLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ProductMenuLabel.setText("Product Menu");
@@ -399,11 +401,11 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(ProductDescriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(AddProductButton)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
 
         getContentPane().add(ProductPanel);
-        ProductPanel.setBounds(0, 0, 400, 280);
+        ProductPanel.setBounds(0, 0, 850, 700);
 
         OrderMenuLabel.setText("Order Menu");
 
@@ -642,9 +644,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveCustomerChangeButtonActionPerformed
 
     private void AddProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductButtonActionPerformed
-        if (!ProductNameField.equals("") && !ProductVolumeField.equals("")
-                && !ProductQuanityField.equals("") && !ProductDescriptionField.equals("")
-                && !ProductPriceField.equals("")) {
+        if (ProductNameField != null && ProductVolumeField != null
+                && ProductQuanityField != null && ProductDescriptionField != null
+                && ProductPriceField != null) {
             
             String name = ProductNameField.getText();
             int volume = Integer.parseInt(ProductVolumeField.getText());
