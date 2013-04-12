@@ -382,13 +382,13 @@ public class FoxyTestPresen extends javax.swing.JFrame {
     }//GEN-LAST:event_EditCustomerActionPerformed
 
     private void SaveChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveChangesActionPerformed
-             int cusID = Integer.parseInt(CustomerID.getText());
+        int cusID = Integer.parseInt(CustomerID.getText());
         String cusName = CustomerName.getText();
         String cusAddress  = CustomerAddress.getText();
         int phoneID = Integer.parseInt(PhoneID.getText());
         String cusEmail = CustomerEmail.getText();
         
-        cg.saveEditedCustomer(cusID,cusName,cusAddress,phoneID,cusEmail);
+        cg.saveEditedCustomer(cusID,cusName,cusAddress,cusEmail);
         GetCutomerListActionPerformed(evt);
         
         AddCustomer.setEnabled(true);
