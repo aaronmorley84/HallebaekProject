@@ -4,17 +4,30 @@
  */
 package Presentation;
 
+import GatewayMapper.Controller;
+import GatewayMapper.ControllerInterface;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author Aaron
  */
 public class GUI extends javax.swing.JFrame {
 
+    ControllerInterface con = new Controller();
+    DefaultListModel model1, model2;
+
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        model1 = new DefaultListModel();
+        model2 = new DefaultListModel();
+        MainPanel.setVisible(true);
+        CustomerPanel.setVisible(false);
+        ProductPanel.setVisible(false);
+        OrderPanel.setVisible(false);
     }
 
     /**
@@ -34,13 +47,13 @@ public class GUI extends javax.swing.JFrame {
         CustomerPanel = new javax.swing.JPanel();
         CustomerMenuLabel = new javax.swing.JLabel();
         CutomerIDLabel = new javax.swing.JLabel();
-        CutomerIDField = new javax.swing.JTextField();
+        CustomerIDField = new javax.swing.JTextField();
         CustomerNameLabel = new javax.swing.JLabel();
         CustomerNameField = new javax.swing.JTextField();
         CustomerAddressLabel = new javax.swing.JLabel();
         CustomerAddressField = new javax.swing.JTextField();
         CustomerEmailLabel = new javax.swing.JLabel();
-        CustomerEmailfield = new javax.swing.JTextField();
+        CustomerEmailField = new javax.swing.JTextField();
         CustPhoneLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         CustPhoneTextArea = new javax.swing.JTextArea();
@@ -65,6 +78,7 @@ public class GUI extends javax.swing.JFrame {
         CustNavDrop = new javax.swing.JMenuItem();
         ProdNavDrop = new javax.swing.JMenuItem();
         OrdNavDrop = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBounds(new java.awt.Rectangle(200, 50, 950, 700));
@@ -137,8 +151,8 @@ public class GUI extends javax.swing.JFrame {
 
         CutomerIDLabel.setText("Customer ID");
 
-        CutomerIDField.setEditable(false);
-        CutomerIDField.setBackground(new java.awt.Color(204, 204, 255));
+        CustomerIDField.setEditable(false);
+        CustomerIDField.setBackground(new java.awt.Color(204, 204, 255));
 
         CustomerNameLabel.setText("Customer Name");
 
@@ -153,6 +167,11 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane1.setViewportView(CustPhoneTextArea);
 
         AddCustomerButton.setText("Add Customer");
+        AddCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddCustomerButtonActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setViewportView(CustomerJList);
 
@@ -162,12 +181,32 @@ public class GUI extends javax.swing.JFrame {
         AddEditPhoneButton.setEnabled(false);
 
         SaveCustomerChangeButton.setText("Save Changes");
+        SaveCustomerChangeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveCustomerChangeButtonActionPerformed(evt);
+            }
+        });
 
         GetCustomerButton.setText("Get Exisitng Customer List");
+        GetCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GetCustomerButtonActionPerformed(evt);
+            }
+        });
 
         EditCustomerButton.setText("Edit Selected Customer");
+        EditCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditCustomerButtonActionPerformed(evt);
+            }
+        });
 
         DeleteCustomerbutton.setText("Delete Selected Customer");
+        DeleteCustomerbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteCustomerbuttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CustomerPanelLayout = new javax.swing.GroupLayout(CustomerPanel);
         CustomerPanel.setLayout(CustomerPanelLayout);
@@ -184,12 +223,12 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(CustPhoneLabel)
                             .addComponent(CustomerEmailLabel)
                             .addComponent(CutomerIDLabel)
-                            .addComponent(CutomerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CustomerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CustomerNameLabel)
                             .addComponent(CustomerNameField)
                             .addComponent(CustomerAddressLabel)
                             .addComponent(CustomerAddressField)
-                            .addComponent(CustomerEmailfield)
+                            .addComponent(CustomerEmailField)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                             .addComponent(AddCustomerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AddEditPhoneButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -228,7 +267,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
                             .addGroup(CustomerPanelLayout.createSequentialGroup()
-                                .addComponent(CutomerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CustomerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(CustomerNameLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -240,7 +279,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(CustomerEmailLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CustomerEmailfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CustomerEmailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(CustPhoneLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -347,6 +386,9 @@ public class GUI extends javax.swing.JFrame {
         });
         jMenu2.add(OrdNavDrop);
 
+        jMenuItem1.setText("jMenuItem1");
+        jMenu2.add(jMenuItem1);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -384,6 +426,12 @@ public class GUI extends javax.swing.JFrame {
         CustomerPanel.setVisible(true);
         ProductPanel.setVisible(false);
         OrderPanel.setVisible(false);
+        
+        AddCustomerButton.setVisible(false);
+        AddEditPhoneButton.setVisible(false);
+        DeleteCustomerbutton.setVisible(false);
+        //EditCustomerButton
+        
     }//GEN-LAST:event_CustNavDropActionPerformed
 
     private void OrdNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrdNavDropActionPerformed
@@ -406,6 +454,92 @@ public class GUI extends javax.swing.JFrame {
         ProductPanel.setVisible(true);
         OrderPanel.setVisible(false);
     }//GEN-LAST:event_ProdNavDropActionPerformed
+
+    private void GetCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetCustomerButtonActionPerformed
+        model1.clear();
+        CustomerJList.setModel(model1);
+        con.buildCustomerList();
+        for (int i = 0; i < con.getListSize(); i++) {
+            model1.addElement(con.getlist(i).getCustomerID() + "-" + con.getlist(i).getName());
+        }
+        CustomerJList.setModel(model1);
+
+//        AddCustomer.setEnabled(true);
+//        GetCutomerList.setEnabled(true);
+//        EditCustomer.setEnabled(true);
+//        SaveChanges.setEnabled(false);
+//        DeleteCustomer.setEnabled(true);
+    }//GEN-LAST:event_GetCustomerButtonActionPerformed
+
+    private void EditCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditCustomerButtonActionPerformed
+        CustomerIDField.setText(""+con.getlist(CustomerJList.getSelectedIndex()).getCustomerID());
+        CustomerNameField.setText(con.getlist(CustomerJList.getSelectedIndex()).getName());
+        CustomerAddressField.setText(con.getlist(CustomerJList.getSelectedIndex()).getAdress());
+//        PhoneID.setText(""+cg.getlist(jList1.getSelectedIndex()).getPhoneID());
+        CustomerEmailField.setText(con.getlist(CustomerJList.getSelectedIndex()).getEmail());
+        
+//        AddCustomer.setEnabled(false);
+//        GetCutomerList.setEnabled(false);
+//        EditCustomer.setEnabled(true);
+//        SaveChanges.setEnabled(true);
+    }//GEN-LAST:event_EditCustomerButtonActionPerformed
+
+    private void DeleteCustomerbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerbuttonActionPerformed
+        int cusID = con.getlist(CustomerJList.getSelectedIndex()).getCustomerID();
+        
+        con.deleteCustomer(cusID);
+        GetCustomerButtonActionPerformed(evt);
+        
+        CustomerIDField.setText(null);
+        CustomerNameField.setText(null);
+        CustomerAddressField.setText(null);
+        CustPhoneTextArea.setText(null);
+        CustomerEmailField.setText(null);
+        
+        
+//        AddCustomer.setEnabled(true);
+//        GetCutomerList.setEnabled(true);
+//        EditCustomer.setEnabled(true);
+//        SaveChanges.setEnabled(false);
+//        DeleteCustomer.setEnabled(true);
+    }//GEN-LAST:event_DeleteCustomerbuttonActionPerformed
+
+    private void AddCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCustomerButtonActionPerformed
+        String cusName = CustomerNameField.getText();
+        String cusAddress  = CustomerAddressField.getText();
+        String cusEmail = CustomerEmailField.getText();
+        
+        
+        con.addCustomer(cusName,cusAddress,cusEmail);
+        GetCustomerButtonActionPerformed(evt);
+        
+        CustomerIDField.setText(null);
+        CustomerNameField.setText(null);
+        CustomerAddressField.setText(null);
+        CustPhoneTextArea.setText(null);
+        CustomerEmailField.setText(null);
+    }//GEN-LAST:event_AddCustomerButtonActionPerformed
+
+    private void SaveCustomerChangeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveCustomerChangeButtonActionPerformed
+        int cusID = Integer.parseInt(CustomerIDField.getText());
+        String cusName = CustomerNameField.getText();
+        String cusAddress  = CustomerAddressField.getText();
+        String cusEmail = CustomerEmailField.getText();
+        
+        con.saveEditedCustomer(cusID,cusName,cusAddress,cusEmail);
+        GetCustomerButtonActionPerformed(evt);
+        
+//        AddCustomer.setEnabled(true);
+//        GetCutomerList.setEnabled(true);
+//        EditCustomer.setEnabled(true);
+//        SaveChanges.setEnabled(false);
+        
+        CustomerIDField.setText(null);
+        CustomerNameField.setText(null);
+        CustomerAddressField.setText(null);
+        CustPhoneTextArea.setText(null);
+        CustomerEmailField.setText(null);
+    }//GEN-LAST:event_SaveCustomerChangeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -449,15 +583,15 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextArea CustPhoneTextArea;
     private javax.swing.JTextField CustomerAddressField;
     private javax.swing.JLabel CustomerAddressLabel;
+    private javax.swing.JTextField CustomerEmailField;
     private javax.swing.JLabel CustomerEmailLabel;
-    private javax.swing.JTextField CustomerEmailfield;
+    private javax.swing.JTextField CustomerIDField;
     private javax.swing.JList CustomerJList;
     private javax.swing.JButton CustomerMenuButton;
     private javax.swing.JLabel CustomerMenuLabel;
     private javax.swing.JTextField CustomerNameField;
     private javax.swing.JLabel CustomerNameLabel;
     private javax.swing.JPanel CustomerPanel;
-    private javax.swing.JTextField CutomerIDField;
     private javax.swing.JLabel CutomerIDLabel;
     private javax.swing.JButton DeleteCustomerbutton;
     private javax.swing.JButton EditCustomerButton;
@@ -479,6 +613,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables

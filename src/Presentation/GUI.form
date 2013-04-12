@@ -56,6 +56,11 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrdNavDropActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
@@ -197,12 +202,12 @@
                               <Component id="CustPhoneLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="CustomerEmailLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="CutomerIDLabel" min="-2" max="-2" attributes="0"/>
-                              <Component id="CutomerIDField" min="-2" pref="148" max="-2" attributes="0"/>
+                              <Component id="CustomerIDField" min="-2" pref="148" max="-2" attributes="0"/>
                               <Component id="CustomerNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="CustomerNameField" alignment="0" max="32767" attributes="0"/>
                               <Component id="CustomerAddressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="CustomerAddressField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="CustomerEmailfield" alignment="0" max="32767" attributes="0"/>
+                              <Component id="CustomerEmailField" alignment="0" max="32767" attributes="0"/>
                               <Component id="jScrollPane1" pref="226" max="32767" attributes="0"/>
                               <Component id="AddCustomerButton" alignment="0" max="32767" attributes="0"/>
                               <Component id="AddEditPhoneButton" max="32767" attributes="0"/>
@@ -251,7 +256,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jScrollPane2" pref="471" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="CutomerIDField" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CustomerIDField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="CustomerNameLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -263,7 +268,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="CustomerEmailLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="CustomerEmailfield" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CustomerEmailField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="CustPhoneLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -298,7 +303,7 @@
             <Property name="text" type="java.lang.String" value="Customer ID"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="CutomerIDField">
+        <Component class="javax.swing.JTextField" name="CustomerIDField">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -325,7 +330,7 @@
             <Property name="text" type="java.lang.String" value="Customer Email"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="CustomerEmailfield">
+        <Component class="javax.swing.JTextField" name="CustomerEmailField">
         </Component>
         <Component class="javax.swing.JLabel" name="CustPhoneLabel">
           <Properties>
@@ -351,6 +356,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Add Customer"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddCustomerButtonActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <AuxValues>
@@ -383,21 +391,33 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Save Changes"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaveCustomerChangeButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="GetCustomerButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Get Exisitng Customer List"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GetCustomerButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="EditCustomerButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Edit Selected Customer"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditCustomerButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="DeleteCustomerbutton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Delete Selected Customer"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeleteCustomerbuttonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
