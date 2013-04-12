@@ -132,7 +132,6 @@
                       </Group>
                   </Group>
                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="Packages" alignment="0" max="32767" attributes="0"/>
                       <Component id="GetCutomerList" alignment="0" pref="155" max="32767" attributes="0"/>
                       <Component id="AddCustomer" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -157,6 +156,7 @@
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel9" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                   <Component id="PackagePrice" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                  <Component id="AddPackages" min="-2" pref="155" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -202,10 +202,7 @@
                           <Component id="SaveChanges" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="PhoneNumbers" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="Packages" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="PhoneNumbers" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="DeleteCustomer" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -226,6 +223,8 @@
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="PackagePrice" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="AddPackages" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -340,23 +339,17 @@
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Packages">
+    <Component class="javax.swing.JButton" name="AddPackages">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Packages"/>
+        <Property name="text" type="java.lang.String" value="Add Packages"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PackagesActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddPackagesActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="PackageID">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="PackageName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField2"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
@@ -394,9 +387,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="PackagePrice">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField3"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
