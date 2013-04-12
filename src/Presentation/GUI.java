@@ -644,9 +644,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveCustomerChangeButtonActionPerformed
 
     private void AddProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductButtonActionPerformed
-        if (ProductNameField != null && ProductVolumeField != null
-                && ProductQuanityField != null && ProductDescriptionField != null
-                && ProductPriceField != null) {
+        String empty = "";
+        if (!ProductNameField.getText().equals(empty) && !ProductVolumeField.getText().equals(empty)
+                && !ProductQuanityField.getText().equals(empty) && !ProductDescriptionField.getText().equals(empty)
+                && !ProductPriceField.getText().equals(empty)) {
             
             String name = ProductNameField.getText();
             int volume = Integer.parseInt(ProductVolumeField.getText());
