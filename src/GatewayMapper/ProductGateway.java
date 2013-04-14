@@ -31,14 +31,6 @@ public class ProductGateway {
      * Methods for searching through and displaying all or  products
      * Not using DB connection.
      */
-    public Product searchProdByID(int ID) {
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getProductID() == ID) {
-                return products.get(i);
-            }
-        }
-        return null;
-    }
 
     public Product searchProdByName(String name) {
         String found = "not found";
