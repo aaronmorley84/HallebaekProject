@@ -78,7 +78,7 @@ public class GUI extends javax.swing.JFrame {
         ProductVolumeLabel = new javax.swing.JLabel();
         ProductVolumeField = new javax.swing.JTextField();
         ProductQtyLabel = new javax.swing.JLabel();
-        ProductQuanityField = new javax.swing.JTextField();
+        ProductQuantityField = new javax.swing.JTextField();
         ProductPriceLabel = new javax.swing.JLabel();
         ProductPriceField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -89,6 +89,14 @@ public class GUI extends javax.swing.JFrame {
         productListLabel = new javax.swing.JLabel();
         GetProductsButton = new javax.swing.JButton();
         DeleteProductButton = new javax.swing.JButton();
+        EditProductButton = new javax.swing.JButton();
+        SaveProductChangesButton = new javax.swing.JButton();
+        SearchForAProduct = new javax.swing.JPanel();
+        ProductSearchID = new javax.swing.JLabel();
+        ProductIDSearchField = new javax.swing.JTextField();
+        ProductSearchName = new javax.swing.JLabel();
+        ProductNameSearchField = new javax.swing.JTextField();
+        SearchForProductButton = new javax.swing.JButton();
         OrderPanel = new javax.swing.JPanel();
         OrderMenuLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -332,7 +340,7 @@ public class GUI extends javax.swing.JFrame {
 
         ProductVolumeLabel.setText("Product Volume");
 
-        ProductQtyLabel.setText("Product Quanity ");
+        ProductQtyLabel.setText("Product Quantity ");
 
         ProductPriceLabel.setText("Product Price");
 
@@ -363,27 +371,87 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        EditProductButton.setText("Edit Selected Product");
+        EditProductButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditProductButtonActionPerformed(evt);
+            }
+        });
+
+        SaveProductChangesButton.setText("Save Changes");
+        SaveProductChangesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveProductChangesButtonActionPerformed(evt);
+            }
+        });
+
+        SearchForAProduct.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        ProductSearchID.setText("Product ID:");
+
+        ProductSearchName.setText("Product Name:");
+
+        SearchForProductButton.setText("Search For Item");
+        SearchForProductButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchForProductButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout SearchForAProductLayout = new javax.swing.GroupLayout(SearchForAProduct);
+        SearchForAProduct.setLayout(SearchForAProductLayout);
+        SearchForAProductLayout.setHorizontalGroup(
+            SearchForAProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SearchForAProductLayout.createSequentialGroup()
+                .addGroup(SearchForAProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(SearchForAProductLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(SearchForAProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ProductSearchID)
+                            .addComponent(ProductIDSearchField)
+                            .addComponent(ProductSearchName)
+                            .addComponent(ProductNameSearchField, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)))
+                    .addGroup(SearchForAProductLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(SearchForProductButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        SearchForAProductLayout.setVerticalGroup(
+            SearchForAProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SearchForAProductLayout.createSequentialGroup()
+                .addComponent(ProductSearchID)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ProductIDSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ProductSearchName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ProductNameSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(SearchForProductButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout ProductPanelLayout = new javax.swing.GroupLayout(ProductPanel);
         ProductPanel.setLayout(ProductPanelLayout);
         ProductPanelLayout.setHorizontalGroup(
             ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ProductPanelLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addGroup(ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ProductIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ProductNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ProductVolumeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(AddProductButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                        .addComponent(ProductDescriptionField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ProductPriceField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ProductQuanityField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ProductVolumeField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ProductIDField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ProductNameField, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(AddProductButton, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                    .addComponent(ProductDescriptionField)
+                    .addComponent(ProductPriceField)
+                    .addComponent(ProductQuantityField)
+                    .addComponent(ProductVolumeField)
+                    .addComponent(ProductIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ProductNameField)
                     .addComponent(ProductQtyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ProductPriceLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SaveProductChangesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(74, 74, 74)
                 .addGroup(ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(productListLabel)
@@ -392,10 +460,12 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(GetProductsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                            .addComponent(DeleteProductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(DeleteProductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EditProductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(SearchForAProduct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProductPanelLayout.createSequentialGroup()
-                .addContainerGap(312, Short.MAX_VALUE)
+                .addContainerGap(211, Short.MAX_VALUE)
                 .addComponent(ProductMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(300, 300, 300))
         );
@@ -414,38 +484,43 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84))
                     .addGroup(ProductPanelLayout.createSequentialGroup()
-                        .addGroup(ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ProductPanelLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ProductIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(ProductNameLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ProductNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(ProductVolumeLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ProductVolumeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(ProductQtyLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ProductQuanityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(ProductPriceLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ProductPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ProductDescriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(AddProductButton))
-                            .addGroup(ProductPanelLayout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(GetProductsButton)
-                                .addGap(40, 40, 40)
-                                .addComponent(DeleteProductButton)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ProductIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ProductNameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ProductNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ProductVolumeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ProductVolumeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ProductQtyLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ProductQuantityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(ProductPriceLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ProductPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ProductDescriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(AddProductButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SaveProductChangesButton)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(ProductPanelLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(GetProductsButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SearchForAProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(EditProductButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DeleteProductButton)
+                        .addGap(215, 215, 215))))
         );
 
         getContentPane().add(ProductPanel);
@@ -545,7 +620,7 @@ public class GUI extends javax.swing.JFrame {
         CustomerPanel.setVisible(true);
         ProductPanel.setVisible(false);
         OrderPanel.setVisible(false);
-        
+
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
         DeleteCustomerbutton.setEnabled(false);
@@ -566,7 +641,7 @@ public class GUI extends javax.swing.JFrame {
         CustomerPanel.setVisible(true);
         ProductPanel.setVisible(false);
         OrderPanel.setVisible(false);
-        
+
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
         DeleteCustomerbutton.setEnabled(false);
@@ -614,12 +689,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_GetCustomerButtonActionPerformed
 
     private void EditCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditCustomerButtonActionPerformed
-        CustomerIDField.setText(""+con.getlist(CustomerJList.getSelectedIndex()).getCustomerID());
+        CustomerIDField.setText("" + con.getlist(CustomerJList.getSelectedIndex()).getCustomerID());
         CustomerNameField.setText(con.getlist(CustomerJList.getSelectedIndex()).getName());
         CustomerAddressField.setText(con.getlist(CustomerJList.getSelectedIndex()).getAdress());
 //        PhoneID.setText(""+cg.getlist(jList1.getSelectedIndex()).getPhoneID());
         CustomerEmailField.setText(con.getlist(CustomerJList.getSelectedIndex()).getEmail());
-        
+
         AddCustomerButton.setEnabled(false);
         AddEditPhoneButton.setEnabled(false);
         DeleteCustomerbutton.setEnabled(true);
@@ -630,16 +705,16 @@ public class GUI extends javax.swing.JFrame {
 
     private void DeleteCustomerbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerbuttonActionPerformed
         int cusID = con.getlist(CustomerJList.getSelectedIndex()).getCustomerID();
-        
+
         con.deleteCustomer(cusID);
         GetCustomerButtonActionPerformed(evt);
-        
+
         CustomerIDField.setText(null);
         CustomerNameField.setText(null);
         CustomerAddressField.setText(null);
         CustPhoneTextArea.setText(null);
         CustomerEmailField.setText(null);
-        
+
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
         DeleteCustomerbutton.setEnabled(false);
@@ -650,13 +725,13 @@ public class GUI extends javax.swing.JFrame {
 
     private void AddCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddCustomerButtonActionPerformed
         String cusName = CustomerNameField.getText();
-        String cusAddress  = CustomerAddressField.getText();
+        String cusAddress = CustomerAddressField.getText();
         String cusEmail = CustomerEmailField.getText();
-        
-        
-        con.addCustomer(cusName,cusAddress,cusEmail);
+
+
+        con.addCustomer(cusName, cusAddress, cusEmail);
         GetCustomerButtonActionPerformed(evt);
-        
+
         CustomerIDField.setText(null);
         CustomerNameField.setText(null);
         CustomerAddressField.setText(null);
@@ -667,18 +742,18 @@ public class GUI extends javax.swing.JFrame {
     private void SaveCustomerChangeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveCustomerChangeButtonActionPerformed
         int cusID = Integer.parseInt(CustomerIDField.getText());
         String cusName = CustomerNameField.getText();
-        String cusAddress  = CustomerAddressField.getText();
+        String cusAddress = CustomerAddressField.getText();
         String cusEmail = CustomerEmailField.getText();
-        
-        con.saveEditedCustomer(cusID,cusName,cusAddress,cusEmail);
+
+        con.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
         GetCustomerButtonActionPerformed(evt);
-        
+
         CustomerIDField.setText(null);
         CustomerNameField.setText(null);
         CustomerAddressField.setText(null);
         CustPhoneTextArea.setText(null);
         CustomerEmailField.setText(null);
-        
+
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
         DeleteCustomerbutton.setEnabled(false);
@@ -690,17 +765,17 @@ public class GUI extends javax.swing.JFrame {
     private void AddProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductButtonActionPerformed
         String empty = "";
         if (!ProductNameField.getText().equals(empty) && !ProductVolumeField.getText().equals(empty)
-                && !ProductQuanityField.getText().equals(empty) && !ProductDescriptionField.getText().equals(empty)
+                && !ProductQuantityField.getText().equals(empty) && !ProductDescriptionField.getText().equals(empty)
                 && !ProductPriceField.getText().equals(empty)) {
-            
+
             String name = ProductNameField.getText();
             int volume = Integer.parseInt(ProductVolumeField.getText());
-            int quantity = Integer.parseInt(ProductQuanityField.getText());
+            int quantity = Integer.parseInt(ProductQuantityField.getText());
             String description = ProductDescriptionField.getText();
             int price = Integer.parseInt(ProductPriceField.getText());
             if (con.addProduct(name, volume, quantity, description, price)) {
                 JOptionPane.showMessageDialog(this, "Product added!", "ADDED", JOptionPane.INFORMATION_MESSAGE);
-                
+
             } else {
                 JOptionPane.showMessageDialog(this, "Could not add product!", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -708,7 +783,7 @@ public class GUI extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "One or more fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    
+
     }//GEN-LAST:event_AddProductButtonActionPerformed
 
     private void GetProductsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetProductsButtonActionPerformed
@@ -735,8 +810,111 @@ public class GUI extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Could not delete product!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        GetProductsButtonActionPerformed(evt);   
+        GetProductsButtonActionPerformed(evt);
     }//GEN-LAST:event_DeleteProductButtonActionPerformed
+
+    private void EditProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductButtonActionPerformed
+        ProductIDField.setText("" + con.showProducts(ProductJList.getSelectedIndex()).getProductID());
+        ProductNameField.setText(con.showProducts(CustomerJList.getSelectedIndex()).getName());
+        ProductVolumeField.setText("" + con.showProducts(CustomerJList.getSelectedIndex()).getVolume());
+        ProductQuantityField.setText("" + con.showProducts(CustomerJList.getSelectedIndex()).getQuantity());
+        ProductPriceField.setText("" + con.showProducts(CustomerJList.getSelectedIndex()).getPrice());
+        ProductDescriptionField.setText(con.showProducts(CustomerJList.getSelectedIndex()).getDescription());
+
+        AddProductButton.setEnabled(false);
+        DeleteProductButton.setEnabled(false);
+        EditProductButton.setEnabled(true);
+        GetProductsButton.setEnabled(false);
+        SaveProductChangesButton.setEnabled(true);
+    }//GEN-LAST:event_EditProductButtonActionPerformed
+
+    private void SaveProductChangesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveProductChangesButtonActionPerformed
+        int ID = Integer.parseInt(ProductIDField.getText());
+        String name = ProductNameField.getText();
+        int volume = Integer.parseInt(ProductVolumeField.getText());
+        int quantity = Integer.parseInt(ProductQuantityField.getText());
+        String description = ProductDescriptionField.getText();
+        int price = Integer.parseInt(ProductPriceField.getText());
+        String empty = "";
+        if (!ProductNameField.getText().equals(empty) && !ProductVolumeField.getText().equals(empty)
+                && !ProductQuantityField.getText().equals(empty) && !ProductDescriptionField.getText().equals(empty)
+                && !ProductPriceField.getText().equals(empty)) {
+            if (con.editProduct(ID, name, volume, quantity, description, price)) {
+                JOptionPane.showMessageDialog(this, "Product edited!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
+                ProductIDField.setText(null);
+                ProductNameField.setText(null);
+                ProductQuantityField.setText(null);
+                ProductVolumeField.setText(null);
+                ProductPriceField.setText(null);
+                ProductDescriptionField.setText(null);
+
+                AddProductButton.setEnabled(true);
+                DeleteProductButton.setEnabled(true);
+                EditProductButton.setEnabled(true);
+                GetProductsButton.setEnabled(true);
+                SaveProductChangesButton.setEnabled(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Could not save product!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "One or more fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_SaveProductChangesButtonActionPerformed
+
+    private void SearchForProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchForProductButtonActionPerformed
+        String name = ProductNameSearchField.getText();
+        String empty = "";
+        int ID = 0;
+        if (!ProductIDSearchField.getText().equals(empty)) {
+            ID = Integer.parseInt(ProductIDSearchField.getText());
+        }
+        if (!name.isEmpty() && ID > 0) {
+            if (con.searchForProduct(ID)) {
+                int counter = 0;
+                model3.clear();
+                while (counter < con.getProductListsize()) {
+                    model3.addElement(con.showProducts(counter));
+                    counter++;
+                }
+                ProductJList.setModel(model3);
+
+            }
+        } else {
+            if (!name.isEmpty()) {
+                if (con.searchForProduct(name)) {
+                    int counter = 0;
+                    model3.clear();
+                    while (counter < con.getProductListsize()) {
+                        model3.addElement(con.showProducts(counter));
+                        counter++;
+                    }
+                    ProductJList.setModel(model3);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Could not find product!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                if (ID > 0) {
+                    if (con.searchForProduct(ID)) {
+                        int counter = 0;
+                        model3.clear();
+                        while (counter < con.getProductListsize()) {
+                            model3.addElement(con.showProducts(counter));
+                            counter++;
+                        }
+                        ProductJList.setModel(model3);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Could not find product!", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+
+
+        }
+        ProductIDSearchField.setText(null);
+        ProductNameSearchField.setText(null);
+    }//GEN-LAST:event_SearchForProductButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -794,6 +972,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton DeleteCustomerbutton;
     private javax.swing.JButton DeleteProductButton;
     private javax.swing.JButton EditCustomerButton;
+    private javax.swing.JButton EditProductButton;
     private javax.swing.JLabel ExistingCustLabel;
     private javax.swing.JMenuItem ExitDrop;
     private javax.swing.JButton GetCustomerButton;
@@ -809,19 +988,26 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField ProductDescriptionField;
     private javax.swing.JTextField ProductIDField;
     private javax.swing.JLabel ProductIDLabel;
+    private javax.swing.JTextField ProductIDSearchField;
     private javax.swing.JList ProductJList;
     private javax.swing.JButton ProductMenuButton;
     private javax.swing.JLabel ProductMenuLabel;
     private javax.swing.JTextField ProductNameField;
     private javax.swing.JLabel ProductNameLabel;
+    private javax.swing.JTextField ProductNameSearchField;
     private javax.swing.JPanel ProductPanel;
     private javax.swing.JTextField ProductPriceField;
     private javax.swing.JLabel ProductPriceLabel;
     private javax.swing.JLabel ProductQtyLabel;
-    private javax.swing.JTextField ProductQuanityField;
+    private javax.swing.JTextField ProductQuantityField;
+    private javax.swing.JLabel ProductSearchID;
+    private javax.swing.JLabel ProductSearchName;
     private javax.swing.JTextField ProductVolumeField;
     private javax.swing.JLabel ProductVolumeLabel;
     private javax.swing.JButton SaveCustomerChangeButton;
+    private javax.swing.JButton SaveProductChangesButton;
+    private javax.swing.JPanel SearchForAProduct;
+    private javax.swing.JButton SearchForProductButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
