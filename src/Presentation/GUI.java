@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class GUI extends javax.swing.JFrame {
 
     ControllerInterface con = new Controller();
-    DefaultListModel model1, model2, model3,model4,model5,model6;
+    DefaultListModel model1, model2, model3, model4, model5, model6;
 
     /**
      * Creates new form GUI
@@ -36,7 +36,7 @@ public class GUI extends javax.swing.JFrame {
         OrderPanel.setVisible(false);
         PackagePanel.setVisible(false);
         setVisibleItemsInOrderPane(false);
-        
+
     }
 
     /**
@@ -949,6 +949,7 @@ public class GUI extends javax.swing.JFrame {
         ProductPanel.setVisible(true);
         OrderPanel.setVisible(false);
         PackagePanel.setVisible(false);
+        clearProductFields();
     }//GEN-LAST:event_ProductMenuButtonActionPerformed
 
     private void ProdNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdNavDropActionPerformed
@@ -957,6 +958,7 @@ public class GUI extends javax.swing.JFrame {
         ProductPanel.setVisible(true);
         OrderPanel.setVisible(false);
         PackagePanel.setVisible(false);
+        clearProductFields();
     }//GEN-LAST:event_ProdNavDropActionPerformed
 
     private void GetCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetCustomerButtonActionPerformed
@@ -997,11 +999,7 @@ public class GUI extends javax.swing.JFrame {
         con.deleteCustomer(cusID);
         GetCustomerButtonActionPerformed(evt);
 
-        CustomerIDField.setText(null);
-        CustomerNameField.setText(null);
-        CustomerAddressField.setText(null);
-        CustPhoneTextArea.setText(null);
-        CustomerEmailField.setText(null);
+        clearCustomerFields();
 
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
@@ -1020,11 +1018,7 @@ public class GUI extends javax.swing.JFrame {
         con.addCustomer(cusName, cusAddress, cusEmail);
         GetCustomerButtonActionPerformed(evt);
 
-        CustomerIDField.setText(null);
-        CustomerNameField.setText(null);
-        CustomerAddressField.setText(null);
-        CustPhoneTextArea.setText(null);
-        CustomerEmailField.setText(null);
+        clearCustomerFields();
     }//GEN-LAST:event_AddCustomerButtonActionPerformed
 
     private void SaveCustomerChangeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveCustomerChangeButtonActionPerformed
@@ -1036,11 +1030,7 @@ public class GUI extends javax.swing.JFrame {
         con.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
         GetCustomerButtonActionPerformed(evt);
 
-        CustomerIDField.setText(null);
-        CustomerNameField.setText(null);
-        CustomerAddressField.setText(null);
-        CustPhoneTextArea.setText(null);
-        CustomerEmailField.setText(null);
+        clearCustomerFields();
 
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
@@ -1129,12 +1119,7 @@ public class GUI extends javax.swing.JFrame {
                 && !ProductPriceField.getText().equals(empty)) {
             if (con.editProduct(ID, name, volume, quantity, description, price)) {
                 JOptionPane.showMessageDialog(this, "Product edited!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
-                ProductIDField.setText(null);
-                ProductNameField.setText(null);
-                ProductQuantityField.setText(null);
-                ProductVolumeField.setText(null);
-                ProductPriceField.setText(null);
-                ProductDescriptionField.setText(null);
+                clearProductFields();
 
                 AddProductButton.setEnabled(true);
                 DeleteProductButton.setEnabled(true);
@@ -1218,14 +1203,14 @@ public class GUI extends javax.swing.JFrame {
         } else {
             model4.clear();
             model4.addElement(con.searchProdByName(name));
-            OrderProductsList.setModel(model4);            
+            OrderProductsList.setModel(model4);
         }
         OrderProductNameSearchField.setText("");
     }//GEN-LAST:event_OrderSearchProductButtonActionPerformed
 
     private void OrderNewOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderNewOrderButtonActionPerformed
         setVisibleItemsInOrderPane(true);
-        
+
         con.currentOrder();
         con.getAllProducts();
     }//GEN-LAST:event_OrderNewOrderButtonActionPerformed
@@ -1239,7 +1224,7 @@ public class GUI extends javax.swing.JFrame {
                     prodForOrder.getDescription(), prodForOrder.getPrice());
             if (con.addItemToList(newProduct)) {
                 model5.addElement(newProduct);
-                OrderProductsInOrderList.setModel(model5);               
+                OrderProductsInOrderList.setModel(model5);
             } else {
                 JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
@@ -1247,25 +1232,25 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         /* US 3.2 User can see number of trucks
-           needed for delivery from size of
-           products in customer order table */
-        int totalVolume=0;
+         needed for delivery from size of
+         products in customer order table */
+        int totalVolume = 0;
         for (int i = 0; i < model5.size(); i++) {
-            totalVolume =+ ((Product)model5.get(i)).getVolume();
+            totalVolume = +((Product) model5.get(i)).getVolume();
         }
-        OrderTrucksNeededField.setText(""+con.getTrucksRequired(totalVolume));
+        OrderTrucksNeededField.setText("" + con.getTrucksRequired(totalVolume));
     }//GEN-LAST:event_OrderAddProductToOrderButtonActionPerformed
 
     private void OrderRemoveFromOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderRemoveFromOrderButtonActionPerformed
-Product prodForRemoval = (Product) OrderProductsInOrderList.getSelectedValue();
+        Product prodForRemoval = (Product) OrderProductsInOrderList.getSelectedValue();
         con.removeFromOrder(prodForRemoval);
         model5.removeElement(prodForRemoval);
         OrderProductsInOrderList.setModel(model5);
-        int totalVolume=0;
+        int totalVolume = 0;
         for (int i = 0; i < model2.size(); i++) {
-            totalVolume =+ ((Product)model2.get(i)).getVolume();
+            totalVolume = +((Product) model2.get(i)).getVolume();
         }
-        OrderTrucksNeededField.setText(""+con.getTrucksRequired(totalVolume));        
+        OrderTrucksNeededField.setText("" + con.getTrucksRequired(totalVolume));
     }//GEN-LAST:event_OrderRemoveFromOrderButtonActionPerformed
 
     private void OrderSaveOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSaveOrderButtonActionPerformed
@@ -1298,6 +1283,7 @@ Product prodForRemoval = (Product) OrderProductsInOrderList.getSelectedValue();
         String descrip = PackageDescTextArea.getText();
         int price = Integer.parseInt(PackagePriceField.getText());
         con.addPackage(name, descrip, price);
+        clearPackageFields();
     }//GEN-LAST:event_AddPackageButtonActionPerformed
 
     private void PackageMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackageMenuButtonActionPerformed
@@ -1306,6 +1292,7 @@ Product prodForRemoval = (Product) OrderProductsInOrderList.getSelectedValue();
         ProductPanel.setVisible(false);
         OrderPanel.setVisible(false);
         PackagePanel.setVisible(true);
+        clearPackageFields();
     }//GEN-LAST:event_PackageMenuButtonActionPerformed
 
     private void PackNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackNavDropActionPerformed
@@ -1314,6 +1301,7 @@ Product prodForRemoval = (Product) OrderProductsInOrderList.getSelectedValue();
         ProductPanel.setVisible(false);
         OrderPanel.setVisible(false);
         PackagePanel.setVisible(true);
+        clearPackageFields();
     }//GEN-LAST:event_PackNavDropActionPerformed
 
     /**
@@ -1350,7 +1338,32 @@ Product prodForRemoval = (Product) OrderProductsInOrderList.getSelectedValue();
             }
         });
     }
-    public void setVisibleItemsInOrderPane(boolean state){
+
+    public void clearCustomerFields() {
+        CustomerIDField.setText(null);
+        CustomerNameField.setText(null);
+        CustomerAddressField.setText(null);
+        CustPhoneTextArea.setText(null);
+        CustomerEmailField.setText(null);
+    }
+
+    public void clearPackageFields() {
+        PackageIDField.setText(null);
+        PackageNameField.setText(null);
+        PackageDescTextArea.setText(null);
+        PackagePriceField.setText(null);
+    }
+
+    public void clearProductFields() {
+        ProductIDField.setText(null);
+        ProductNameField.setText(null);
+        ProductQuantityField.setText(null);
+        ProductVolumeField.setText(null);
+        ProductPriceField.setText(null);
+        ProductDescriptionField.setText(null);
+    }
+
+    public void setVisibleItemsInOrderPane(boolean state) {
         OrderProductNameSearchField.setVisible(state);
         OrderSearchProductButton.setVisible(state);
         OrderProductNameLabel.setVisible(state);
