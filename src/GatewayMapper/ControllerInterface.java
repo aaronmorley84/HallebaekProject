@@ -36,7 +36,6 @@ public interface ControllerInterface {
     boolean getTrucks();
     boolean bookTrucks(int trucksForOrder);
     int getUniqueOrderID();
-    boolean checkTruckAvailability(int startDate);
     boolean getOrders();
     int getOrderListSize();
             
@@ -55,4 +54,6 @@ public interface ControllerInterface {
     boolean addPackage(String name, String description, int price);
     String printPackageList();
     
+    /*CheckerGateway methods*/
+    boolean checkTruckAvailability(int truckID, String date);
 }
