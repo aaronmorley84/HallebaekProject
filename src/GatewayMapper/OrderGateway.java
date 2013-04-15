@@ -20,6 +20,7 @@ public class OrderGateway {
 
     private ArrayList<Truck> trucks;
     private ArrayList<TruckOrder> truckOrders;
+    private ArrayList<Truck> availableTrucks;
     private ArrayList<Order> orders;
     
     private Order currentOrder;
@@ -28,6 +29,7 @@ public class OrderGateway {
         trucks = new ArrayList();
         orders = new ArrayList();
         truckOrders = new ArrayList();
+        availableTrucks = new ArrayList();
     }
     
     /*
@@ -250,6 +252,17 @@ public class OrderGateway {
         }
         return success;
     }
+    public void addToAvailableTrucks(Truck truck){
+        availableTrucks.add(truck);
+    }
+    public Truck getTruckFromList(int truckID){
+        for (int i = 0; i < trucks.size(); i++) {
+            if(trucks.get(i).getTruckID() == truckID){
+                return trucks.get(i);
+            }
+        }
+        return null;
+    }
 
     /*
      * US 3.4
@@ -258,6 +271,7 @@ public class OrderGateway {
      * Using the trucks arraylist. No DB
      * connection.
      */
+    
     public boolean bookTrucks(int trucksForOrder){
         boolean enoughTrucks = false;
         if (trucksForOrder < trucks.size()){
