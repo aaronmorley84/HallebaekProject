@@ -993,6 +993,7 @@ public class UserFrame extends javax.swing.JFrame {
         int counter = 0;
         while(counter < control2.getTruckOrderListSize()){
             model3.addElement(control2.getTruck(counter));
+            counter++;
         }
         jList4.setModel(model3);
         jFrame7.setVisible(true);
