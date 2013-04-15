@@ -97,8 +97,8 @@ public class Controller implements ControllerInterface{
     public Customer getCustomerList(int i) {
         return customerController.getCustomerList(i);
     }
-    public int getListSize() {
-        return customerController.getListSize();
+    public int getCustomerListSize() {
+        return customerController.getCustomerListSize();
     }
     
     public boolean buildCustomerList() {
