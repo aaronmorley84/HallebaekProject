@@ -4,6 +4,7 @@ import DBConnection.ConnectionTools;
 import Resources.Order;
 import Resources.Product;
 import Resources.Truck;
+import Resources.TruckOrder;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class OrderGateway {
 
     private ArrayList<Truck> trucks;
+    private ArrayList<TruckOrder> truckOrders;
     private ArrayList<Order> orders;
     
     private Order currentOrder;
@@ -25,6 +27,7 @@ public class OrderGateway {
     public OrderGateway() {    
         trucks = new ArrayList();
         orders = new ArrayList();
+        truckOrders = new ArrayList();
     }
     
     /*
@@ -155,6 +158,19 @@ public class OrderGateway {
      * needed for delivery from size of
      * products in customer order table,
      */
+    public int getTruckListSize(){
+        return trucks.size();
+    }
+    public int getTruckOrderListSize(){
+        return truckOrders.size();
+    }
+    public TruckOrder getTruck(int index){
+        if (index<truckOrders.size()){
+            return truckOrders.get(index);
+        }else{
+            return null;
+        }
+    }
     public int getTrucksRequired(int totalVolume){
         getTrucks();
         int amountOfTrucks = 0;
@@ -185,6 +201,8 @@ public class OrderGateway {
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT *"
                             + "FROM trucks ";
+        String SQLString2 = "SELECT *"
+                            + "FROM truck_order ";
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
@@ -201,10 +219,28 @@ public class OrderGateway {
             }
             success = true;
         } catch (Exception e) {
-            System.out.println("Retrieval error!");
+            System.out.println("Retrieval error from trucks!");
             System.out.println(e.getMessage());
             success = false;
-        } finally {
+        }
+        try {
+            statement = con.prepareStatement(SQLString2);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {                
+                int truckID = rs.getInt(1);
+                int orderID = rs.getInt(2);
+                String status = rs.getString(3);
+                String date = rs.getString(4);
+                TruckOrder truckOrder = new TruckOrder(truckID, orderID, status, date);
+                truckOrders.add(truckOrder);
+                success = true;
+            }
+        }catch (Exception e){
+            System.out.println("Retrieval error from truck_orders!");
+            System.out.println(e.getMessage());
+            success = false;
+        }
+        finally {
             try {
                 statement.close();
             } catch (SQLException e) {
@@ -214,21 +250,7 @@ public class OrderGateway {
         }
         return success;
     }
-    /*
-     * US 3.3
-     * User can check if delivery truck(s)
-     * is available for given date from
-     * customer order table.
-     */
-    public boolean checkTruckAvailability(int startDate){
-        boolean available = false;
-        int counter = 0;
-        while (counter<trucks.size()&&available == false) {
-            available = trucks.get(counter).getTruckAvailable();
-            
-        }
-        return available;
-    }
+
     /*
      * US 3.4
      * User can book delivery truck(s)
