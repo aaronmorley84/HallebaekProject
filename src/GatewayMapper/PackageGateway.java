@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package GatewayMapper;
-import Resources.Package;
+import Resources.Packages;
 import DBConnection.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,10 +16,18 @@ import java.util.ArrayList;
  */
 public class PackageGateway {
     
-    ArrayList<Package>packageList = new ArrayList<Package>();
+    ArrayList<Packages>packageList = new ArrayList<Packages>();
    
+    
+    public Packages getPackageList(int i){
+        return packageList.get(i);
+    }
+    public int getPackageListSize(){
+        return packageList.size();
+    }
     /*This method builds an arrayList of Packages from the database. */
     public boolean buildPackageList(){
+        packageList.clear();
         boolean succes = false;
        Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * " 
@@ -31,7 +39,7 @@ public class PackageGateway {
            statement = con.prepareStatement(SQLString1);
            ResultSet rs = statement.executeQuery();
            while(rs.next()){
-               packageList.add(new Package(
+               packageList.add(new Packages(
                        rs.getInt(1),
                        
                        rs.getString(2),
@@ -56,19 +64,18 @@ public class PackageGateway {
     }//end of buildPackageList
     
     /*This methode adds a package to the database*/
-    public boolean addPackage(int packageID, String name, String description, int price){
+    public boolean addPackage(String name, String description, int price){
         boolean succes = false;
        Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "INSERT INTO Packages VALUES (?,?,?,?)";
+        String SQLString1 = "INSERT INTO Packages VALUES (packageseq.nextval,?,?,?)";
 
 
         PreparedStatement statement = null;
        try{
            statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, packageID);
-            statement.setString(2, name);
-            statement.setString(3, description);
-            statement.setInt(4, price);
+            statement.setString(1, name);
+            statement.setString(2, description);
+            statement.setInt(3, price);
             statement.executeQuery();
            succes = true;
        }catch(Exception e){

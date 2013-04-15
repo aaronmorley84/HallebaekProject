@@ -6,6 +6,7 @@ package GatewayMapper;
 
 import Resources.Customer;
 import Resources.Product;
+import Resources.Packages;
 
 /**
  *
@@ -35,13 +36,12 @@ public interface ControllerInterface {
     boolean getTrucks();
     boolean bookTrucks(int trucksForOrder);
     int getUniqueOrderID();
-    boolean checkTruckAvailability(int startDate);
     boolean getOrders();
     int getOrderListSize();
             
     /*CustomerGateway methods*/
-    Customer getlist(int i);
-    int getListSize();
+    Customer getCustomerList(int i);
+    int getCustomerListSize();
     boolean buildCustomerList();
     boolean addCustomer( String name, String address, String email);
     boolean saveEditedCustomer(int cusID,String cusName,String cusAddress,String cusEmail);
@@ -49,8 +49,12 @@ public interface ControllerInterface {
     String printList();
     
     /*PackageGateway methods*/
+    Packages getPackageList(int i);
+    int getPackageListSize();
     boolean buildPackageList();
-    boolean addPackage(int packageID, String name, String description, int price);
+    boolean addPackage(String name, String description, int price);
     String printPackageList();
     
+    /*CheckerGateway methods*/
+    boolean checkTruckAvailability(int truckID, String date);
 }

@@ -1,18 +1,21 @@
 package GatewayMapper;
 import Resources.Customer;
 import Resources.Product;
+import Resources.Packages;
 
 public class Controller implements ControllerInterface{
     ProductGateway prodController;
     OrderGateway orderController;
     CustomerGateway customerController;
     PackageGateway packageController;
+    CheckerGateway checkerController;
 
     public Controller() {
         prodController = new ProductGateway();
         orderController = new OrderGateway();
         customerController = new CustomerGateway();
         packageController = new PackageGateway();
+        checkerController = new CheckerGateway(orderController);
     }
     /*
      * methods for ProductGateway()
@@ -87,17 +90,14 @@ public class Controller implements ControllerInterface{
     public int getUniqueOrderID(){
         return orderController.getUniqueOrderID();
     }
-    public boolean checkTruckAvailability(int startDate){
-        return orderController.checkTruckAvailability(startDate);
-    }
     /*
      * Methods for CustomerGateway()
      */
-    public Customer getlist(int i) {
-        return customerController.getlist(i);
+    public Customer getCustomerList(int i) {
+        return customerController.getCustomerList(i);
     }
-    public int getListSize() {
-        return customerController.getListSize();
+    public int getCustomerListSize() {
+        return customerController.getCustomerListSize();
     }
     
     public boolean buildCustomerList() {
@@ -118,13 +118,25 @@ public class Controller implements ControllerInterface{
     /*
      * Methods for PackageGateway()
      */
+    public Packages getPackageList(int i) {
+        return packageController.getPackageList(i);
+    }
+    public int getPackageListSize() {
+        return packageController.getPackageListSize();
+    }
     public boolean buildPackageList(){
         return packageController.buildPackageList();
     }
-    public boolean addPackage(int packageID, String name, String description, int price){
-        return packageController.addPackage(packageID, name, description, price);
+    public boolean addPackage(String name, String description, int price){
+        return packageController.addPackage(name, description, price);
     }
     public String printPackageList(){
         return packageController.printList();
+    }
+    /*
+     * Methods for CheckerGateway(
+     */
+    public boolean checkTruckAvailability(int truckID, String date){
+        return checkerController.checkTruckAvailability(truckID, date);
     }
 }
