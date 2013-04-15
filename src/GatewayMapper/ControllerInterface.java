@@ -35,6 +35,9 @@ public interface ControllerInterface {
     boolean getTrucks();
     boolean bookTrucks(int trucksForOrder);
     int getUniqueOrderID();
+    boolean checkTruckAvailability(int startDate);
+    boolean getOrders();
+    int getOrderListSize();
             
     /*CustomerGateway methods*/
     Customer getlist(int i);
