@@ -21,7 +21,9 @@ public void truck(int truckID, String truckName, int truckCapacity, boolean avai
     this.truckCapacity = truckCapacity;
     this.available = available;
 }
-
+    public int getTruckID(){
+        return truckID;
+    }
     public void setTruckID(int truckID) {
         this.truckID = truckID;
     }
