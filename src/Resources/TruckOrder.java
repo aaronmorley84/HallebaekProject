@@ -6,6 +6,8 @@ package Resources;
  * @author Kris
  */
 public class TruckOrder {
+
+    
     int truckID, orderID;
     String status;
     String date;
@@ -48,6 +50,9 @@ public class TruckOrder {
     public void setDate(String date) {
         this.date = date;
     }
-    
+    @Override
+    public String toString() {
+        return "TruckOrder{" + "truckID=" + truckID + ", orderID=" + orderID + ", status=" + status + ", date=" + date + '}';
+    }
     
 }
