@@ -916,7 +916,7 @@ public class UserFrame extends javax.swing.JFrame {
         model3.clear();
         jList3.setModel(model3);
         cg.buildCustomerList();
-        for (int i = 0; i < cg.getListSize(); i++) {
+        for (int i = 0; i < cg.getCustomerListSize(); i++) {
 
             model3.addElement(cg.getCustomerList(i).getCustomerID() + "-" + cg.getCustomerList(i).getName());
         }

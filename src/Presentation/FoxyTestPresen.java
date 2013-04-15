@@ -332,7 +332,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
       model1.clear();
       jList1.setModel(model1);
        cg.buildCustomerList();
-        for (int i = 0; i < cg.getListSize(); i++) {
+        for (int i = 0; i < cg.getCustomerListSize(); i++) {
             
        model1.addElement(cg.getCustomerList(i).getCustomerID() + "-"+ cg.getCustomerList(i).getName());
         }

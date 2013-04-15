@@ -999,7 +999,7 @@ public class GUI extends javax.swing.JFrame {
         model1.clear();
         CustomerJList.setModel(model1);
         con.buildCustomerList();
-        for (int i = 0; i < con.getListSize(); i++) {
+        for (int i = 0; i < con.getCustomerListSize(); i++) {
             model1.addElement(con.getCustomerList(i).getCustomerID() + "-" + con.getCustomerList(i).getName());
         }
         CustomerJList.setModel(model1);
@@ -1346,7 +1346,7 @@ public class GUI extends javax.swing.JFrame {
         model7.clear();
         PackageJList.setModel(model7);
         con.buildPackageList();
-        for (int i = 0; i < con.getListSize(); i++) {
+        for (int i = 0; i < con.getPackageListSize(); i++) {
             model7.addElement(con.getPackageList(i).getPackageID() + "-" + con.getPackageList(i).getName());
         }
         CustomerJList.setModel(model1);

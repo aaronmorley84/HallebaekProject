@@ -25,7 +25,7 @@ public class CustomerGateway {
         return listOfCustomers.get(i);
     }
 
-    public int getListSize(){
+    public int getCustomerListSize(){
         return listOfCustomers.size();
     }
 

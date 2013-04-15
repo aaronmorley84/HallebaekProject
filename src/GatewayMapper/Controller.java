@@ -121,6 +121,9 @@ public class Controller implements ControllerInterface{
     public Packages getPackageList(int i) {
         return packageController.getPackageList(i);
     }
+    public int getPackageListSize() {
+        return packageController.getPackageListSize();
+    }
     public boolean buildPackageList(){
         return packageController.buildPackageList();
     }

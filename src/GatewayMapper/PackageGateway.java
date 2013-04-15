@@ -22,6 +22,9 @@ public class PackageGateway {
     public Packages getPackageList(int i){
         return packageList.get(i);
     }
+    public int getPackageListSize(){
+        return packageList.size();
+    }
     /*This method builds an arrayList of Packages from the database. */
     public boolean buildPackageList(){
         boolean succes = false;
