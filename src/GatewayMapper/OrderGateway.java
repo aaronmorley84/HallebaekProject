@@ -60,17 +60,17 @@ public class OrderGateway {
     public boolean addToCustomerOrderTable(int customerID, String startDate, String finishDate) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "INSERT into customer_order "
-                          + "VALUES (?,?,?,?)";
+        String SQLString1 = "INSERT into Customer_Order "
+                          + "VALUES (orderseq.nextval,?,?,?)";
 
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, currentOrder.getOrderID());
-            statement.setInt(2, customerID);
-            statement.setDate(3, Date.valueOf(startDate));
-            statement.setDate(4, Date.valueOf(finishDate));
+            statement.setInt(1, customerID);
+            statement.setDate(2, Date.valueOf(startDate));
+            statement.setDate(3, Date.valueOf(finishDate));
             statement.executeUpdate();
+            addOrderToDB();
             success = true;
         } catch (Exception e) {
             System.out.println("Insertion error!");
@@ -83,26 +83,25 @@ public class OrderGateway {
                 System.out.println(e.getMessage());
             }
         }
-        addOrderToDB();
+        
         return success;
     }
 
     public boolean addOrderToDB() {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "INSERT into OrderTable "
-                + "VALUES (?,?,?)";
+        String SQLString1 = "INSERT into ordertable "
+                + "VALUES (orderseq.currval,?,?)";
         PreparedStatement statement = null;
         for (int i = 0; i < currentOrder.getListInstance().size(); i++) {
             try {
                 statement = con.prepareStatement(SQLString1);
-                statement.setInt(1, currentOrder.getOrderID());
-                statement.setInt(2, currentOrder.getListInstance().get(i).getProductID());
-                statement.setInt(3, currentOrder.getListInstance().get(i).getQuantity());
+                statement.setInt(1, currentOrder.getListInstance().get(i).getProductID());
+                statement.setInt(2, currentOrder.getListInstance().get(i).getQuantity());
                 statement.executeUpdate();
                 success = true;
             } catch (Exception e) {
-                System.out.println("Insertion error!");
+                System.out.println("products Insertion error!");
                 System.out.println(e.getMessage());
 
             } finally {

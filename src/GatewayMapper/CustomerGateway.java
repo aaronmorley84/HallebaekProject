@@ -104,7 +104,7 @@ public class CustomerGateway {
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "UPDATE customers "
                             + "SET name = ?, "
-                            + "address = ?, "
+                            + "address = ?, "                            
                             
                             + "email = ? "
                             + "WHERE customerID = ?";
