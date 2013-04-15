@@ -56,10 +56,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrdNavDropActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+            <MenuItem class="javax.swing.JMenuItem" name="PackNavDrop">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+                <Property name="text" type="java.lang.String" value="Packages"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PackNavDropActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -121,6 +124,7 @@
                               <Component id="CustomerMenuButton" pref="215" max="32767" attributes="0"/>
                               <Component id="ProductMenuButton" max="32767" attributes="0"/>
                               <Component id="OrderMenuButton" max="32767" attributes="0"/>
+                              <Component id="PackageMenuButton" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -139,7 +143,9 @@
                   <Component id="ProductMenuButton" min="-2" pref="58" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="OrderMenuButton" min="-2" pref="58" max="-2" attributes="0"/>
-                  <EmptySpace pref="275" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="PackageMenuButton" min="-2" pref="64" max="-2" attributes="0"/>
+                  <EmptySpace pref="193" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -177,6 +183,14 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Main Menu"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="PackageMenuButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Packages"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PackageMenuButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -798,7 +812,6 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="OrderStartDateField" pref="90" max="32767" attributes="0"/>
                                               <Component id="OrderCustomerIDField" max="32767" attributes="0"/>
                                               <Component id="OrderEndDateField" alignment="0" max="32767" attributes="0"/>
                                           </Group>
@@ -1018,6 +1031,132 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderSaveOrderButtonActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="PackagePanel">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="910" height="620"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="295" max="32767" attributes="0"/>
+                  <Component id="jLabel2" min="-2" pref="335" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="PackagePriceLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="PackageDiscLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="PackageNameLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="PackageIDLabel" min="-2" max="-2" attributes="0"/>
+                      <Component id="PackageIDField" min="-2" pref="142" max="-2" attributes="0"/>
+                      <Component id="PackageNameField" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jScrollPane6" alignment="0" pref="194" max="32767" attributes="0"/>
+                      <Component id="PackagePriceField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="AddPackageButton" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="PackageIDLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="PackageIDField" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="PackageNameLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="PackageNameField" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="PackageDiscLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jScrollPane6" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="PackagePriceLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="PackagePriceField" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="AddPackageButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="178" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="36" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Packages Menu"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="PackageIDLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Package ID"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="PackageIDField">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="PackageNameLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Package Name"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="PackageNameField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="PackageDiscLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Package Description"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="PackageDescTextArea">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="PackagePriceLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Package Price"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="PackagePriceField">
+        </Component>
+        <Component class="javax.swing.JButton" name="AddPackageButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Add Package"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddPackageButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

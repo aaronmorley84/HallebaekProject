@@ -47,7 +47,7 @@ public interface ControllerInterface {
     
     /*PackageGateway methods*/
     boolean buildPackageList();
-    boolean addPackage(int packageID, String name, String description, int price);
+    boolean addPackage(String name, String description, int price);
     String printPackageList();
     
 }

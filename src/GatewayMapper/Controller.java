@@ -112,8 +112,8 @@ public class Controller implements ControllerInterface{
     public boolean buildPackageList(){
         return packageController.buildPackageList();
     }
-    public boolean addPackage(int packageID, String name, String description, int price){
-        return packageController.addPackage(packageID, name, description, price);
+    public boolean addPackage(String name, String description, int price){
+        return packageController.addPackage(name, description, price);
     }
     public String printPackageList(){
         return packageController.printList();

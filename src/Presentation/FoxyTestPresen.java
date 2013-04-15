@@ -419,11 +419,11 @@ public class FoxyTestPresen extends javax.swing.JFrame {
 
     private void AddPackagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPackagesActionPerformed
         // TODO add your handling code here:
-        int pid = Integer.parseInt(PackageID.getText());
+        
         String name = PackageName.getText();
         String descrip = PackageDescrip.getText();
         int price = Integer.parseInt(PackagePrice.getText());
-        pg.addPackage(pid, name, descrip, price);
+        pg.addPackage(name, descrip, price);
         
         
     }//GEN-LAST:event_AddPackagesActionPerformed

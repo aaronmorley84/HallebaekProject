@@ -56,19 +56,18 @@ public class PackageGateway {
     }//end of buildPackageList
     
     /*This methode adds a package to the database*/
-    public boolean addPackage(int packageID, String name, String description, int price){
+    public boolean addPackage(String name, String description, int price){
         boolean succes = false;
        Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "INSERT INTO Packages VALUES (?,?,?,?)";
+        String SQLString1 = "INSERT INTO Packages VALUES (packageseq.nextval,?,?,?)";
 
 
         PreparedStatement statement = null;
        try{
            statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, packageID);
-            statement.setString(2, name);
-            statement.setString(3, description);
-            statement.setInt(4, price);
+            statement.setString(1, name);
+            statement.setString(2, description);
+            statement.setInt(3, price);
             statement.executeQuery();
            succes = true;
        }catch(Exception e){
