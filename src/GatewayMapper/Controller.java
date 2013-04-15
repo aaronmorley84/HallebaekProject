@@ -50,6 +50,12 @@ public class Controller implements ControllerInterface{
     /*
      * Methods for OrderGateway()
      */
+    public boolean getOrders(){
+        return orderController.getOrders();
+    }
+    public int getOrderListSize(){
+        return orderController.getOrderListSize();
+    }
     public void currentOrder(){
         orderController.currentOrder();
     }
@@ -80,6 +86,9 @@ public class Controller implements ControllerInterface{
     }
     public int getUniqueOrderID(){
         return orderController.getUniqueOrderID();
+    }
+    public boolean checkTruckAvailability(int startDate){
+        return orderController.checkTruckAvailability(startDate);
     }
     /*
      * Methods for CustomerGateway()

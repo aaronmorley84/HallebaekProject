@@ -13,11 +13,13 @@ public class Truck {
     int truckID;
     String truckName;
     int truckCapacity;
+    boolean available;
     
-public void truck(int truckID, String truckName, int truckCapacity){
+public void truck(int truckID, String truckName, int truckCapacity, boolean available){
     this.truckID = truckID;
     this.truckName = truckName;
     this.truckCapacity = truckCapacity;
+    this.available = available;
 }
 
     public void setTruckID(int truckID) {
@@ -34,6 +36,12 @@ public void truck(int truckID, String truckName, int truckCapacity){
 
     public int getTruckCapacity() {
         return truckCapacity;
+    }
+    public void setTruckAvailable(boolean available){
+        this.available = available;
+    }
+    public boolean getTruckAvailable(){
+        return available;
     }
     
     

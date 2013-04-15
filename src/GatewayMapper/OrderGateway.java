@@ -19,6 +19,7 @@ public class OrderGateway {
 
     private ArrayList<Truck> trucks;
     private ArrayList<Order> orders;
+    
     private Order currentOrder;
 
     public OrderGateway() {    
@@ -110,6 +111,43 @@ public class OrderGateway {
         }
         return success;
     }
+    /*Pulls all existing orders from DB.*/
+    public boolean getOrders(){
+        boolean success = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "SELECT * "
+                + "FROM orders";
+        PreparedStatement statement = null;
+        try{
+            statement = con.prepareStatement(SQLString1);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                orders.add(new Order(
+                        rs.getInt(1),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getInt(4),
+                        rs.getInt(5),
+                        rs.getInt(6)));
+            }
+            success = true;
+        }catch (Exception e){
+            System.out.println("Error in getting list of orders.");
+            System.out.println(e.getMessage());
+        } finally {
+            try{
+                statement.close();
+            } catch (SQLException e){
+                System.out.println("Statement close error!");
+                System.out.println(e.getMessage());
+            }
+        }
+        return success;
+    }
+    /*Get list size of orders.*/
+    public int getOrderListSize(){
+        return orders.size();
+    }
     
     /*
      * US 3.2
@@ -177,6 +215,21 @@ public class OrderGateway {
         return success;
     }
     /*
+     * US 3.3
+     * User can check if delivery truck(s)
+     * is available for given date from
+     * customer order table.
+     */
+    public boolean checkTruckAvailability(int startDate){
+        boolean available = false;
+        int counter = 0;
+        while (counter<trucks.size()&&available == false) {
+            available = trucks.get(counter).getTruckAvailable();
+            
+        }
+        return available;
+    }
+    /*
      * US 3.4
      * User can book delivery truck(s)
      * for customer order (if available).
@@ -187,6 +240,7 @@ public class OrderGateway {
         boolean enoughTrucks = false;
         if (trucksForOrder < trucks.size()){
             enoughTrucks = true;
+            commitTruckOrder();
         }
         return enoughTrucks;        
     }
@@ -195,6 +249,17 @@ public class OrderGateway {
         boolean success = false;
         
         return success;
+    }
+    /*
+     * US 3.5
+     * User can check if assemblers are
+     * available for given date from cus-
+     * tomer order table.
+     */
+    public boolean checkAssemblerAvailable(int startDate){
+        boolean available = false;
+        
+        return available;
     }
     /*
      * Fetches a unique identifier for each order.
