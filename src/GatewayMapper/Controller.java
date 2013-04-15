@@ -1,6 +1,7 @@
 package GatewayMapper;
 import Resources.Customer;
 import Resources.Product;
+import Resources.Packages;
 
 public class Controller implements ControllerInterface{
     ProductGateway prodController;
@@ -93,8 +94,8 @@ public class Controller implements ControllerInterface{
     /*
      * Methods for CustomerGateway()
      */
-    public Customer getlist(int i) {
-        return customerController.getlist(i);
+    public Customer getCustomerList(int i) {
+        return customerController.getCustomerList(i);
     }
     public int getListSize() {
         return customerController.getListSize();
@@ -118,6 +119,9 @@ public class Controller implements ControllerInterface{
     /*
      * Methods for PackageGateway()
      */
+    public Packages getPackageList(int i) {
+        return packageController.getPackageList(i);
+    }
     public boolean buildPackageList(){
         return packageController.buildPackageList();
     }

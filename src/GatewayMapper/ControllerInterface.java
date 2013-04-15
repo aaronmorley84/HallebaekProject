@@ -6,6 +6,7 @@ package GatewayMapper;
 
 import Resources.Customer;
 import Resources.Product;
+import Resources.Packages;
 
 /**
  *
@@ -40,7 +41,7 @@ public interface ControllerInterface {
     int getOrderListSize();
             
     /*CustomerGateway methods*/
-    Customer getlist(int i);
+    Customer getCustomerList(int i);
     int getListSize();
     boolean buildCustomerList();
     boolean addCustomer( String name, String address, String email);
@@ -49,6 +50,7 @@ public interface ControllerInterface {
     String printList();
     
     /*PackageGateway methods*/
+    Packages getPackageList(int i);
     boolean buildPackageList();
     boolean addPackage(String name, String description, int price);
     String printPackageList();

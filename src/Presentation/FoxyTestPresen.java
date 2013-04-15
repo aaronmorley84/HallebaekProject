@@ -334,7 +334,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
        cg.buildCustomerList();
         for (int i = 0; i < cg.getListSize(); i++) {
             
-       model1.addElement(cg.getlist(i).getCustomerID() + "-"+ cg.getlist(i).getName());
+       model1.addElement(cg.getCustomerList(i).getCustomerID() + "-"+ cg.getCustomerList(i).getName());
         }
         jList1.setModel(model1);
         
@@ -369,11 +369,11 @@ public class FoxyTestPresen extends javax.swing.JFrame {
 
     private void EditCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditCustomerActionPerformed
         
-        CustomerID.setText(""+cg.getlist(jList1.getSelectedIndex()).getCustomerID());
-        CustomerName.setText(cg.getlist(jList1.getSelectedIndex()).getName());
-        CustomerAddress.setText(cg.getlist(jList1.getSelectedIndex()).getAdress());
-        PhoneID.setText(""+cg.getlist(jList1.getSelectedIndex()).getPhoneID());
-        CustomerEmail.setText(cg.getlist(jList1.getSelectedIndex()).getEmail());
+        CustomerID.setText(""+cg.getCustomerList(jList1.getSelectedIndex()).getCustomerID());
+        CustomerName.setText(cg.getCustomerList(jList1.getSelectedIndex()).getName());
+        CustomerAddress.setText(cg.getCustomerList(jList1.getSelectedIndex()).getAdress());
+        PhoneID.setText(""+cg.getCustomerList(jList1.getSelectedIndex()).getPhoneID());
+        CustomerEmail.setText(cg.getCustomerList(jList1.getSelectedIndex()).getEmail());
         
         AddCustomer.setEnabled(false);
         GetCutomerList.setEnabled(false);
@@ -405,7 +405,7 @@ public class FoxyTestPresen extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveChangesActionPerformed
 
     private void DeleteCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerActionPerformed
-        int cusID = cg.getlist(jList1.getSelectedIndex()).getCustomerID();
+        int cusID = cg.getCustomerList(jList1.getSelectedIndex()).getCustomerID();
         
         cg.deleteCustomer(cusID);
         GetCutomerListActionPerformed(evt);

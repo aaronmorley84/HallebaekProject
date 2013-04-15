@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package GatewayMapper;
-import Resources.Package;
+import Resources.Packages;
 import DBConnection.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,8 +16,12 @@ import java.util.ArrayList;
  */
 public class PackageGateway {
     
-    ArrayList<Package>packageList = new ArrayList<Package>();
+    ArrayList<Packages>packageList = new ArrayList<Packages>();
    
+    
+    public Packages getPackageList(int i){
+        return packageList.get(i);
+    }
     /*This method builds an arrayList of Packages from the database. */
     public boolean buildPackageList(){
         boolean succes = false;
@@ -31,7 +35,7 @@ public class PackageGateway {
            statement = con.prepareStatement(SQLString1);
            ResultSet rs = statement.executeQuery();
            while(rs.next()){
-               packageList.add(new Package(
+               packageList.add(new Packages(
                        rs.getInt(1),
                        
                        rs.getString(2),

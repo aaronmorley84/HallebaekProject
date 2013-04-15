@@ -21,7 +21,7 @@ public class CustomerGateway {
 
     ArrayList<Customer> listOfCustomers = new ArrayList<>();
     
-    public Customer getlist(int i){
+    public Customer getCustomerList(int i){
         return listOfCustomers.get(i);
     }
 
