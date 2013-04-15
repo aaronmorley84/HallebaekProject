@@ -8,12 +8,14 @@ public class Controller implements ControllerInterface{
     OrderGateway orderController;
     CustomerGateway customerController;
     PackageGateway packageController;
+    CheckerGateway checkerController;
 
     public Controller() {
         prodController = new ProductGateway();
         orderController = new OrderGateway();
         customerController = new CustomerGateway();
         packageController = new PackageGateway();
+        checkerController = new CheckerGateway(orderController);
     }
     /*
      * methods for ProductGateway()
@@ -88,9 +90,6 @@ public class Controller implements ControllerInterface{
     public int getUniqueOrderID(){
         return orderController.getUniqueOrderID();
     }
-    public boolean checkTruckAvailability(int startDate){
-        return orderController.checkTruckAvailability(startDate);
-    }
     /*
      * Methods for CustomerGateway()
      */
@@ -130,5 +129,11 @@ public class Controller implements ControllerInterface{
     }
     public String printPackageList(){
         return packageController.printList();
+    }
+    /*
+     * Methods for CheckerGateway(
+     */
+    public boolean checkTruckAvailability(int truckID, String date){
+        return checkerController.checkTruckAvailability(truckID, date);
     }
 }
