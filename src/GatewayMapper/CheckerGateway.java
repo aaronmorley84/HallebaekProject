@@ -22,7 +22,13 @@ public class CheckerGateway {
      */
     public boolean checkTruckAvailability(int truckID, String date){
         boolean available = false;
-        
+        int counter = 0;
+        while(counter<og.getTruckOrderListSize()){
+            if(!og.getTruck(counter).getDate().equals(date)){
+                og.addToAvailableTrucks(og.getTruckFromList(og.getTruck(counter).getTruckID()));
+                available = true;
+            }
+        }
         return available;
     }
 }
