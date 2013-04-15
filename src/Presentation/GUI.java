@@ -1098,11 +1098,7 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MainNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MainNavDropActionPerformed
-        MainPanel.setVisible(true);
-        CustomerPanel.setVisible(false);
-        ProductPanel.setVisible(false);
-        OrderPanel.setVisible(false);
-        PackagePanel.setVisible(false);
+        selectPanel(1);
     }//GEN-LAST:event_MainNavDropActionPerformed
 
     private void ExitDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitDropActionPerformed
@@ -1110,11 +1106,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitDropActionPerformed
 
     private void CustomerMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerMenuButtonActionPerformed
-        MainPanel.setVisible(false);
-        CustomerPanel.setVisible(true);
-        ProductPanel.setVisible(false);
-        OrderPanel.setVisible(false);
-        PackagePanel.setVisible(false);
+        selectPanel(2);
 
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
@@ -1125,19 +1117,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_CustomerMenuButtonActionPerformed
 
     private void OrderMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderMenuButtonActionPerformed
-        MainPanel.setVisible(false);
-        CustomerPanel.setVisible(false);
-        ProductPanel.setVisible(false);
-        OrderPanel.setVisible(true);
-        PackagePanel.setVisible(false);
+        selectPanel(4);
     }//GEN-LAST:event_OrderMenuButtonActionPerformed
 
     private void CustNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustNavDropActionPerformed
-        MainPanel.setVisible(false);
-        CustomerPanel.setVisible(true);
-        ProductPanel.setVisible(false);
-        OrderPanel.setVisible(false);
-        PackagePanel.setVisible(false);
+        selectPanel(2);
 
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
@@ -1148,28 +1132,16 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_CustNavDropActionPerformed
 
     private void OrdNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrdNavDropActionPerformed
-        MainPanel.setVisible(false);
-        CustomerPanel.setVisible(false);
-        ProductPanel.setVisible(false);
-        OrderPanel.setVisible(true);
-        PackagePanel.setVisible(false);
+        selectPanel(4);
     }//GEN-LAST:event_OrdNavDropActionPerformed
 
     private void ProductMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductMenuButtonActionPerformed
-        MainPanel.setVisible(false);
-        CustomerPanel.setVisible(false);
-        ProductPanel.setVisible(true);
-        OrderPanel.setVisible(false);
-        PackagePanel.setVisible(false);
+        selectPanel(3);
         clearProductFields();
     }//GEN-LAST:event_ProductMenuButtonActionPerformed
 
     private void ProdNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdNavDropActionPerformed
-        MainPanel.setVisible(false);
-        CustomerPanel.setVisible(false);
-        ProductPanel.setVisible(true);
-        OrderPanel.setVisible(false);
-        PackagePanel.setVisible(false);
+        selectPanel(3);
         clearProductFields();
     }//GEN-LAST:event_ProdNavDropActionPerformed
 
@@ -1499,20 +1471,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_AddPackageButtonActionPerformed
 
     private void PackageMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackageMenuButtonActionPerformed
-        MainPanel.setVisible(false);
-        CustomerPanel.setVisible(false);
-        ProductPanel.setVisible(false);
-        OrderPanel.setVisible(false);
-        PackagePanel.setVisible(true);
+        selectPanel(5);
         clearPackageFields();
     }//GEN-LAST:event_PackageMenuButtonActionPerformed
 
     private void PackNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackNavDropActionPerformed
-        MainPanel.setVisible(false);
-        CustomerPanel.setVisible(false);
-        ProductPanel.setVisible(false);
-        OrderPanel.setVisible(false);
-        PackagePanel.setVisible(true);
+        selectPanel(5);
         clearPackageFields();
     }//GEN-LAST:event_PackNavDropActionPerformed
 
@@ -1557,12 +1521,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_OrderSearchProductButton1ActionPerformed
 
     private void EditPackProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackProdButtonActionPerformed
-        MainPanel.setVisible(false);
-        CustomerPanel.setVisible(false);
-        ProductPanel.setVisible(false);
-        OrderPanel.setVisible(false);
-        PackagePanel.setVisible(false);
-        EditPackagePanel.setVisible(true);
+        selectPanel(6);
         
         PackageIDField2.setText(PackageIDField.getText());
         PackageNameField2.setText(PackageNameField.getText());
@@ -1615,6 +1574,36 @@ public class GUI extends javax.swing.JFrame {
                 new GUI().setVisible(true);
             }
         });
+    }
+    public void selectPanel(int panel){
+        
+        MainPanel.setVisible(false);
+        CustomerPanel.setVisible(false);
+        ProductPanel.setVisible(false);
+        OrderPanel.setVisible(false);
+        PackagePanel.setVisible(false);
+        EditPackagePanel.setVisible(false);
+        
+        switch(panel){
+            case 1:
+                MainPanel.setVisible(true);
+                break;
+            case 2:
+                CustomerPanel.setVisible(true);
+                break;
+            case 3:
+                ProductPanel.setVisible(true);
+                break;
+            case 4:
+                OrderPanel.setVisible(true);
+                break;
+            case 5:
+                PackagePanel.setVisible(true);
+                break;
+            case 6:
+                EditPackagePanel.setVisible(true);
+                break;
+        }
     }
 
     public void clearCustomerFields() {
