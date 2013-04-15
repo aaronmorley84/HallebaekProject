@@ -275,16 +275,37 @@ public class OrderGateway {
         boolean enoughTrucks = false;
         if (trucksForOrder < trucks.size()){
             enoughTrucks = true;
-            commitTruckOrder();
         }
         return enoughTrucks;        
     }
     /* US 3.4 Continued with DB connection. */
-    public boolean commitTruckOrder(){
-        boolean success = false;
-        
-        return success;
-    }
+public boolean commitTruckOrder(int truckID, int orderID, String status, String date){
+boolean success = false;
+Connection con = ConnectionTools.getInstance().getCurrentConnection();
+String SQLString1 = "INSERT into truck_order "
++ "VALUES (?, ?, ?, (select startdate from customer_order where orderid = ?)) ";
+PreparedStatement statement = null;
+try {
+statement = con.prepareStatement(SQLString1);
+statement.setInt(1, truckID);
+statement.setInt(2, orderID);
+statement.setString(3, status);
+statement.setInt(4, orderID);
+success = true; 
+} catch (Exception e) {
+System.out.println("Problem with ordering trucks.");
+System.out.println(e.getMessage());
+}
+finally {
+try {
+statement.close();
+} catch (SQLException e) {
+System.out.println("Statement close error!");
+System.out.println(e.getMessage());
+}
+}
+return success;
+}
     /*
      * US 3.5
      * User can check if assemblers are

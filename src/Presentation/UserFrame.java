@@ -971,16 +971,16 @@ public class UserFrame extends javax.swing.JFrame {
         }
         /*US 3.4 User can book delivery truck(s)
           for customer order (if available)*/
-        int trucksForOrder = Integer.parseInt(textFieldTrucksForOrder.getText());
-        if (control2.bookTrucks(trucksForOrder)){
-            if (control2.commitTruckOrder()){
-                JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                JOptionPane.showMessageDialog(this, "Could not save truck order to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        }else {
-            JOptionPane.showMessageDialog(this, "Not enough trucks for delivery!", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+//        int trucksForOrder = Integer.parseInt(textFieldTrucksForOrder.getText());
+//        if (control2.bookTrucks(trucksForOrder)){
+//            if (control2.commitTruckOrder()){
+//                JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
+//            }else{
+//                JOptionPane.showMessageDialog(this, "Could not save truck order to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
+//        }else {
+//            JOptionPane.showMessageDialog(this, "Not enough trucks for delivery!", "ERROR", JOptionPane.ERROR_MESSAGE);
+//        }
     }//GEN-LAST:event_buttonCommitNewOrderActionPerformed
 
     private void textFieldNewOrderStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewOrderStartDateActionPerformed

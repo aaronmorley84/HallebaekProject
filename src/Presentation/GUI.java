@@ -892,7 +892,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(AddPackageButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(EditPackProdButton)
-                                .addGap(0, 108, Short.MAX_VALUE))
+                                .addGap(0, 138, Short.MAX_VALUE))
                             .addComponent(jScrollPane7))
                         .addContainerGap())
                     .addGroup(PackagePanelLayout.createSequentialGroup()
@@ -992,7 +992,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(PackageNameLabel2)
                         .addGap(56, 56, 56)
                         .addComponent(PackageNameField2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
         EditPackagePanelLayout.setVerticalGroup(
             EditPackagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

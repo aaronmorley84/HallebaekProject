@@ -83,7 +83,7 @@ public class Controller implements ControllerInterface{
     public boolean bookTrucks(int trucksForOrder){
         boolean success = false;
         if (orderController.bookTrucks(trucksForOrder)){
-            success = orderController.commitTruckOrder();
+           // success = orderController.commitTruckOrder();
         }
         return success;
     }
