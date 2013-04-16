@@ -145,6 +145,9 @@ public class Controller implements ControllerInterface{
     public void setCurrentPackage(Packages pack){
         packageController.setCurrentPackage(pack);
     }
+    public boolean addProductsToPackageInDB(){
+        return packageController.addProductsToPackageInDB();
+    }
     /*
      * Methods for CheckerGateway(
      */
