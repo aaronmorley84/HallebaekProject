@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class PackageGateway {
 
-    ArrayList<Packages> packageList = new ArrayList<Packages>();
+    ArrayList<Packages> packageList;
     Packages currentPackage;
 
     public Packages getPackageList(int i) {
@@ -52,7 +52,7 @@ public class PackageGateway {
 
     /*This method builds an arrayList of Packages from the database. */
     public boolean buildPackageList() {
-        packageList.clear();
+        packageList = new ArrayList();
         boolean succes = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * "
