@@ -1500,6 +1500,7 @@ public class GUI extends javax.swing.JFrame {
         PackageNameField.setText("" + con.getPackageList(PackageJList.getSelectedIndex()).getName());
         PackageDescTextArea.setText("" + con.getPackageList(PackageJList.getSelectedIndex()).getDescription());
         PackagePriceField.setText("" + con.getPackageList(PackageJList.getSelectedIndex()).getPrice());
+        con.setCurrentPackage(con.getPackageList(PackageJList.getSelectedIndex()));
     }//GEN-LAST:event_EditPackageButtonActionPerformed
 
     private void OrderSearchProductButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSearchProductButton1ActionPerformed
