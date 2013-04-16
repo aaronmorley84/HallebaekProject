@@ -62,6 +62,8 @@ public interface ControllerInterface {
     void setCurrentPackage(Packages pack);
     boolean addProductsToPackageInDB();
     boolean loadPackageProducts();
+    boolean deletePackageProducts();
+    boolean deletePackage();
     
     /*CheckerGateway methods*/
     boolean checkTruckAvailability(int truckID, String date);
