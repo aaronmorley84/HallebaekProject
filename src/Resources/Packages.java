@@ -10,7 +10,7 @@ public class Packages {
             
     private int packageID, price;
     private String name, description;
-    public ArrayList<Product> packageList = new ArrayList();
+    public ArrayList<Product> packageProductList = new ArrayList();
 
     public Packages(int packageID, String name, String description, int price) {
         this.packageID = packageID;
@@ -23,19 +23,19 @@ public class Packages {
        boolean success=false;
         if(!checkForDuplicate(prod.getProductID())){
            success = true;
-           packageList.add(prod);
+           packageProductList.add(prod);
         }
         return success;
     }
     
     public void removeFromPackageList(Product prod) {
-        packageList.remove(prod);
+        packageProductList.remove(prod);
     }
 
     public boolean checkForDuplicate(int ID){
         boolean same = false;
-        for (int i = 0; i < packageList.size(); i++) {
-            if(packageList.get(i).getProductID() == ID){
+        for (int i = 0; i < packageProductList.size(); i++) {
+            if(packageProductList.get(i).getProductID() == ID){
                 same = true;
             }
         }
