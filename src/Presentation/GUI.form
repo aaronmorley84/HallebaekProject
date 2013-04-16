@@ -1276,9 +1276,9 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="OrderQuantitySpinner1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="OrderAddProductToOrderButton1" min="-2" pref="169" max="-2" attributes="0"/>
+                                          <Component id="AddProductToPackageButton" min="-2" pref="169" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="OrderRemoveFromOrderButton1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="RemoveFromPackageButto" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -1340,10 +1340,10 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="OrderProductQuantityLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="OrderQuantitySpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="OrderAddProductToOrderButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="AddProductToPackageButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                          <Component id="OrderRemoveFromOrderButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="RemoveFromPackageButto" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="151" max="32767" attributes="0"/>
@@ -1427,20 +1427,20 @@
         </Component>
         <Component class="javax.swing.JSpinner" name="OrderQuantitySpinner1">
         </Component>
-        <Component class="javax.swing.JButton" name="OrderAddProductToOrderButton1">
+        <Component class="javax.swing.JButton" name="AddProductToPackageButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Add selected to Order --&gt;"/>
+            <Property name="text" type="java.lang.String" value="Add selected to Package --&gt;"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderAddProductToOrderButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddProductToPackageButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="OrderRemoveFromOrderButton1">
+        <Component class="javax.swing.JButton" name="RemoveFromPackageButto">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Remove selected form order"/>
+            <Property name="text" type="java.lang.String" value="Remove selected form Package"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderRemoveFromOrderButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RemoveFromPackageButtoActionPerformed"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane9">
@@ -1450,7 +1450,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="OrderProductsInOrderList1">
+            <Component class="javax.swing.JList" name="ProductsInPackageList">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="0"/>

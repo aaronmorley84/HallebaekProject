@@ -160,10 +160,10 @@ public class GUI extends javax.swing.JFrame {
         OrderProductsList1 = new javax.swing.JList();
         OrderProductQuantityLabel1 = new javax.swing.JLabel();
         OrderQuantitySpinner1 = new javax.swing.JSpinner();
-        OrderAddProductToOrderButton1 = new javax.swing.JButton();
-        OrderRemoveFromOrderButton1 = new javax.swing.JButton();
+        AddProductToPackageButton = new javax.swing.JButton();
+        RemoveFromPackageButto = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
-        OrderProductsInOrderList1 = new javax.swing.JList();
+        ProductsInPackageList = new javax.swing.JList();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ExitDrop = new javax.swing.JMenuItem();
@@ -177,7 +177,6 @@ public class GUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBounds(new java.awt.Rectangle(200, 50, 950, 700));
         setMinimumSize(new java.awt.Dimension(950, 700));
-        setPreferredSize(new java.awt.Dimension(950, 700));
         getContentPane().setLayout(null);
 
         CustomerMenuButton.setText("Customers");
@@ -892,7 +891,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(AddPackageButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(EditPackProdButton)
-                                .addGap(0, 138, Short.MAX_VALUE))
+                                .addGap(0, 108, Short.MAX_VALUE))
                             .addComponent(jScrollPane7))
                         .addContainerGap())
                     .addGroup(PackagePanelLayout.createSequentialGroup()
@@ -935,21 +934,21 @@ public class GUI extends javax.swing.JFrame {
 
         OrderProductQuantityLabel1.setText("Quantity:");
 
-        OrderAddProductToOrderButton1.setText("Add selected to Order -->");
-        OrderAddProductToOrderButton1.addActionListener(new java.awt.event.ActionListener() {
+        AddProductToPackageButton.setText("Add selected to Package -->");
+        AddProductToPackageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OrderAddProductToOrderButton1ActionPerformed(evt);
+                AddProductToPackageButtonActionPerformed(evt);
             }
         });
 
-        OrderRemoveFromOrderButton1.setText("Remove selected form order");
-        OrderRemoveFromOrderButton1.addActionListener(new java.awt.event.ActionListener() {
+        RemoveFromPackageButto.setText("Remove selected form Package");
+        RemoveFromPackageButto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OrderRemoveFromOrderButton1ActionPerformed(evt);
+                RemoveFromPackageButtoActionPerformed(evt);
             }
         });
 
-        jScrollPane9.setViewportView(OrderProductsInOrderList1);
+        jScrollPane9.setViewportView(ProductsInPackageList);
 
         javax.swing.GroupLayout EditPackagePanelLayout = new javax.swing.GroupLayout(EditPackagePanel);
         EditPackagePanel.setLayout(EditPackagePanelLayout);
@@ -979,8 +978,8 @@ public class GUI extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(OrderQuantitySpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(OrderAddProductToOrderButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(OrderRemoveFromOrderButton1))))
+                                        .addComponent(AddProductToPackageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(RemoveFromPackageButto))))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(EditPackagePanelLayout.createSequentialGroup()
@@ -1027,9 +1026,9 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(EditPackagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(OrderProductQuantityLabel1)
                             .addComponent(OrderQuantitySpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(OrderAddProductToOrderButton1))
+                            .addComponent(AddProductToPackageButton))
                         .addGap(41, 41, 41)
-                        .addComponent(OrderRemoveFromOrderButton1)))
+                        .addComponent(RemoveFromPackageButto)))
                 .addContainerGap(151, Short.MAX_VALUE))
         );
 
@@ -1523,6 +1522,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void EditPackProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackProdButtonActionPerformed
         selectPanel(6);
+        model5.clear();
         
         PackageIDField2.setText(PackageIDField.getText());
         PackageNameField2.setText(PackageNameField.getText());
@@ -1530,13 +1530,30 @@ public class GUI extends javax.swing.JFrame {
         con.getAllProducts();
     }//GEN-LAST:event_EditPackProdButtonActionPerformed
 
-    private void OrderAddProductToOrderButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderAddProductToOrderButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_OrderAddProductToOrderButton1ActionPerformed
+    private void AddProductToPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductToPackageButtonActionPerformed
+        Product prodForOrder, newProduct;
+        prodForOrder = (Product) OrderProductsList1.getSelectedValue();
+        if (prodForOrder.getQuantity() >= (int) OrderQuantitySpinner1.getValue()) {
+            newProduct = new Product(prodForOrder.getProductID(),
+                    prodForOrder.getName(), prodForOrder.getVolume(), (int) OrderQuantitySpinner1.getValue(),
+                    prodForOrder.getDescription(), prodForOrder.getPrice());
+            if (con.addItemToPackageList(newProduct)) {
+                model5.addElement(newProduct);
+                ProductsInPackageList.setModel(model5);
+            } else {
+                JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_AddProductToPackageButtonActionPerformed
 
-    private void OrderRemoveFromOrderButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderRemoveFromOrderButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_OrderRemoveFromOrderButton1ActionPerformed
+    private void RemoveFromPackageButtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveFromPackageButtoActionPerformed
+        Product prodForRemoval = (Product) ProductsInPackageList.getSelectedValue();
+        con.removeFromPackageList(prodForRemoval);
+        model5.removeElement(prodForRemoval);
+        ProductsInPackageList.setModel(model5);
+    }//GEN-LAST:event_RemoveFromPackageButtoActionPerformed
 
     private void PackageNameField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackageNameField2ActionPerformed
         // TODO add your handling code here:
@@ -1656,6 +1673,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton AddEditPhoneButton;
     private javax.swing.JButton AddPackageButton;
     private javax.swing.JButton AddProductButton;
+    private javax.swing.JButton AddProductToPackageButton;
     private javax.swing.JMenuItem CustNavDrop;
     private javax.swing.JLabel CustPhoneLabel;
     private javax.swing.JTextArea CustPhoneTextArea;
@@ -1689,7 +1707,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel MainPanel;
     private javax.swing.JMenuItem OrdNavDrop;
     private javax.swing.JButton OrderAddProductToOrderButton;
-    private javax.swing.JButton OrderAddProductToOrderButton1;
     private javax.swing.JTextField OrderCustomerIDField;
     private javax.swing.JLabel OrderCustomerIDLabel;
     private javax.swing.JTextField OrderEndDateField;
@@ -1705,13 +1722,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel OrderProductQuantityLabel;
     private javax.swing.JLabel OrderProductQuantityLabel1;
     private javax.swing.JList OrderProductsInOrderList;
-    private javax.swing.JList OrderProductsInOrderList1;
     private javax.swing.JList OrderProductsList;
     private javax.swing.JList OrderProductsList1;
     private javax.swing.JSpinner OrderQuantitySpinner;
     private javax.swing.JSpinner OrderQuantitySpinner1;
     private javax.swing.JButton OrderRemoveFromOrderButton;
-    private javax.swing.JButton OrderRemoveFromOrderButton1;
     private javax.swing.JButton OrderSaveOrderButton;
     private javax.swing.JButton OrderSearchProductButton;
     private javax.swing.JButton OrderSearchProductButton1;
@@ -1755,6 +1770,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel ProductSearchName;
     private javax.swing.JTextField ProductVolumeField;
     private javax.swing.JLabel ProductVolumeLabel;
+    private javax.swing.JList ProductsInPackageList;
+    private javax.swing.JButton RemoveFromPackageButto;
     private javax.swing.JButton SaveCustomerChangeButton;
     private javax.swing.JButton SaveProductChangesButton;
     private javax.swing.JPanel SearchForAProduct;
