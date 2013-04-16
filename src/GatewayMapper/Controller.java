@@ -59,9 +59,6 @@ public class Controller implements ControllerInterface{
     public int getOrderListSize(){
         return orderController.getOrderListSize();
     }
-    public int getAvailableTrucksSize(){
-        return orderController.getAvailableTrucksSize();
-    }
     public void currentOrder(){
         orderController.currentOrder();
     }
@@ -86,15 +83,8 @@ public class Controller implements ControllerInterface{
     public boolean getTrucks(){
         return orderController.getTrucks();
     }
-    public boolean bookTrucks(int trucksForOrder){
-        boolean success = false;
-        if (orderController.bookTrucks(trucksForOrder)){
-           // success = orderController.commitTruckOrder();
-        }
-        return success;
-    }
-    public boolean commitTruckOrder(int truckID, int orderID, String status, String date){
-        return orderController.commitTruckOrder(truckID, orderID, status, date);
+    public boolean commitTruckOrder(int truckID, String status, String date){
+        return orderController.commitTruckOrder(truckID, status, date);
     }
     public int getUniqueOrderID(){
         return orderController.getUniqueOrderID();
