@@ -164,6 +164,7 @@ public class GUI extends javax.swing.JFrame {
         RemoveFromPackageButto = new javax.swing.JButton();
         jScrollPane9 = new javax.swing.JScrollPane();
         ProductsInPackageList = new javax.swing.JList();
+        SavePackageButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ExitDrop = new javax.swing.JMenuItem();
@@ -950,6 +951,13 @@ public class GUI extends javax.swing.JFrame {
 
         jScrollPane9.setViewportView(ProductsInPackageList);
 
+        SavePackageButton.setText("Save Package");
+        SavePackageButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SavePackageButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout EditPackagePanelLayout = new javax.swing.GroupLayout(EditPackagePanel);
         EditPackagePanel.setLayout(EditPackagePanelLayout);
         EditPackagePanelLayout.setHorizontalGroup(
@@ -979,7 +987,10 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(OrderQuantitySpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(AddProductToPackageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(RemoveFromPackageButto))))
+                                    .addComponent(RemoveFromPackageButto)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, EditPackagePanelLayout.createSequentialGroup()
+                                        .addGap(102, 102, 102)
+                                        .addComponent(SavePackageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(EditPackagePanelLayout.createSequentialGroup()
@@ -1028,7 +1039,10 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(OrderQuantitySpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(AddProductToPackageButton))
                         .addGap(41, 41, 41)
-                        .addComponent(RemoveFromPackageButto)))
+                        .addComponent(RemoveFromPackageButto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(SavePackageButton)
+                        .addGap(20, 20, 20)))
                 .addContainerGap(151, Short.MAX_VALUE))
         );
 
@@ -1560,6 +1574,15 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PackageNameField2ActionPerformed
 
+    private void SavePackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavePackageButtonActionPerformed
+        if (con.addProductsToPackageInDB()){
+            JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Could not save truck order to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_SavePackageButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1774,6 +1797,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JList ProductsInPackageList;
     private javax.swing.JButton RemoveFromPackageButto;
     private javax.swing.JButton SaveCustomerChangeButton;
+    private javax.swing.JButton SavePackageButton;
     private javax.swing.JButton SaveProductChangesButton;
     private javax.swing.JPanel SearchForAProduct;
     private javax.swing.JButton SearchForProductButton;
