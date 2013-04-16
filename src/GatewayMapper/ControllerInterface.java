@@ -28,7 +28,7 @@ public interface ControllerInterface {
     
     /*OrderGateway methods*/
     void currentOrder();
-    boolean addItemToList(Product prod);
+    boolean addItemToOrderList(Product prod);
     void removeFromOrder(Product prod);
     boolean addToCustomerOrderTable(int customerID, String startDate, String finishDate);
     boolean addOrderToDB();

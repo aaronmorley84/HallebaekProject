@@ -43,8 +43,8 @@ public class OrderGateway {
      * Methods for adding/removing products to/from the order.
      * Not using DB connection.
      */
-    public boolean addItemToList(Product prod) {
-        return currentOrder.addItemToList(prod);
+    public boolean addItemToOrderList(Product prod) {
+        return currentOrder.addItemToOrderList(prod);
     }
 
     public void removeFromOrder(Product prod) {

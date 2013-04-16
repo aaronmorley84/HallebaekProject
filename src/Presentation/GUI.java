@@ -1406,7 +1406,7 @@ public class GUI extends javax.swing.JFrame {
             newProduct = new Product(prodForOrder.getProductID(),
                     prodForOrder.getName(), prodForOrder.getVolume(), (int) OrderQuantitySpinner.getValue(),
                     prodForOrder.getDescription(), prodForOrder.getPrice());
-            if (con.addItemToList(newProduct)) {
+            if (con.addItemToOrderList(newProduct)) {
                 model5.addElement(newProduct);
                 OrderProductsInOrderList.setModel(model5);
             } else {

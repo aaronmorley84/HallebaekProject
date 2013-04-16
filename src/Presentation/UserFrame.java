@@ -894,7 +894,7 @@ public class UserFrame extends javax.swing.JFrame {
             newProduct = new Product(prodForOrder.getProductID(),
                     prodForOrder.getName(), prodForOrder.getVolume(), (int) spinnerQuantityToOrder.getValue(),
                     prodForOrder.getDescription(), prodForOrder.getPrice());
-            if (control2.addItemToList(newProduct)) {
+            if (control2.addItemToOrderList(newProduct)) {
                 model2.addElement(newProduct);
                 jList2.setModel(model2);
                 prodForOrder.setQuantity(prodForOrder.getQuantity() - (int) spinnerQuantityToOrder.getValue());

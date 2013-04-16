@@ -62,8 +62,8 @@ public class Controller implements ControllerInterface{
     public void currentOrder(){
         orderController.currentOrder();
     }
-    public boolean addItemToList(Product prod){
-        return orderController.addItemToList(prod);
+    public boolean addItemToOrderList(Product prod){
+        return orderController.addItemToOrderList(prod);
     }
     public void removeFromOrder(Product prod){
         orderController.removeFromOrder(prod);

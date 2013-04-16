@@ -28,7 +28,7 @@ public class Order {
     * the ArrayList for the 
     * current order.
     */
-    public boolean addItemToList(Product prod){
+    public boolean addItemToOrderList(Product prod){
        boolean success=false;
         if(!checkForDuplicate(prod.getProductID())){
            success = true;
