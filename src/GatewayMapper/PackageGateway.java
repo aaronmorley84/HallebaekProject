@@ -29,7 +29,15 @@ public class PackageGateway {
     public int getPackageListSize() {
         return packageList.size();
     }
+    
+    public Product getPackageProductList(int i) {
+        return currentPackage.packageProductList.get(i);
+    }
 
+    public int getPackageProductListSize() {
+        return currentPackage.packageProductList.size();
+    }
+   
     public void setCurrentPackage(Packages pack) {
         currentPackage = pack;
     }
@@ -122,12 +130,12 @@ public class PackageGateway {
         String SQLString1 = "INSERT into package_product "
                 + "VALUES (?,?,?)";
         PreparedStatement statement = null;
-        for (int i = 0; i < currentPackage.packageList.size(); i++) {
+        for (int i = 0; i < currentPackage.packageProductList.size(); i++) {
             try {
                 statement = con.prepareStatement(SQLString1);
                 statement.setInt(1, currentPackage.getPackageID());
-                statement.setInt(2, currentPackage.packageList.get(i).getProductID());
-                statement.setInt(3, currentPackage.packageList.get(i).getQuantity());
+                statement.setInt(2, currentPackage.packageProductList.get(i).getProductID());
+                statement.setInt(3, currentPackage.packageProductList.get(i).getQuantity());
                 statement.executeUpdate();
                 success = true;
             } catch (Exception e) {
@@ -160,7 +168,7 @@ public class PackageGateway {
             statement.setInt(1, currentPackage.getPackageID());
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
-                currentPackage.packageList.add(new Product(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6)));
+                currentPackage.packageProductList.add(new Product(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6)));
             }
         } catch (Exception e) {
             System.out.println("packages Insertion error!");
