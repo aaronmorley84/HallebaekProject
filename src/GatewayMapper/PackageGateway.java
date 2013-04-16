@@ -177,4 +177,37 @@ public class PackageGateway {
 
         return success;
     }
+    public boolean deletePackageProducts(){
+        boolean success = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "DELETE FROM package_product WHERE packageid = ?";
+        
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(SQLString1);
+            statement.setInt(1, currentPackage.getPackageID());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("packages Delete error!");
+            System.out.println(e.getMessage());
+        }
+        return success;
+    }
+    
+    public boolean deletePackage(){
+        boolean success = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "DELETE FROM packages WHERE packageid = ?";
+        
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(SQLString1);
+            statement.setInt(1, currentPackage.getPackageID());
+            statement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("packages Delete error!");
+            System.out.println(e.getMessage());
+        }
+        return success;
+    }
 }//end of PackageGateway
