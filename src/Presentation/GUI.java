@@ -1538,14 +1538,14 @@ public class GUI extends javax.swing.JFrame {
     private void EditPackProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackProdButtonActionPerformed
         selectPanel(6);
         model5.clear();
+        
+        PackageIDField2.setText(PackageIDField.getText());
+        PackageNameField2.setText(PackageNameField.getText());
+        con.loadPackageProducts();
         for (int i = 0; i < con.getPackageProductListSize(); i++) {
             model5.addElement(con.getPackageProductList(i));
             ProductsInPackageList.setModel(model5);
         }
-        
-        PackageIDField2.setText(PackageIDField.getText());
-        PackageNameField2.setText(PackageNameField.getText());
-        con.currentOrder();
         con.getAllProducts();
     }//GEN-LAST:event_EditPackProdButtonActionPerformed
 
