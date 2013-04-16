@@ -33,14 +33,12 @@ public interface ControllerInterface {
     void removeFromOrderList(Product prod);
     boolean addToCustomerOrderTable(int customerID, String startDate, String finishDate);
     boolean addOrderToDB();
-    int getTrucksRequired(int totalVolume);
-    boolean getTrucks();
-    int getAvailableTrucksSize();
-    boolean bookTrucks(int trucksForOrder);
-    int getUniqueOrderID();
     boolean getOrders();
     int getOrderListSize();
-    boolean commitTruckOrder(int truckID, int orderID, String status, String date);
+    int getUniqueOrderID();
+    int getTrucksRequired(int totalVolume);
+    boolean getTrucks();    
+    boolean commitTruckOrder(int truckID, String status, String date);
             
     /*CustomerGateway methods*/
     Customer getCustomerList(int i);
