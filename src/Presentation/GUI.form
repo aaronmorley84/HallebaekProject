@@ -1061,6 +1061,7 @@
                       <Component id="PackagePriceField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                       <Component id="AddPackageButton" alignment="0" max="32767" attributes="0"/>
                       <Component id="EditPackProdButton" pref="194" max="32767" attributes="0"/>
+                      <Component id="DeletePackageButton" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1109,7 +1110,9 @@
                                   <Component id="AddPackageButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="EditPackProdButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="108" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="DeletePackageButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="74" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane7" max="32767" attributes="0"/>
                           </Group>
@@ -1235,6 +1238,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditPackProdButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="DeletePackageButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Delete Package"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeletePackageButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
