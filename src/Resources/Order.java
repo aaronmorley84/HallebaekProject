@@ -37,7 +37,7 @@ public class Order {
         return success;
     }
     
-    public void removeFromOrder(Product prod) {
+    public void removeFromOrderList(Product prod) {
         orderList.remove(prod);
     }
     

@@ -869,7 +869,7 @@ public class UserFrame extends javax.swing.JFrame {
         Product prodForRemoval = (Product) jList2.getSelectedValue();
         int tempQuant = control1.getProduct(prodForRemoval.getProductID()).getQuantity() + prodForRemoval.getQuantity();
         control1.getProduct(prodForRemoval.getProductID()).setQuantity(tempQuant);
-        control2.removeFromOrder(prodForRemoval);
+        control2.removeFromOrderList(prodForRemoval);
         model2.removeElement(prodForRemoval);
         jList2.setModel(model2);
         int counter = 0;

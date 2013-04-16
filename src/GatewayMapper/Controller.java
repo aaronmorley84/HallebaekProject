@@ -65,8 +65,8 @@ public class Controller implements ControllerInterface{
     public boolean addItemToOrderList(Product prod){
         return orderController.addItemToOrderList(prod);
     }
-    public void removeFromOrder(Product prod){
-        orderController.removeFromOrder(prod);
+    public void removeFromOrderList(Product prod){
+        orderController.removeFromOrderList(prod);
     }
     public boolean addToCustomerOrderTable(int customerID, String startDate, String finishDate){
         return orderController.addToCustomerOrderTable(customerID, startDate, finishDate);

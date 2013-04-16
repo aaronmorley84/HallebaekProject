@@ -1427,7 +1427,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void OrderRemoveFromOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderRemoveFromOrderButtonActionPerformed
         Product prodForRemoval = (Product) OrderProductsInOrderList.getSelectedValue();
-        con.removeFromOrder(prodForRemoval);
+        con.removeFromOrderList(prodForRemoval);
         model5.removeElement(prodForRemoval);
         OrderProductsInOrderList.setModel(model5);
         int totalVolume = 0;

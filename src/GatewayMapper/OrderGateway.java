@@ -47,8 +47,8 @@ public class OrderGateway {
         return currentOrder.addItemToOrderList(prod);
     }
 
-    public void removeFromOrder(Product prod) {
-        currentOrder.removeFromOrder(prod);
+    public void removeFromOrderList(Product prod) {
+        currentOrder.removeFromOrderList(prod);
     }
 
     /*

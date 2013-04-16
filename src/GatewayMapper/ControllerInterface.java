@@ -29,7 +29,7 @@ public interface ControllerInterface {
     /*OrderGateway methods*/
     void currentOrder();
     boolean addItemToOrderList(Product prod);
-    void removeFromOrder(Product prod);
+    void removeFromOrderList(Product prod);
     boolean addToCustomerOrderTable(int customerID, String startDate, String finishDate);
     boolean addOrderToDB();
     int getTrucksRequired(int totalVolume);
