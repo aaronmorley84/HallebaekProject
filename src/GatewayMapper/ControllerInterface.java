@@ -52,6 +52,8 @@ public interface ControllerInterface {
     /*PackageGateway methods*/
     Packages getPackageList(int i);
     int getPackageListSize();
+    Product getPackageProductList(int i);
+    int getPackageProductListSize();
     boolean buildPackageList();
     boolean addPackage(String name, String description, int price);
     String printPackageList();
