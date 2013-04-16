@@ -148,6 +148,9 @@ public class Controller implements ControllerInterface{
     public boolean addProductsToPackageInDB(){
         return packageController.addProductsToPackageInDB();
     }
+    public boolean loadPackageProducts(){
+        return packageController.loadPackageProducts();
+    }
     /*
      * Methods for CheckerGateway(
      */
