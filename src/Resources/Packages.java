@@ -10,7 +10,7 @@ public class Packages {
             
     private int packageID, price;
     private String name, description;
-    ArrayList<Product> packageList = new ArrayList();
+    public ArrayList<Product> packageList = new ArrayList();
 
     public Packages(int packageID, String name, String description, int price) {
         this.packageID = packageID;

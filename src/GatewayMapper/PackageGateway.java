@@ -116,4 +116,33 @@ public class PackageGateway {
         }
         return temp;
     }//end of printlist
+    public boolean addProductsToPackageInDB() {
+        boolean success = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "INSERT into package_product "
+                + "VALUES (?,?,?)";
+        PreparedStatement statement = null;
+        for (int i = 0; i < currentPackage.packageList.size(); i++) {
+            try {
+                statement = con.prepareStatement(SQLString1);
+                statement.setInt(1, currentPackage.getPackageID());
+                statement.setInt(2, currentPackage.packageList.get(i).getProductID());
+                statement.setInt(3, currentPackage.packageList.get(i).getQuantity());
+                statement.executeUpdate();
+                success = true;
+            } catch (Exception e) {
+                System.out.println("packages Insertion error!");
+                System.out.println(e.getMessage());
+
+            } finally {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    System.out.println("Statement close error!");
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+        return success;
+    }
 }//end of PackageGateway
