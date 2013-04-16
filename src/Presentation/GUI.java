@@ -1554,9 +1554,9 @@ public class GUI extends javax.swing.JFrame {
         PackageNameField2.setText(PackageNameField.getText());
         con.loadPackageProducts();
         for (int i = 0; i < con.getPackageProductListSize(); i++) {
-            model5.addElement(con.getPackageProductList(i));
-            ProductsInPackageList.setModel(model5);
+            model5.addElement(con.getPackageProductList(i)); 
         }
+        ProductsInPackageList.setModel(model5);
         con.getAllProducts();
     }//GEN-LAST:event_EditPackProdButtonActionPerformed
 

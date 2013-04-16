@@ -1280,7 +1280,6 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jScrollPane8" min="-2" pref="181" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="OrderProductQuantityLabel1" min="-2" max="-2" attributes="0"/>
