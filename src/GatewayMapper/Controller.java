@@ -136,6 +136,12 @@ public class Controller implements ControllerInterface{
     public String printPackageList(){
         return packageController.printList();
     }
+    public boolean addItemToPackageList(Product prod){
+        return packageController.addItemToPackageList(prod);
+    }
+    public void removeFromPackageList(Product prod){
+        packageController.removeFromPackageList(prod);
+    }
     /*
      * Methods for CheckerGateway(
      */

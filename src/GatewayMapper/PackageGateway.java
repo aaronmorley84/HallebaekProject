@@ -5,6 +5,7 @@
 package GatewayMapper;
 import Resources.Packages;
 import DBConnection.*;
+import Resources.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class PackageGateway {
     
     ArrayList<Packages>packageList = new ArrayList<Packages>();
+    Packages currentPackage;
    
     
     public Packages getPackageList(int i){
@@ -25,6 +27,15 @@ public class PackageGateway {
     public int getPackageListSize(){
         return packageList.size();
     }
+    
+    public boolean addItemToPackageList(Product prod) {
+        return currentPackage.addItemToPackageList(prod);
+    }
+
+    public void removeFromPackageList(Product prod) {
+        currentPackage.removeFromPackageList(prod);
+    }
+    
     /*This method builds an arrayList of Packages from the database. */
     public boolean buildPackageList(){
         packageList.clear();
