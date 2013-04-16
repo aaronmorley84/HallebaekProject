@@ -22,16 +22,15 @@ public class OrderGateway {
     private ArrayList<TruckOrder> truckOrders;
     private ArrayList<Truck> availableTrucks;
     private ArrayList<Order> orders;
-    
     private Order currentOrder;
 
-    public OrderGateway() {    
+    public OrderGateway() {
         trucks = new ArrayList();
         orders = new ArrayList();
         truckOrders = new ArrayList();
         availableTrucks = new ArrayList();
     }
-    
+
     /*
      * Constructs an "empty" order with the unique order indentifier.
      */
@@ -39,7 +38,7 @@ public class OrderGateway {
         int ID = getUniqueOrderID();
         currentOrder = new Order(0, 0, 0, 0, 0, ID);
     }
-    
+
     /*
      * Methods for adding/removing products to/from the order.
      * Not using DB connection.
@@ -51,7 +50,7 @@ public class OrderGateway {
     public void removeFromOrder(Product prod) {
         currentOrder.removeFromOrder(prod);
     }
-    
+
     /*
      * US 3.1
      * User can add item(s) to customer
@@ -61,7 +60,7 @@ public class OrderGateway {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into Customer_Order "
-                          + "VALUES (orderseq.nextval,?,?,?)";
+                + "VALUES (orderseq.nextval,?,?,?)";
 
         PreparedStatement statement = null;
         try {
@@ -83,7 +82,7 @@ public class OrderGateway {
                 System.out.println(e.getMessage());
             }
         }
-        
+
         return success;
     }
 
@@ -116,13 +115,14 @@ public class OrderGateway {
         return success;
     }
     /*Pulls all existing orders from DB.*/
-    public boolean getOrders(){
+
+    public boolean getOrders() {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * "
                 + "FROM orders";
         PreparedStatement statement = null;
-        try{
+        try {
             statement = con.prepareStatement(SQLString1);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
@@ -135,13 +135,13 @@ public class OrderGateway {
                         rs.getInt(6)));
             }
             success = true;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Error in getting list of orders.");
             System.out.println(e.getMessage());
         } finally {
-            try{
+            try {
                 statement.close();
-            } catch (SQLException e){
+            } catch (SQLException e) {
                 System.out.println("Statement close error!");
                 System.out.println(e.getMessage());
             }
@@ -149,70 +149,74 @@ public class OrderGateway {
         return success;
     }
     /*Get list size of orders.*/
-    public int getOrderListSize(){
+
+    public int getOrderListSize() {
         return orders.size();
     }
-    
+
     /*
      * US 3.2
      * User can see number of trucks
      * needed for delivery from size of
      * products in customer order table,
      */
-    public int getTruckListSize(){
+    public int getTruckListSize() {
         return trucks.size();
     }
-    public int getTruckOrderListSize(){
+
+    public int getTruckOrderListSize() {
         return truckOrders.size();
     }
-    public TruckOrder getTruck(int index){
-        if (index<truckOrders.size()){
+
+    public TruckOrder getTruck(int index) {
+        if (index < truckOrders.size()) {
             return truckOrders.get(index);
-        }else{
+        } else {
             return null;
         }
     }
-    public int getTrucksRequired(int totalVolume){
+
+    public int getTrucksRequired(int totalVolume) {
         getTrucks();
         int amountOfTrucks = 0;
         int allTrucksCapacity = 0;
         for (int i = 0; i < trucks.size(); i++) {
-            allTrucksCapacity =+ trucks.get(i).getTruckCapacity();
+            allTrucksCapacity = +trucks.get(i).getTruckCapacity();
         }
-        try{
-            if (totalVolume < allTrucksCapacity){
+        try {
+            if (totalVolume < allTrucksCapacity) {
                 for (int i = 0; i < trucks.size(); i++) {
-                    while (totalVolume > 0){
-                        totalVolume =- trucks.get(i).getTruckCapacity();
+                    while (totalVolume > 0) {
+                        totalVolume = -trucks.get(i).getTruckCapacity();
                         amountOfTrucks++;
                     }
                 }
-            }else{
+            } else {
                 System.out.println("problem in 'getTrucksRequired(int)'");
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Something went wrong trucks required method.");
         }
         return amountOfTrucks;
     }
     /*Fills the trucks arraylist from the DB. */
-    public boolean getTrucks(){
+
+    public boolean getTrucks() {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT *"
-                            + "FROM trucks ";
+                + "FROM trucks ";
         String SQLString2 = "SELECT *"
-                            + "FROM truck_order ";
+                + "FROM truck_order ";
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 Truck truck = new Truck();
-                int truckID=rs.getInt(1);
-                String model=rs.getString(2);
-                int capacity=rs.getInt(3);
+                int truckID = rs.getInt(1);
+                String model = rs.getString(2);
+                int capacity = rs.getInt(3);
                 truck.setTruckID(truckID);
                 truck.setTruckName(model);
                 truck.setTruckCapacity(capacity);
@@ -227,7 +231,7 @@ public class OrderGateway {
         try {
             statement = con.prepareStatement(SQLString2);
             ResultSet rs = statement.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 int truckID = rs.getInt(1);
                 int orderID = rs.getInt(2);
                 String status = rs.getString(3);
@@ -236,12 +240,11 @@ public class OrderGateway {
                 truckOrders.add(truckOrder);
                 success = true;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Retrieval error from truck_orders!");
             System.out.println(e.getMessage());
             success = false;
-        }
-        finally {
+        } finally {
             try {
                 statement.close();
             } catch (SQLException e) {
@@ -251,12 +254,14 @@ public class OrderGateway {
         }
         return success;
     }
-    public void addToAvailableTrucks(Truck truck){
+
+    public void addToAvailableTrucks(Truck truck) {
         availableTrucks.add(truck);
     }
-    public Truck getTruckFromList(int truckID){
+
+    public Truck getTruckFromList(int truckID) {
         for (int i = 0; i < trucks.size(); i++) {
-            if(trucks.get(i).getTruckID() == truckID){
+            if (trucks.get(i).getTruckID() == truckID) {
                 return trucks.get(i);
             }
         }
@@ -270,56 +275,57 @@ public class OrderGateway {
      * Using the trucks arraylist. No DB
      * connection.
      */
-    
-    public boolean bookTrucks(int trucksForOrder){
+    public boolean bookTrucks(int trucksForOrder) {
         boolean enoughTrucks = false;
-        if (trucksForOrder < trucks.size()){
+        if (trucksForOrder < availableTrucks.size()) {
             enoughTrucks = true;
         }
-        return enoughTrucks;        
+        return enoughTrucks;
     }
     /* US 3.4 Continued with DB connection. */
-public boolean commitTruckOrder(int truckID, int orderID, String status, String date){
-boolean success = false;
-Connection con = ConnectionTools.getInstance().getCurrentConnection();
-String SQLString1 = "INSERT into truck_order "
-+ "VALUES (?, ?, ?, (select startdate from customer_order where orderid = ?)) ";
-PreparedStatement statement = null;
-try {
-statement = con.prepareStatement(SQLString1);
-statement.setInt(1, truckID);
-statement.setInt(2, orderID);
-statement.setString(3, status);
-statement.setInt(4, orderID);
-success = true; 
-} catch (Exception e) {
-System.out.println("Problem with ordering trucks.");
-System.out.println(e.getMessage());
-}
-finally {
-try {
-statement.close();
-} catch (SQLException e) {
-System.out.println("Statement close error!");
-System.out.println(e.getMessage());
-}
-}
-return success;
-}
+
+    public boolean commitTruckOrder(int truckID, int orderID, String status, String date) {
+        boolean success = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "INSERT into truck_order "
+                + "VALUES (?, ?, ?, (select startdate from customer_order where orderid = ?)) ";
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(SQLString1);
+            statement.setInt(1, truckID);
+            statement.setInt(2, orderID);
+            statement.setString(3, status);
+            statement.setInt(4, orderID);
+            success = true;
+        } catch (Exception e) {
+            System.out.println("Problem with ordering trucks.");
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println("Statement close error!");
+                System.out.println(e.getMessage());
+            }
+        }
+        return success;
+    }
     /*
      * US 3.5
      * User can check if assemblers are
      * available for given date from cus-
      * tomer order table.
      */
-    public boolean checkAssemblerAvailable(int startDate){
+
+    public boolean checkAssemblerAvailable(int startDate) {
         boolean available = false;
-        
+
         return available;
     }
     /*
      * Fetches a unique identifier for each order.
      */
+
     public int getUniqueOrderID() {
         int temp = 0;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();

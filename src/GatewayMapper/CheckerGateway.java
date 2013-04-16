@@ -24,7 +24,7 @@ public class CheckerGateway {
         boolean available = false;
         int counter = 0;
         while(counter<og.getTruckOrderListSize()){
-            if(!og.getTruck(counter).getDate().equals(date)){
+            if(og.getTruck(counter).getStatus().equals(true)){ //getDate().equals(date)){
                 og.addToAvailableTrucks(og.getTruckFromList(og.getTruck(counter).getTruckID()));
                 available = true;
             }
