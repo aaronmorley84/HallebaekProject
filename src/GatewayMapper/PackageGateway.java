@@ -28,6 +28,10 @@ public class PackageGateway {
         return packageList.size();
     }
     
+    public void setCurrentPackage(Packages pack){
+        currentPackage = pack;
+    }
+    
     public boolean addItemToPackageList(Product prod) {
         return currentPackage.addItemToPackageList(prod);
     }

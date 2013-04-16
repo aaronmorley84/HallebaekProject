@@ -142,6 +142,9 @@ public class Controller implements ControllerInterface{
     public void removeFromPackageList(Product prod){
         packageController.removeFromPackageList(prod);
     }
+    public void setCurrentPackage(Packages pack){
+        packageController.setCurrentPackage(pack);
+    }
     /*
      * Methods for CheckerGateway(
      */
