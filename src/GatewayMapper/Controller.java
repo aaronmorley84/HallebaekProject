@@ -157,6 +157,12 @@ public class Controller implements ControllerInterface{
     public boolean loadPackageProducts(){
         return packageController.loadPackageProducts();
     }
+    public boolean deletePackageProducts(){
+        return packageController.deletePackageProducts();
+    }
+    public boolean deletePackage(){
+        return packageController.deletePackage();
+    }
     /*
      * Methods for CheckerGateway(
      */
