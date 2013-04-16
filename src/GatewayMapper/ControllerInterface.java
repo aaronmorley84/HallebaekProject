@@ -28,12 +28,14 @@ public interface ControllerInterface {
     
     /*OrderGateway methods*/
     void currentOrder();
+    void currentTruckOrder();
     boolean addItemToOrderList(Product prod);
     void removeFromOrderList(Product prod);
     boolean addToCustomerOrderTable(int customerID, String startDate, String finishDate);
     boolean addOrderToDB();
     int getTrucksRequired(int totalVolume);
     boolean getTrucks();
+    int getAvailableTrucksSize();
     boolean bookTrucks(int trucksForOrder);
     int getUniqueOrderID();
     boolean getOrders();
@@ -59,5 +61,5 @@ public interface ControllerInterface {
     void removeFromPackageList(Product prod);
     
     /*CheckerGateway methods*/
-    boolean checkTruckAvailability(int truckID, String date);
+    //boolean checkTruckAvailability(int truckID, String date);
 }

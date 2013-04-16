@@ -1396,6 +1396,7 @@ public class GUI extends javax.swing.JFrame {
 
         con.currentOrder();
         con.getAllProducts();
+        
     }//GEN-LAST:event_OrderNewOrderButtonActionPerformed
 
     private void OrderAddProductToOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderAddProductToOrderButtonActionPerformed

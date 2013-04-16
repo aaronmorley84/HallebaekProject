@@ -1,13 +1,15 @@
 
 package Resources;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Kris
  */
 public class TruckOrder {
 
-    
+    ArrayList<Truck> trucksInOrder = new ArrayList<>();
     int truckID, orderID;
     String status;
     String date;
@@ -18,7 +20,14 @@ public class TruckOrder {
         this.status = status;
         this.date = date;
     }
-
+    
+    public void addTruck(Truck truck){
+        trucksInOrder.add(truck);
+    }
+    public void removeTruck(Truck truck){
+        trucksInOrder.remove(truck);
+    }
+    
     public int getTruckID() {
         return truckID;
     }

@@ -59,8 +59,14 @@ public class Controller implements ControllerInterface{
     public int getOrderListSize(){
         return orderController.getOrderListSize();
     }
+    public int getAvailableTrucksSize(){
+        return orderController.getAvailableTrucksSize();
+    }
     public void currentOrder(){
         orderController.currentOrder();
+    }
+    public void currentTruckOrder(){
+        orderController.currentTruckOrder();
     }
     public boolean addItemToOrderList(Product prod){
         return orderController.addItemToOrderList(prod);
@@ -145,7 +151,7 @@ public class Controller implements ControllerInterface{
     /*
      * Methods for CheckerGateway(
      */
-    public boolean checkTruckAvailability(int truckID, String date){
-        return checkerController.checkTruckAvailability(truckID, date);
-    }
+//    public boolean checkTruckAvailability(int truckID, String date){
+//        return checkerController.checkTruckAvailability(truckID, date);
+//    }
 }

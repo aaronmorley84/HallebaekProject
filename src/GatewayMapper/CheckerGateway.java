@@ -20,15 +20,19 @@ public class CheckerGateway {
      * is available for given date from
      * customer order table.
      */
-    public boolean checkTruckAvailability(int truckID, String date){
-        boolean available = false;
-        int counter = 0;
-        while(counter<og.getTruckOrderListSize()){
-            if(og.getTruck(counter).getStatus().equals(true)){ //getDate().equals(date)){
-                og.addToAvailableTrucks(og.getTruckFromList(og.getTruck(counter).getTruckID()));
-                available = true;
-            }
-        }
-        return available;
-    }
+    
+//    public boolean checkTruckAvailability() {//int truckID, String date){
+//        boolean available = false;
+//        int counter = 0;
+////        while(counter<og.getTruckOrderListSize()){
+////            if(og.getTruck(counter).getStatus().equals(true)){ //getDate().equals(date)){
+////                og.addToAvailableTrucks(og.getTruckFromList(og.getTruck(counter).getTruckID()));
+////                available = true;
+////            }
+//        while(counter<og.getAvailableTrucksListSize()){
+//            
+//            counter++;
+//        }
+//        return available;
+//    }
 }

@@ -22,8 +22,10 @@ public class OrderGateway {
     private ArrayList<TruckOrder> truckOrders;
     private ArrayList<Truck> availableTrucks;
     private ArrayList<Order> orders;
+    
     private Order currentOrder;
-
+    private TruckOrder currentTruckOrder;
+    
     public OrderGateway() {
         trucks = new ArrayList();
         orders = new ArrayList();
@@ -37,6 +39,12 @@ public class OrderGateway {
     public void currentOrder() {
         int ID = getUniqueOrderID();
         currentOrder = new Order(0, 0, 0, 0, 0, ID);
+    }
+    /*
+     * Constructs an "empty" truck order with same ID as current order.
+     */
+    public void currentTruckOrder(){
+        currentTruckOrder = new TruckOrder(0,currentOrder.getOrderID(),null,null);
     }
 
     /*
@@ -89,7 +97,7 @@ public class OrderGateway {
     public boolean addOrderToDB() {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "INSERT into ordertable "
+        String SQLString1 = "INSERT into order_product "
                 + "VALUES (orderseq.currval,?,?)";
         PreparedStatement statement = null;
         for (int i = 0; i < currentOrder.getListInstance().size(); i++) {
@@ -167,11 +175,21 @@ public class OrderGateway {
     public int getTruckOrderListSize() {
         return truckOrders.size();
     }
+    public int getAvailableTrucksSize(){
+        return availableTrucks.size();
+    }
 
-    public TruckOrder getTruck(int index) {
+    public TruckOrder getTruckOrder(int index) {
         if (index < truckOrders.size()) {
             return truckOrders.get(index);
         } else {
+            return null;
+        }
+    }
+    public Truck getAvailableTruck(int index){
+        if(index < availableTrucks.size()){
+            return availableTrucks.get(index);
+        }else {
             return null;
         }
     }
@@ -291,6 +309,11 @@ public class OrderGateway {
                 + "VALUES (?, ?, ?, (select startdate from customer_order where orderid = ?)) ";
         PreparedStatement statement = null;
         try {
+            for (int i = 0; i < availableTrucks.size(); i++) {
+                availableTrucks.get(i).setTruckAvailable(false);
+                currentTruckOrder.addTruck(availableTrucks.get(i));
+                availableTrucks.remove(i);
+            }
             statement = con.prepareStatement(SQLString1);
             statement.setInt(1, truckID);
             statement.setInt(2, orderID);
