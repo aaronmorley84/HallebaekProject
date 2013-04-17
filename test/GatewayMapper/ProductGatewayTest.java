@@ -7,7 +7,6 @@ package GatewayMapper;
 import DBConnection.ConnectionTools;
 import Resources.Product;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -53,7 +52,7 @@ public class ProductGatewayTest {
     @Test
     public void testAddProduct_Product() {
         System.out.println("addProduct");
-        cont.buildCustomerList();
+       
         boolean expResult = true;
         boolean result = cont.addProduct("Khann",2,3,"Wrath",4);
         
@@ -84,9 +83,10 @@ public class ProductGatewayTest {
         System.out.println("searchProdByName");
         String name = "Wealth";
         cont.getAllProducts();
-        String expResult = "Wealth";
+        boolean expResult = true;
         String result = cont.searchProdByName(name);
         assertEquals(expResult, result);
+        
     }
 
     /**
