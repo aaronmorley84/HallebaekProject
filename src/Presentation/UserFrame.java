@@ -5,6 +5,7 @@ import GatewayMapper.*;
 import Resources.Product;
 import Resources.Truck;
 import Resources.TruckOrder;
+import java.sql.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -1064,11 +1065,14 @@ public class UserFrame extends javax.swing.JFrame {
         String status = "Delivering";
 
         if (!customerID.equals("") && !startDate.equals("") && !finishDate.equals("")) {
-            control2.addToCustomerOrderTable(Integer.parseInt(customerID), startDate, finishDate);
-            control2.commitTruckOrder(Integer.parseInt(textFieldTruckIDr.getText()), status, startDate);
-            JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
+            if(control2.addToCustomerOrderTable(Integer.parseInt(customerID), startDate, finishDate) 
+                    && control2.commitTruckOrder(Integer.parseInt(textFieldTruckIDr.getText()), status, startDate)){
+                JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
+            } else{
+                JOptionPane.showMessageDialog(this, "Error saving order!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Could not save to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "One or more fields are empty!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_buttonCommitNewOrderActionPerformed
 
