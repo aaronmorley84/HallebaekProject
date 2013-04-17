@@ -123,6 +123,12 @@ public class Controller implements ControllerInterface{
     public int getPackageListSize() {
         return packageController.getPackageListSize();
     }
+    public Product getPackageProductList(int i) {
+        return packageController.getPackageProductList(i);
+    }
+    public int getPackageProductListSize() {
+        return packageController.getPackageProductListSize();
+    }
     public boolean buildPackageList(){
         return packageController.buildPackageList();
     }
@@ -140,6 +146,18 @@ public class Controller implements ControllerInterface{
     }
     public void setCurrentPackage(Packages pack){
         packageController.setCurrentPackage(pack);
+    }
+    public boolean addProductsToPackageInDB(){
+        return packageController.addProductsToPackageInDB();
+    }
+    public boolean loadPackageProducts(){
+        return packageController.loadPackageProducts();
+    }
+    public boolean deletePackageProducts(){
+        return packageController.deletePackageProducts();
+    }
+    public boolean deletePackage(){
+        return packageController.deletePackage();
     }
     /*
      * Methods for CheckerGateway(

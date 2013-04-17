@@ -1061,6 +1061,7 @@
                       <Component id="PackagePriceField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                       <Component id="AddPackageButton" alignment="0" max="32767" attributes="0"/>
                       <Component id="EditPackProdButton" pref="194" max="32767" attributes="0"/>
+                      <Component id="DeletePackageButton" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1109,7 +1110,9 @@
                                   <Component id="AddPackageButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="EditPackProdButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="108" max="32767" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="DeletePackageButton" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="74" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane7" max="32767" attributes="0"/>
                           </Group>
@@ -1237,6 +1240,14 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditPackProdButtonActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JButton" name="DeletePackageButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Delete Package"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeletePackageButtonActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="EditPackagePanel">
@@ -1269,7 +1280,6 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jScrollPane8" min="-2" pref="181" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="OrderProductQuantityLabel1" min="-2" max="-2" attributes="0"/>
@@ -1279,6 +1289,10 @@
                                           <Component id="AddProductToPackageButton" min="-2" pref="169" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="RemoveFromPackageButto" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+                                          <Component id="SavePackageButton" min="-2" pref="149" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                           </Group>
@@ -1344,6 +1358,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                           <Component id="RemoveFromPackageButto" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="SavePackageButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="151" max="32767" attributes="0"/>
@@ -1459,6 +1476,14 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="SavePackageButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Save Package"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SavePackageButtonActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

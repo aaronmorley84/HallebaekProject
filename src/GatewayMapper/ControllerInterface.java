@@ -52,12 +52,18 @@ public interface ControllerInterface {
     /*PackageGateway methods*/
     Packages getPackageList(int i);
     int getPackageListSize();
+    Product getPackageProductList(int i);
+    int getPackageProductListSize();
     boolean buildPackageList();
     boolean addPackage(String name, String description, int price);
     String printPackageList();
     boolean addItemToPackageList(Product prod);
     void removeFromPackageList(Product prod);
     void setCurrentPackage(Packages pack);
+    boolean addProductsToPackageInDB();
+    boolean loadPackageProducts();
+    boolean deletePackageProducts();
+    boolean deletePackage();
     
     /*CheckerGateway methods*/
     //boolean checkTruckAvailability(int truckID, String date);
