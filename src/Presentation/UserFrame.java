@@ -790,7 +790,7 @@ public class UserFrame extends javax.swing.JFrame {
             int counter = 0;
             model1.clear();
             while (counter < control1.getProductListsize()) {
-                model1.addElement(control1.showProducts(counter));
+                model1.addElement(control1.showProductsFromArray(counter));
                 counter++;
             }
             listAllProducts.setModel(model1);
@@ -818,7 +818,7 @@ public class UserFrame extends javax.swing.JFrame {
                 int counter = 0;
                 model2.clear();
                 while (counter < control1.getProductListsize()) {
-                    model2.addElement(control1.showProducts(counter));
+                    model2.addElement(control1.showProductsFromArray(counter));
                     counter++;
                 }
                 listSearchResult.setModel(model2);
@@ -830,7 +830,7 @@ public class UserFrame extends javax.swing.JFrame {
                 int counter = 0;
                 model2.clear();
                 while (counter < control1.getProductListsize()) {
-                    model2.addElement(control1.showProducts(counter));
+                    model2.addElement(control1.showProductsFromArray(counter));
                     counter++;
                 }
                 listSearchResult.setModel(model2);
@@ -843,7 +843,7 @@ public class UserFrame extends javax.swing.JFrame {
                     int counter = 0;
                     model2.clear();
                     while (counter < control1.getProductListsize()) {
-                        model2.addElement(control1.showProducts(counter));
+                        model2.addElement(control1.showProductsFromArray(counter));
                         counter++;
                     }
                     listSearchResult.setModel(model2);
@@ -952,7 +952,7 @@ public class UserFrame extends javax.swing.JFrame {
         int counter = 0;
         model1.clear();
         while (counter < control1.getProductListsize()) {
-            model1.addElement(control1.showProducts(counter));
+            model1.addElement(control1.showProductsFromArray(counter));
             counter++;
         }
         jList1.setModel(model1);
@@ -963,7 +963,7 @@ public class UserFrame extends javax.swing.JFrame {
     /*US 3.1 Demo(extra feature : still does not remove a specified quantity but the whole product) */
     private void buttonRemoveFromOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoveFromOrderActionPerformed
         Product prodForRemoval = (Product) jList2.getSelectedValue();
-        int tempQuant = control1.getProduct(prodForRemoval.getProductID()).getQuantity() + prodForRemoval.getQuantity();
+        int tempQuant = control1.getProductFromArray(prodForRemoval.getProductID()).getQuantity() + prodForRemoval.getQuantity();
         prodForRemoval.setQuantity(tempQuant);
         control2.removeFromOrderList(prodForRemoval);
         model2.removeElement(prodForRemoval);
@@ -973,7 +973,7 @@ public class UserFrame extends javax.swing.JFrame {
         int counter = 0;
         model1.clear();
         while (counter < control1.getProductListsize()) {
-            model1.addElement(control1.showProducts(counter));
+            model1.addElement(control1.showProductsFromArray(counter));
             counter++;
         }
         jList1.setModel(model1);
@@ -1001,7 +1001,7 @@ public class UserFrame extends javax.swing.JFrame {
                 model1.clear();
                 int counter = 0;
                 while (counter < control1.getProductListsize()) {
-                    model1.addElement(control1.showProducts(counter));
+                    model1.addElement(control1.showProductsFromArray(counter));
                     counter++;
                 }
                 listAllProducts.setModel(model1);
@@ -1030,12 +1030,12 @@ public class UserFrame extends javax.swing.JFrame {
             int counter = 0;
             model1.clear();
             while (counter < control1.getProductListsize()) {
-                model1.addElement(control1.showProducts(counter));
+                model1.addElement(control1.showProductsFromArray(counter));
                 counter++;
             }
             jList1.setModel(model1);
         } else {
-            model1.addElement(control1.searchProdByName(name));
+            model1.addElement(control1.searchProdByNameinArray(name));
             jList1.setModel(model1);
             textFieldSearchForOrder.setText("");
         }

@@ -1412,7 +1412,7 @@ public class GUI extends javax.swing.JFrame {
             OrderProductsList.setModel(model4);
         } else {
             model4.clear();
-            model4.addElement(con.searchProdByName(name));
+            model4.addElement(con.searchProdByNameFromArray(name));
             OrderProductsList.setModel(model4);
         }
         OrderProductNameSearchField.setText("");
@@ -1543,7 +1543,7 @@ public class GUI extends javax.swing.JFrame {
             OrderProductsList1.setModel(model4);
         } else {
             model4.clear();
-            model4.addElement(con.searchProdByName(name));
+            model4.addElement(con.searchProdByNameFromArray(name));
             OrderProductsList1.setModel(model4);
         }
         OrderProductNameSearchField1.setText("");
