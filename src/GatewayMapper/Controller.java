@@ -20,11 +20,11 @@ public class Controller implements ControllerInterface{
     /*
      * methods for ProductGateway()
      */
-    public Product getProduct(int ID){
-        return prodController.getProduct(ID);
+    public Product getProductFromArray(int ID){
+        return prodController.getProductFromArray(ID);
     }
-    public String searchProdByName(String name) {
-        return prodController.searchProdByName(name);
+    public Product searchProdByNameFromArray(String name) {
+        return prodController. searchProdByNameinArray(name);
     }
     public boolean addProduct(String name, int volume, int quantity, String description, int price){
         return prodController.addProduct(name, volume, quantity, description, price);
@@ -39,7 +39,7 @@ public class Controller implements ControllerInterface{
         return prodController.getProductListsize();
     }
     public Product showProducts(int index) {
-        return prodController.showProducts(index);
+        return prodController.getProductFromArray(index);
     }
     public boolean getAllProducts() {
         return prodController.getAllProducts();

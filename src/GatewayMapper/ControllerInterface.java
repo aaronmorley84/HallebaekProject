@@ -15,8 +15,8 @@ import Resources.Packages;
 public interface ControllerInterface {
     
     /*ProductGateway methods*/
-    Product getProduct(int ID);
-    String searchProdByName(String name);
+    Product getProductFromArray(int ID);
+    Product searchProdByNameFromArray(String name);
     boolean addProduct(String name, int volume, int quantity, String description, int price);
     boolean editProduct(int ID, String name, int volume, int quantity, String description, int price);
     boolean deleteProduct(int ID);

@@ -20,7 +20,7 @@ public class ProductGateway {
         products = new ArrayList<>();
             }
 
-    public void addProduct(Product product) {
+    public void addProductToArray(Product product) {
         products.add(product);
     }
 
@@ -32,26 +32,26 @@ public class ProductGateway {
      * Not using DB connection.
      */
 
-    public String searchProdByName(String name) {
-        String found = "not found";
+    public Product searchProdByNameinArray(String name) {
+  
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getName().equals(name)) {
-                found = "found";
-                return products.get(i).getName();
+             
+                return products.get(i);
             }
         }
-        System.out.println(found);
+        
         return null;
     }
 
-    public Product showProducts(int index) {
+    public Product showProductsFromArray(int index) {
         if (index < products.size()) {
             return products.get(index);
         } else {
             return null;
         }
     }
-    public Product getProduct(int ID) {
+    public Product getProductFromArray(int ID) {
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getProductID() == ID) {
                 return products.get(i);
