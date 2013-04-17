@@ -32,12 +32,12 @@ public class ProductGateway {
      * Not using DB connection.
      */
 
-    public Product searchProdByName(String name) {
+    public String searchProdByName(String name) {
         String found = "not found";
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getName().equals(name)) {
                 found = "found";
-                return products.get(i);
+                return products.get(i).getName();
             }
         }
         System.out.println(found);
@@ -51,13 +51,13 @@ public class ProductGateway {
             return null;
         }
     }
-    public Product getProduct(int ID) {
+    public int getProduct(int ID) {
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getProductID() == ID) {
-                return products.get(i);
+                return products.get(i).getProductID();
             }
         }
-        return null;
+        return 0;
     }
     
     /*
