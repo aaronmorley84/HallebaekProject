@@ -18,5 +18,4 @@ public class OrderBalanceGateway {
     this.orders = orders;
 } 
     
-    public 
 }
