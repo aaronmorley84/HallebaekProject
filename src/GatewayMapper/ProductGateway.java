@@ -51,13 +51,13 @@ public class ProductGateway {
             return null;
         }
     }
-    public int getProduct(int ID) {
+    public Product getProduct(int ID) {
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getProductID() == ID) {
-                return products.get(i).getProductID();
+                return products.get(i);
             }
         }
-        return 0;
+        return null;
     }
     
     /*

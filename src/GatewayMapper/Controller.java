@@ -20,7 +20,7 @@ public class Controller implements ControllerInterface{
     /*
      * methods for ProductGateway()
      */
-    public int getProduct(int ID){
+    public Product getProduct(int ID){
         return prodController.getProduct(ID);
     }
     public String searchProdByName(String name) {
