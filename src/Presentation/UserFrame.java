@@ -963,8 +963,8 @@ public class UserFrame extends javax.swing.JFrame {
     /*US 3.1 Demo(extra feature : still does not remove a specified quantity but the whole product) */
     private void buttonRemoveFromOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoveFromOrderActionPerformed
         Product prodForRemoval = (Product) jList2.getSelectedValue();
-        int tempQuant = control1.getProduct(prodForRemoval.getProductID()).getQuantity() + prodForRemoval.getQuantity();
-        control1.getProduct(prodForRemoval.getProductID()).setQuantity(tempQuant);
+        int tempQuant = control1.getProduct(prodForRemoval.getQuantity() + prodForRemoval.getQuantity());
+        prodForRemoval.setQuantity(tempQuant);
         control2.removeFromOrderList(prodForRemoval);
         model2.removeElement(prodForRemoval);
         jList2.setModel(model2);
@@ -997,7 +997,7 @@ public class UserFrame extends javax.swing.JFrame {
                 model2.addElement(newProduct);
                 jList2.setModel(model2);
                 prodForOrder.setQuantity(prodForOrder.getQuantity() - (int) spinnerQuantityToOrder.getValue());
-                control1.getProduct(prodForOrder.getProductID()).setQuantity(prodForOrder.getQuantity());
+                prodForOrder.setQuantity(prodForOrder.getQuantity());
                 model1.clear();
                 int counter = 0;
                 while (counter < control1.getProductListsize()) {
