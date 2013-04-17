@@ -38,7 +38,7 @@ public interface ControllerInterface {
     int getUniqueOrderID();
     int getTrucksRequired(int totalVolume);
     boolean getTrucks();    
-    boolean commitTruckOrder(int truckID, String status, String date);
+    boolean commitTruckOrder();
             
     /*CustomerGateway methods*/
     Customer getCustomerList(int i);

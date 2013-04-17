@@ -61,7 +61,7 @@ public class Order {
         if (discount < 1.0){
             balance = (int) (balance - ((balance/100)*discount));
         }
-    }
+    }    
     public int getBalance(){ 
         return balance;
     }

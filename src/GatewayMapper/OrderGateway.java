@@ -22,8 +22,8 @@ public class OrderGateway {
     private ArrayList<TruckOrder> truckOrders;
     private ArrayList<Order> orders;
     
-    private Order currentOrder;
-    private TruckOrder currentTruckOrder;
+    public Order currentOrder;
+    public TruckOrder currentTruckOrder;
 
     public OrderGateway() {
         trucks = new ArrayList();
@@ -43,7 +43,7 @@ public class OrderGateway {
      */
 
     public void currentTruckOrder() {
-        currentTruckOrder = new TruckOrder(0, currentOrder.getOrderID(), null, null);
+        currentTruckOrder = new TruckOrder(currentOrder.getOrderID(), 0, null, null);
     }
 
     /*
@@ -76,7 +76,6 @@ public class OrderGateway {
             statement.setDate(2, Date.valueOf(startDate));
             statement.setDate(3, Date.valueOf(finishDate));
             statement.executeUpdate();
-            addOrderToDB();
             success = true;
         } catch (Exception e) {
             System.out.println("Insertion error!");
@@ -250,11 +249,11 @@ public class OrderGateway {
             statement = con.prepareStatement(SQLString2);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                int truckID = rs.getInt(1);
-                int orderID = rs.getInt(2);
+                int orderID = rs.getInt(1);
+                int truckID = rs.getInt(2);
                 String status = rs.getString(3);
                 String date = rs.getString(4);
-                TruckOrder truckOrder = new TruckOrder(truckID, orderID, status, date);
+                TruckOrder truckOrder = new TruckOrder(orderID, truckID, status, date);
                 truckOrders.add(truckOrder);
                 success = true;
             }
@@ -295,7 +294,9 @@ public class OrderGateway {
             }
         }
     }
-    public boolean commitTruckOrder(int truckID, String status, String date) {
+    
+    public boolean commitTruckOrder() {
+        int orderid = currentOrder.getOrderID();
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into truck_order "
@@ -303,10 +304,10 @@ public class OrderGateway {
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, truckID);
-            statement.setInt(2, currentOrder.getOrderID());
-            statement.setString(3, status);
-            statement.setDate(4, Date.valueOf(date));
+            statement.setInt(1, currentTruckOrder.getOrderID());    
+            statement.setInt(2, currentTruckOrder.getTruckID());        
+            statement.setString(3, currentTruckOrder.getStatus());
+            statement.setDate(4, Date.valueOf(currentTruckOrder.getDate()));
             statement.executeUpdate();
             success = true;
         } catch (Exception e) {

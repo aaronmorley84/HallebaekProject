@@ -14,7 +14,7 @@ public class TruckOrder {
     String status;
     String date;
 
-    public TruckOrder(int truckID, int orderID, String status, String date) {
+    public TruckOrder( int orderID, int truckID, String status, String date) {
         this.truckID = truckID;
         this.orderID = orderID;
         this.status = status;

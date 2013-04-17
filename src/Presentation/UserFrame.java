@@ -1062,17 +1062,26 @@ public class UserFrame extends javax.swing.JFrame {
         String customerID = textFieldNewOrderCustID.getText();
         String startDate = textFieldNewOrderStartDate.getText();
         String finishDate = textFieldNewOrderEndDate.getText();
+        int truckid = Integer.parseInt(textFieldTruckIDr.getText());
         String status = "Delivering";
-
+        String message = null;
+        control2.currentTruckOrder.setTruckID(truckid);
+        control2.currentTruckOrder.setStatus(status);
+        control2.currentTruckOrder.setDate(startDate);
+        
         if (!customerID.equals("") && !startDate.equals("") && !finishDate.equals("")) {
-            if(control2.addToCustomerOrderTable(Integer.parseInt(customerID), startDate, finishDate) 
-                    && control2.commitTruckOrder(Integer.parseInt(textFieldTruckIDr.getText()), status, startDate)){
-                JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
-            } else{
-                JOptionPane.showMessageDialog(this, "Error saving order!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            if(control2.addToCustomerOrderTable(Integer.parseInt(customerID), startDate, finishDate)&&control2.addOrderToDB()){
+                message = "Order saved!";
+                if(!textFieldTruckIDr.getText().isEmpty()){
+                    if(control2.commitTruckOrder()){
+                        message = "Order and truck delivery saved!";
+                    }
+                }
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "One or more fields are empty!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, message, "SAVED", JOptionPane.INFORMATION_MESSAGE);
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "You must enter start & finish date and a customer ID!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_buttonCommitNewOrderActionPerformed
 

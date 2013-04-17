@@ -83,8 +83,8 @@ public class Controller implements ControllerInterface{
     public boolean getTrucks(){
         return orderController.getTrucks();
     }
-    public boolean commitTruckOrder(int truckID, String status, String date){
-        return orderController.commitTruckOrder(truckID, status, date);
+    public boolean commitTruckOrder(){
+        return orderController.commitTruckOrder();
     }
     public int getUniqueOrderID(){
         return orderController.getUniqueOrderID();
