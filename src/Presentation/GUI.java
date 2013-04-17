@@ -1477,15 +1477,15 @@ public class GUI extends javax.swing.JFrame {
           for customer order (if available)*/
         
         int trucksForOrder = Integer.parseInt(OrderTrucksNeededField.getText());
-        if (con.bookTrucks(trucksForOrder)){
-            if (con.commitTruckOrder(0,0,"","")){
-                JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                JOptionPane.showMessageDialog(this, "Could not save truck order to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        }else {
-            JOptionPane.showMessageDialog(this, "Not enough trucks for delivery!", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+//        if (con.bookTrucks(trucksForOrder)){
+//            if (con.commitTruckOrder(0,0,"","")){
+//                JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
+//            }else{
+//                JOptionPane.showMessageDialog(this, "Could not save truck order to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
+//        }else {
+//            JOptionPane.showMessageDialog(this, "Not enough trucks for delivery!", "ERROR", JOptionPane.ERROR_MESSAGE);
+//        }
     }//GEN-LAST:event_OrderSaveOrderButtonActionPerformed
 
     private void AddPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPackageButtonActionPerformed
