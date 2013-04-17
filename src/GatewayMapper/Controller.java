@@ -20,10 +20,10 @@ public class Controller implements ControllerInterface{
     /*
      * methods for ProductGateway()
      */
-    public Product getProduct(int ID){
+    public int getProduct(int ID){
         return prodController.getProduct(ID);
     }
-    public Product searchProdByName(String name) {
+    public String searchProdByName(String name) {
         return prodController.searchProdByName(name);
     }
     public boolean addProduct(String name, int volume, int quantity, String description, int price){
