@@ -110,29 +110,27 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="290" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="MainMenuLabel" alignment="0" min="-2" pref="285" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
-                          <Component id="MainMenuLabel" min="-2" pref="285" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="295" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="CustomerMenuButton" pref="215" max="32767" attributes="0"/>
+                              <Component id="CustomerMenuButton" max="32767" attributes="0"/>
                               <Component id="ProductMenuButton" max="32767" attributes="0"/>
                               <Component id="OrderMenuButton" max="32767" attributes="0"/>
-                              <Component id="PackageMenuButton" max="32767" attributes="0"/>
+                              <Component id="PackageMenuButton" min="-2" pref="215" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="358" max="32767" attributes="0"/>
+                  <EmptySpace pref="325" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="MainMenuLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                   <Component id="CustomerMenuButton" min="-2" pref="58" max="-2" attributes="0"/>
@@ -142,7 +140,7 @@
                   <Component id="OrderMenuButton" min="-2" pref="58" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="PackageMenuButton" min="-2" pref="64" max="-2" attributes="0"/>
-                  <EmptySpace pref="193" max="32767" attributes="0"/>
+                  <EmptySpace pref="218" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -201,14 +199,14 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="263" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="219" max="-2" attributes="0"/>
                           <Component id="CustomerMenuLabel" min="-2" pref="324" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="CustPhoneLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="CustomerEmailLabel" min="-2" max="-2" attributes="0"/>
@@ -219,16 +217,16 @@
                               <Component id="CustomerAddressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="CustomerAddressField" alignment="0" max="32767" attributes="0"/>
                               <Component id="CustomerEmailField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jScrollPane1" pref="226" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" max="32767" attributes="0"/>
                               <Component id="AddCustomerButton" alignment="0" max="32767" attributes="0"/>
                               <Component id="AddEditPhoneButton" max="32767" attributes="0"/>
-                              <Component id="SaveCustomerChangeButton" max="32767" attributes="0"/>
+                              <Component id="SaveCustomerChangeButton" min="-2" pref="226" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="ExistingCustLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="GetCustomerButton" min="-2" pref="246" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jScrollPane2" min="-2" pref="246" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
@@ -239,14 +237,14 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="140" max="32767" attributes="0"/>
+                  <EmptySpace pref="143" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="CustomerMenuLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -283,21 +281,21 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="GetCustomerButton" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                                   <Component id="EditCustomerButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="DeleteCustomerbutton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane2" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" min="-2" pref="379" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                  <EmptySpace pref="83" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -450,53 +448,57 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="ProductIDLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                      <Component id="ProductNameLabel" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
-                      <Component id="ProductVolumeLabel" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                      <Component id="AddProductButton" alignment="0" pref="199" max="32767" attributes="0"/>
-                      <Component id="ProductDescriptionField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="ProductPriceField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="ProductQuantityField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="ProductVolumeField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="ProductIDField" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
-                      <Component id="ProductNameField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="ProductQtyLabel" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
-                      <Component id="ProductPriceLabel" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
-                      <Component id="jLabel1" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
-                      <Component id="SaveProductChangesButton" alignment="0" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="50" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="productListLabel" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="GetProductsButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jScrollPane3" alignment="0" pref="247" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="DeleteProductButton" max="32767" attributes="0"/>
-                              <Component id="EditProductButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="SearchForAProduct" max="32767" attributes="0"/>
+                              <Component id="ProductIDLabel" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                              <Component id="ProductNameLabel" alignment="0" min="-2" pref="102" max="-2" attributes="0"/>
+                              <Component id="ProductVolumeLabel" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                              <Component id="AddProductButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ProductDescriptionField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ProductPriceField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ProductQuantityField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ProductVolumeField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ProductIDField" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                              <Component id="ProductNameField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="ProductQtyLabel" alignment="0" min="-2" pref="111" max="-2" attributes="0"/>
+                              <Component id="ProductPriceLabel" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                              <Component id="SaveProductChangesButton" alignment="0" min="-2" pref="199" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="productListLabel" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="GetProductsButton" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane3" alignment="0" min="-2" pref="247" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="DeleteProductButton" max="32767" attributes="0"/>
+                                      <Component id="EditProductButton" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="SearchForAProduct" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="155" max="-2" attributes="0"/>
+                          <Component id="ProductMenuLabel" min="-2" pref="339" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="211" max="32767" attributes="0"/>
-                  <Component id="ProductMenuLabel" min="-2" pref="339" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="300" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="ProductMenuLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -505,7 +507,7 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Component id="ProductIDField" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="ProductNameLabel" min="-2" max="-2" attributes="0"/>
@@ -536,7 +538,7 @@
                           <Component id="GetProductsButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="SearchForAProduct" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                   <Component id="EditProductButton" min="-2" max="-2" attributes="0"/>
@@ -547,7 +549,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="116" max="32767" attributes="0"/>
+                  <EmptySpace pref="148" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1043,42 +1045,46 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="295" max="32767" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="335" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="280" max="-2" attributes="0"/>
-              </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="PackagePriceLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="PackageDiscLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="PackageNameLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="PackageIDLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="PackageIDField" min="-2" pref="142" max="-2" attributes="0"/>
-                      <Component id="PackageNameField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jScrollPane6" alignment="0" max="32767" attributes="0"/>
-                      <Component id="PackagePriceField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                      <Component id="AddPackageButton" alignment="0" max="32767" attributes="0"/>
-                      <Component id="EditPackProdButton" pref="194" max="32767" attributes="0"/>
-                      <Component id="DeletePackageButton" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace pref="267" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" pref="335" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="PackagePriceLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="PackageDiscLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="PackageNameLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="PackageIDLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="PackageIDField" min="-2" pref="142" max="-2" attributes="0"/>
+                              <Component id="PackageNameField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jScrollPane6" alignment="0" max="32767" attributes="0"/>
+                              <Component id="PackagePriceField" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="AddPackageButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="EditPackProdButton" max="32767" attributes="0"/>
+                              <Component id="DeletePackageButton" min="-2" pref="194" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jScrollPane7" pref="0" max="32767" attributes="0"/>
+                              <Component id="ExistingPackLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="ExistingPackageButton" alignment="0" min="-2" pref="205" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="EditPackageButton" min="-2" pref="175" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jScrollPane7" pref="0" max="32767" attributes="0"/>
-                      <Component id="ExistingPackLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="ExistingPackageButton" alignment="0" pref="205" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="EditPackageButton" min="-2" pref="175" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="246" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1091,10 +1097,10 @@
                       <Component id="ExistingPackageButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="PackageNameLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="PackageNameField" min="-2" max="-2" attributes="0"/>
@@ -1112,18 +1118,18 @@
                                   <Component id="EditPackProdButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="DeletePackageButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="74" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Component id="jScrollPane7" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Component id="EditPackageButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="384" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1260,18 +1266,19 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="293" pref="293" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="283" max="-2" attributes="0"/>
                           <Component id="jLabel3" min="-2" pref="362" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                           <Component id="OrderSearchProductButton1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="OrderProductNameLabel1" min="-2" max="-2" attributes="0"/>
@@ -1281,7 +1288,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jScrollPane8" min="-2" pref="181" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
                                           <Component id="OrderProductQuantityLabel1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="OrderQuantitySpinner1" min="-2" max="-2" attributes="0"/>
@@ -1300,7 +1307,6 @@
                           <Component id="jScrollPane9" min="-2" pref="209" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Component id="PackageIDLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Component id="PackageIDField2" min="-2" pref="134" max="-2" attributes="0"/>
@@ -1310,20 +1316,20 @@
                           <Component id="PackageNameField2" min="-2" pref="146" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="193" max="32767" attributes="0"/>
+                  <EmptySpace pref="203" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="72" pref="72" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                           <Component id="PackageIDField2" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="PackageIDLabel2" min="-2" max="-2" attributes="0"/>
@@ -1340,7 +1346,7 @@
                   <Component id="OrderSearchProductButton1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                           <Component id="OrderProductNameLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -1350,7 +1356,7 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jScrollPane9" pref="301" max="32767" attributes="0"/>
                       <Component id="jScrollPane8" max="32767" attributes="0"/>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="OrderProductQuantityLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="OrderQuantitySpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1363,7 +1369,7 @@
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="151" max="32767" attributes="0"/>
+                  <EmptySpace pref="181" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
