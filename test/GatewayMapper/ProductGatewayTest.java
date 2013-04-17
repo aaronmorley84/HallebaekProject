@@ -54,8 +54,7 @@ public class ProductGatewayTest {
         System.out.println("addProduct");
        
         boolean expResult = true;
-        boolean result = cont.addProduct("Khann",2,3,"Wrath",4);
-        
+        boolean result = cont.addProduct("Khann",2,3,"Wrath",4);        
         assertEquals(result,expResult);
         
     }
@@ -72,6 +71,7 @@ public class ProductGatewayTest {
         cont.getAllProducts();
         int result = cont.getProductListsize();
         assertTrue(expResult+1 == result);
+      
         
     }
 
@@ -80,12 +80,15 @@ public class ProductGatewayTest {
      */
     @Test
     public void testSearchProdByName() {
-        System.out.println("searchProdByName");
-        String name = "Wealth";
-        cont.getAllProducts();
-        boolean expResult = true;
-        String result = cont.searchProdByName(name);
+         System.out.println("searchProdByName");
+        cont.getAllProducts();              
+        String name = cont.getProductFromArray(10026).getName();        
+        System.out.println("Name: " + name);
+        Product expResult = cont.getProductFromArray(10026);
+        Product result = cont.searchProdByNameFromArray(name);
         assertEquals(expResult, result);
+        
+       
         
     }
 
@@ -108,10 +111,10 @@ public class ProductGatewayTest {
     @Test
     public void testGetProduct() {
         System.out.println("getProduct");
-        int ID = 2;
+        int ID = 10026;
         cont.getAllProducts();
-        int expResult = 2;
-        int result = cont.getProduct(ID).getProductID();
+        int expResult = 10026;
+        int result = cont.getProductFromArray(ID).getProductID();
         assertEquals(expResult, result);
         
     }
@@ -130,10 +133,10 @@ public class ProductGatewayTest {
         boolean expResult = true;
         boolean result = cont.addProduct(name, volume, quantity, description, price);
         assertEquals(expResult, result);
-        cont.getAllProducts();
-        for (int i = 0; i < cont.getProductListsize(); i++) {           
-            if(cont.getProduct(i).getName().equals(name)){
-            cont.deleteCustomer(cont.getProduct(i).getProductID());
+                
+        for (int i = 0; i < cont.getProductListsize(); i++) {
+            if(cont.getProductFromArray(i).getName().equals("Wealth") ){
+                cont.deleteCustomer(cont.getProductFromArray(i).getProductID());
             }
         }
         
@@ -178,7 +181,6 @@ public class ProductGatewayTest {
     public void testSearchForProduct_String() {
         System.out.println("searchForProduct_string");
         String name = "tent";
-        cont.getAllProducts();
         boolean expResult = true;
         boolean result = cont.searchForProduct(name);
         assertEquals(expResult, result);

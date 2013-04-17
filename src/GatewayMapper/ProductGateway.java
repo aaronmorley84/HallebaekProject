@@ -14,11 +14,11 @@ import java.util.ArrayList;
  */
 public class ProductGateway {
 
-    ArrayList<Product> products;
+    ArrayList<Product> products = new ArrayList<>();
 
     public ProductGateway() {
-        products = new ArrayList<>();
-            }
+
+    }
 
     public void addProductToArray(Product product) {
         products.add(product);
@@ -26,22 +26,23 @@ public class ProductGateway {
 
     public int getProductListsize() {
         return products.size();
+        
     }
+    
     /*
      * Methods for searching through and displaying all or  products
      * Not using DB connection.
      */
 
     public Product searchProdByNameinArray(String name) {
-  
+            Product temp = null;
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getName().equals(name)) {
-             
-                return products.get(i);
+                temp = products.get(i);
             }
         }
         
-        return null;
+        return temp;
     }
 
     public Product showProductsFromArray(int index) {
@@ -51,13 +52,15 @@ public class ProductGateway {
             return null;
         }
     }
+    
     public Product getProductFromArray(int ID) {
+        Product temp = null;
         for (int i = 0; i < products.size(); i++) {
             if (products.get(i).getProductID() == ID) {
-                return products.get(i);
+                temp = products.get(i);
             }
         }
-        return null;
+        return temp;
     }
     
     /*

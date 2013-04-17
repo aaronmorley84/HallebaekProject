@@ -51,9 +51,8 @@ public class PackageGatewayTest {
     public void testGetPackageList() {
         System.out.println("getPackageList");
         int i = 0;
-        PackageGateway instance = new PackageGateway();
         Packages expResult = null;
-        Packages result = instance.getPackageList(i);
+        Packages result = cont.getPackageList(i);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -65,12 +64,13 @@ public class PackageGatewayTest {
     @Test
     public void testGetPackageListSize() {
         System.out.println("getPackageListSize");
-        PackageGateway instance = new PackageGateway();
-        int expResult = 0;
-        int result = instance.getPackageListSize();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        cont.buildPackageList();
+        int expResult = cont.getPackageListSize();
+        cont.addPackage("Con", "nny", expResult);
+        cont.buildPackageList();
+        int result = cont.getPackageListSize();
+        assertTrue(expResult+1 == result);
+        cont.deletePackage();
     }
 
     /**
