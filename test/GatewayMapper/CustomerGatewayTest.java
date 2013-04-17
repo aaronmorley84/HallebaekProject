@@ -5,7 +5,6 @@
 package GatewayMapper;
 
 import DBConnection.ConnectionTools;
-import Resources.Customer;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -13,22 +12,19 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
 /**
  *
- * @author Andrew
+ * @author Andrew, 17-04-2013
  */
 public class CustomerGatewayTest {
+
+    private String id ="Count";
     Connection con;
-    private String id ="CLCOSV12E2";
-    private String pw = "CLCOSV12E2";
-    Controller cont;
-    
+    ControllerInterface cont;
+ 
     public CustomerGatewayTest() {
     
     }
@@ -39,19 +35,19 @@ public class CustomerGatewayTest {
     
     @AfterClass
     public static void tearDownClass() {
-   
+      
     }
     
     @Before
     public void setUp() {
-        getConnection();
-        FixtureForTestOfCustomerGateway.setUp(con);
+        con = ConnectionTools.getInstance().getCurrentConnection();
         cont = new Controller();
+        
     }
     
     @After
-    public void tearDown() throws SQLException {
-         releaseConnection();
+    public void tearDown() throws SQLException {    
+     
     }
 
     /**
@@ -60,14 +56,19 @@ public class CustomerGatewayTest {
     @Test
     public void testGetCustomerList() {
         System.out.println("getCustomerList");
-        int i = 1;
-        CustomerGateway instance = new CustomerGateway();
-        instance.buildCustomerList();
-        Customer expResult = new Customer(100001,"AARON","BIN ROAD",100001,"bob@bob.com");
-        Customer result = instance.getCustomerList(i);
-        assertSame(expResult,result);
+        int i = 0;
+        cont.addCustomer(id, id, id);
+        cont.buildCustomerList();
+        String expResult = id;
+        String result = cont.getCustomerList(i).getName();
+        assertEquals(expResult,result);
         
-       
+        cont.buildCustomerList();
+        for (int j = 0; j < cont.getCustomerListSize(); j++) {
+            if(cont.getCustomerList(j).getName().equals(id)){
+                cont.deleteCustomer(cont.getCustomerList(i).getCustomerID());
+            }
+        } 
     }
 
     /**
@@ -76,14 +77,19 @@ public class CustomerGatewayTest {
     @Test
     public void testGetCustomerListSize() {
         System.out.println("getCustomerListSize");
-        CustomerGateway instance = new CustomerGateway();
+        cont.buildCustomerList();                
+        int expResult = cont.getCustomerListSize();
+        cont.addCustomer(id, id, id);
+        cont.buildCustomerList();
+        int result = cont.getCustomerListSize();
         
-        instance.buildCustomerList();        
-        
-        int expResult = instance.getCustomerListSize();/*THIS IS SO TOTALY WRONG*/
-        
-        int result = instance.getCustomerListSize();
-        assertEquals(expResult, result);
+        assertTrue(expResult+1 == result);
+           cont.buildCustomerList();
+        for (int i = 0; i < cont.getCustomerListSize(); i++) {
+            if(cont.getCustomerList(i).getName().equals(id)){
+                cont.deleteCustomer(cont.getCustomerList(i).getCustomerID());
+            }
+        }
     }
 
     /**
@@ -92,10 +98,10 @@ public class CustomerGatewayTest {
     @Test
     public void testBuildCustomerList() {
         System.out.println("buildCustomerList");
-        CustomerGateway instance = new CustomerGateway();
         boolean expResult = true;
-        boolean result = instance.buildCustomerList();
+        boolean result = cont.buildCustomerList();
         assertEquals(expResult, result);
+        
     }
 
     /**
@@ -107,10 +113,20 @@ public class CustomerGatewayTest {
         String name = "Test";
         String address = "fda";
         String email = "Con@Con";
-        Controller instance = new Controller();
+        
         boolean expResult = true;
-        boolean result = instance.addCustomer(name, address, email);        
+        boolean result = cont.addCustomer(name, address, email);        
         assertEquals(expResult, result);
+        
+        cont.buildCustomerList();
+        for (int i = 0; i < cont.getCustomerListSize(); i++) {
+            if(cont.getCustomerList(i).getName().equals(name)){
+                cont.deleteCustomer(cont.getCustomerList(i).getCustomerID());
+            }
+            
+        }
+        
+        
     }
 
 
@@ -124,10 +140,16 @@ public class CustomerGatewayTest {
         String cusName = "fuck";
         String cusAddress = "fucking";
         String cusEmail = "gimp@khann.con";
-        CustomerGateway instance = new CustomerGateway();
         boolean expResult = true;
-        boolean result = instance.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
+        boolean result = cont.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
         assertEquals(expResult, result);
+        cont.buildCustomerList();
+        for (int i = 0; i < cont.getCustomerListSize(); i++) {
+            if(cont.getCustomerList(i).getName().equals(cusName)){
+                cont.deleteCustomer(cont.getCustomerList(i).getCustomerID());
+            }
+            
+        }
     }
 
     /**
@@ -136,35 +158,15 @@ public class CustomerGatewayTest {
     @Test
     public void testDeleteCustomer() {
         System.out.println("deleteCustomer");
-        int cusID = 100002;
-        CustomerGateway instance = new CustomerGateway();
+        int cusID = 100001;
         boolean expResult = true;
-        boolean result = instance.deleteCustomer(cusID);
+        boolean result = cont.deleteCustomer(cusID);
         assertEquals(expResult, result);
+        
     }
 
- 
+
     
-     private void getConnection()
-	  {
-	    try 
-	    {  
-	      Class.forName("oracle.jdbc.driver.OracleDriver");
-	      con = DriverManager.getConnection(
-	          "jdbc:oracle:thin:@delfi.lyngbyes.dk:1521:KNORD", id, pw );  
-	    }
-	    catch (Exception e) 
-	    {   System.out.println("fail in getConnection()");
-	        System.out.println(e); }    
-	  }
-	  public void releaseConnection()
-	  {
-	      try{
-	          con.close();
-	      }
-	      catch (Exception e)
-	      { System.err.println(e);}
-	  }
           
 }
 

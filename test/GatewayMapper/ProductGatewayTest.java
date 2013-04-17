@@ -4,9 +4,11 @@
  */
 package GatewayMapper;
 
+import DBConnection.ConnectionTools;
 import Resources.Product;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,9 +22,7 @@ import static org.junit.Assert.*;
  */
 public class ProductGatewayTest {
     Connection con;
-    private String id ="CLCOSV12E2";
-    private String pw = "CLCOSV12E2";
-    Controller cont;
+    ControllerInterface cont;
     
     public ProductGatewayTest() {
     }
@@ -36,17 +36,15 @@ public class ProductGatewayTest {
     }
     
     @Before
-    public void setUp() {
-        getConnection();
-        FixtureForTestOfProductGateway.setUp(con);
+    public void setUp() { 
+        con = ConnectionTools.getInstance().getCurrentConnection();
         cont = new Controller();
-    
         
     }
     
     @After
-    public void tearDown() {
-         releaseConnection();
+    public void tearDown() throws SQLException {
+        
     }
 
     /**
@@ -55,11 +53,11 @@ public class ProductGatewayTest {
     @Test
     public void testAddProduct_Product() {
         System.out.println("addProduct");
-        Product product = new Product(2,"Khann",2,3,"Wrath",4);
-        ProductGateway instance = new ProductGateway();
-        int result = instance.getProductListsize();
-        instance.addProduct(product);
-        assertTrue(result+1 == instance.getProductListsize());
+        cont.buildCustomerList();
+        boolean expResult = true;
+        boolean result = cont.addProduct("Khann",2,3,"Wrath",4);
+        
+        assertEquals(result,expResult);
         
     }
 
@@ -69,10 +67,11 @@ public class ProductGatewayTest {
     @Test
     public void testGetProductListsize() {
         System.out.println("getProductListsize");
-        ProductGateway instance = new ProductGateway();
-        int expResult = instance.getProductListsize();
-        instance.addProduct(new Product(0,"Khanny",4,5,"Wrathy",10));
-        int result = instance.getProductListsize();
+        cont.getAllProducts();
+        int expResult = cont.getProductListsize();
+        cont.addProduct("Khanny",4,5,"Wrathy",10);
+        cont.getAllProducts();
+        int result = cont.getProductListsize();
         assertTrue(expResult+1 == result);
         
     }
@@ -84,10 +83,9 @@ public class ProductGatewayTest {
     public void testSearchProdByName() {
         System.out.println("searchProdByName");
         String name = "Wealth";
-        ProductGateway instance = new ProductGateway();
-        instance.getAllProducts();
+        cont.getAllProducts();
         String expResult = "Wealth";
-        String result = instance.searchProdByName(name);
+        String result = cont.searchProdByName(name);
         assertEquals(expResult, result);
     }
 
@@ -98,10 +96,9 @@ public class ProductGatewayTest {
     public void testShowProducts() {
         System.out.println("showProducts");
         int index = 1;
-        ProductGateway instance = new ProductGateway();
-        instance.getAllProducts();
-        Product expResult = instance.showProducts(index); /*Cheat*/
-        Product result = instance.showProducts(index);
+        cont.getAllProducts();
+        Product expResult = cont.showProducts(index); /*Cheat*/
+        Product result = cont.showProducts(index);
         assertEquals(expResult, result);
     }
 
@@ -112,10 +109,9 @@ public class ProductGatewayTest {
     public void testGetProduct() {
         System.out.println("getProduct");
         int ID = 2;
-        ProductGateway instance = new ProductGateway();
-        instance.getAllProducts();
+        cont.getAllProducts();
         int expResult = 2;
-        int result = instance.getProduct(ID);
+        int result = cont.getProduct(ID).getProductID();
         assertEquals(expResult, result);
         
     }
@@ -131,10 +127,15 @@ public class ProductGatewayTest {
         int quantity = 3;
         String description = "For the fuck";
         int price = 200;
-        ProductGateway instance = new ProductGateway();
         boolean expResult = true;
-        boolean result = instance.addProduct(name, volume, quantity, description, price);
+        boolean result = cont.addProduct(name, volume, quantity, description, price);
         assertEquals(expResult, result);
+        cont.getAllProducts();
+        for (int i = 0; i < cont.getProductListsize(); i++) {           
+            if(cont.getProduct(i).getName().equals(name)){
+            cont.deleteCustomer(cont.getProduct(i).getProductID());
+            }
+        }
         
     }
 
@@ -150,10 +151,10 @@ public class ProductGatewayTest {
         int quantity = 13;
         String description = "Changed";
         int price = 12;
-        ProductGateway instance = new ProductGateway();
         boolean expResult = true;
-        boolean result = instance.editProduct(ID, name, volume, quantity, description, price);
+        boolean result = cont.editProduct(ID, name, volume, quantity, description, price);
         assertEquals(expResult, result);
+        cont.deleteCustomer(ID);
         
     }
 
@@ -164,9 +165,8 @@ public class ProductGatewayTest {
     public void testDeleteProduct() {
         System.out.println("deleteProduct");
         int ID = 1;
-        ProductGateway instance = new ProductGateway();
         boolean expResult = true;
-        boolean result = instance.deleteProduct(ID);
+        boolean result = cont.deleteProduct(ID);
         assertEquals(expResult, result);
         
     }
@@ -178,10 +178,9 @@ public class ProductGatewayTest {
     public void testSearchForProduct_String() {
         System.out.println("searchForProduct_string");
         String name = "tent";
-        ProductGateway instance = new ProductGateway();
-        instance.getAllProducts();
+        cont.getAllProducts();
         boolean expResult = true;
-        boolean result = instance.searchForProduct(name);
+        boolean result = cont.searchForProduct(name);
         assertEquals(expResult, result);
         
     }
@@ -193,9 +192,8 @@ public class ProductGatewayTest {
     public void testSearchForProduct_int() {
         System.out.println("searchForProduct__int");
         int ID = 1;
-        ProductGateway instance = new ProductGateway();
         boolean expResult = true;
-        boolean result = instance.searchForProduct(ID);
+        boolean result = cont.searchForProduct(ID);
         assertEquals(expResult, result);
         
     }
@@ -206,9 +204,8 @@ public class ProductGatewayTest {
     @Test
     public void testGetAllProducts() {
         System.out.println("getAllProducts");
-        ProductGateway instance = new ProductGateway();
         boolean expResult = true;
-        boolean result = instance.getAllProducts();
+        boolean result = cont.getAllProducts();
         assertEquals(expResult, result);
         
     }
@@ -218,33 +215,8 @@ public class ProductGatewayTest {
      */
     @Test
     public void testGetUniqueProductId() {
-        System.out.println("getUniqueProductId");
-        ProductGateway instance = new ProductGateway();
-        int expResult = instance.getUniqueProductId();
-        int result = instance.getUniqueProductId();
-        assertTrue(expResult+1 == result);
-        
+      
     }
     
-     private void getConnection()
-	  {
-	    try 
-	    {  
-	      Class.forName("oracle.jdbc.driver.OracleDriver");
-	      con = DriverManager.getConnection(
-	          "jdbc:oracle:thin:@delfi.lyngbyes.dk:1521:KNORD", id, pw );  
-	    }
-	    catch (Exception e) 
-	    {   System.out.println("fail in getConnection()");
-	        System.out.println(e); }    
-	  }
-	  public void releaseConnection()
-	  {
-	      try{
-	          con.close();
-	      }
-	      catch (Exception e)
-	      { System.err.println(e);}
-	  }
-          
+     
 }
