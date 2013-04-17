@@ -20,17 +20,15 @@ public class OrderGateway {
 
     private ArrayList<Truck> trucks;
     private ArrayList<TruckOrder> truckOrders;
-    private ArrayList<Truck> availableTrucks;
     private ArrayList<Order> orders;
     
     private Order currentOrder;
     private TruckOrder currentTruckOrder;
-    
+
     public OrderGateway() {
         trucks = new ArrayList();
         orders = new ArrayList();
         truckOrders = new ArrayList();
-        availableTrucks = new ArrayList();
     }
 
     /*
@@ -38,13 +36,14 @@ public class OrderGateway {
      */
     public void currentOrder() {
         int ID = getUniqueOrderID();
-        currentOrder = new Order(0, 0, 0, 0, 0, ID);
+        currentOrder = new Order(0, 0, 0, 0, 0, ID, 0);
     }
     /*
      * Constructs an "empty" truck order with same ID as current order.
      */
-    public void currentTruckOrder(){
-        currentTruckOrder = new TruckOrder(0,currentOrder.getOrderID(),null,null);
+
+    public void currentTruckOrder() {
+        currentTruckOrder = new TruckOrder(0, currentOrder.getOrderID(), null, null);
     }
 
     /*
@@ -140,7 +139,7 @@ public class OrderGateway {
                         rs.getInt(3),
                         rs.getInt(4),
                         rs.getInt(5),
-                        rs.getInt(6)));
+                        rs.getInt(6),0));
             }
             success = true;
         } catch (Exception e) {
@@ -175,21 +174,19 @@ public class OrderGateway {
     public int getTruckOrderListSize() {
         return truckOrders.size();
     }
-    public int getAvailableTrucksSize(){
-        return availableTrucks.size();
+
+    public Truck getTruck(int index) {
+        if (index < trucks.size()){
+            return trucks.get(index);
+        }else {
+            return null;
+        }
     }
 
     public TruckOrder getTruckOrder(int index) {
         if (index < truckOrders.size()) {
             return truckOrders.get(index);
         } else {
-            return null;
-        }
-    }
-    public Truck getAvailableTruck(int index){
-        if(index < availableTrucks.size()){
-            return availableTrucks.get(index);
-        }else {
             return null;
         }
     }
@@ -217,9 +214,11 @@ public class OrderGateway {
         }
         return amountOfTrucks;
     }
-    /*Fills the trucks arraylist from the DB. */
 
+    /*Fills the trucks arraylist from the DB. */
     public boolean getTrucks() {
+        trucks.clear();
+        truckOrders.clear();
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT *"
@@ -238,6 +237,7 @@ public class OrderGateway {
                 truck.setTruckID(truckID);
                 truck.setTruckName(model);
                 truck.setTruckCapacity(capacity);
+                truck.setBookDate("");
                 trucks.add(truck);
             }
             success = true;
@@ -273,52 +273,41 @@ public class OrderGateway {
         return success;
     }
 
-    public void addToAvailableTrucks(Truck truck) {
-        availableTrucks.add(truck);
-    }
-
-    public Truck getTruckFromList(int truckID) {
-        for (int i = 0; i < trucks.size(); i++) {
-            if (trucks.get(i).getTruckID() == truckID) {
-                return trucks.get(i);
-            }
-        }
-        return null;
-    }
-
     /*
      * US 3.4
      * User can book delivery truck(s)
      * for customer order (if available).
-     * Using the trucks arraylist. No DB
-     * connection.
+     * Using the trucks arraylist with DB connection. 
      */
-    public boolean bookTrucks(int trucksForOrder) {
-        boolean enoughTrucks = false;
-        if (trucksForOrder < availableTrucks.size()) {
-            enoughTrucks = true;
+    public void checkFreeTrucks(String date){
+        for (Truck truck1 : trucks) {
+            for (TruckOrder truckorder1 : truckOrders) {
+                if(truckorder1.getTruckID() == truck1.getTruckID()){
+                    truck1.setBookDate(truckorder1.getDate());
+                }
+            }
+            
         }
-        return enoughTrucks;
+        for (int i = 0; i < trucks.size(); i++) {
+            System.out.println(trucks.get(i).getBookDate());
+            if(trucks.get(i).getBookDate().contains(date)){
+                trucks.remove(i);
+            }
+        }
     }
-    /* US 3.4 Continued with DB connection. */
-
-    public boolean commitTruckOrder(int truckID, int orderID, String status, String date) {
+    public boolean commitTruckOrder(int truckID, String status, String date) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into truck_order "
-                + "VALUES (?, ?, ?, (select startdate from customer_order where orderid = ?)) ";
+                + "VALUES (?, ?, ?, ?) ";
         PreparedStatement statement = null;
         try {
-            for (int i = 0; i < availableTrucks.size(); i++) {
-                availableTrucks.get(i).setTruckAvailable(false);
-                currentTruckOrder.addTruck(availableTrucks.get(i));
-                availableTrucks.remove(i);
-            }
             statement = con.prepareStatement(SQLString1);
             statement.setInt(1, truckID);
-            statement.setInt(2, orderID);
+            statement.setInt(2, currentOrder.getOrderID());
             statement.setString(3, status);
-            statement.setInt(4, orderID);
+            statement.setDate(4, Date.valueOf(date));
+            statement.executeUpdate();
             success = true;
         } catch (Exception e) {
             System.out.println("Problem with ordering trucks.");
@@ -376,4 +365,19 @@ public class OrderGateway {
         return temp;
 
     }
+    /*
+     * US 9.1
+     * User can see balance for each order
+     */
+    public int getOrderBalance(){
+        return currentOrder.getBalance();
+    }
+    /*
+     * US 9.2
+     * User can deposit/withdraw
+     * to/from balance for each order
+     * and add information to an order
+     * balance log
+     */
+    
 }// END

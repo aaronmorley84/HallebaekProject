@@ -1,7 +1,10 @@
 package Presentation;
 
+import java.math.*;
 import GatewayMapper.*;
 import Resources.Product;
+import Resources.Truck;
+import Resources.TruckOrder;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -11,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class UserFrame extends javax.swing.JFrame {
 
-    DefaultListModel model1, model2, model3, truckOrders;
+    DefaultListModel model1, model2, model3, model4;
     ProductGateway control1 = new ProductGateway();
     OrderGateway control2 = new OrderGateway();
     CustomerGateway cg = new CustomerGateway();
@@ -21,7 +24,7 @@ public class UserFrame extends javax.swing.JFrame {
         model1 = new DefaultListModel();
         model2 = new DefaultListModel();
         model3 = new DefaultListModel();
-        truckOrders = new DefaultListModel();
+        model4 = new DefaultListModel();
     }
 
     /**
@@ -88,6 +91,7 @@ public class UserFrame extends javax.swing.JFrame {
         spinnerQuantityFromOrder = new javax.swing.JSpinner();
         labelTrucksRequiredForOrder = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jFrame6 = new javax.swing.JFrame();
         jLabel15 = new javax.swing.JLabel();
         textFieldNewOrderCustID = new javax.swing.JTextField();
@@ -100,7 +104,7 @@ public class UserFrame extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList();
         jLabel18 = new javax.swing.JLabel();
-        textFieldTrucksForOrder = new javax.swing.JTextField();
+        textFieldTruckIDr = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         seeDeliveriesButton = new javax.swing.JButton();
@@ -113,6 +117,7 @@ public class UserFrame extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         checkDateButton = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -434,6 +439,8 @@ public class UserFrame extends javax.swing.JFrame {
 
         jLabel19.setText("Trucks required");
 
+        jLabel23.setText("0");
+
         javax.swing.GroupLayout jFrame5Layout = new javax.swing.GroupLayout(jFrame5.getContentPane());
         jFrame5.getContentPane().setLayout(jFrame5Layout);
         jFrame5Layout.setHorizontalGroup(
@@ -452,31 +459,42 @@ public class UserFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame5Layout.createSequentialGroup()
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addComponent(labelTrucksRequiredForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jFrame5Layout.createSequentialGroup()
-                        .addComponent(buttonRemoveFromOrder)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(spinnerQuantityFromOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jFrame5Layout.createSequentialGroup()
-                        .addComponent(spinnerQuantityToOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(buttonAddToOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonSaveOrder, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9))
+                        .addComponent(labelTrucksRequiredForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jFrame5Layout.createSequentialGroup()
+                                .addComponent(buttonRemoveFromOrder)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(spinnerQuantityFromOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jFrame5Layout.createSequentialGroup()
+                                .addComponent(spinnerQuantityToOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(buttonAddToOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonSaveOrder, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel23)
+                        .addContainerGap())))
         );
         jFrame5Layout.setVerticalGroup(
             jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrame5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buttonSearchProdForOrder)
-                    .addComponent(textFieldSearchForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrame5Layout.createSequentialGroup()
+                        .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(buttonSearchProdForOrder)
+                            .addComponent(textFieldSearchForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame5Layout.createSequentialGroup()
+                        .addComponent(jLabel23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -533,7 +551,7 @@ public class UserFrame extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(jList3);
 
-        jLabel18.setText("Trucks:");
+        jLabel18.setText("Truck ID");
 
         jLabel20.setText("YYYY-MM-DD");
 
@@ -559,7 +577,7 @@ public class UserFrame extends javax.swing.JFrame {
                     .addComponent(jLabel18))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(textFieldTrucksForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldTruckIDr, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jFrame6Layout.createSequentialGroup()
                         .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(textFieldNewOrderCustID, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
@@ -610,7 +628,7 @@ public class UserFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
-                            .addComponent(textFieldTrucksForOrder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textFieldTruckIDr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(seeDeliveriesButton)
                         .addGap(85, 85, 85))))
@@ -651,6 +669,13 @@ public class UserFrame extends javax.swing.JFrame {
 
         jLabel22.setText("jLabel22");
 
+        jButton6.setText("Confirm truck");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jFrame8Layout = new javax.swing.GroupLayout(jFrame8.getContentPane());
         jFrame8.getContentPane().setLayout(jFrame8Layout);
         jFrame8Layout.setHorizontalGroup(
@@ -663,8 +688,9 @@ public class UserFrame extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addGroup(jFrame8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkDateButton))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(checkDateButton)
+                    .addComponent(jButton6))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jFrame8Layout.setVerticalGroup(
             jFrame8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -677,8 +703,10 @@ public class UserFrame extends javax.swing.JFrame {
                 .addGroup(jFrame8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jFrame8Layout.createSequentialGroup()
                         .addComponent(checkDateButton)
-                        .addGap(0, 217, Short.MAX_VALUE))
-                    .addComponent(jScrollPane7))
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton6)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -939,6 +967,8 @@ public class UserFrame extends javax.swing.JFrame {
         control2.removeFromOrderList(prodForRemoval);
         model2.removeElement(prodForRemoval);
         jList2.setModel(model2);
+        int runningTotal = control2.getOrderBalance();
+        jLabel23.setText(""+runningTotal);
         int counter = 0;
         model1.clear();
         while (counter < control1.getProductListsize()) {
@@ -957,10 +987,11 @@ public class UserFrame extends javax.swing.JFrame {
     private void buttonAddToOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddToOrderActionPerformed
         Product prodForOrder, newProduct;
         prodForOrder = (Product) jList1.getSelectedValue();
+        
         if (prodForOrder.getQuantity() >= (int) spinnerQuantityToOrder.getValue()) {
             newProduct = new Product(prodForOrder.getProductID(),
                     prodForOrder.getName(), prodForOrder.getVolume(), (int) spinnerQuantityToOrder.getValue(),
-                    prodForOrder.getDescription(), prodForOrder.getPrice());
+                    prodForOrder.getDescription(), prodForOrder.getPrice());                                    
             if (control2.addItemToOrderList(newProduct)) {
                 model2.addElement(newProduct);
                 jList2.setModel(model2);
@@ -987,6 +1018,8 @@ public class UserFrame extends javax.swing.JFrame {
             totalVolume =+ ((Product)model2.get(i)).getVolume();
         }
         labelTrucksRequiredForOrder.setText(""+control2.getTrucksRequired(totalVolume));
+        int runningTotal = control2.getOrderBalance();
+        jLabel23.setText(""+runningTotal);
     }//GEN-LAST:event_buttonAddToOrderActionPerformed
 
     private void buttonSearchProdForOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchProdForOrderActionPerformed
@@ -1009,7 +1042,7 @@ public class UserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSearchProdForOrderActionPerformed
 
     private void buttonSaveOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSaveOrderActionPerformed
-        textFieldTrucksForOrder.setText(labelTrucksRequiredForOrder.getText());
+        textFieldTruckIDr.setText(labelTrucksRequiredForOrder.getText());
         jFrame6.setVisible(true);
     }//GEN-LAST:event_buttonSaveOrderActionPerformed
 
@@ -1028,25 +1061,15 @@ public class UserFrame extends javax.swing.JFrame {
         String customerID = textFieldNewOrderCustID.getText();
         String startDate = textFieldNewOrderStartDate.getText();
         String finishDate = textFieldNewOrderEndDate.getText();
+        String status = "Delivering";
 
         if (!customerID.equals("") && !startDate.equals("") && !finishDate.equals("")) {
             control2.addToCustomerOrderTable(Integer.parseInt(customerID), startDate, finishDate);
+            control2.commitTruckOrder(Integer.parseInt(textFieldTruckIDr.getText()), status, startDate);
             JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Could not save to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        /*US 3.4 User can book delivery truck(s)
-          for customer order (if available)*/
-//        int trucksForOrder = Integer.parseInt(textFieldTrucksForOrder.getText());
-//        if (control2.bookTrucks(trucksForOrder)){
-//            if (control2.commitTruckOrder()){
-//                JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
-//            }else{
-//                JOptionPane.showMessageDialog(this, "Could not save truck order to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
-//            }
-//        }else {
-//            JOptionPane.showMessageDialog(this, "Not enough trucks for delivery!", "ERROR", JOptionPane.ERROR_MESSAGE);
-//        }
     }//GEN-LAST:event_buttonCommitNewOrderActionPerformed
 
     private void textFieldNewOrderStartDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewOrderStartDateActionPerformed
@@ -1070,24 +1093,35 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel22.setText("Planned deliveries:");
         jTextField1.setText(textFieldNewOrderStartDate.getText());
         control2.getTrucks();
-        truckOrders.clear();
+        model4.clear();
         int counter = 0;
         while(counter < control2.getTruckOrderListSize()){
-            truckOrders.addElement(control2.getTruckOrder(counter));
+            model4.addElement(control2.getTruckOrder(counter));
             counter++;
         }
-        jList5.setModel(truckOrders);
+        jList5.setModel(model4);
         jFrame8.setVisible(true);
     }//GEN-LAST:event_seeDeliveriesButtonActionPerformed
 
     private void checkDateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkDateButtonActionPerformed
         jLabel22.setText("Available trucks for "+jTextField1.getText());
-        truckOrders.clear();
+        model4.clear();
+        String date = jTextField1.getText();
+        control2.checkFreeTrucks(date);
         int counter = 0;
-        while (counter < control2.getAvailableTrucksSize()){
-            truckOrders.addElement(control2.getAvailableTruck(counter));
+        while (counter<control2.getTruckListSize()){
+            model4.addElement(control2.getTruck(counter));
+            counter++;
         }
+        jList5.setModel(model4);
     }//GEN-LAST:event_checkDateButtonActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Truck currTruck= (Truck) jList5.getSelectedValue();
+        int truckID = currTruck.getTruckID();
+        textFieldTruckIDr.setText(""+truckID);
+        jFrame8.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1141,6 +1175,7 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JFrame jFrame3;
@@ -1164,6 +1199,7 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1208,6 +1244,6 @@ public class UserFrame extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldSearchForOrder;
     private javax.swing.JTextField textFieldSearchID;
     private javax.swing.JTextField textFieldSearchName;
-    private javax.swing.JTextField textFieldTrucksForOrder;
+    private javax.swing.JTextField textFieldTruckIDr;
     // End of variables declaration//GEN-END:variables
 }

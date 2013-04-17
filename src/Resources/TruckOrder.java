@@ -61,7 +61,7 @@ public class TruckOrder {
     }
     @Override
     public String toString() {
-        return "TruckOrder{" + "truckID=" + truckID + ", orderID=" + orderID + ", status=" + status + ", date=" + date + '}';
+        return truckID + "" + orderID + "" + status + "" + date;
     }
     
 }

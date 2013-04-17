@@ -13,14 +13,20 @@ public class Truck {
     int truckID;
     String truckName;
     int truckCapacity;
-    boolean available;
+    String bookdate;
     
-public void truck(int truckID, String truckName, int truckCapacity, boolean available){
+public void truck(int truckID, String truckName, int truckCapacity, String bookdate){
     this.truckID = truckID;
     this.truckName = truckName;
     this.truckCapacity = truckCapacity;
-    this.available = available;
-}
+    this.bookdate = bookdate;
+}   
+    public String getBookDate(){
+        return bookdate;
+    }
+    public void setBookDate(String bookdate){
+        this.bookdate = bookdate;
+    }
     public int getTruckID(){
         return truckID;
     }
@@ -39,13 +45,9 @@ public void truck(int truckID, String truckName, int truckCapacity, boolean avai
     public int getTruckCapacity() {
         return truckCapacity;
     }
-    public void setTruckAvailable(boolean available){
-        this.available = available;
+    public String toString(){
+        return truckID +""+ truckName +""+ truckCapacity +""+ bookdate;
     }
-    public boolean getTruckAvailable(){
-        return available;
-    }
-    
     
     //this method checks if there is space in the truck for the order. If there is it will return true
     public boolean truckSpaceChecker(int volume){

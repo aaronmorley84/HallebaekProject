@@ -475,26 +475,35 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="labelTrucksRequiredForOrder" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="buttonRemoveFromOrder" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="spinnerQuantityFromOrder" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelTrucksRequiredForOrder" min="-2" pref="34" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="buttonRemoveFromOrder" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="spinnerQuantityFromOrder" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="spinnerQuantityToOrder" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="buttonAddToOrder" min="-2" pref="87" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="buttonSaveOrder" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="1" min="-2" pref="213" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="spinnerQuantityToOrder" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="buttonAddToOrder" min="-2" pref="87" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="buttonSaveOrder" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" alignment="1" min="-2" pref="213" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -502,11 +511,19 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="buttonSearchProdForOrder" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="textFieldSearchForOrder" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="buttonSearchProdForOrder" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textFieldSearchForOrder" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                           <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
@@ -623,6 +640,11 @@
             <Property name="text" type="java.lang.String" value="Trucks required"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JLabel" name="jLabel23">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JFrame" name="jFrame6">
@@ -645,7 +667,7 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="textFieldTrucksForOrder" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="textFieldTruckIDr" min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="textFieldNewOrderCustID" pref="83" max="32767" attributes="0"/>
@@ -709,7 +731,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="textFieldTrucksForOrder" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textFieldTruckIDr" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="seeDeliveriesButton" min="-2" max="-2" attributes="0"/>
@@ -785,10 +807,10 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel18">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Trucks:"/>
+            <Property name="text" type="java.lang.String" value="Truck ID"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textFieldTrucksForOrder">
+        <Component class="javax.swing.JTextField" name="textFieldTruckIDr">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel20">
           <Properties>
@@ -875,8 +897,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jTextField1" min="-2" pref="157" max="-2" attributes="0"/>
                       <Component id="checkDateButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -892,9 +915,11 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="checkDateButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="217" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane7" max="32767" attributes="0"/>
+                      <Component id="jScrollPane7" pref="240" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -935,6 +960,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel22"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton6">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Confirm truck"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

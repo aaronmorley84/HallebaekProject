@@ -12,14 +12,16 @@ public class Order {
     int dateArrival, datePickUp;
     int trucksforDelivery, assemblersNeeded;
     int orderID;
+    int balance;
 
-    public Order(int customerID, int dateArrival, int datePickUp, int trucksforDelivery, int assemblersNeeded, int orderId) {
+    public Order(int customerID, int dateArrival, int datePickUp, int trucksforDelivery, int assemblersNeeded, int orderId, int balance) {
         this.customerID = customerID;
         this.dateArrival = dateArrival;
         this.datePickUp = datePickUp;
         this.trucksforDelivery = trucksforDelivery;
         this.assemblersNeeded = assemblersNeeded;
         this.orderID = orderId;
+        this.balance = balance;
     }
     
    /*
@@ -31,14 +33,18 @@ public class Order {
     public boolean addItemToOrderList(Product prod){
        boolean success=false;
         if(!checkForDuplicate(prod.getProductID())){
-           success = true;
-           orderList.add(prod);
+            balance = balance + (prod.price * prod.quantity);
+            success = true;
+            orderList.add(prod);
+            System.out.println(balance);
         }
         return success;
     }
     
     public void removeFromOrderList(Product prod) {
         orderList.remove(prod);
+        balance = balance - (prod.price * prod.quantity);
+        System.out.println(balance);
     }
     
     public boolean checkForDuplicate(int ID){
@@ -49,6 +55,15 @@ public class Order {
             }
         }
         return same;
+    }
+    
+    public void addDiscount(double discount){
+        if (discount < 1.0){
+            balance = (int) (balance - ((balance/100)*discount));
+        }
+    }
+    public int getBalance(){ 
+        return balance;
     }
             
     public void setCustomer (int customerID) {
@@ -97,8 +112,8 @@ public class Order {
     
     @Override
     public String toString() {
-        return "CustomerID: "+customerID+"OrderID: "+orderID+"Start date: "+dateArrival+"End date: "+datePickUp
-                +"Trucks: "+trucksforDelivery+"Assemblers: "+assemblersNeeded;
+        return "CustomerID: "+customerID+" OrderID: "+orderID+" Start date: "+dateArrival+" End date: "+datePickUp
+                +" Trucks: "+trucksforDelivery+" Assemblers: "+assemblersNeeded+" Balance: "+balance;
     }
     
 }
