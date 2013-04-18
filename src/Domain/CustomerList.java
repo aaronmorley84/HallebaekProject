@@ -39,9 +39,10 @@ public class CustomerList {
     public int getCustomerListSize() {
         return customerList.size();
     }
+    public void clearCustomerList(){
+        customerList.clear();
+    }
     
-    
-
     //These are the getters
     public int getCusID() {
         return currentCustomer.getCustomerID();
@@ -77,9 +78,8 @@ public class CustomerList {
     }
     
     //communication to customerGateway
-    public boolean buildCustomerList(){
-        customerList.clear();
-        return facade.buildCustomerList();
+    public boolean buildCustomerList(CustomerList customerList){
+        return facade.buildCustomerList(customerList);
     }
     public boolean addCustomer(String name, String address, String email){
         return facade.addCustomer(name, address, email);

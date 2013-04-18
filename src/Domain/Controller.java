@@ -99,6 +99,9 @@ public class Controller{
         customerList.getCurrentCustomer(i);
         return customerList.getCusID();
     }
+    public void clearCustomerList(){
+        customerList.clearCustomerList();
+    }
     public String getCustomerName(int i){
         customerList.getCurrentCustomer(i);
         return customerList.getCusName();
@@ -115,7 +118,7 @@ public class Controller{
         return customerList.getCustomerListSize();
     }
     public boolean buildCustomerList() {
-        return customerList.buildCustomerList();
+        return customerList.buildCustomerList(customerList);
     }
     public boolean addCustomer(String name, String address, String email) {
         return customerList.addCustomer(name, address, email);

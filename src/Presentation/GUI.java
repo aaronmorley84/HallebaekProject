@@ -1173,6 +1173,7 @@ public class GUI extends javax.swing.JFrame {
     private void GetCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetCustomerButtonActionPerformed
         model1.clear();
         CustomerJList.setModel(model1);
+        con.clearCustomerList();
         con.buildCustomerList();
         for (int i = 0; i < con.getCustomerListSize(); i++) {
             model1.addElement(con.getCustomerID(i) + "-" + con.getCustomerName(i));

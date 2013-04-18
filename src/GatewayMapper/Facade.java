@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package GatewayMapper;
-
+import Domain.CustomerList;
 
 /**
  *
@@ -14,9 +14,9 @@ public class Facade {
     
     //Customer gateway
    
-    public boolean buildCustomerList(){
+    public boolean buildCustomerList(CustomerList customerList){
         CustomerGateway cg = new CustomerGateway();
-        return cg.buildCustomerList();
+        return cg.buildCustomerList(customerList);
     }
     public boolean addCustomer(String name, String address, String email){
         CustomerGateway cg = new CustomerGateway();

@@ -18,12 +18,13 @@ import java.sql.SQLException;
  * @author Foxy, 05-04-31, v0.01
  */
 public class CustomerGateway {
-
     CustomerList customerList;
+    
     
 
     /*Used to build a list of customers. */
-    public boolean buildCustomerList() {
+    public boolean buildCustomerList(CustomerList customerList) {
+        this.customerList = customerList;
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * " 
