@@ -1,6 +1,7 @@
 package DBConnection;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 
 public class ConnectionTools {
 
@@ -8,7 +9,15 @@ public class ConnectionTools {
     private static ConnectionTools instance;
 
     private ConnectionTools() {
-        con = new Connector().getConnection();
+        try{
+           Class.forName("oracle.jdbc.driver.OracleDriver");
+           con = DriverManager.getConnection("jdbc:oracle:thin:@delfi.lyngbyes.dk:1521:KNORD", "CLCOSV12E2", "aaron");
+        }
+        catch (Exception e) {
+            System.out.println("error in Connection");
+            System.out.println(e);
+        }
+        
     }
 
     public static ConnectionTools getInstance() {
