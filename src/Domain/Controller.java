@@ -63,8 +63,11 @@ public class Controller{
     public boolean deleteProduct(int cusID) {
         return productList.deleteProduct(cusID);
     }
-    public Product searchProdByNameinArray(String name){
+    public boolean searchProdByNameinArray(String name){
         return productList.searchProdByNameinArray(name);
+    }
+    public boolean searchProdByIDinArray(int ID){
+        return productList.searchProdByIDinArray(ID);
     }
 
     /*
