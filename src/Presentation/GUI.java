@@ -1274,6 +1274,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_AddProductButtonActionPerformed
 
     private void GetProductsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetProductsButtonActionPerformed
+        con.clearProductList();
         if (con.buildProductList()) {
             int counter = 0;
             model3.clear();
