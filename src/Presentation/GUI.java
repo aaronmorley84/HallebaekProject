@@ -4,8 +4,7 @@
  */
 package Presentation;
 
-import GatewayMapper.Controller;
-import GatewayMapper.ControllerInterface;
+import Domain.Controller;
 import Resources.Product;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -16,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class GUI extends javax.swing.JFrame {
 
-    ControllerInterface con = new Controller();
+    Controller con = new Controller();
     DefaultListModel model1, model2, model3, model4, model5, model6, model7;
 
     /**
