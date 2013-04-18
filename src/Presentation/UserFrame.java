@@ -17,10 +17,10 @@ import javax.swing.JOptionPane;
 public class UserFrame extends javax.swing.JFrame {
 
     DefaultListModel model1, model2, model3, model4;
-    ProductGateway control1 = new ProductGateway();
+//    ProductGateway control1 = new ProductGateway();
     OrderGateway control2 = new OrderGateway();
     CustomerGateway cg = new CustomerGateway();
-    CheckerGateway chg = new CheckerGateway(control2);
+//    CheckerGateway chg = new CheckerGateway(control2);
     Controller con = new Controller();
     public UserFrame() {
         initComponents();
@@ -816,7 +816,7 @@ public class UserFrame extends javax.swing.JFrame {
             ID = Integer.parseInt(textFieldSearchID.getText());
         }
         if (name.isEmpty() && ID > 0) {
-            if (control1.searchForProduct(ID)) {
+           if(con.searchProdByIDinArray(ID)){
                 int counter = 0;
                 model2.clear();
                 while (counter < con.getProductListSize()) {
@@ -824,11 +824,11 @@ public class UserFrame extends javax.swing.JFrame {
                     counter++;
                 }
                 listSearchResult.setModel(model2);
-
-            }
+        }
+            
         }
         if (!name.isEmpty()) {
-            if (control1.searchForProduct(name)) {
+            if (con.searchProdByNameinArray(name)) {
                 int counter = 0;
                 model2.clear();
                 while (counter < con.getProductListSize()) {
@@ -841,7 +841,7 @@ public class UserFrame extends javax.swing.JFrame {
             }
         } else {
             if (ID > 0) {
-                if (control1.searchForProduct(ID)) {
+                if (con.searchProdByIDinArray(ID)) {
                     int counter = 0;
                     model2.clear();
                     while (counter < con.getProductListSize()) {
@@ -861,7 +861,7 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jFrame3.setVisible(true);
-        textFieldNewProdID.setText(""+control1.getUniqueProductId());
+      // ???????  textFieldNewProdID.setText(""+con.getUniqueProductId());
         textFieldNewProdID.setEditable(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -876,7 +876,7 @@ public class UserFrame extends javax.swing.JFrame {
             int quantity = Integer.parseInt(textFieldNewProdQuantity.getText());
             String description = textFieldNewProdDescription.getText();
             int price = Integer.parseInt(textFieldNewProdPrice.getText());
-            if (control1.addProduct(name, volume, quantity, description, price)) {
+            if (con.addProduct(name, volume, quantity, description, price)) {
                 JOptionPane.showMessageDialog(this, "Product added!", "ADDED", JOptionPane.INFORMATION_MESSAGE);
                 jFrame3.setVisible(false);
             } else {
@@ -939,7 +939,7 @@ public class UserFrame extends javax.swing.JFrame {
         deleteProd = (Product) listAllProducts.getSelectedValue();
 
         int ID = deleteProd.getProductID();
-        if (control1.deleteProduct(ID)) {
+        if (con.deleteProduct(ID)) {
             JOptionPane.showMessageDialog(this, "Product deleted!", "DELETED!", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Could not delete product!", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -965,7 +965,7 @@ public class UserFrame extends javax.swing.JFrame {
     /*US 3.1 Demo(extra feature : still does not remove a specified quantity but the whole product) */
     private void buttonRemoveFromOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRemoveFromOrderActionPerformed
         Product prodForRemoval = (Product) jList2.getSelectedValue();
-        int tempQuant = control1.getProductFromArray(prodForRemoval.getProductID()).getQuantity() + prodForRemoval.getQuantity();
+        int tempQuant = 0; // ???????? con.searchProdByNameinArray(prodForRemoval.getName()).getQuantity() + prodForRemoval.getQuantity();
         prodForRemoval.setQuantity(tempQuant);
         control2.removeFromOrderList(prodForRemoval);
         model2.removeElement(prodForRemoval);
@@ -974,8 +974,8 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel23.setText(""+runningTotal);
         int counter = 0;
         model1.clear();
-        while (counter < control1.getProductListsize()) {
-            model1.addElement(control1.showProductsFromArray(counter));
+        while (counter < con.getProductListSize()) {
+            model1.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
             counter++;
         }
         jList1.setModel(model1);
@@ -1002,8 +1002,8 @@ public class UserFrame extends javax.swing.JFrame {
                 prodForOrder.setQuantity(prodForOrder.getQuantity());
                 model1.clear();
                 int counter = 0;
-                while (counter < control1.getProductListsize()) {
-                    model1.addElement(control1.showProductsFromArray(counter));
+                while (counter < con.getProductListSize()) {
+                    model1.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
                     counter++;
                 }
                 listAllProducts.setModel(model1);
@@ -1027,17 +1027,18 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void buttonSearchProdForOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchProdForOrderActionPerformed
         String name = textFieldSearchForOrder.getText();
+        con.buildProductList();
         model1.clear();
         if (name.isEmpty()) {
             int counter = 0;
             model1.clear();
-            while (counter < control1.getProductListsize()) {
-                model1.addElement(control1.showProductsFromArray(counter));
+            while (counter < con.getProductListSize()) {
+                model1.addElement(con.getProductId(counter) + "-" + con.getProductName(counter));
                 counter++;
             }
             jList1.setModel(model1);
         } else {
-            model1.addElement(control1.searchProdByNameinArray(name));
+            model1.addElement(con.searchProdByNameinArray(name));
             jList1.setModel(model1);
             textFieldSearchForOrder.setText("");
         }
