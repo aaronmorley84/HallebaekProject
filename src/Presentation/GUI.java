@@ -1175,7 +1175,7 @@ public class GUI extends javax.swing.JFrame {
         CustomerJList.setModel(model1);
         con.buildCustomerList();
         for (int i = 0; i < con.getCustomerListSize(); i++) {
-            model1.addElement(con.getCustomerList(i).getCustomerID() + "-" + con.getCustomerList(i).getName());
+            model1.addElement(con.getCustomerID(i) + "-" + con.getCustomerName(i));
         }
         CustomerJList.setModel(model1);
 
@@ -1188,11 +1188,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_GetCustomerButtonActionPerformed
 
     private void EditCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditCustomerButtonActionPerformed
-        CustomerIDField.setText("" + con.getCustomerList(CustomerJList.getSelectedIndex()).getCustomerID());
-        CustomerNameField.setText(con.getCustomerList(CustomerJList.getSelectedIndex()).getName());
-        CustomerAddressField.setText(con.getCustomerList(CustomerJList.getSelectedIndex()).getAdress());
-//        PhoneID.setText(""+cg.getlist(jList1.getSelectedIndex()).getPhoneID());
-        CustomerEmailField.setText(con.getCustomerList(CustomerJList.getSelectedIndex()).getEmail());
+        CustomerIDField.setText("" + con.getCustomerID(CustomerJList.getSelectedIndex()));
+        CustomerNameField.setText(con.getCustomerName(CustomerJList.getSelectedIndex()));
+        CustomerAddressField.setText(con.getCustomerAddress(CustomerJList.getSelectedIndex()));
+        CustomerEmailField.setText(con.getCustomerEmail(CustomerJList.getSelectedIndex()));
 
         AddCustomerButton.setEnabled(false);
         AddEditPhoneButton.setEnabled(false);
@@ -1203,7 +1202,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_EditCustomerButtonActionPerformed
 
     private void DeleteCustomerbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerbuttonActionPerformed
-        int cusID = con.getCustomerList(CustomerJList.getSelectedIndex()).getCustomerID();
+        int cusID = con.getCustomerID(CustomerJList.getSelectedIndex());
 
         con.deleteCustomer(cusID);
         GetCustomerButtonActionPerformed(evt);

@@ -1048,14 +1048,14 @@ public class UserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSaveOrderActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        model3.clear();
-        jList3.setModel(model3);
-        cg.buildCustomerList();
-        for (int i = 0; i < cg.getCustomerListSize(); i++) {
-
-            model3.addElement(cg.getCustomerList(i).getCustomerID() + "-" + cg.getCustomerList(i).getName());
-        }
-        jList3.setModel(model3);
+//        model3.clear();
+//        jList3.setModel(model3);
+//        cg.buildCustomerList();
+//        for (int i = 0; i < cg.getCustomerListSize(); i++) {
+//
+//            model3.addElement(cg.getCustomerList(i).getCustomerID() + "-" + cg.getCustomerList(i).getName());
+//        }
+//        jList3.setModel(model3);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void buttonCommitNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCommitNewOrderActionPerformed

@@ -6,6 +6,7 @@ package GatewayMapper;
 
 import Resources.Customer;
 import DBConnection.ConnectionTools;
+import Domain.CustomerList;
 import Resources.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,19 +20,11 @@ import java.util.ArrayList;
  */
 public class CustomerGateway {
 
-    ArrayList<Customer> listOfCustomers = new ArrayList<>();
+    CustomerList customerList;
     
-    public Customer getCustomerList(int i){
-        return listOfCustomers.get(i);
-    }
-
-    public int getCustomerListSize(){
-        return listOfCustomers.size();
-    }
 
     /*Used to build a list of customers. */
     public boolean buildCustomerList() {
-        listOfCustomers.clear();
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * " 
@@ -43,12 +36,12 @@ public class CustomerGateway {
             statement = con.prepareStatement(SQLString1);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                listOfCustomers.add(new Customer(
+                customerList.addToCustomerList(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
                         rs.getInt(4),
-                        rs.getString(5)));
+                        rs.getString(5));
             }
             success = true;
         } catch (Exception e) {
@@ -149,12 +142,5 @@ public class CustomerGateway {
         return success;
     }
 
-    public String printList() {
-        String customerList = null;
-        for (int i = 0; i < listOfCustomers.size(); i++) {
-           customerList = listOfCustomers.get(i).toString();
-        }
-        return customerList;
-    }
     
 }

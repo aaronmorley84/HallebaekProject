@@ -1,24 +1,21 @@
 package Domain;
 import GatewayMapper.CheckerGateway;
-import GatewayMapper.CustomerGateway;
 import GatewayMapper.OrderGateway;
 import GatewayMapper.PackageGateway;
 import GatewayMapper.ProductGateway;
-import Resources.Customer;
 import Resources.Product;
 import Resources.Packages;
 
 public class Controller{
     ProductGateway prodController;
     OrderGateway orderController;
-    CustomerGateway customerController;
+    CustomerList customerList = new CustomerList();
     PackageGateway packageController;
     CheckerGateway checkerController;
 
     public Controller() {
         prodController = new ProductGateway();
         orderController = new OrderGateway();
-        customerController = new CustomerGateway();
         packageController = new PackageGateway();
         checkerController = new CheckerGateway(orderController);
     }
@@ -97,28 +94,39 @@ public class Controller{
     /*
      * Methods for CustomerGateway()
      */
-    public Customer getCustomerList(int i) {
-        return customerController.getCustomerList(i);
+    
+    public int getCustomerID(int i){
+        customerList.getCurrentCustomer(i);
+        return customerList.getCusID();
+    }
+    public String getCustomerName(int i){
+        customerList.getCurrentCustomer(i);
+        return customerList.getCusName();
+    }
+    public String getCustomerAddress(int i){
+        customerList.getCurrentCustomer(i);
+        return customerList.getCusAddress();
+    }
+    public String getCustomerEmail(int i){
+        customerList.getCurrentCustomer(i);
+        return customerList.getCusEmail();
     }
     public int getCustomerListSize() {
-        return customerController.getCustomerListSize();
+        return customerList.getCustomerListSize();
     }
-    
     public boolean buildCustomerList() {
-        return customerController.buildCustomerList();
+        return customerList.buildCustomerList();
     }
     public boolean addCustomer(String name, String address, String email) {
-        return customerController.addCustomer(name, address, email);
+        return customerList.addCustomer(name, address, email);
     }
     public boolean saveEditedCustomer(int cusID, String cusName, String cusAddress, String cusEmail) {
-        return customerController.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
+        return customerList.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
     }
     public boolean deleteCustomer(int cusID) {
-        return customerController.deleteCustomer(cusID);
+        return customerList.deleteCustomer(cusID);
     }
-    public String printList() {
-        return customerController.printList();
-    }
+    
     /*
      * Methods for PackageGateway()
      */
