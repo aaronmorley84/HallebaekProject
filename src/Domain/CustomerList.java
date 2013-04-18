@@ -90,4 +90,5 @@ public class CustomerList {
     public boolean deleteCustomer(int cusID) {
         return facade.deleteCustomer(cusID);
     }
+    
 }

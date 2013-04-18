@@ -28,7 +28,7 @@ public class ConnectionTools {
     }
     
     public Connection getCurrentConnection() {
-        if (con != null) {
+        if (getInstance() != null) {
             return con;
         }
         else {
