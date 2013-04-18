@@ -104,9 +104,10 @@ public class ProductList {
                 temp = productList.get(i);
             }
         }
-        
         return temp;
     }
 
+    //need to be changed to java not SQL
+    
     
 }

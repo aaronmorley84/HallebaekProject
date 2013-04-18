@@ -48,4 +48,5 @@ public class Facade {
          ProductGateway pg = new ProductGateway();
         return pg.deleteProduct(ProdID);
     }
+    
 }

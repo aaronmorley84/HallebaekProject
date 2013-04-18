@@ -24,6 +24,10 @@ public class Controller{
     public void clearProductList(){
         productList.clearProductList();
     }
+    public int getProductId(int i){
+        productList.getCurrentProduct(i);
+        return productList.getProdID();
+    }
     public String getProductName(int i){
         productList.getCurrentProduct(i);
         return productList.getProdName();
@@ -109,6 +113,10 @@ public class Controller{
     
     public void clearCustomerList(){
         customerList.clearCustomerList();
+    }
+    public int getCustomerID(int i){
+        customerList.getCurrentCustomer(i);
+        return customerList.getCusID();
     }
     public String getCustomerName(int i){
         customerList.getCurrentCustomer(i);

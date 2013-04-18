@@ -1274,11 +1274,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_AddProductButtonActionPerformed
 
     private void GetProductsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetProductsButtonActionPerformed
-        if (con.getAllProducts()) {
+        if (con.buildProductList()) {
             int counter = 0;
             model3.clear();
-            while (counter < con.getProductListsize()) {
-                model3.addElement(con.showProducts(counter));
+            while (counter < con.getProductListSize()) {
+                model3.addElement(con.getProductId(counter) + "-" + con.getProductName(counter));
                 counter++;
             }
             ProductJList.setModel(model3);
@@ -1301,12 +1301,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_DeleteProductButtonActionPerformed
 
     private void EditProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductButtonActionPerformed
-        ProductIDField.setText("" + con.showProducts(ProductJList.getSelectedIndex()).getProductID());
-        ProductNameField.setText(con.showProducts(CustomerJList.getSelectedIndex()).getName());
-        ProductVolumeField.setText("" + con.showProducts(CustomerJList.getSelectedIndex()).getVolume());
-        ProductQuantityField.setText("" + con.showProducts(CustomerJList.getSelectedIndex()).getQuantity());
-        ProductPriceField.setText("" + con.showProducts(CustomerJList.getSelectedIndex()).getPrice());
-        ProductDescriptionField.setText(con.showProducts(CustomerJList.getSelectedIndex()).getDescription());
+        ProductIDField.setText("" + con.getProductId(ProductJList.getSelectedIndex()));
+        ProductNameField.setText(con.getProductName(CustomerJList.getSelectedIndex()));
+        ProductVolumeField.setText("" + con.getProductVolume(CustomerJList.getSelectedIndex()));
+        ProductQuantityField.setText("" + con.getProductQuantiy(CustomerJList.getSelectedIndex()));
+        ProductPriceField.setText("" + con.getProductPrice(CustomerJList.getSelectedIndex()));
+        ProductDescriptionField.setText(con.getProductDescription(CustomerJList.getSelectedIndex()));
 
         AddProductButton.setEnabled(false);
         DeleteProductButton.setEnabled(false);
@@ -1326,7 +1326,7 @@ public class GUI extends javax.swing.JFrame {
         if (!ProductNameField.getText().equals(empty) && !ProductVolumeField.getText().equals(empty)
                 && !ProductQuantityField.getText().equals(empty) && !ProductDescriptionField.getText().equals(empty)
                 && !ProductPriceField.getText().equals(empty)) {
-            if (con.editProduct(ID, name, volume, quantity, description, price)) {
+            if (con.saveEditedProduct(ID, name, volume, quantity, description, price)) {
                 JOptionPane.showMessageDialog(this, "Product edited!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
                 clearProductFields();
 
@@ -1346,56 +1346,56 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveProductChangesButtonActionPerformed
 
     private void SearchForProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchForProductButtonActionPerformed
-        String name = ProductNameSearchField.getText();
-        String empty = "";
-        int ID = 0;
-        if (!ProductIDSearchField.getText().equals(empty)) {
-            ID = Integer.parseInt(ProductIDSearchField.getText());
-        }
-        if (!name.isEmpty() && ID > 0) {
-            if (con.searchForProduct(ID)) {
-                int counter = 0;
-                model3.clear();
-                while (counter < con.getProductListsize()) {
-                    model3.addElement(con.showProducts(counter));
-                    counter++;
-                }
-                ProductJList.setModel(model3);
-
-            }
-        } else {
-            if (!name.isEmpty()) {
-                if (con.searchForProduct(name)) {
-                    int counter = 0;
-                    model3.clear();
-                    while (counter < con.getProductListsize()) {
-                        model3.addElement(con.showProducts(counter));
-                        counter++;
-                    }
-                    ProductJList.setModel(model3);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Could not find product!", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                if (ID > 0) {
-                    if (con.searchForProduct(ID)) {
-                        int counter = 0;
-                        model3.clear();
-                        while (counter < con.getProductListsize()) {
-                            model3.addElement(con.showProducts(counter));
-                            counter++;
-                        }
-                        ProductJList.setModel(model3);
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Could not find product!", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-            }
-
-
-        }
-        ProductIDSearchField.setText(null);
-        ProductNameSearchField.setText(null);
+//        String name = ProductNameSearchField.getText();
+//        String empty = "";
+//        int ID = 0;
+//        if (!ProductIDSearchField.getText().equals(empty)) {
+//            ID = Integer.parseInt(ProductIDSearchField.getText());
+//        }
+//        if (!name.isEmpty() && ID > 0) {
+//            if (con.searchForProduct(ID)) {
+//                int counter = 0;
+//                model3.clear();
+//                while (counter < con.getProductListSize()) {
+//                    model3.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
+//                    counter++;
+//                }
+//                ProductJList.setModel(model3);
+//
+//            }
+//        } else {
+//            if (!name.isEmpty()) {
+//                if (con.searchForProduct(name)) {
+//                    int counter = 0;
+//                    model3.clear();
+//                    while (counter < con.getProductListSize()) {
+//                        model3.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
+//                        counter++;
+//                    }
+//                    ProductJList.setModel(model3);
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "Could not find product!", "Error", JOptionPane.ERROR_MESSAGE);
+//                }
+//            } else {
+//                if (ID > 0) {
+//                    if (con.searchForProduct(ID)) {
+//                        int counter = 0;
+//                        model3.clear();
+//                        while (counter < con.getProductListSize()) {
+//                            model3.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
+//                            counter++;
+//                        }
+//                        ProductJList.setModel(model3);
+//                    } else {
+//                        JOptionPane.showMessageDialog(this, "Could not find product!", "Error", JOptionPane.ERROR_MESSAGE);
+//                    }
+//                }
+//            }
+//
+//
+//        }
+//        ProductIDSearchField.setText(null);
+//        ProductNameSearchField.setText(null);
     }//GEN-LAST:event_SearchForProductButtonActionPerformed
 
     private void OrderSearchProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSearchProductButtonActionPerformed
@@ -1404,14 +1404,14 @@ public class GUI extends javax.swing.JFrame {
         if (name.isEmpty()) {
             int counter = 0;
             model4.clear();
-            while (counter < con.getProductListsize()) {
-                model4.addElement(con.showProducts(counter));
+            while (counter < con.getProductListSize()) {
+                model4.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
                 counter++;
             }
             OrderProductsList.setModel(model4);
         } else {
             model4.clear();
-            model4.addElement(con.searchProdByNameFromArray(name));
+            model4.addElement(con.searchProdByNameinArray(name));
             OrderProductsList.setModel(model4);
         }
         OrderProductNameSearchField.setText("");
@@ -1421,7 +1421,7 @@ public class GUI extends javax.swing.JFrame {
         setVisibleItemsInOrderPane(true);
 
         con.currentOrder();
-        con.getAllProducts();
+        con.buildProductList();
         
     }//GEN-LAST:event_OrderNewOrderButtonActionPerformed
 
@@ -1535,14 +1535,14 @@ public class GUI extends javax.swing.JFrame {
         if (name.isEmpty()) {
             int counter = 0;
             model4.clear();
-            while (counter < con.getProductListsize()) {
-                model4.addElement(con.showProducts(counter));
+            while (counter < con.getProductListSize()) {
+                model4.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
                 counter++;
             }
             OrderProductsList1.setModel(model4);
         } else {
             model4.clear();
-            model4.addElement(con.searchProdByNameFromArray(name));
+            model4.addElement(con.searchProdByNameinArray(name));
             OrderProductsList1.setModel(model4);
         }
         OrderProductNameSearchField1.setText("");
@@ -1559,7 +1559,7 @@ public class GUI extends javax.swing.JFrame {
             model5.addElement(con.getPackageProductList(i)); 
         }
         ProductsInPackageList.setModel(model5);
-        con.getAllProducts();
+        con.buildProductList();
     }//GEN-LAST:event_EditPackProdButtonActionPerformed
 
     private void AddProductToPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductToPackageButtonActionPerformed

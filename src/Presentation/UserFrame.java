@@ -1,5 +1,6 @@
 package Presentation;
 
+import Domain.Controller;
 import java.math.*;
 import GatewayMapper.*;
 import Resources.Product;
@@ -20,6 +21,7 @@ public class UserFrame extends javax.swing.JFrame {
     OrderGateway control2 = new OrderGateway();
     CustomerGateway cg = new CustomerGateway();
     CheckerGateway chg = new CheckerGateway(control2);
+    Controller con = new Controller();
     public UserFrame() {
         initComponents();
         model1 = new DefaultListModel();
@@ -785,12 +787,12 @@ public class UserFrame extends javax.swing.JFrame {
 
     /*US 1.1 Demo */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (control1.getAllProducts()) {
+        if (con.buildProductList()) {
             jFrame1.setVisible(true);
             int counter = 0;
             model1.clear();
-            while (counter < control1.getProductListsize()) {
-                model1.addElement(control1.showProductsFromArray(counter));
+            while (counter < con.getProductListSize()) {
+                model1.addElement(con.getProductId(counter) + "-" + con.getProductName(counter));
                 counter++;
             }
             listAllProducts.setModel(model1);
@@ -817,8 +819,8 @@ public class UserFrame extends javax.swing.JFrame {
             if (control1.searchForProduct(ID)) {
                 int counter = 0;
                 model2.clear();
-                while (counter < control1.getProductListsize()) {
-                    model2.addElement(control1.showProductsFromArray(counter));
+                while (counter < con.getProductListSize()) {
+                    model2.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
                     counter++;
                 }
                 listSearchResult.setModel(model2);
@@ -829,8 +831,8 @@ public class UserFrame extends javax.swing.JFrame {
             if (control1.searchForProduct(name)) {
                 int counter = 0;
                 model2.clear();
-                while (counter < control1.getProductListsize()) {
-                    model2.addElement(control1.showProductsFromArray(counter));
+                while (counter < con.getProductListSize()) {
+                    model2.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
                     counter++;
                 }
                 listSearchResult.setModel(model2);
@@ -842,8 +844,8 @@ public class UserFrame extends javax.swing.JFrame {
                 if (control1.searchForProduct(ID)) {
                     int counter = 0;
                     model2.clear();
-                    while (counter < control1.getProductListsize()) {
-                        model2.addElement(control1.showProductsFromArray(counter));
+                    while (counter < con.getProductListSize()) {
+                        model2.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
                         counter++;
                     }
                     listSearchResult.setModel(model2);
@@ -919,7 +921,7 @@ public class UserFrame extends javax.swing.JFrame {
         if (!textFieldEditProdName.equals("") && !textFieldEditProdID.equals("") && !textFieldEditProdVolume.equals("")
                 && !textFieldEditProdQuantity.equals("") && !textFieldEditProdDescription.equals("")
                 && !textFieldEditProdPrice.equals("")) {
-            if (control1.editProduct(ID, name, volume, quantity, description, price)) {
+            if (con.saveEditedProduct(ID, name, volume, quantity, description, price)) {
                 JOptionPane.showMessageDialog(this, "Product edited!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(this, "Could not save product!", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -948,11 +950,11 @@ public class UserFrame extends javax.swing.JFrame {
     private void buttonNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewOrderActionPerformed
         control2.currentOrder();
         control2.currentTruckOrder();
-        control1.getAllProducts();
+        con.buildProductList();
         int counter = 0;
         model1.clear();
-        while (counter < control1.getProductListsize()) {
-            model1.addElement(control1.showProductsFromArray(counter));
+        while (counter < con.getProductListSize()) {
+            model1.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
             counter++;
         }
         jList1.setModel(model1);
