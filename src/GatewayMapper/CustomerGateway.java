@@ -20,8 +20,6 @@ import java.sql.SQLException;
 public class CustomerGateway {
     CustomerList customerList;
     
-    
-
     /*Used to build a list of customers. */
     public boolean buildCustomerList(CustomerList customerList) {
         this.customerList = customerList;

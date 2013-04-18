@@ -2,6 +2,7 @@ package GatewayMapper;
 
 import Resources.Product;
 import DBConnection.ConnectionTools;
+import Domain.ProductList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,55 +14,43 @@ import java.util.ArrayList;
  * @author Adrian & Kris
  */
 public class ProductGateway {
+    ProductList productList;
 
-    ArrayList<Product> products = new ArrayList<>();
+     /*Used to build a list of products. */
+    public boolean buildProductList(ProductList productList) {
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        boolean success = false;
+        String SQLstring = "SELECT * "
+                + "FROM products";
 
-    public ProductGateway() {
-
-    }
-
-    public void addProductToArray(Product product) {
-        products.add(product);
-    }
-
-    public int getProductListsize() {
-        return products.size();
-        
-    }
-    
-    /*
-     * Methods for searching through and displaying all or  products
-     * Not using DB connection.
-     */
-
-    public Product searchProdByNameinArray(String name) {
-            Product temp = null;
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getName().equals(name)) {
-                temp = products.get(i);
+        PreparedStatement statement = null;
+        try {
+            statement = con.prepareStatement(SQLstring);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                productList.addToProductList(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getInt(4),
+                        rs.getString(5),
+                        rs.getInt(6));
+            }
+            success = true;
+        } catch (Exception e) {
+            System.out.println("Retrieval error!");
+            System.out.println(e.getMessage());
+            success = false;
+        } finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println("Statement close error!");
+                System.out.println(e.getMessage());
             }
         }
-        
-        return temp;
-    }
-
-    public Product showProductsFromArray(int index) {
-        if (index < products.size()) {
-            return products.get(index);
-        } else {
-            return null;
-        }
-    }
-    
-    public Product getProductFromArray(int ID) {
-        Product temp = null;
-        for (int i = 0; i < products.size(); i++) {
-            if (products.get(i).getProductID() == ID) {
-                temp = products.get(i);
-            }
-        }
-        return temp;
-    }
+        return success;
+    }//end of buildProducts
     
     /*
      * US 2.1
@@ -102,7 +91,7 @@ public class ProductGateway {
      * Admin can edit product in 
      * product table.
      */
-    public boolean editProduct(int ID, String name, int volume, int quantity, String description, int price) {
+    public boolean saveEditedProduct(int ID, String name, int volume, int quantity, String description, int price) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString2 = "SELECT * "
@@ -176,7 +165,6 @@ public class ProductGateway {
      * by name or item number.
      */
     public boolean searchForProduct(String name) {
-        products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         boolean success = false;
         String SQLString1 = "SELECT * "
@@ -189,13 +177,13 @@ public class ProductGateway {
             statement.setString(1, name);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                products.add(new Product(
+                productList.addToProductList(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getInt(3),
                         rs.getInt(4),
                         rs.getString(5),
-                        rs.getInt(6)));
+                        rs.getInt(6));
             }
             success = true;
         } catch (Exception e) {
@@ -214,7 +202,6 @@ public class ProductGateway {
     }
 
     public boolean searchForProduct(int ID) {
-        products.clear();
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         boolean success = false;
         String SQLString2 = "SELECT * "
@@ -226,13 +213,13 @@ public class ProductGateway {
             statement.setInt(1, ID);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                products.add(new Product(
+                productList.addToProductList(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getInt(3),
                         rs.getInt(4),
                         rs.getString(5),
-                        rs.getInt(6)));
+                        rs.getInt(6));
             }
             success = true;
         } catch (Exception e) {
@@ -256,8 +243,7 @@ public class ProductGateway {
      * of all items within the Product
      * table.
      */
-    public boolean getAllProducts() {
-        products.clear();
+    public boolean buildProductList() {
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         boolean success = false;
         String SQLstring = "SELECT * "
@@ -268,13 +254,13 @@ public class ProductGateway {
             statement = con.prepareStatement(SQLstring);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                products.add(new Product(
+                productList.addToProductList(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getInt(3),
                         rs.getInt(4),
                         rs.getString(5),
-                        rs.getInt(6)));
+                        rs.getInt(6));
             }
             success = true;
         } catch (Exception e) {

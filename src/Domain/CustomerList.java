@@ -22,15 +22,6 @@ public class CustomerList {
         customerList.add(new Customer(cusID, cusName, cusAddress, phoneID, cusEmail));
     }
 
-//    public int getCurrentCusID(int j) {
-//        
-//        for (int i = 0; i < customerList.size(); i++) {
-//            if (j == customerList.get(i).getCustomerID()) {
-//                return i;
-//            }
-//        }
-//        return 0;
-//    }
     public Customer getCurrentCustomer(int i){
         currentCustomer = customerList.get(i);
         return currentCustomer;
@@ -39,6 +30,7 @@ public class CustomerList {
     public int getCustomerListSize() {
         return customerList.size();
     }
+    
     public void clearCustomerList(){
         customerList.clear();
     }

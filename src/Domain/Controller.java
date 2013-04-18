@@ -2,19 +2,17 @@ package Domain;
 import GatewayMapper.CheckerGateway;
 import GatewayMapper.OrderGateway;
 import GatewayMapper.PackageGateway;
-import GatewayMapper.ProductGateway;
 import Resources.Product;
 import Resources.Packages;
 
 public class Controller{
-    ProductGateway prodController;
     OrderGateway orderController;
     CustomerList customerList = new CustomerList();
+    ProductList productList = new ProductList();
     PackageGateway packageController;
     CheckerGateway checkerController;
 
     public Controller() {
-        prodController = new ProductGateway();
         orderController = new OrderGateway();
         packageController = new PackageGateway();
         checkerController = new CheckerGateway(orderController);
@@ -22,36 +20,49 @@ public class Controller{
     /*
      * methods for ProductGateway()
      */
-    public Product getProductFromArray(int ID){
-        return prodController.getProductFromArray(ID);
+    
+    public void clearProductList(){
+        productList.clearProductList();
     }
-    public Product searchProdByNameFromArray(String name) {
-        return prodController. searchProdByNameinArray(name);
+    public String getProductName(int i){
+        productList.getCurrentProduct(i);
+        return productList.getProdName();
     }
-    public boolean addProduct(String name, int volume, int quantity, String description, int price){
-        return prodController.addProduct(name, volume, quantity, description, price);
+    public int getProductVolume(int i){
+        productList.getCurrentProduct(i);
+        return productList.getProdVol();
     }
-    public boolean editProduct(int ID, String name, int volume, int quantity, String description, int price){
-        return prodController.editProduct(ID, name, volume, quantity, description, price);
+    public int getProductQuantiy(int i){
+        productList.getCurrentProduct(i);
+        return productList.getProdQTY();
     }
-    public boolean deleteProduct(int ID){
-        return prodController.deleteProduct(ID);
+    public String getProductDescription(int i){
+        productList.getCurrentProduct(i);
+        return productList.getProdDisc();
     }
-    public int getProductListsize() {
-        return prodController.getProductListsize();
+    public int getProductPrice(int i){
+        productList.getCurrentProduct(i);
+        return productList.getProdPrice();
     }
-    public Product showProducts(int index) {
-        return prodController.getProductFromArray(index);
+    public int getProductListSize() {
+        return productList.getProductListsize();
     }
-    public boolean getAllProducts() {
-        return prodController.getAllProducts();
+    public boolean buildProductList() {
+        return productList.buildProductList(productList);
     }
-    public boolean searchForProduct(String name) {
-        return prodController.searchForProduct(name);
+    public boolean addProduct(String prodName, int prodVol, int prodQTY, String prodDisc, int prodPrice) {
+        return productList.addProduct(prodName, prodVol, prodQTY, prodDisc, prodPrice);
     }
-    public boolean searchForProduct(int ID) {
-        return prodController.searchForProduct(ID);
+    public boolean saveEditedProduct(int prodID, String prodName, int prodVol, int prodQTY, String prodDisc, int prodPrice) {
+        return productList.saveEditedProduct(prodID, prodName, prodVol, prodQTY, prodDisc, prodPrice);
     }
+    public boolean deleteProduct(int cusID) {
+        return productList.deleteProduct(cusID);
+    }
+    public Product searchProdByNameinArray(String name){
+        return productList.searchProdByNameinArray(name);
+    }
+
     /*
      * Methods for OrderGateway()
      */
@@ -95,10 +106,7 @@ public class Controller{
      * Methods for CustomerGateway()
      */
     
-    public int getCustomerID(int i){
-        customerList.getCurrentCustomer(i);
-        return customerList.getCusID();
-    }
+    
     public void clearCustomerList(){
         customerList.clearCustomerList();
     }
