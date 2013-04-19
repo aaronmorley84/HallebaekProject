@@ -107,8 +107,7 @@ public class ProductList {
         }
         return "Not found";
     }
-    public int searchProdByIDinArray(int ID){            
-        System.out.println("Searching in product");
+    public int searchProdByIDinArray(int ID){          
         for (int i = 0; i < getProductListsize(); i++) {
             getCurrentProduct(i);
             if(getProdID() == ID){
