@@ -5,6 +5,7 @@
 package GatewayMapper;
 import Domain.CustomerList;
 import Domain.OrderList;
+import Domain.PackageList;
 import Domain.ProductList;
 
 /**
@@ -63,4 +64,31 @@ public class Facade {
         OrderGateway og = new OrderGateway();
         return og.getUniqueOrderID();
     }
+    
+    //Package Gateway
+    public boolean buildPackageList(PackageList packageList){
+        PackageGateway pg = new PackageGateway();
+        return pg.buildPackageList(packageList);
+    }
+    public boolean addPackage(String packName, String packDesc, int packPrice){
+        PackageGateway pg = new PackageGateway();
+        return pg.addPackage(packName, packDesc, packPrice);
+    }
+    public boolean addProductsToPackageInDB(){
+        PackageGateway pg = new PackageGateway();
+        return pg.addProductsToPackageInDB();
+    }
+    public boolean loadPackageProducts(){
+        PackageGateway pg = new PackageGateway();
+        return pg.loadPackageProducts();
+    }
+    public boolean deletePackageProducts(){
+        PackageGateway pg = new PackageGateway();
+        return pg.deletePackageProducts();
+    }
+    public boolean deletePackage(){
+        PackageGateway pg = new PackageGateway();
+        return pg.deletePackage();
+    }
+            
 }
