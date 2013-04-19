@@ -4,6 +4,7 @@
  */
 package GatewayMapper;
 import Domain.CustomerList;
+import Domain.OrderList;
 import Domain.ProductList;
 
 /**
@@ -49,4 +50,17 @@ public class Facade {
         return pg.deleteProduct(ProdID);
     }
     
+    //Order Gateway
+    public boolean buildOrderList(OrderList orderlist){
+        OrderGateway og = new OrderGateway();
+        return og.buildOrderList(orderlist);
+    }
+    public boolean addOrder(){
+        OrderGateway og = new OrderGateway();
+        return og.addOrder();
+    }
+    public int getUniqueOrderID(){
+        OrderGateway og = new OrderGateway();
+        return og.getUniqueOrderID();
+    }
 }
