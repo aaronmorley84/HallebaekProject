@@ -30,13 +30,15 @@ public class GUI extends javax.swing.JFrame {
         model5 = new DefaultListModel();
         model6 = new DefaultListModel();
         model7 = new DefaultListModel();
-        MainPanel.setVisible(true);
+        LogInPanel.setVisible(true);
+        MainPanel.setVisible(false);
         CustomerPanel.setVisible(false);
         ProductPanel.setVisible(false);
         OrderPanel.setVisible(false);
         PackagePanel.setVisible(false);
         EditPackagePanel.setVisible(false);
         setVisibleItemsInOrderPane(false);
+        jMenu2.setEnabled(false);
 
     }
 
@@ -165,6 +167,13 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         ProductsInPackageList = new javax.swing.JList();
         SavePackageButton = new javax.swing.JButton();
+        LogInPanel = new javax.swing.JPanel();
+        LoginMenuLabel = new javax.swing.JLabel();
+        UserNameLabel = new javax.swing.JLabel();
+        PasswordLabel = new javax.swing.JLabel();
+        UserNameField = new javax.swing.JTextField();
+        PasswordField = new javax.swing.JTextField();
+        LoginButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         ExitDrop = new javax.swing.JMenuItem();
@@ -358,7 +367,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(CutomerIDLabel)
                     .addComponent(ExistingCustLabel))
                 .addGap(18, 18, 18)
-                .addGroup(CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(CustomerPanelLayout.createSequentialGroup()
                         .addComponent(CustomerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -390,12 +399,11 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(42, 42, 42)
                                 .addComponent(EditCustomerButton)
                                 .addGap(18, 18, 18)
-                                .addComponent(DeleteCustomerbutton)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addComponent(DeleteCustomerbutton))
                             .addGroup(CustomerPanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(83, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         getContentPane().add(CustomerPanel);
@@ -1061,6 +1069,37 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().add(EditPackagePanel);
         EditPackagePanel.setBounds(-8, 0, 910, 693);
 
+        LogInPanel.setLayout(null);
+
+        LoginMenuLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        LoginMenuLabel.setText("Login Menu.");
+        LogInPanel.add(LoginMenuLabel);
+        LoginMenuLabel.setBounds(288, 109, 221, 44);
+
+        UserNameLabel.setText("User Name:");
+        LogInPanel.add(UserNameLabel);
+        UserNameLabel.setBounds(270, 210, 56, 14);
+
+        PasswordLabel.setText("Password:");
+        LogInPanel.add(PasswordLabel);
+        PasswordLabel.setBounds(270, 240, 56, 14);
+        LogInPanel.add(UserNameField);
+        UserNameField.setBounds(360, 210, 143, 20);
+        LogInPanel.add(PasswordField);
+        PasswordField.setBounds(360, 240, 143, 20);
+
+        LoginButton.setText("Login");
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginButtonActionPerformed(evt);
+            }
+        });
+        LogInPanel.add(LoginButton);
+        LoginButton.setBounds(350, 310, 57, 23);
+
+        getContentPane().add(LogInPanel);
+        LogInPanel.setBounds(0, 0, 900, 600);
+
         jMenu1.setText("File");
 
         ExitDrop.setText("Exit");
@@ -1123,7 +1162,7 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MainNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MainNavDropActionPerformed
-        selectPanel(1);
+        selectPanel(2);
     }//GEN-LAST:event_MainNavDropActionPerformed
 
     private void ExitDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitDropActionPerformed
@@ -1131,7 +1170,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ExitDropActionPerformed
 
     private void CustomerMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerMenuButtonActionPerformed
-        selectPanel(2);
+        selectPanel(3);
 
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
@@ -1142,11 +1181,11 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_CustomerMenuButtonActionPerformed
 
     private void OrderMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderMenuButtonActionPerformed
-        selectPanel(4);
+        selectPanel(5);
     }//GEN-LAST:event_OrderMenuButtonActionPerformed
 
     private void CustNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustNavDropActionPerformed
-        selectPanel(2);
+        selectPanel(3);
 
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
@@ -1157,16 +1196,16 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_CustNavDropActionPerformed
 
     private void OrdNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrdNavDropActionPerformed
-        selectPanel(4);
+        selectPanel(5);
     }//GEN-LAST:event_OrdNavDropActionPerformed
 
     private void ProductMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductMenuButtonActionPerformed
-        selectPanel(3);
+        selectPanel(4);
         clearProductFields();
     }//GEN-LAST:event_ProductMenuButtonActionPerformed
 
     private void ProdNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdNavDropActionPerformed
-        selectPanel(3);
+        selectPanel(4);
         clearProductFields();
     }//GEN-LAST:event_ProdNavDropActionPerformed
 
@@ -1499,12 +1538,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_AddPackageButtonActionPerformed
 
     private void PackageMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackageMenuButtonActionPerformed
-        selectPanel(5);
+        selectPanel(6);
         clearPackageFields();
     }//GEN-LAST:event_PackageMenuButtonActionPerformed
 
     private void PackNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackNavDropActionPerformed
-        selectPanel(5);
+        selectPanel(6);
         clearPackageFields();
     }//GEN-LAST:event_PackNavDropActionPerformed
 
@@ -1549,7 +1588,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_OrderSearchProductButton1ActionPerformed
 
     private void EditPackProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackProdButtonActionPerformed
-        selectPanel(6);
+        selectPanel(7);
         model5.clear();
         
         PackageIDField2.setText(PackageIDField.getText());
@@ -1606,6 +1645,11 @@ public class GUI extends javax.swing.JFrame {
         con.deletePackage();
     }//GEN-LAST:event_DeletePackageButtonActionPerformed
 
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        jMenu2.setEnabled(true);
+        selectPanel(2);
+    }//GEN-LAST:event_LoginButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1642,6 +1686,7 @@ public class GUI extends javax.swing.JFrame {
     }
     public void selectPanel(int panel){
         
+        LogInPanel.setVisible(false);
         MainPanel.setVisible(false);
         CustomerPanel.setVisible(false);
         ProductPanel.setVisible(false);
@@ -1651,21 +1696,24 @@ public class GUI extends javax.swing.JFrame {
         
         switch(panel){
             case 1:
-                MainPanel.setVisible(true);
+                LogInPanel.setVisible(true);
                 break;
             case 2:
-                CustomerPanel.setVisible(true);
+                MainPanel.setVisible(true);
                 break;
             case 3:
-                ProductPanel.setVisible(true);
+                CustomerPanel.setVisible(true);
                 break;
             case 4:
-                OrderPanel.setVisible(true);
+                ProductPanel.setVisible(true);
                 break;
             case 5:
-                PackagePanel.setVisible(true);
+                OrderPanel.setVisible(true);
                 break;
             case 6:
+                PackagePanel.setVisible(true);
+                break;
+            case 7:
                 EditPackagePanel.setVisible(true);
                 break;
         }
@@ -1750,6 +1798,9 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem ExitDrop;
     private javax.swing.JButton GetCustomerButton;
     private javax.swing.JButton GetProductsButton;
+    private javax.swing.JPanel LogInPanel;
+    private javax.swing.JButton LoginButton;
+    private javax.swing.JLabel LoginMenuLabel;
     private javax.swing.JLabel MainMenuLabel;
     private javax.swing.JMenuItem MainNavDrop;
     private javax.swing.JPanel MainPanel;
@@ -1798,6 +1849,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel PackagePanel;
     private javax.swing.JTextField PackagePriceField;
     private javax.swing.JLabel PackagePriceLabel;
+    private javax.swing.JTextField PasswordField;
+    private javax.swing.JLabel PasswordLabel;
     private javax.swing.JMenuItem ProdNavDrop;
     private javax.swing.JTextField ProductDescriptionField;
     private javax.swing.JTextField ProductIDField;
@@ -1825,6 +1878,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton SaveProductChangesButton;
     private javax.swing.JPanel SearchForAProduct;
     private javax.swing.JButton SearchForProductButton;
+    private javax.swing.JTextField UserNameField;
+    private javax.swing.JLabel UserNameLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
