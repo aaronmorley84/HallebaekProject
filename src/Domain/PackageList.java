@@ -70,13 +70,24 @@ public class PackageList {
     }
     
     //communication to customerGateway
-    public boolean buildPackageList(CustomerList customerList){
+    public boolean buildPackageList(PackageList packageList){
         return facade.buildPackageList(packageList);
     }
     public boolean addPackage(String packName, String packDesc, int packPrice){
         return facade.addPackage(packName, packDesc, packPrice);
     }
-    
+    public boolean addProductsToPackageInDB(){
+        return facade.addProductsToPackageInDB();
+    }
+    public boolean loadPackageProducts(){
+        return facade.loadPackageProducts();
+    }
+    public boolean deletePackageProducts(){
+        return facade.deletePackageProducts();
+    }
+    public boolean deletePackage(){
+        return facade.deletePackage();
+    }
     
     
     
