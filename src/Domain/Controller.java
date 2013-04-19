@@ -193,10 +193,6 @@ public class Controller{
     public boolean addProductsToPackageInDB(){
         return packageList.addProductsToPackageInDB();
     }
-    
-    
-    
-    
     public boolean loadPackageProducts(){
         return packageList.loadPackageProducts();
     }
@@ -206,6 +202,10 @@ public class Controller{
     public boolean deletePackage(){
         return packageList.deletePackage();
     }
+    
+    
+    
+    
     /*
      * Methods for CheckerGateway(
      */
