@@ -5,10 +5,10 @@ package Resources;
  * @author Aaron and Lars, 10.4.2013
  */
 public class Truck {
-    int truckID;
-    String truckName;
-    int truckCapacity;
-    String bookdate;
+    private int truckID;
+    private String truckName;
+    private int truckCapacity;
+    private String bookdate;
     
 public Truck(int truckID, String truckName, int truckCapacity, String bookdate){
     this.truckID = truckID;
@@ -16,6 +16,8 @@ public Truck(int truckID, String truckName, int truckCapacity, String bookdate){
     this.truckCapacity = truckCapacity;
     this.bookdate = bookdate;
 }   
+
+   
     public String getTruckModel(){
         return truckName;
     }

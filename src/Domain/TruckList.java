@@ -16,6 +16,15 @@ public class TruckList {
     private TruckOrder currTruckOrder;
     private Truck currTruck;
     
+    public void currTruck(int i){
+        this.currTruck = trucks.get(i);
+      
+    }
+    
+    public void currTruckOrder(int i ){
+        this.currTruckOrder = truckOrders.get(i);
+    }
+    
     public void addToTruckList(int truckID, String model, int capacity, String bookdate){
         trucks.add(new Truck(truckID, model, capacity, bookdate));
     }
@@ -52,7 +61,7 @@ public class TruckList {
         for (int i = 0; i < trucks.size(); i++) {
             System.out.println(trucks.get(i).getBookDate());
             if(trucks.get(i).getBookDate().contains(date)){
-                trucks.remove(i);
+                trucks.remove(i);//needs work
             }
         }
     }
@@ -93,13 +102,7 @@ public class TruckList {
     public String getTruckDate(){
         return currTruck.getBookDate();
     }
-    public Truck getTruckList(int index) {
-        if (index < trucks.size()){
-            return trucks.get(index);
-        }else {
-            return null;
-        }
-    }
+  
     //getters for truck order
     public int getTruckOrderID(){
         return currTruckOrder.getOrderID();
@@ -113,38 +116,33 @@ public class TruckList {
     public String getTruckOrderDate(){
         return currTruckOrder.getDate();
     }
-    public TruckOrder getTruckOrderList(int index) {
-        if (index < truckOrders.size()) {
-            return truckOrders.get(index);
-        } else {
-            return null;
-        }
-    }
+    
+    
     
     //setters for truck
-    public void setTruckID(int truckID){
+    public void editTruckID(int truckID){
         currTruck.setTruckID(truckID);
     }
-    public void setTruckCapacity(int capacity){
+    public void editTruckCapacity(int capacity){
         currTruck.setTruckCapacity(capacity);
     }
-    public void setTruckModel(String model){
+    public void editTruckModel(String model){
         currTruck.setTruckModel(model);
     }
-    public void setTruckDate(String date){
+    public void editTruckDate(String date){
         currTruck.setBookDate(date);
     }
     //setters for truck order
-    public void setTruckOrderID(int orderID){
+    public void editTruckOrderID(int orderID){
         currTruckOrder.setOrderID(orderID);
     }
-    public void setTruckOrderTruckId(int truckID){
+    public void editTruckOrderTruckId(int truckID){
         currTruckOrder.setTruckID(truckID);
     }
-    public void setTruckOrderStatus(String status){
+    public void editTruckOrderStatus(String status){
         currTruckOrder.setStatus(status);
     }
-    public void setTruckOrderDate(String date){
+    public void editTruckOrderDate(String date){
         currTruckOrder.setDate(date);
     }
     
