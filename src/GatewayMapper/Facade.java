@@ -7,6 +7,7 @@ import Domain.CustomerList;
 import Domain.OrderList;
 import Domain.PackageList;
 import Domain.ProductList;
+import Domain.TruckList;
 
 /**
  *
@@ -89,6 +90,24 @@ public class Facade {
     public boolean deletePackage(){
         PackageGateway pg = new PackageGateway();
         return pg.deletePackage();
+    }
+    
+    //Truck Gateway
+    public boolean buildTruckList(TruckList trucklist){
+        TruckGateway tg = new TruckGateway();
+        return tg.buildTruckList(trucklist);
+    }
+    public boolean buildTruckOrderList(TruckList trucklist){        
+        TruckGateway tg = new TruckGateway();
+        return tg.buildTruckOrderList(trucklist);
+    }
+    public boolean addTruckOrder(int orderid, int truckid, String status, String date){
+        TruckGateway tg = new TruckGateway();
+        return tg.addTruckOrder(orderid, truckid, status, date);
+    }
+    public boolean addTruck(int truckid, String model, int capacity, String bookeddate){
+        TruckGateway tg = new TruckGateway();
+        return tg.addTruck(truckid, model, capacity, bookeddate);
     }
             
 }

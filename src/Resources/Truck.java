@@ -1,10 +1,5 @@
 package Resources;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author Aaron and Lars, 10.4.2013
@@ -15,12 +10,18 @@ public class Truck {
     int truckCapacity;
     String bookdate;
     
-public void truck(int truckID, String truckName, int truckCapacity, String bookdate){
+public Truck(int truckID, String truckName, int truckCapacity, String bookdate){
     this.truckID = truckID;
     this.truckName = truckName;
     this.truckCapacity = truckCapacity;
     this.bookdate = bookdate;
 }   
+    public String getTruckModel(){
+        return truckName;
+    }
+    public void setTruckModel(String model){
+        this.truckName = model;
+    }
     public String getBookDate(){
         return bookdate;
     }

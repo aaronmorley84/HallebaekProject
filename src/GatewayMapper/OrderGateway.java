@@ -2,16 +2,11 @@ package GatewayMapper;
 
 import DBConnection.ConnectionTools;
 import Domain.OrderList;
-import Resources.Order;
-import Resources.Product;
-import Resources.Truck;
-import Resources.TruckOrder;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  *

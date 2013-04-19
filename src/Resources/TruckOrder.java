@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class TruckOrder {
 
-    ArrayList<Truck> trucksInOrder = new ArrayList<>();
+    public ArrayList<Truck> trucksInOrder = new ArrayList<>();
     int truckID, orderID;
     String status;
     String date;
