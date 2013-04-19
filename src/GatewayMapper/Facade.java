@@ -61,6 +61,10 @@ public class Facade {
         OrderGateway og = new OrderGateway();
         return og.addOrder();
     }
+    public boolean addCustomerOrder(int orderID, int customerID, String startDate, String finishDate){
+        OrderGateway og = new OrderGateway();
+        return og.addCustomerOrder(orderID, customerID, startDate, finishDate);
+    }
     public int getUniqueOrderID(){
         OrderGateway og = new OrderGateway();
         return og.getUniqueOrderID();
