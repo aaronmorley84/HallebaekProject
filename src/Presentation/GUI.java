@@ -1517,17 +1517,16 @@ public class GUI extends javax.swing.JFrame {
         PackageJList.setModel(model7);
         con.buildPackageList();
         for (int i = 0; i < con.getPackageListSize(); i++) {
-            model7.addElement(con.getPackageList(i).getPackageID() + "-" + con.getPackageList(i).getName());
+            model7.addElement(con.getPackageID(i) + "-" + con.getPackageName(i));
         }
         PackageJList.setModel(model7);
     }//GEN-LAST:event_ExistingPackageButtonActionPerformed
 
     private void EditPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackageButtonActionPerformed
-        PackageIDField.setText("" + con.getPackageList(PackageJList.getSelectedIndex()).getPackageID());
-        PackageNameField.setText("" + con.getPackageList(PackageJList.getSelectedIndex()).getName());
-        PackageDescTextArea.setText("" + con.getPackageList(PackageJList.getSelectedIndex()).getDescription());
-        PackagePriceField.setText("" + con.getPackageList(PackageJList.getSelectedIndex()).getPrice());
-        con.setCurrentPackage(con.getPackageList(PackageJList.getSelectedIndex()));
+        PackageIDField.setText("" + con.getPackageID(PackageJList.getSelectedIndex()));
+        PackageNameField.setText("" + con.getPackageName(PackageJList.getSelectedIndex()));
+        PackageDescTextArea.setText("" + con.getPackageDiscription(PackageJList.getSelectedIndex()));
+        PackagePriceField.setText("" + con.getPackagePrice(PackageJList.getSelectedIndex()));
     }//GEN-LAST:event_EditPackageButtonActionPerformed
 
     private void OrderSearchProductButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSearchProductButton1ActionPerformed

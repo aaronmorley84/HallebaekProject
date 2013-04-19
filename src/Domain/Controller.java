@@ -16,7 +16,7 @@ public class Controller{
         checkerController = new CheckerGateway(orderController);
     }
     /*
-     * methods for ProductGateway()
+     * methods for ProductList()
      */
     
     public void clearProductList(){
@@ -61,15 +61,15 @@ public class Controller{
     public boolean deleteProduct(int cusID) {
         return productList.deleteProduct(cusID);
     }
-    public boolean searchProdByNameinArray(String name){
+    public String searchProdByNameinArray(String name){
         return productList.searchProdByNameinArray(name);
     }
-    public boolean searchProdByIDinArray(int ID){
+    public int searchProdByIDinArray(int ID){
         return productList.searchProdByIDinArray(ID);
     }
 
     /*
-     * Methods for OrderGateway()
+     * Methods for OrderList()
      */
     public boolean getOrders(){
         return orderController.getOrders();
@@ -108,7 +108,7 @@ public class Controller{
         return orderController.getUniqueOrderID();
     }
     /*
-     * Methods for CustomerGateway()
+     * Methods for CustomerList()
      */
     
     
@@ -148,13 +148,29 @@ public class Controller{
     }
     
     /*
-     * Methods for PackageGateway()
+     * Methods for PackageList()
      */
-    public Packages getPackageList(int i) {
-        return packageList.getPackageList(i);
+    public void clearPackageList(){
+        packageList.clearPackageList();
     }
     public int getPackageListSize() {
         return packageList.getPackageListSize();
+    }
+    public int getPackageID(int i){
+        packageList.getCurrentPackage(i);
+        return packageList.getPackID();
+    }
+    public String getPackageName(int i){
+        packageList.getCurrentPackage(i);
+        return packageList.getPackName();
+    }
+    public String getPackageDiscription(int i){
+        packageList.getCurrentPackage(i);
+        return packageList.getPackDisc();
+    }
+    public int getPackagePrice(int i){
+        packageList.getCurrentPackage(i);
+        return packageList.getPackPrice();
     }
     public Product getPackageProductList(int i) {
         return packageList.getPackageProductList(i);
@@ -163,32 +179,32 @@ public class Controller{
         return packageList.getPackageProductListSize();
     }
     public boolean buildPackageList(){
-        return packageList.buildPackageList();
+        return packageList.buildPackageList(packageList);
     }
     public boolean addPackage(String name, String description, int price){
         return packageList.addPackage(name, description, price);
     }
-
     public boolean addItemToPackageList(Product prod){
         return packageList.addItemToPackageList(prod);
     }
     public void removeFromPackageList(Product prod){
         packageList.removeFromPackageList(prod);
     }
-    public void setCurrentPackage(Packages pack){
-        packageList.setCurrentPackage(pack);
-    }
     public boolean addProductsToPackageInDB(){
-        return packageController.addProductsToPackageInDB();
+        return packageList.addProductsToPackageInDB();
     }
+    
+    
+    
+    
     public boolean loadPackageProducts(){
-        return packageController.loadPackageProducts();
+        return packageList.loadPackageProducts();
     }
     public boolean deletePackageProducts(){
-        return packageController.deletePackageProducts();
+        return packageList.deletePackageProducts();
     }
     public boolean deletePackage(){
-        return packageController.deletePackage();
+        return packageList.deletePackage();
     }
     /*
      * Methods for CheckerGateway(

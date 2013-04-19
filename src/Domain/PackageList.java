@@ -40,19 +40,16 @@ public class PackageList {
     public int getPackID(){
         return currentPackage.getPackageID();
     }
-    
     public String getPackName(){
         return currentPackage.getName();
     }
-    
     public String getPackDisc(){
         return currentPackage.getDescription();
     }
-    
     public int getPackPrice(){
         return currentPackage.getPrice();
     }
-    public Product getProductList(int i){
+    public Product getPackageProductList(int i){
         return currentPackage.packageProductList.get(i);
     }
     
@@ -60,14 +57,23 @@ public class PackageList {
     public void editPackName(String newName) {
         currentPackage.setName(newName);
     }
-    
     public void editPackDisc(String newDesc) {
         currentPackage.setDescription(newDesc);
     }
-    
     public void editPackPrice(int newPrice){
         currentPackage.setPrice(newPrice);
     }
+    
+    //communication to packageProductList
+    public int getPackageProductListSize() {
+        return currentPackage.packageProductList.size();
+    }
+    public boolean addItemToPackageList(Product prod) {
+        return currentPackage.addItemToPackageList(prod);
+    }
+    public void removeFromPackageList(Product prod) {
+        currentPackage.removeFromPackageList(prod);
+    } 
     
     //communication to customerGateway
     public boolean buildPackageList(PackageList packageList){
@@ -93,36 +99,16 @@ public class PackageList {
     
     
     
-    public Product getPackageProductList(int i) {
-        return currentPackage.packageProductList.get(i);
-    }
-
-    public int getPackageProductListSize() {
-        return currentPackage.packageProductList.size();
-    }
-   
-    public void setCurrentPackage(Packages pack) {
-        currentPackage = pack;
-    }
-
-    public boolean addItemToPackageList(Product prod) {
-        return currentPackage.addItemToPackageList(prod);
-    }
-
-    public void removeFromPackageList(Product prod) {
-        currentPackage.removeFromPackageList(prod);
-    } 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    public Packages getPackageList(int i) {
-//        return packageList.get(i);
+//    public Product getPackageProductList(int i) {
+//        return currentPackage.packageProductList.get(i);
 //    }
+
+    
+   
+//    public void setCurrentPackage(Packages pack) {
+//        currentPackage = pack;
+//    }
+
+    
+
 }

@@ -98,8 +98,8 @@ public class PackageGateway {
             try {
                 statement = con.prepareStatement(SQLString1);
                 statement.setInt(1, packageList.getPackID());
-                statement.setInt(2, packageList.getProductList(i).getProductID());
-                statement.setInt(3, packageList.getProductList(i).getQuantity());
+                statement.setInt(2, packageList.getPackageProductList(i).getProductID());
+                statement.setInt(3, packageList.getPackageProductList(i).getQuantity());
                 statement.executeUpdate();
                 success = true;
             } catch (Exception e) {
