@@ -16,14 +16,13 @@ import java.util.ArrayList;
 public class UserList {
     User currentUser;
     private ArrayList<User> userList = new ArrayList<>();
-    
-    
+        
     public User getCurrentUser(int i){
         currentUser = userList.get(i);
         return currentUser;
     }
     
-    public void addToUserList(char id, char pw, int pou){
+    public void addToUserList(String id, String pw, int pou){
         userList.add(new User(id,pw,pou));
     }
 
@@ -39,11 +38,11 @@ public class UserList {
         return currentUser.getPou();
     }
     
-    public void editUserid(char id){
+    public void editUserid(String id){
         currentUser.setId(id);
     }
     
-    public void editUserPassword(char pw){
+    public void editUserPassword(String pw){
         currentUser.setPw(pw);
     }
     
