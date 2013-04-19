@@ -1,19 +1,18 @@
 package Domain;
-import GatewayMapper.CheckerGateway;
-import GatewayMapper.OrderGateway;
+
 import Resources.Product;
-import Resources.Packages;
+
 
 public class Controller{
-    OrderGateway orderController;
     CustomerList customerList = new CustomerList();
     ProductList productList = new ProductList();
     PackageList packageList = new PackageList();
-    CheckerGateway checkerController;
+    OrderList orderList = new OrderList();
+    
 
     public Controller() {
-        orderController = new OrderGateway();
-        checkerController = new CheckerGateway(orderController);
+        
+        
     }
     /*
      * methods for ProductList()
@@ -71,6 +70,15 @@ public class Controller{
     /*
      * Methods for OrderList()
      */
+    public void clearOrderList(){
+        orderList.clearOrderList();
+    }
+    
+    
+    
+    
+    
+    
     public boolean getOrders(){
         return orderController.getOrders();
     }

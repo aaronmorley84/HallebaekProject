@@ -17,12 +17,7 @@ public class OrderList {
             int trucksforDelivery, int orderId, int balance){
         orderList.add(new Order(customerID,dateArrival,datePickUp,trucksforDelivery,orderId,balance));
     }
-    public boolean addProdToOrder(Product prod){
-        return currentOrder.addItemToOrderList(prod);
-    }
-    public void removeFromOrderList(Product prod) {
-        currentOrder.removeFromOrderList(prod);
-    }
+    
     public Order getCurrentOrder(int i){
         currentOrder = orderList.get(i);
         return currentOrder;
@@ -34,7 +29,7 @@ public class OrderList {
         orderList.clear();
     }
     
-    //getters
+    //These are the getters
     public int getOrderID(){
         return currentOrder.getOrderID();
     }
@@ -57,7 +52,7 @@ public class OrderList {
         return currentOrder.orderProductList.get(i);
     }
     
-    //setters
+    //These are the setters
     public void setOrderID(int orderID){
         currentOrder.setOrderId(orderID);
     }
@@ -77,7 +72,15 @@ public class OrderList {
         currentOrder.setBalance(balance);
     }
     
-    //order gateway
+    //communication to orderProductList
+    public boolean addProductToOrderList(Product prod){
+        return currentOrder.addItemToOrderList(prod);
+    }
+    public void removeProductFromOrderList(Product prod) {
+        currentOrder.removeFromOrderList(prod);
+    }
+    
+    //communication to the ordergateway
     public boolean buildOrderList(OrderList orderlist){
         return facade.buildOrderList(orderlist);
     }
@@ -87,5 +90,6 @@ public class OrderList {
     public int getUniqueOrderID(){
         return facade.getUniqueOrderID();
     }
+    
     
 }
