@@ -1074,19 +1074,25 @@ public class GUI extends javax.swing.JFrame {
         LoginMenuLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         LoginMenuLabel.setText("Login Menu.");
         LogInPanel.add(LoginMenuLabel);
-        LoginMenuLabel.setBounds(288, 109, 221, 44);
+        LoginMenuLabel.setBounds(288, 83, 240, 70);
 
         UserNameLabel.setText("User Name:");
         LogInPanel.add(UserNameLabel);
-        UserNameLabel.setBounds(270, 210, 56, 14);
+        UserNameLabel.setBounds(216, 204, 110, 20);
 
         PasswordLabel.setText("Password:");
         LogInPanel.add(PasswordLabel);
-        PasswordLabel.setBounds(270, 240, 56, 14);
+        PasswordLabel.setBounds(206, 240, 120, 20);
         LogInPanel.add(UserNameField);
-        UserNameField.setBounds(360, 210, 143, 20);
+        UserNameField.setBounds(360, 190, 180, 30);
+
+        PasswordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordFieldActionPerformed(evt);
+            }
+        });
         LogInPanel.add(PasswordField);
-        PasswordField.setBounds(360, 240, 143, 20);
+        PasswordField.setBounds(360, 230, 180, 30);
 
         LoginButton.setText("Login");
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -1095,7 +1101,7 @@ public class GUI extends javax.swing.JFrame {
             }
         });
         LogInPanel.add(LoginButton);
-        LoginButton.setBounds(350, 310, 57, 23);
+        LoginButton.setBounds(350, 303, 90, 40);
 
         getContentPane().add(LogInPanel);
         LogInPanel.setBounds(0, 0, 900, 600);
@@ -1342,11 +1348,11 @@ public class GUI extends javax.swing.JFrame {
 
     private void EditProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductButtonActionPerformed
         ProductIDField.setText("" + con.getProductId(ProductJList.getSelectedIndex()));
-        ProductNameField.setText(con.getProductName(CustomerJList.getSelectedIndex()));
-        ProductVolumeField.setText("" + con.getProductVolume(CustomerJList.getSelectedIndex()));
-        ProductQuantityField.setText("" + con.getProductQuantiy(CustomerJList.getSelectedIndex()));
-        ProductPriceField.setText("" + con.getProductPrice(CustomerJList.getSelectedIndex()));
-        ProductDescriptionField.setText(con.getProductDescription(CustomerJList.getSelectedIndex()));
+        ProductNameField.setText(con.getProductName(ProductJList.getSelectedIndex()));
+        ProductVolumeField.setText("" + con.getProductVolume(ProductJList.getSelectedIndex()));
+        ProductQuantityField.setText("" + con.getProductQuantiy(ProductJList.getSelectedIndex()));
+        ProductPriceField.setText("" + con.getProductPrice(ProductJList.getSelectedIndex()));
+        ProductDescriptionField.setText(con.getProductDescription(ProductJList.getSelectedIndex()));
 
         AddProductButton.setEnabled(false);
         DeleteProductButton.setEnabled(false);
@@ -1649,6 +1655,10 @@ public class GUI extends javax.swing.JFrame {
         jMenu2.setEnabled(true);
         selectPanel(2);
     }//GEN-LAST:event_LoginButtonActionPerformed
+
+    private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordFieldActionPerformed
 
     /**
      * @param args the command line arguments
