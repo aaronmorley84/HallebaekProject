@@ -2,6 +2,7 @@ package Domain;
 
 import GatewayMapper.Facade;
 import Resources.Order;
+import Resources.Product;
 import java.util.ArrayList;
 /**
  *
@@ -12,9 +13,15 @@ public class OrderList {
     private Order currentOrder;
     Facade facade = new Facade();
     
-    public void addToCustomerList(int customerID, int dateArrival, int datePickUp, 
+    public void addToOrderList(int customerID, int dateArrival, int datePickUp, 
             int trucksforDelivery, int orderId, int balance){
         orderList.add(new Order(customerID,dateArrival,datePickUp,trucksforDelivery,orderId,balance));
+    }
+    public boolean addProdToOrder(Product prod){
+        return currentOrder.addItemToOrderList(prod);
+    }
+    public void removeFromOrderList(Product prod) {
+        currentOrder.removeFromOrderList(prod);
     }
     public Order getCurrentOrder(int i){
         currentOrder = orderList.get(i);
@@ -46,6 +53,9 @@ public class OrderList {
     public int getOrderBalance(){
         return currentOrder.getBalance();
     }
+    public Product getProductList(int i){
+        return currentOrder.orderProductList.get(i);
+    }
     
     //setters
     public void setOrderID(int orderID){
@@ -73,6 +83,9 @@ public class OrderList {
     }
     public boolean addOrder(){
         return facade.addOrder();
+    }
+    public int getUniqueOrderID(){
+        return facade.getUniqueOrderID();
     }
     
 }

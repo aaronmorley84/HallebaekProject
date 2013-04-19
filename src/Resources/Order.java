@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Adrian & Kris
  */
 public class Order {
-    ArrayList<Product> orderList = new ArrayList<>();
+    public ArrayList<Product> orderProductList = new ArrayList<>();
     int customerID;
     int dateArrival, datePickUp;
     int trucksforDelivery;
@@ -34,22 +34,22 @@ public class Order {
         if(!checkForDuplicate(prod.getProductID())){
             balance = balance + (prod.price * prod.quantity);
             success = true;
-            orderList.add(prod);
+            orderProductList.add(prod);
             System.out.println(balance);
         }
         return success;
     }
     
     public void removeFromOrderList(Product prod) {
-        orderList.remove(prod);
+        orderProductList.remove(prod);
         balance = balance - (prod.price * prod.quantity);
         System.out.println(balance);
     }
     
     public boolean checkForDuplicate(int ID){
         boolean same = false;
-        for (int i = 0; i < orderList.size(); i++) {
-            if(orderList.get(i).getProductID() == ID){
+        for (int i = 0; i < orderProductList.size(); i++) {
+            if(orderProductList.get(i).getProductID() == ID){
                 same = true;
             }
         }
@@ -109,7 +109,7 @@ public class Order {
     }
     
     public ArrayList<Product> getListInstance(){
-        return orderList;
+        return orderProductList;
     }
     
     @Override
