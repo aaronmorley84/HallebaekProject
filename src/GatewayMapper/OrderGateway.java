@@ -78,19 +78,18 @@ public class OrderGateway {
         return success;
     }//end of add order
     
-    public boolean addCustomerOrder(int orderID, int customerID, String startDate, String finishDate) {
+    public boolean addCustomerOrder(int customerID, String startDate, String finishDate) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into Customer_Order "
-                + "VALUES (?,?,?,?)";
+                + "VALUES (orderseq.currval,?,?,?)";
 
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, orderID);
-            statement.setInt(2, customerID);
-            statement.setDate(3, Date.valueOf(startDate));
-            statement.setDate(4, Date.valueOf(finishDate));
+            statement.setInt(1, customerID);
+            statement.setDate(2, Date.valueOf(startDate));
+            statement.setDate(3, Date.valueOf(finishDate));
             statement.executeUpdate();
             success = true;
         } catch (Exception e) {

@@ -116,6 +116,9 @@ public class Controller{
     public boolean addOrder(){
         return orderList.addOrder();
     }
+    public boolean addCustomerOrder(int customerID, String startDate, String finishDate){
+        return orderList.addCustomerOrder(customerID, startDate, finishDate);
+    }
     
     //Methods for TruckList()
     public void clearTruckOrderList(){

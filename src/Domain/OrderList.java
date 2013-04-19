@@ -87,8 +87,8 @@ public class OrderList {
     public boolean addOrder(){
         return facade.addOrder();
     }
-    public boolean addCustomerOrder(int orderID, int customerID, String startDate, String finishDate){
-        return facade.addCustomerOrder(orderID, customerID, startDate, finishDate);
+    public boolean addCustomerOrder(int customerID, String startDate, String finishDate){
+        return facade.addCustomerOrder(customerID, startDate, finishDate);
     }
     public int getUniqueOrderID(){
         return facade.getUniqueOrderID();

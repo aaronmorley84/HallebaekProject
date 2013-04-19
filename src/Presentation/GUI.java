@@ -1460,7 +1460,7 @@ public class GUI extends javax.swing.JFrame {
     private void OrderNewOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderNewOrderButtonActionPerformed
         setVisibleItemsInOrderPane(true);
 
-        con.currentOrder();
+        //con.currentOrder();
         con.buildProductList();
         
     }//GEN-LAST:event_OrderNewOrderButtonActionPerformed
@@ -1488,7 +1488,7 @@ public class GUI extends javax.swing.JFrame {
         for (int i = 0; i < model5.size(); i++) {
             totalVolume = +((Product) model5.get(i)).getVolume();
         }
-        OrderTrucksNeededField.setText("" + con.getTrucksRequired(totalVolume));
+        OrderTrucksNeededField.setText("" + con.getOrderTruckAmount(totalVolume));
     }//GEN-LAST:event_OrderAddProductToOrderButtonActionPerformed
 
     private void OrderRemoveFromOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderRemoveFromOrderButtonActionPerformed
@@ -1500,7 +1500,7 @@ public class GUI extends javax.swing.JFrame {
         for (int i = 0; i < model2.size(); i++) {
             totalVolume = +((Product) model2.get(i)).getVolume();
         }
-        OrderTrucksNeededField.setText("" + con.getTrucksRequired(totalVolume));
+        OrderTrucksNeededField.setText("" + con.getOrderTruckAmount(totalVolume));
     }//GEN-LAST:event_OrderRemoveFromOrderButtonActionPerformed
 
     private void OrderSaveOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSaveOrderButtonActionPerformed
@@ -1509,7 +1509,7 @@ public class GUI extends javax.swing.JFrame {
         String finishDate = OrderEndDateField.getText();
         String empty = "";
         if (!customerID.equals(empty) && !startDate.equals(empty) && !finishDate.equals(empty)) {
-            con.addToCustomerOrderTable(Integer.parseInt(customerID), startDate, finishDate);
+            con.addCustomerOrder(Integer.parseInt(customerID), startDate, finishDate);
             JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Could not save to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
