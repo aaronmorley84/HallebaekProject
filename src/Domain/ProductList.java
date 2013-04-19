@@ -97,25 +97,26 @@ public class ProductList {
     
     
     //product search
-    public boolean searchProdByNameinArray(String name) {
-            boolean found = false;
+    public String searchProdByNameinArray(String name) {
+            
         for (int i = 0; i < productList.size(); i++) {
-            if (productList.get(i).getName().equals(name)) {
-                currentProduct = productList.get(i);
-                found = true;
+            getCurrentProduct(i);
+            if (getProdName().equals(name)) {
+                return getProdName();
             }
         }
-        return found;
+        return "Not found";
     }
-    public boolean searchProdByIDinArray(int ID){
-        boolean found = false;
-        for (int i = 0; i < productList.size(); i++) {
-            if(productList.get(i).getProductID() == ID){
-                currentProduct = productList.get(i);
-                found = true;
+    public int searchProdByIDinArray(int ID){            
+        System.out.println("Searching in product");
+        for (int i = 0; i < getProductListsize(); i++) {
+            getCurrentProduct(i);
+            if(getProdID() == ID){
+                
+                return getProdID();
             }
         }
-        return found;
+        return 0;
     }
     //need to be changed to java not SQL
     
