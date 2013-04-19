@@ -1,7 +1,6 @@
 package Domain;
 import GatewayMapper.CheckerGateway;
 import GatewayMapper.OrderGateway;
-import GatewayMapper.PackageGateway;
 import Resources.Product;
 import Resources.Packages;
 
@@ -9,12 +8,11 @@ public class Controller{
     OrderGateway orderController;
     CustomerList customerList = new CustomerList();
     ProductList productList = new ProductList();
-    PackageGateway packageController;
+    PackageList packageList = new PackageList();
     CheckerGateway checkerController;
 
     public Controller() {
         orderController = new OrderGateway();
-        packageController = new PackageGateway();
         checkerController = new CheckerGateway(orderController);
     }
     /*

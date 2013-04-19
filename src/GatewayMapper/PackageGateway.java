@@ -4,55 +4,26 @@
  */
 package GatewayMapper;
 
-import Resources.Packages;
+
 import DBConnection.*;
+import Domain.PackageList;
 import Resources.Product;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 
 /**
  *
  * @author Andrew and Aaron, v0.02 11-04-2013
  */
 public class PackageGateway {
-
-    ArrayList<Packages> packageList;
-    Packages currentPackage;
-
-    public Packages getPackageList(int i) {
-        return packageList.get(i);
-    }
-
-    public int getPackageListSize() {
-        return packageList.size();
-    }
+    PackageList packageList;
     
-    public Product getPackageProductList(int i) {
-        return currentPackage.packageProductList.get(i);
-    }
-
-    public int getPackageProductListSize() {
-        return currentPackage.packageProductList.size();
-    }
-   
-    public void setCurrentPackage(Packages pack) {
-        currentPackage = pack;
-    }
-
-    public boolean addItemToPackageList(Product prod) {
-        return currentPackage.addItemToPackageList(prod);
-    }
-
-    public void removeFromPackageList(Product prod) {
-        currentPackage.removeFromPackageList(prod);
-    }
 
     /*This method builds an arrayList of Packages from the database. */
     public boolean buildPackageList() {
-        packageList = new ArrayList();
         boolean succes = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * "
@@ -64,11 +35,11 @@ public class PackageGateway {
             statement = con.prepareStatement(SQLString1);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                packageList.add(new Packages(
+                packageList.addToPackageList(
                         rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getInt(4)));
+                        rs.getInt(4));
             }
             succes = true;
         } catch (Exception e) {
@@ -115,14 +86,7 @@ public class PackageGateway {
     }//end of addPackage
     /*This methode is for printing a list of the packages*/
 
-    public String printList() {
-        String temp = "";
-        for (int i = 0; i < packageList.size(); i++) {
-            temp = packageList.get(i).toString();
-
-        }
-        return temp;
-    }//end of printlist
+    
 
     public boolean addProductsToPackageInDB() {
         boolean success = false;
