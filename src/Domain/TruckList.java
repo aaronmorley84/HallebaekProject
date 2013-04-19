@@ -30,16 +30,10 @@ public class TruckList {
     }
     public void addToTruckOrderList(int orderID, int truckID, String status, String date){
         truckOrders.add(new TruckOrder(orderID, truckID, status, date));
-    }
-    public void addTruckToTruckOrder(Truck truck){
-        currTruckOrder.addTruck(truck);
-    }
-    public void removeTruckFromTruckOrder(Truck truck){
-        currTruckOrder.removeTruck(truck);
-    }
+    }    
     public int getTruckListSize() {
         return trucks.size();
-    }
+    }    
     public int getTruckOrderListSize() {
         return truckOrders.size();
     }

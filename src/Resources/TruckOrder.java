@@ -9,10 +9,9 @@ import java.util.ArrayList;
  */
 public class TruckOrder {
 
-    public ArrayList<Truck> trucksInOrder = new ArrayList<>();
-    int truckID, orderID;
-    String status;
-    String date;
+    private int truckID, orderID;
+    private String status;
+    private String date;
 
     public TruckOrder( int orderID, int truckID, String status, String date) {
         this.truckID = truckID;
@@ -21,12 +20,6 @@ public class TruckOrder {
         this.date = date;
     }
     
-    public void addTruck(Truck truck){
-        trucksInOrder.add(truck);
-    }
-    public void removeTruck(Truck truck){
-        trucksInOrder.remove(truck);
-    }
     
     public int getTruckID() {
         return truckID;
