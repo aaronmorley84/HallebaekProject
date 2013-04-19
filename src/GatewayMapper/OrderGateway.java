@@ -36,7 +36,7 @@ public class OrderGateway {
      */
     public void currentOrder() {
         int ID = getUniqueOrderID();
-        currentOrder = new Order(0, 0, 0, 0, 0, ID, 0);
+        currentOrder = new Order(0, 0, 0, 0, ID, 0);
     }
     /*
      * Constructs an "empty" truck order with same ID as current order.
@@ -138,8 +138,7 @@ public class OrderGateway {
                         rs.getInt(2),
                         rs.getInt(3),
                         rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getInt(6),0));
+                        rs.getInt(5),0));
             }
             success = true;
         } catch (Exception e) {

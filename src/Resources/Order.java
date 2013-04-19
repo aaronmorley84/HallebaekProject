@@ -10,16 +10,15 @@ public class Order {
     ArrayList<Product> orderList = new ArrayList<>();
     int customerID;
     int dateArrival, datePickUp;
-    int trucksforDelivery, assemblersNeeded;
+    int trucksforDelivery;
     int orderID;
     int balance;
 
-    public Order(int customerID, int dateArrival, int datePickUp, int trucksforDelivery, int assemblersNeeded, int orderId, int balance) {
+    public Order(int customerID, int dateArrival, int datePickUp, int trucksforDelivery, int orderId, int balance) {
         this.customerID = customerID;
         this.dateArrival = dateArrival;
         this.datePickUp = datePickUp;
         this.trucksforDelivery = trucksforDelivery;
-        this.assemblersNeeded = assemblersNeeded;
         this.orderID = orderId;
         this.balance = balance;
     }
@@ -64,6 +63,9 @@ public class Order {
     }    
     public int getBalance(){ 
         return balance;
+    }
+    public void setBalance(int balance){
+        this.balance = balance;
     }
             
     public void setCustomer (int customerID) {
@@ -113,7 +115,7 @@ public class Order {
     @Override
     public String toString() {
         return "CustomerID: "+customerID+" OrderID: "+orderID+" Start date: "+dateArrival+" End date: "+datePickUp
-                +" Trucks: "+trucksforDelivery+" Assemblers: "+assemblersNeeded+" Balance: "+balance;
+                +" Trucks: "+trucksforDelivery+ "Balance: "+balance;
     }
     
 }

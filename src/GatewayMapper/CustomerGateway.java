@@ -4,7 +4,6 @@
  */
 package GatewayMapper;
 
-import Resources.Customer;
 import DBConnection.ConnectionTools;
 import Domain.CustomerList;
 import java.sql.Connection;
@@ -57,7 +56,6 @@ public class CustomerGateway {
     }//end of buildCustomer
     
     public boolean addCustomer( String name, String address, String email){
-        Customer c = new Customer(0,name,address,0,email);
         boolean success = false;
         int rowsInserted = 0;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
@@ -67,9 +65,9 @@ public class CustomerGateway {
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);            
-            statement.setString(1, c.getName());
-            statement.setString(2, c.getAdress());
-            statement.setString(3, c.getEmail());
+            statement.setString(1, name);
+            statement.setString(2, address);
+            statement.setString(3, email);
             rowsInserted += statement.executeUpdate();
             
             success = true;
