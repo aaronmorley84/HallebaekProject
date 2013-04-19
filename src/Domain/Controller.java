@@ -8,6 +8,7 @@ public class Controller{
     ProductList productList = new ProductList();
     PackageList packageList = new PackageList();
     OrderList orderList = new OrderList();
+    TruckList truckList = new TruckList();
     
 
     public Controller() {
@@ -73,53 +74,104 @@ public class Controller{
     public void clearOrderList(){
         orderList.clearOrderList();
     }
-    
-    
-    
-    
-    
-    
-    public boolean getOrders(){
-        return orderController.getOrders();
+    public int getOrderID(int i){
+        orderList.getCurrentOrder(i);
+        return orderList.getOrderID();
+    }
+    public int getOrderArrDate(int i){
+        orderList.getCurrentOrder(i);
+        return orderList.getOrderArrDate();
+    }
+    public int getOrderPickUpDate(int i){
+        orderList.getCurrentOrder(i);
+        return orderList.getOrderPickUpDate();
+    }
+    public int getOrderTruckAmount(int i){
+        orderList.getCurrentOrder(i);
+        return orderList.getTrucksAmount();
+    }
+    public int getOrderCutomerID(int i){
+        orderList.getCurrentOrder(i);
+        return orderList.getCustomerID();
+    }
+    public int getOrderBalance(int i){
+        orderList.getCurrentOrder(i);
+        return orderList.getOrderBalance();
+    }
+    public Product getOrderProductList(int i){
+        return orderList.getProductList(i);
     }
     public int getOrderListSize(){
-        return orderController.getOrderListSize();
-    }
-    public void currentOrder(){
-        orderController.currentOrder();
-    }
-    public void currentTruckOrder(){
-        orderController.currentTruckOrder();
+        return orderList.getOrderListSize();
     }
     public boolean addItemToOrderList(Product prod){
-        return orderController.addItemToOrderList(prod);
+        return orderList.addProductToOrderList(prod);
     }
     public void removeFromOrderList(Product prod){
-        orderController.removeFromOrderList(prod);
+        orderList.removeProductFromOrderList(prod);
     }
-    public boolean addToCustomerOrderTable(int customerID, String startDate, String finishDate){
-        return orderController.addToCustomerOrderTable(customerID, startDate, finishDate);
+    public boolean buildOrderList(OrderList orderlist){
+        return orderList.buildOrderList(orderlist);
     }
-    public boolean addOrderToDB(){
-        return orderController.addOrderToDB();
+    public boolean addOrder(){
+        return orderList.addOrder();
     }
-    public int getTrucksRequired(int totalVolume){
-        return orderController.getTrucksRequired(totalVolume);
+    
+    //Methods for TruckList()
+    public void clearTruckOrderList(){
+        truckList.clearTruckOrderList();
     }
-    public boolean getTrucks(){
-        return orderController.getTrucks();
+    public int getTruckID(int i){
+        truckList.getcurrTruck(i);
+        return truckList.getTruckID();
     }
-    public boolean commitTruckOrder(){
-        return orderController.commitTruckOrder();
+    public int getTruckCapacity(int i){
+        truckList.getcurrTruck(i);
+        return truckList.getTruckCapacity();
     }
-    public int getUniqueOrderID(){
-        return orderController.getUniqueOrderID();
+    public String getTruckModel(int i){
+        truckList.getcurrTruck(i);
+        return truckList.getTruckmodel();
     }
-    /*
-     * Methods for CustomerList()
-     */
+    public String getTruckDate(int i){
+        truckList.getcurrTruck(i);
+        return truckList.getTruckDate();
+    }
+    public int getTruckOrderID(int i){
+        truckList.getcurrTruckOrder(i);
+        return truckList.getTruckOrderID();
+    }
+    public int getTruckOrderTruckID(int i){
+        truckList.getcurrTruckOrder(i);
+        return truckList.getTruckOrderTruckID();
+    }
+    public String getTruckOrderStatus(int i){
+        truckList.getcurrTruckOrder(i);
+        return truckList.getTruckOrderStatus();
+    }
+    public String getTruckOrderDate(int i){
+        truckList.getcurrTruckOrder(i);
+        return truckList.getTruckOrderDate();
+    }
+    public boolean buildTruckList(TruckList trucklist){
+        return truckList.buildTruckList(trucklist);
+    }
+    public boolean buildTruckOrderList(TruckList trucklist){
+        return truckList.buildTruckOrderList(trucklist);
+    }
+    public boolean addTruckOrder(int orderid, int truckid, String status, String date){
+        return truckList.addTruckOrder(orderid,truckid,status,date);
+    }
+    public boolean addTruck(int truckid, String model, int capacity, String bookeddate){
+        return truckList.addTruck(truckid, model, capacity, bookeddate);
+    }
     
     
+    
+    
+    
+    
+    //Methods for CustomerList()
     public void clearCustomerList(){
         customerList.clearCustomerList();
     }

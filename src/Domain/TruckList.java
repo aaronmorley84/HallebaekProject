@@ -16,12 +16,12 @@ public class TruckList {
     private TruckOrder currTruckOrder;
     private Truck currTruck;
     
-    public void currTruck(int i){
+    public void getcurrTruck(int i){
         this.currTruck = trucks.get(i);
       
     }
     
-    public void currTruckOrder(int i ){
+    public void getcurrTruckOrder(int i ){
         this.currTruckOrder = truckOrders.get(i);
     }
     
