@@ -151,34 +151,32 @@ public class Controller{
      * Methods for PackageGateway()
      */
     public Packages getPackageList(int i) {
-        return packageController.getPackageList(i);
+        return packageList.getPackageList(i);
     }
     public int getPackageListSize() {
-        return packageController.getPackageListSize();
+        return packageList.getPackageListSize();
     }
     public Product getPackageProductList(int i) {
-        return packageController.getPackageProductList(i);
+        return packageList.getPackageProductList(i);
     }
     public int getPackageProductListSize() {
-        return packageController.getPackageProductListSize();
+        return packageList.getPackageProductListSize();
     }
     public boolean buildPackageList(){
-        return packageController.buildPackageList();
+        return packageList.buildPackageList();
     }
     public boolean addPackage(String name, String description, int price){
-        return packageController.addPackage(name, description, price);
+        return packageList.addPackage(name, description, price);
     }
-    public String printPackageList(){
-        return packageController.printList();
-    }
+
     public boolean addItemToPackageList(Product prod){
-        return packageController.addItemToPackageList(prod);
+        return packageList.addItemToPackageList(prod);
     }
     public void removeFromPackageList(Product prod){
-        packageController.removeFromPackageList(prod);
+        packageList.removeFromPackageList(prod);
     }
     public void setCurrentPackage(Packages pack){
-        packageController.setCurrentPackage(pack);
+        packageList.setCurrentPackage(pack);
     }
     public boolean addProductsToPackageInDB(){
         return packageController.addProductsToPackageInDB();

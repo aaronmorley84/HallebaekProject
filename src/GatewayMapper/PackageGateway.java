@@ -94,12 +94,12 @@ public class PackageGateway {
         String SQLString1 = "INSERT into package_product "
                 + "VALUES (?,?,?)";
         PreparedStatement statement = null;
-        for (int i = 0; i < currentPackage.packageProductList.size(); i++) {
+        for (int i = 0; i < packageList.getPackageListSize(); i++) {
             try {
                 statement = con.prepareStatement(SQLString1);
-                statement.setInt(1, currentPackage.getPackageID());
-                statement.setInt(2, currentPackage.packageProductList.get(i).getProductID());
-                statement.setInt(3, currentPackage.packageProductList.get(i).getQuantity());
+                statement.setInt(1, packageList.getPackID());
+                statement.setInt(2, packageList.getProductList(i).getProductID());
+                statement.setInt(3, packageList.getProductList(i).getQuantity());
                 statement.executeUpdate();
                 success = true;
             } catch (Exception e) {
@@ -129,10 +129,10 @@ public class PackageGateway {
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, currentPackage.getPackageID());
+            statement.setInt(1, packageList.getPackID());
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
-                currentPackage.packageProductList.add(new Product(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6)));
+                packageList.addItemToPackageList(new Product(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6)));
             }
         } catch (Exception e) {
             System.out.println("packages Insertion error!");
@@ -149,7 +149,7 @@ public class PackageGateway {
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, currentPackage.getPackageID());
+            statement.setInt(1, packageList.getPackID());
             statement.executeUpdate();
         } catch (Exception e) {
             System.out.println("packages Delete error!");
@@ -166,7 +166,7 @@ public class PackageGateway {
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, currentPackage.getPackageID());
+            statement.setInt(1, packageList.getPackID());
             statement.executeUpdate();
         } catch (Exception e) {
             System.out.println("packages Delete error!");
