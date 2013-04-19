@@ -69,12 +69,24 @@ public class PackageList {
         currentPackage.setPrice(newPrice);
     }
     
-    //communication to customerGateway
-    public boolean buildPackageList(CustomerList customerList){
+    //communication to packageGateway
+    public boolean buildPackageList(PackageList packageList){
         return facade.buildPackageList(packageList);
     }
     public boolean addPackage(String packName, String packDesc, int packPrice){
         return facade.addPackage(packName, packDesc, packPrice);
+    }
+    public boolean addProductsToPackageInDB(){
+        return facade.addProductsToPackageInDB();
+    }
+    public boolean loadPackageProducts(){
+        return facade.loadPackageProducts();
+    }
+    public boolean deletePackageProducts(){
+        return facade.deletePackageProducts();
+    }
+    public boolean deletePackage(){
+        return facade.deletePackage();
     }
     
     
