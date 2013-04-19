@@ -8,11 +8,11 @@ import java.util.ArrayList;
  */
 public class Order {
     public ArrayList<Product> orderProductList = new ArrayList<>();
-    int customerID;
-    int dateArrival, datePickUp;
-    int trucksforDelivery;
-    int orderID;
-    int balance;
+    private int customerID;
+    private int dateArrival, datePickUp;
+    private int trucksforDelivery;
+    private int orderID;
+    private int balance;
 
     public Order(int customerID, int dateArrival, int datePickUp, int trucksforDelivery, int orderId, int balance) {
         this.customerID = customerID;
@@ -22,20 +22,13 @@ public class Order {
         this.orderID = orderId;
         this.balance = balance;
     }
-    
-   /*
-    * No connection to DB. 
-    * Solely for manipulating 
-    * the ArrayList for the 
-    * current order.
-    */
     public boolean addItemToOrderList(Product prod){
        boolean success=false;
-        if(!checkForDuplicate(prod.getProductID())){
+       if(!checkForDuplicate(prod.getProductID())){
             balance = balance + (prod.price * prod.quantity);
+            setBalance(balance);
             success = true;
             orderProductList.add(prod);
-            System.out.println(balance);
         }
         return success;
     }
@@ -43,7 +36,7 @@ public class Order {
     public void removeFromOrderList(Product prod) {
         orderProductList.remove(prod);
         balance = balance - (prod.price * prod.quantity);
-        System.out.println(balance);
+        setBalance(balance);
     }
     
     public boolean checkForDuplicate(int ID){
@@ -108,9 +101,6 @@ public class Order {
         return orderID;
     }
     
-    public ArrayList<Product> getListInstance(){
-        return orderProductList;
-    }
     
     @Override
     public String toString() {
