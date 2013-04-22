@@ -7,6 +7,7 @@ package Domain;
 import Resources.Customer;
 import GatewayMapper.Facade;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -74,13 +75,51 @@ public class CustomerList {
         return facade.buildCustomerList(customerList);
     }
     public boolean addCustomer(String name, String address, String email){
-        return facade.addCustomer(name, address, email);
+        String empty = "";
+        boolean success = false;
+        if (!name.equals(empty) && !address.equals(empty) && !email.equals(empty)) {
+        
+        if (facade.addCustomer(name, address, email)){
+            JOptionPane.showMessageDialog(null, "Customer Added to Database", "Success", JOptionPane.INFORMATION_MESSAGE);
+            success = true;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Error Adding Cutomer", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        else {
+            JOptionPane.showInternalMessageDialog(null, "One or More Fields Is Empty", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return success;
     }
     public boolean saveEditedCustomer(int cusID, String cusName, String cusAddress, String cusEmail) {
-        return facade.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
+        String empty = "";
+        boolean success = false;
+        if (!cusName.equals(empty) && !cusAddress.equals(empty) && !cusEmail.equals(empty)) {
+        if (facade.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail)){
+            JOptionPane.showMessageDialog(null, "Customer Edited and saved to database", "Success", JOptionPane.INFORMATION_MESSAGE);
+            success = true;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Error Editing Cutomer", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        else {
+            JOptionPane.showInternalMessageDialog(null, "One or More Fields Is Empty", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return success;
     }
+    
     public boolean deleteCustomer(int cusID) {
-        return facade.deleteCustomer(cusID);
+        boolean success = false;
+        if (facade.deleteCustomer(cusID)){
+            JOptionPane.showMessageDialog(null, "Customer Deleted From database", "Success", JOptionPane.INFORMATION_MESSAGE);
+            success = true;
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Error Deleting Cutomer", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return success;
     }
     
 }

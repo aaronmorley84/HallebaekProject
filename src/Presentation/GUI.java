@@ -38,7 +38,7 @@ public class GUI extends javax.swing.JFrame {
         PackagePanel.setVisible(false);
         EditPackagePanel.setVisible(false);
         setVisibleItemsInOrderPane(false);
-        jMenu2.setEnabled(false);
+        NavigationDropMenu.setEnabled(false);
 
     }
 
@@ -51,6 +51,7 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         MainPanel = new javax.swing.JPanel();
         CustomerMenuButton = new javax.swing.JButton();
         ProductMenuButton = new javax.swing.JButton();
@@ -175,14 +176,19 @@ public class GUI extends javax.swing.JFrame {
         PasswordField = new javax.swing.JTextField();
         LoginButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        FileDropMenu = new javax.swing.JMenu();
         ExitDrop = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        NavigationDropMenu = new javax.swing.JMenu();
         MainNavDrop = new javax.swing.JMenuItem();
         CustNavDrop = new javax.swing.JMenuItem();
         ProdNavDrop = new javax.swing.JMenuItem();
         OrdNavDrop = new javax.swing.JMenuItem();
         PackNavDrop = new javax.swing.JMenuItem();
+        AdminDropMenu = new javax.swing.JMenu();
+        UsersDrop = new javax.swing.JMenuItem();
+        UserRankDrop = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBounds(new java.awt.Rectangle(200, 50, 950, 700));
@@ -1106,7 +1112,7 @@ public class GUI extends javax.swing.JFrame {
         getContentPane().add(LogInPanel);
         LogInPanel.setBounds(0, 0, 900, 600);
 
-        jMenu1.setText("File");
+        FileDropMenu.setText("File");
 
         ExitDrop.setText("Exit");
         ExitDrop.addActionListener(new java.awt.event.ActionListener() {
@@ -1114,11 +1120,11 @@ public class GUI extends javax.swing.JFrame {
                 ExitDropActionPerformed(evt);
             }
         });
-        jMenu1.add(ExitDrop);
+        FileDropMenu.add(ExitDrop);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(FileDropMenu);
 
-        jMenu2.setText("Navigation");
+        NavigationDropMenu.setText("Navigation");
 
         MainNavDrop.setText("Main Menu");
         MainNavDrop.addActionListener(new java.awt.event.ActionListener() {
@@ -1126,7 +1132,7 @@ public class GUI extends javax.swing.JFrame {
                 MainNavDropActionPerformed(evt);
             }
         });
-        jMenu2.add(MainNavDrop);
+        NavigationDropMenu.add(MainNavDrop);
 
         CustNavDrop.setText("Customers");
         CustNavDrop.addActionListener(new java.awt.event.ActionListener() {
@@ -1134,7 +1140,7 @@ public class GUI extends javax.swing.JFrame {
                 CustNavDropActionPerformed(evt);
             }
         });
-        jMenu2.add(CustNavDrop);
+        NavigationDropMenu.add(CustNavDrop);
 
         ProdNavDrop.setText("Products");
         ProdNavDrop.addActionListener(new java.awt.event.ActionListener() {
@@ -1142,7 +1148,7 @@ public class GUI extends javax.swing.JFrame {
                 ProdNavDropActionPerformed(evt);
             }
         });
-        jMenu2.add(ProdNavDrop);
+        NavigationDropMenu.add(ProdNavDrop);
 
         OrdNavDrop.setText("Orders");
         OrdNavDrop.addActionListener(new java.awt.event.ActionListener() {
@@ -1150,7 +1156,7 @@ public class GUI extends javax.swing.JFrame {
                 OrdNavDropActionPerformed(evt);
             }
         });
-        jMenu2.add(OrdNavDrop);
+        NavigationDropMenu.add(OrdNavDrop);
 
         PackNavDrop.setText("Packages");
         PackNavDrop.addActionListener(new java.awt.event.ActionListener() {
@@ -1158,9 +1164,19 @@ public class GUI extends javax.swing.JFrame {
                 PackNavDropActionPerformed(evt);
             }
         });
-        jMenu2.add(PackNavDrop);
+        NavigationDropMenu.add(PackNavDrop);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(NavigationDropMenu);
+
+        AdminDropMenu.setText("Admin");
+
+        UsersDrop.setText("Users");
+        AdminDropMenu.add(UsersDrop);
+
+        UserRankDrop.setText("Set User Ranks");
+        AdminDropMenu.add(UserRankDrop);
+
+        jMenuBar1.add(AdminDropMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -1177,7 +1193,6 @@ public class GUI extends javax.swing.JFrame {
 
     private void CustomerMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerMenuButtonActionPerformed
         selectPanel(3);
-
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
         DeleteCustomerbutton.setEnabled(false);
@@ -1192,7 +1207,6 @@ public class GUI extends javax.swing.JFrame {
 
     private void CustNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustNavDropActionPerformed
         selectPanel(3);
-
         AddCustomerButton.setEnabled(true);
         AddEditPhoneButton.setEnabled(false);
         DeleteCustomerbutton.setEnabled(false);
@@ -1249,10 +1263,8 @@ public class GUI extends javax.swing.JFrame {
 
     private void DeleteCustomerbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteCustomerbuttonActionPerformed
         int cusID = con.getCustomerID(CustomerJList.getSelectedIndex());
-
         con.deleteCustomer(cusID);
         GetCustomerButtonActionPerformed(evt);
-
         clearCustomerFields();
 
         AddCustomerButton.setEnabled(true);
@@ -1267,8 +1279,6 @@ public class GUI extends javax.swing.JFrame {
         String cusName = CustomerNameField.getText();
         String cusAddress = CustomerAddressField.getText();
         String cusEmail = CustomerEmailField.getText();
-
-
         con.addCustomer(cusName, cusAddress, cusEmail);
         GetCustomerButtonActionPerformed(evt);
 
@@ -1307,7 +1317,6 @@ public class GUI extends javax.swing.JFrame {
             int price = Integer.parseInt(ProductPriceField.getText());
             if (con.addProduct(name, volume, quantity, description, price)) {
                 JOptionPane.showMessageDialog(this, "Product added!", "ADDED", JOptionPane.INFORMATION_MESSAGE);
-
             } else {
                 JOptionPane.showMessageDialog(this, "Could not add product!", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -1652,7 +1661,10 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_DeletePackageButtonActionPerformed
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        jMenu2.setEnabled(true);
+        String UserID = UserNameField.getText();
+        String UserPass = PasswordField.getText();
+        
+        NavigationDropMenu.setEnabled(true);
         selectPanel(2);
     }//GEN-LAST:event_LoginButtonActionPerformed
 
@@ -1779,6 +1791,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton AddPackageButton;
     private javax.swing.JButton AddProductButton;
     private javax.swing.JButton AddProductToPackageButton;
+    private javax.swing.JMenu AdminDropMenu;
     private javax.swing.JMenuItem CustNavDrop;
     private javax.swing.JLabel CustPhoneLabel;
     private javax.swing.JTextArea CustPhoneTextArea;
@@ -1806,6 +1819,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel ExistingPackLabel;
     private javax.swing.JButton ExistingPackageButton;
     private javax.swing.JMenuItem ExitDrop;
+    private javax.swing.JMenu FileDropMenu;
     private javax.swing.JButton GetCustomerButton;
     private javax.swing.JButton GetProductsButton;
     private javax.swing.JPanel LogInPanel;
@@ -1814,6 +1828,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel MainMenuLabel;
     private javax.swing.JMenuItem MainNavDrop;
     private javax.swing.JPanel MainPanel;
+    private javax.swing.JMenu NavigationDropMenu;
     private javax.swing.JMenuItem OrdNavDrop;
     private javax.swing.JButton OrderAddProductToOrderButton;
     private javax.swing.JTextField OrderCustomerIDField;
@@ -1890,12 +1905,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton SearchForProductButton;
     private javax.swing.JTextField UserNameField;
     private javax.swing.JLabel UserNameLabel;
+    private javax.swing.JMenuItem UserRankDrop;
+    private javax.swing.JMenuItem UsersDrop;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
