@@ -65,6 +65,7 @@ public class UserList {
         for (int i = 0; i < getUserListSize(); i++) {
             getCurrentUser(i);   
             if(getUserName().equals(id) && getUserPassword().equals(pw)){
+                currentUser = getCurrentUser(i);
                         succes = true;
             }
           }

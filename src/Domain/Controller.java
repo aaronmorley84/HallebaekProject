@@ -301,8 +301,7 @@ public class Controller{
         return userlist.getUserPassword();
     }//end of getCurrUserPw, added by Andrew
     
-    public int getCurrUserRank(int i){
-        userlist.getCurrentUser(i);
+    public int getCurrUserRank(){
         return userlist.getUserPowerOfUser();
     }//end of buildgetCurrUserRank, added by Andrew
     
