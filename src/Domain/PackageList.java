@@ -84,20 +84,32 @@ public class PackageList {
     
    //communication to PackageGateway
     public boolean buildPackageList(PackageList packageList) {
-        return facade.buildPackageList(packageList);
+        boolean success = false;
+        if (facade.buildPackageList(packageList)){
+            success = true;
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Could not fetch packages!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        return success;
     }
 
     public boolean addPackage(String packName, String packDesc, int packPrice) {
         String empty = "";
         String tempPackPrice = "" + packPrice;
+        boolean success = false;
         if (!packName.equals(empty) && !packDesc.equals(empty) && !tempPackPrice.equals(empty)) {
-            JOptionPane.showMessageDialog(null, "Package Added to Database", "Success", JOptionPane.INFORMATION_MESSAGE);
-            return facade.addPackage(packName, packDesc, packPrice);
-        } else {
+            if (facade.addPackage(packName, packDesc, packPrice)){
+                JOptionPane.showMessageDialog(null, "Package Added to Database", "Success", JOptionPane.INFORMATION_MESSAGE);
+                success = true;
+            }else {
             JOptionPane.showMessageDialog(null, "Error Adding Package to Database", "Error", JOptionPane.ERROR_MESSAGE);
-
-            return false;
         }
+        } 
+        else {
+            JOptionPane.showMessageDialog(null, "One or More Fields Are Empty", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return success;
     }
 
     public boolean addProductsToPackageInDB() {

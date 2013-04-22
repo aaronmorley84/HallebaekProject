@@ -1562,6 +1562,7 @@ public class GUI extends javax.swing.JFrame {
     private void ExistingPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExistingPackageButtonActionPerformed
         model7.clear();
         PackageJList.setModel(model7);
+        con.clearPackageList();
         con.buildPackageList();
         for (int i = 0; i < con.getPackageListSize(); i++) {
             model7.addElement(con.getPackageID(i) + "-" + con.getPackageName(i));
