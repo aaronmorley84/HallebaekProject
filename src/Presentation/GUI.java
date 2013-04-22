@@ -501,6 +501,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         SearchForProductNameButton.setText("Search By Name");
+        SearchForProductNameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchForProductNameButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout SearchForAProductLayout = new javax.swing.GroupLayout(SearchForAProduct);
         SearchForAProduct.setLayout(SearchForAProductLayout);
@@ -1388,7 +1393,7 @@ public class GUI extends javax.swing.JFrame {
         ProductQuantityField.setText("" + con.getProductQuantiy(ProductJList.getSelectedIndex()));
         ProductPriceField.setText("" + con.getProductPrice(ProductJList.getSelectedIndex()));
         ProductDescriptionField.setText(con.getProductDescription(ProductJList.getSelectedIndex()));
-        
+        con.searchProdByIDinArray(ProductJList.)
 
         AddProductButton.setEnabled(false);
         DeleteProductButton.setEnabled(true);
@@ -1427,6 +1432,12 @@ public class GUI extends javax.swing.JFrame {
         model3.addElement(con.getProductId(index) + "-" + con.getProductName(index));
         ProductJList.setModel(model3);
         }
+        ProductJList.setModel(model3);
+        AddProductButton.setEnabled(true);
+        DeleteProductButton.setEnabled(false);
+        EditProductButton.setEnabled(true);
+        GetProductsButton.setEnabled(false);
+        SaveProductChangesButton.setEnabled(false);
     }//GEN-LAST:event_SearchForProductIDButtonActionPerformed
 
     private void OrderSearchProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSearchProductButtonActionPerformed
@@ -1674,6 +1685,28 @@ public class GUI extends javax.swing.JFrame {
     private void ProductNameSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductNameSearchFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ProductNameSearchFieldActionPerformed
+
+    private void SearchForProductNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchForProductNameButtonActionPerformed
+        con.clearProductList();
+        con.buildProductList();
+        
+        String searchName = ProductNameSearchField.getText();
+        if (con.searchProdByNameinArray(searchName)){
+        int counter = 0;
+        model3.clear();
+        while (counter < con.getProductSearchListsize()) {
+            model3.addElement(con.getSearchProductId(counter) + "-" + con.getSearchProductName(counter));
+            counter++;
+        }
+        ProductJList.setModel(model3);
+        }
+        ProductJList.setModel(model3);
+        AddProductButton.setEnabled(true);
+        DeleteProductButton.setEnabled(false);
+        EditProductButton.setEnabled(true);
+        GetProductsButton.setEnabled(false);
+        SaveProductChangesButton.setEnabled(false);
+    }//GEN-LAST:event_SearchForProductNameButtonActionPerformed
 
     /**
      * @param args the command line arguments

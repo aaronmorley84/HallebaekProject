@@ -62,11 +62,22 @@ public class Controller{
     public boolean deleteProduct(int cusID) {
         return productList.deleteProduct(cusID);
     }
-    public ArrayList searchProdByNameinArray(String name){
+    public boolean searchProdByNameinArray(String name){
         return productList.searchProdByNameinArray(name);
     }
     public int searchProdByIDinArray(int ID){
         return productList.searchProdByIDinArray(ID);
+    }
+    public int getProductSearchListsize() {
+        return productList.getProductSearchListsize();
+    }
+    public int getSearchProductId(int i){
+        productList.getCurrentSearchProduct(i);
+        return productList.getProdID();
+    }
+    public String getSearchProductName(int i){
+        productList.getCurrentSearchProduct(i);
+        return productList.getProdName();
     }
 
     /*

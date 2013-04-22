@@ -14,157 +14,139 @@ import javax.swing.JOptionPane;
  * @author Aaron
  */
 public class ProductList {
-    
-    private ArrayList<Product> productList = new ArrayList<>();
+
+    private ArrayList<Product> productList = new ArrayList();
+    private ArrayList<Product> productSearchList = new ArrayList();
     private Product currentProduct;
     Facade facade = new Facade();
-    
-     public void addToProductList(int prodID, String prodName, int prodVol, int prodQTY, String prodDisc, int prodPrice) {
-        productList.add(new Product(prodID, prodName, prodVol, prodQTY, prodDisc, prodPrice));
-     }
 
-    public Product getCurrentProduct(int i){
+    public void addToProductList(int prodID, String prodName, int prodVol, int prodQTY, String prodDisc, int prodPrice) {
+        productList.add(new Product(prodID, prodName, prodVol, prodQTY, prodDisc, prodPrice));
+    }
+
+    public Product getCurrentProduct(int i) {
         currentProduct = productList.get(i);
         return currentProduct;
     }
-    
+
     public int getProductListsize() {
-        return productList.size();   
+        return productList.size();
     }
-    
-    public void clearProductList(){
+
+    public void clearProductList() {
         productList.clear();
     }
-    
+
     //these are the getters
     public int getProdID() {
         return currentProduct.getProductID();
     }
-    
+
     public String getProdName() {
         return currentProduct.getName();
     }
-    
+
     public int getProdVol() {
         return currentProduct.getVolume();
     }
-    
+
     public int getProdQTY() {
         return currentProduct.getQuantity();
     }
-    
+
     public String getProdDisc() {
         return currentProduct.getDescription();
     }
-    
+
     public int getProdPrice() {
         return currentProduct.getPrice();
     }
-    
+
     //these are the setters
-    public void editProdName(String newName){
+    public void editProdName(String newName) {
         currentProduct.setName(newName);
     }
-    
-    public void editProdVol(int newVol){
+
+    public void editProdVol(int newVol) {
         currentProduct.setVolume(newVol);
     }
-    
-    public void editProdQTY(int newQTY){
+
+    public void editProdQTY(int newQTY) {
         currentProduct.setQuantity(newQTY);
     }
-    
-    public void editProdDisc(String newDisc){
+
+    public void editProdDisc(String newDisc) {
         currentProduct.getDescription();
     }
-    
-    public void editProdPrice(int newPrice){
+
+    public void editProdPrice(int newPrice) {
         currentProduct.setPrice(newPrice);
     }
 
     //communication to productGateway
-    public boolean buildProductList(ProductList productList){
+    public boolean buildProductList(ProductList productList) {
         Boolean success = false;
-        if (facade.buildProductList(productList)){
+        if (facade.buildProductList(productList)) {
             success = true;
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Could not fetch products!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         return success;
     }
-    
-    public boolean addProduct(String prodName, int prodVol, int prodQTY, String prodDisc, int prodPrice){
+
+    public boolean addProduct(String prodName, int prodVol, int prodQTY, String prodDisc, int prodPrice) {
         String empty = "";
         Boolean success = false;
-        String tempVol = ""+prodVol;
-        String tempQTY = ""+prodQTY;
-        String tempPrice = ""+prodPrice;
-        if (!prodName.equals(empty) && !tempVol.equals(empty) && !tempQTY.equals(empty) && !prodDisc.equals(empty)&& !tempPrice.equals(empty)) {
-            if (facade.addProduct(prodName, prodVol, prodQTY, prodDisc, prodPrice)){
+        String tempVol = "" + prodVol;
+        String tempQTY = "" + prodQTY;
+        String tempPrice = "" + prodPrice;
+        if (!prodName.equals(empty) && !tempVol.equals(empty) && !tempQTY.equals(empty) && !prodDisc.equals(empty) && !tempPrice.equals(empty)) {
+            if (facade.addProduct(prodName, prodVol, prodQTY, prodDisc, prodPrice)) {
                 JOptionPane.showMessageDialog(null, "Product added!", "ADDED", JOptionPane.INFORMATION_MESSAGE);
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(null, "Could not add product!", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "One or more fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return success;
     }
-    
+
     public boolean saveEditedProduct(int prodID, String prodName, int prodVol, int prodQTY, String prodDisc, int prodPrice) {
         String empty = "";
         Boolean success = false;
-        String tempVol = ""+prodVol;
-        String tempQTY = ""+prodQTY;
-        String tempPrice = ""+prodPrice;
-        if (!prodName.equals(empty) && !tempVol.equals(empty) && !tempQTY.equals(empty) && !prodDisc.equals(empty)&& !tempPrice.equals(empty)) {
-            if (facade.saveEditedProduct(prodID, prodName, prodVol, prodQTY, prodDisc, prodPrice)){
+        String tempVol = "" + prodVol;
+        String tempQTY = "" + prodQTY;
+        String tempPrice = "" + prodPrice;
+        if (!prodName.equals(empty) && !tempVol.equals(empty) && !tempQTY.equals(empty) && !prodDisc.equals(empty) && !tempPrice.equals(empty)) {
+            if (facade.saveEditedProduct(prodID, prodName, prodVol, prodQTY, prodDisc, prodPrice)) {
                 JOptionPane.showMessageDialog(null, "Product edited!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
                 success = true;
-            }
-            else {
+            } else {
                 JOptionPane.showMessageDialog(null, "Could not save product!", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "One or more fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return success;
     }
-    
+
     public boolean deleteProduct(int prodID) {
         boolean success = false;
-        if (facade.deleteProduct(prodID)){
+        if (facade.deleteProduct(prodID)) {
             JOptionPane.showMessageDialog(null, "Product Deleted From database", "Success", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Error Deleting Product", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return success;
     }
-    
-    
-    //product search
-    public ArrayList searchProdByNameinArray(String name) {
-        ArrayList<Product> temp = new ArrayList();
-           
-        for (int i = 0; i < productList.size(); i++) {
-            currentProduct = getCurrentProduct(i);
-            if (getProdName().equals(name)) {
-                 temp.add(currentProduct);
-            }
-        }
-        return temp;
-    }
-    
-    public int searchProdByIDinArray(int ID){
+
+    //product search by ID
+    public int searchProdByIDinArray(int ID) {
         int productIndex = -1;
         for (int i = 0; i < getProductListsize(); i++) {
             currentProduct = getCurrentProduct(i);
-            if(getProdID() == ID){
+            if (getProdID() == ID) {
                 productIndex = i;
                 return productIndex;
             }
@@ -172,7 +154,28 @@ public class ProductList {
         JOptionPane.showMessageDialog(null, "No Product Matches the Product ID Given", "Error", JOptionPane.ERROR_MESSAGE);
         return productIndex;
     }
-    
-    
-    
+
+    //product search by Name
+    public boolean searchProdByNameinArray(String name) {
+        Boolean success = false;
+
+        productSearchList.clear();
+        for (int i = 0; i < productList.size(); i++) {
+            currentProduct = getCurrentProduct(i);
+            if (getProdName().contains(name)) {
+                productSearchList.add(currentProduct);
+                success = true;
+            }
+        }
+        return success;
+    }
+
+    public Product getCurrentSearchProduct(int i) {
+        currentProduct = productSearchList.get(i);
+        return currentProduct;
+    }
+
+    public int getProductSearchListsize() {
+        return productSearchList.size();
+    }
 }
