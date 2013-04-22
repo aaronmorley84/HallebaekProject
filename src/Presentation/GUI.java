@@ -17,12 +17,14 @@ public class GUI extends javax.swing.JFrame {
 
     Controller con = new Controller();
     DefaultListModel model1, model2, model3, model4, model5, model6, model7;
+    private int userRank;
 
     /**
      * Creates new form GUI
      */
     public GUI() {
         initComponents();
+        con.buildUserList();
         model1 = new DefaultListModel();
         model2 = new DefaultListModel();
         model3 = new DefaultListModel();
@@ -39,6 +41,7 @@ public class GUI extends javax.swing.JFrame {
         EditPackagePanel.setVisible(false);
         setVisibleItemsInOrderPane(false);
         NavigationDropMenu.setEnabled(false);
+        AdminDropMenu.setEnabled(false);
 
     }
 
@@ -1661,11 +1664,29 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_DeletePackageButtonActionPerformed
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        userRank = 0;
         String UserID = UserNameField.getText();
         String UserPass = PasswordField.getText();
+        if (con.checkUserNPw(UserID, UserPass)){
+            NavigationDropMenu.setEnabled(true);
+            AdminDropMenu.setEnabled(true);
+            selectPanel(2);
+            userRank = con.getCurrUserRank();
+            System.out.println(userRank);
+            if (userRank > 1){
+                AdminDropMenu.setEnabled(false);
+                ProdNavDrop.setEnabled(false);
+                PackNavDrop.setEnabled(false);
+                ProductMenuButton.setEnabled(false);
+                PackageMenuButton.setEnabled(false);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Wrong User/Password", "Fail", JOptionPane.ERROR_MESSAGE);
+            UserNameField.setText(null);
+            PasswordField.setText(null);
+        }
         
-        NavigationDropMenu.setEnabled(true);
-        selectPanel(2);
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed

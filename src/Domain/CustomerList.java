@@ -88,7 +88,7 @@ public class CustomerList {
         }
         }
         else {
-            JOptionPane.showInternalMessageDialog(null, "One or More Fields Is Empty", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "One or More Fields Are Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return success;
     }
@@ -105,7 +105,7 @@ public class CustomerList {
         }
         }
         else {
-            JOptionPane.showInternalMessageDialog(null, "One or More Fields Is Empty", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "One or More Fields Are Empty", "Error", JOptionPane.ERROR_MESSAGE);
         }
         return success;
     }
