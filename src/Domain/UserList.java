@@ -55,6 +55,22 @@ public class UserList {
     public void ClearUserList(){
         userList.clear();
     }
+    
+    public int getUserListSize(){
+        return userList.size();
+    }
+    
+    public boolean checkUserNPw(String id, String pw){
+       boolean succes = false;
+        for (int i = 0; i < getUserListSize(); i++) {
+            getCurrentUser(i);   
+            if(getUserName().equals(id) && getUserPassword().equals(pw)){
+                        succes = true;
+            }
+          }
+        
+        return succes;
+    }
     //facade
     public boolean buildUserListFromDB(UserList user){
         return facade.buildUserList(user);

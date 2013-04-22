@@ -305,4 +305,8 @@ public class Controller{
         userlist.getCurrentUser(i);
         return userlist.getUserPowerOfUser();
     }//end of buildgetCurrUserRank, added by Andrew
+    
+    public boolean checkUserNPw(String id, String pw){
+       return userlist.checkUserNPw(id,pw);
+    }
 }
