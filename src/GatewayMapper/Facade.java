@@ -8,6 +8,7 @@ import Domain.OrderList;
 import Domain.PackageList;
 import Domain.ProductList;
 import Domain.TruckList;
+import Domain.UserList;
 
 /**
  *
@@ -114,4 +115,23 @@ public class Facade {
         return tg.addTruck(truckid, model, capacity, bookeddate);
     }
             
+    
+    //UserGateway
+    
+    public boolean buildUserList(UserList User){
+       UserGateway ug = new UserGateway();        
+        return ug.buildUserList(User);
+  }// end of build user, added by Andrew
+    
+    public boolean addUser(String ID, String pw, int pou){
+       UserGateway ug = new UserGateway();        
+        return ug.addUser(ID, pw, pou);
+  }// end of Adduser, added by Andrew
+    
+    public boolean editUser(String ID, String pw, int pou){
+       UserGateway ug = new UserGateway();        
+        return ug.saveEditedUser(ID, pw,pou);
+  }// end of Edituser, added by Andrew
+    
+    
 }

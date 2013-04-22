@@ -9,7 +9,7 @@ public class Controller{
     PackageList packageList = new PackageList();
     OrderList orderList = new OrderList();
     TruckList truckList = new TruckList();
-    
+    UserList userlist = new UserList();
 
     public Controller() {
         
@@ -267,12 +267,42 @@ public class Controller{
     }
     
     
+    //UserList functionality 
     
+    public boolean buildUserList(){
+        return userlist.buildUserListFromDB(userlist);
+    }//end of buildUserList, added by Andrew
     
-    /*
-     * Methods for CheckerGateway(
-     */
-//    public boolean checkTruckAvailability(int truckID, String date){
-//        return checkerController.checkTruckAvailability(truckID, date);
-//    }
+    public boolean addUserToDB(String id, String pw, int pou ){
+        boolean succes = false;
+        if(userlist.addUserToDB(id, pw, pou)){
+            userlist.buildUserListFromDB(userlist);
+            succes = true;
+        }
+        return succes;
+    }//end of addUserToDB, added by Andrew
+    
+    public boolean editUserInDB(String id, String pw, int pou){
+        boolean succes = false;
+        if(userlist.editUserInDB(id, pw, pou)){
+            userlist.buildUserListFromDB(userlist);
+            succes = true;
+        }
+        return succes;
+    }//end of editUserInDB, added by Andrew
+    
+    public String getCurrUserName(int i){
+        userlist.getCurrentUser(i);
+        return userlist.getUserName();
+    }//end of gerCurrUserName, added by Andrew
+    
+    public String getCurrUserPw(int i){
+        userlist.getCurrentUser(i);
+        return userlist.getUserPassword();
+    }//end of getCurrUserPw, added by Andrew
+    
+    public int getCurrUserRank(int i){
+        userlist.getCurrentUser(i);
+        return userlist.getUserPowerOfUser();
+    }//end of buildgetCurrUserRank, added by Andrew
 }

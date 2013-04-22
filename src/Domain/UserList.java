@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 package Domain;
+import GatewayMapper.Facade;
 import Resources.User;
 import java.util.ArrayList;
 
@@ -15,6 +16,7 @@ import java.util.ArrayList;
  */
 public class UserList {
     User currentUser;
+    Facade facade = new Facade();
     private ArrayList<User> userList = new ArrayList<>();
         
     public User getCurrentUser(int i){
@@ -50,6 +52,21 @@ public class UserList {
         currentUser.setPou(pou);
     }
     
+    public void ClearUserList(){
+        userList.clear();
+    }
+    //facade
+    public boolean buildUserListFromDB(UserList user){
+        return facade.buildUserList(user);
+    }
+    
+    public boolean addUserToDB(String id, String pw, int pou){
+        return facade.addUser(id,pw,pou);
+    }
+    
+    public boolean editUserInDB(String id, String pw, int pou){
+        return facade.editUser(id,pw,pou);
+    }
     
 }
 

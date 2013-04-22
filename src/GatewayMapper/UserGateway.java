@@ -18,8 +18,9 @@ public class UserGateway {
     UserList userlist;
     
     /*Used to build a list of customers. */
-    public boolean buildCustomerList(UserList userList) {
+    public boolean buildUserList(UserList userList) {
         this.userlist = userList;
+        userlist.ClearUserList();
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * " 
@@ -84,7 +85,7 @@ public class UserGateway {
         
     }
     
-    public boolean saveEditedCustomer(String id, String pw, int pou){
+    public boolean saveEditedUser(String id, String pw, int pou){
          boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "UPDATE Users "
