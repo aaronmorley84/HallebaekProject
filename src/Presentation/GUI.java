@@ -181,6 +181,7 @@ public class GUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         FileDropMenu = new javax.swing.JMenu();
         ExitDrop = new javax.swing.JMenuItem();
+        LogOutDrop = new javax.swing.JMenuItem();
         NavigationDropMenu = new javax.swing.JMenu();
         MainNavDrop = new javax.swing.JMenuItem();
         CustNavDrop = new javax.swing.JMenuItem();
@@ -1125,6 +1126,14 @@ public class GUI extends javax.swing.JFrame {
         });
         FileDropMenu.add(ExitDrop);
 
+        LogOutDrop.setText("Log Out");
+        LogOutDrop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogOutDropActionPerformed(evt);
+            }
+        });
+        FileDropMenu.add(LogOutDrop);
+
         jMenuBar1.add(FileDropMenu);
 
         NavigationDropMenu.setText("Navigation");
@@ -1672,7 +1681,8 @@ public class GUI extends javax.swing.JFrame {
             AdminDropMenu.setEnabled(true);
             selectPanel(2);
             userRank = con.getCurrUserRank();
-            System.out.println(userRank);
+            UserNameField.setText(null);
+            PasswordField.setText(null);
             if (userRank > 1){
                 AdminDropMenu.setEnabled(false);
                 ProdNavDrop.setEnabled(false);
@@ -1692,6 +1702,12 @@ public class GUI extends javax.swing.JFrame {
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordFieldActionPerformed
+
+    private void LogOutDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutDropActionPerformed
+        selectPanel(1);
+        NavigationDropMenu.setEnabled(false);
+        AdminDropMenu.setEnabled(false);
+    }//GEN-LAST:event_LogOutDropActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1844,6 +1860,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton GetCustomerButton;
     private javax.swing.JButton GetProductsButton;
     private javax.swing.JPanel LogInPanel;
+    private javax.swing.JMenuItem LogOutDrop;
     private javax.swing.JButton LoginButton;
     private javax.swing.JLabel LoginMenuLabel;
     private javax.swing.JLabel MainMenuLabel;
