@@ -3,18 +3,33 @@
  * and open the template in the editor.
  */
 package GatewayMapper;
+import DBConnection.ConnectionTools;
 import Domain.CustomerList;
 import Domain.OrderList;
 import Domain.PackageList;
 import Domain.ProductList;
 import Domain.TruckList;
 import Domain.UserList;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Aaron
  */
 public class Facade {
+    //method for unlocking.
+    public void commit(){
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        try {
+            con.commit();
+        } catch (SQLException ex) {
+            System.out.println("Error in commit");
+            System.out.println(ex.getMessage());
+        }
+    }
     
     
     //Customer gateway
@@ -102,6 +117,10 @@ public class Facade {
     public boolean deletePackage(){
         PackageGateway pg = new PackageGateway();
         return pg.deletePackage();
+    }
+    public boolean lockPackage(int packID) {
+        PackageGateway pg = new PackageGateway();
+        return pg.lockPackage(packID);
     }
     
     //Truck Gateway

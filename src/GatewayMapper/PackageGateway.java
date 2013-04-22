@@ -55,7 +55,28 @@ public class PackageGateway {
 
         return succes;
     }//end of buildPackageList
-
+    // method for locking packages
+    public boolean lockPackage(int ID){
+        boolean locked = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String sqlString = "SELECT * " 
+                + "FROM packages "
+                + "WHERE packageid = ? "
+                + "FOR UPDATE NOWAIT";
+        PreparedStatement statement = null;
+        try {
+            con.setAutoCommit(false);
+            statement = con.prepareStatement(sqlString);
+            statement.setInt(1, ID);
+            statement.execute();
+            locked = true;
+            System.out.println("Product Locked");
+        } catch (SQLException ex) {
+            System.out.println("Error in lockProduct");
+            System.out.println(ex.getMessage());
+            }        
+        return locked;
+    }
     /*This methode adds a package to the database*/
     public boolean addPackage(String name, String description, int price) {
         boolean succes = false;

@@ -4,6 +4,7 @@ import GatewayMapper.Facade;
 import Resources.Truck;
 import Resources.TruckOrder;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,8 +18,13 @@ public class TruckList {
     private Truck currTruck;
     
     public void getcurrTruck(int i){
-        this.currTruck = trucks.get(i);
-      
+        facade.commit();
+        
+      if(facade.lockTruck(currTruck.getTruckID())){
+          this.currTruck = trucks.get(i);
+      }else{
+         JOptionPane.showMessageDialog(null, "Truck is in use!", "ERROR", JOptionPane.ERROR_MESSAGE); 
+      }
     }
     
     public void getcurrTruckOrder(int i ){
@@ -153,5 +159,7 @@ public class TruckList {
     public boolean addTruck(int truckid, String model, int capacity, String bookeddate){
         return facade.addTruck(truckid, model, capacity, bookeddate);
     }
-
+    public boolean lockTruck(int truckID){
+        return facade.lockTruck(truckID);
+    }
 }
