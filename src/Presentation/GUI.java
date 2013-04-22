@@ -1352,7 +1352,7 @@ public class GUI extends javax.swing.JFrame {
         String description = ProductDescriptionField.getText();
         int price = Integer.parseInt(ProductPriceField.getText());
         con.addProduct(name, volume, quantity, description, price);
-        
+
         GetProductsButtonActionPerformed(evt);
         clearProductFields();
     }//GEN-LAST:event_AddProductButtonActionPerformed
@@ -1388,10 +1388,10 @@ public class GUI extends javax.swing.JFrame {
 
     private void EditProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductButtonActionPerformed
 
-        int searchID = Integer.parseInt((""+ProductJList.getSelectedValue()).substring(0,5));
+        int searchID = Integer.parseInt(("" + ProductJList.getSelectedValue()).substring(0, 5));
         System.out.println(searchID);
         int index = con.searchProdByIDinArray(searchID);
-        
+
         ProductIDField.setText("" + con.getProductId(index));
         ProductNameField.setText(con.getProductName(index));
         ProductVolumeField.setText("" + con.getProductVolume(index));
@@ -1428,13 +1428,13 @@ public class GUI extends javax.swing.JFrame {
     private void SearchForProductIDButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchForProductIDButtonActionPerformed
         con.clearProductList();
         con.buildProductList();
-        
+
         int searchID = Integer.parseInt(ProductIDSearchField.getText());
         int index = con.searchProdByIDinArray(searchID);
-        if (index >= 0){
-        model3.clear();
-        model3.addElement(con.getProductId(index) + "-" + con.getProductName(index));
-        ProductJList.setModel(model3);
+        if (index >= 0) {
+            model3.clear();
+            model3.addElement(con.getProductId(index) + "-" + con.getProductName(index));
+            ProductJList.setModel(model3);
         }
         ProductJList.setModel(model3);
         ProductNameSearchField.setText(null);
@@ -1686,6 +1686,11 @@ public class GUI extends javax.swing.JFrame {
         selectPanel(1);
         NavigationDropMenu.setEnabled(false);
         AdminDropMenu.setEnabled(false);
+        AdminDropMenu.setEnabled(false);
+        ProdNavDrop.setEnabled(true);
+        PackNavDrop.setEnabled(true);
+        ProductMenuButton.setEnabled(true);
+        PackageMenuButton.setEnabled(true);
     }//GEN-LAST:event_LogOutDropActionPerformed
 
     private void ProductNameSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductNameSearchFieldActionPerformed
@@ -1695,16 +1700,16 @@ public class GUI extends javax.swing.JFrame {
     private void SearchForProductNameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchForProductNameButtonActionPerformed
         con.clearProductList();
         con.buildProductList();
-        
+
         String searchName = ProductNameSearchField.getText();
-        if (con.searchProdByNameinArray(searchName)){
-        int counter = 0;
-        model3.clear();
-        while (counter < con.getProductSearchListsize()) {
-            model3.addElement(con.getSearchProductId(counter) + "-" + con.getSearchProductName(counter));
-            counter++;
-        }
-        ProductJList.setModel(model3);
+        if (con.searchProdByNameinArray(searchName)) {
+            int counter = 0;
+            model3.clear();
+            while (counter < con.getProductSearchListsize()) {
+                model3.addElement(con.getSearchProductId(counter) + "-" + con.getSearchProductName(counter));
+                counter++;
+            }
+            ProductJList.setModel(model3);
         }
         ProductJList.setModel(model3);
         ProductNameSearchField.setText(null);

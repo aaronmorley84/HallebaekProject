@@ -13,8 +13,6 @@ public class Controller{
     UserList userlist = new UserList();
 
     public Controller() {
-        
-        
     }
     /*
      * methods for ProductList()
