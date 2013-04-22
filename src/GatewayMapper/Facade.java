@@ -34,7 +34,10 @@ public class Facade {
          CustomerGateway cg = new CustomerGateway();
         return cg.deleteCustomer(cusID);
     }
-    
+    public boolean lockCustomer(int cusID){
+        CustomerGateway cg = new CustomerGateway();
+        return cg.lockCustomer(cusID);
+    }
     //Product Gateway
     public boolean buildProductList(ProductList productList){
         ProductGateway pg = new ProductGateway();
@@ -51,6 +54,10 @@ public class Facade {
     public boolean deleteProduct(int ProdID) {
          ProductGateway pg = new ProductGateway();
         return pg.deleteProduct(ProdID);
+    }
+    public boolean lockProduct(int ProdID){
+        ProductGateway pg = new ProductGateway();
+        return pg.lockProduct(ProdID);
     }
     
     //Order Gateway
@@ -114,7 +121,10 @@ public class Facade {
         TruckGateway tg = new TruckGateway();
         return tg.addTruck(truckid, model, capacity, bookeddate);
     }
-            
+    public boolean lockTruck(int truckID){
+        TruckGateway tg = new TruckGateway();
+        return tg.lockTruck(truckID);
+    }
     
     //UserGateway
     

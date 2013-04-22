@@ -51,7 +51,28 @@ public class ProductGateway {
         }
         return success;
     }//end of buildProducts
-    
+    // method for locking products
+    public boolean lockProduct(int ID){
+        boolean locked = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String sqlString = "SELECT * " 
+                + "FROM products "
+                + "WHERE productid = ? "
+                + "FOR UPDATE NOWAIT";
+        PreparedStatement statement = null;
+        try {
+            con.setAutoCommit(false);
+            statement = con.prepareStatement(sqlString);
+            statement.setInt(1, ID);
+            statement.execute();
+            locked = true;
+            System.out.println("Product Locked");
+        } catch (SQLException ex) {
+            System.out.println("Error in lockProduct");
+            System.out.println(ex.getMessage());
+            }        
+        return locked;
+    }
     /*
      * US 2.1
      * Admin can add product to
@@ -169,8 +190,9 @@ public class ProductGateway {
         boolean success = false;
         String SQLString1 = "SELECT * "
                 + "FROM products "
-                + "WHERE pname = ? ";
-
+                + "WHERE pname = ? "
+                + "FOR UPDATE NOWAIT";
+        
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
@@ -206,7 +228,8 @@ public class ProductGateway {
         boolean success = false;
         String SQLString2 = "SELECT * "
                 + "FROM products "
-                + "WHERE productid = ? ";
+                + "WHERE productid = ? "
+                + "FOR UPDATE NOWAIT";
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString2);

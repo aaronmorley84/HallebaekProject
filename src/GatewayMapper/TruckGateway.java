@@ -135,4 +135,26 @@ public class TruckGateway {
         }
         return success;
     }
+    //Method used for locking Trucks
+    public boolean lockTruck(int ID){
+        boolean locked = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String sqlString = "SELECT * " 
+                + "FROM trucks "
+                + "WHERE truckID = ? "
+                + "FOR UPDATE NOWAIT";
+        PreparedStatement statement = null;
+        try {
+            con.setAutoCommit(false);
+            statement = con.prepareStatement(sqlString);
+            statement.setInt(1, ID);
+            statement.execute();
+            locked = true;
+            System.out.println("Truck Locked");
+        } catch (SQLException ex) {
+            System.out.println("Error in lockTruck");
+            System.out.println(ex.getMessage());
+            }        
+        return locked;
+    }
 }

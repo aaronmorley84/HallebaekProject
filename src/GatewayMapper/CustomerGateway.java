@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -54,7 +56,28 @@ public class CustomerGateway {
 
         return success;
     }//end of buildCustomer
-    
+    //method for locking a customer
+    public boolean lockCustomer(int ID){
+        boolean locked = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String sqlString = "SELECT * " 
+                + "FROM customers "
+                + "WHERE customerID = ? "
+                + "FOR UPDATE NOWAIT";
+        PreparedStatement statement = null;
+        try {
+            con.setAutoCommit(false);
+            statement = con.prepareStatement(sqlString);
+            statement.setInt(1, ID);
+            statement.execute();
+            locked = true;
+            System.out.println("Customer Locked");
+        } catch (SQLException ex) {
+            System.out.println("Error in lockCustomer");
+            System.out.println(ex.getMessage());
+            }        
+        return locked;
+    }
     public boolean addCustomer( String name, String address, String email){
         boolean success = false;
         int rowsInserted = 0;
