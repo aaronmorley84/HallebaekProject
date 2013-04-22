@@ -1387,13 +1387,17 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_DeleteProductButtonActionPerformed
 
     private void EditProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductButtonActionPerformed
-        ProductIDField.setText("" + con.getProductId(ProductJList.getSelectedIndex()));
-        ProductNameField.setText(con.getProductName(ProductJList.getSelectedIndex()));
-        ProductVolumeField.setText("" + con.getProductVolume(ProductJList.getSelectedIndex()));
-        ProductQuantityField.setText("" + con.getProductQuantiy(ProductJList.getSelectedIndex()));
-        ProductPriceField.setText("" + con.getProductPrice(ProductJList.getSelectedIndex()));
-        ProductDescriptionField.setText(con.getProductDescription(ProductJList.getSelectedIndex()));
-        con.searchProdByIDinArray(ProductJList.)
+
+        int searchID = Integer.parseInt((""+ProductJList.getSelectedValue()).substring(0,5));
+        System.out.println(searchID);
+        int index = con.searchProdByIDinArray(searchID);
+        
+        ProductIDField.setText("" + con.getProductId(index));
+        ProductNameField.setText(con.getProductName(index));
+        ProductVolumeField.setText("" + con.getProductVolume(index));
+        ProductQuantityField.setText("" + con.getProductQuantiy(index));
+        ProductPriceField.setText("" + con.getProductPrice(index));
+        ProductDescriptionField.setText(con.getProductDescription(index));
 
         AddProductButton.setEnabled(false);
         DeleteProductButton.setEnabled(true);
