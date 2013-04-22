@@ -123,15 +123,21 @@ public class PackageList {
     }
 
     public boolean loadPackageProducts() {
-
-        if (facade.loadPackageProducts()) {
+        boolean success = facade.loadPackageProducts();
+        if (success) {
             JOptionPane.showMessageDialog(null, "Products loaded into Packages", "Success", JOptionPane.INFORMATION_MESSAGE);
-            return true;
+            return success;
         } else {
-            JOptionPane.showMessageDialog(null, "Error loading Products from Package Database", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+            if (currentPackage.packageProductList.isEmpty()){
+            JOptionPane.showMessageDialog(null, "There are no products in this package Yet", "Infomation", JOptionPane.INFORMATION_MESSAGE);
+            success = true;
+            }
+            else {
+            JOptionPane.showMessageDialog(null, "Problem Loading package products from daterbase", "Error", JOptionPane.ERROR_MESSAGE);
+            success = false;
+            }
         }
-
+        return success;
     }
 
     public boolean deletePackageProducts() {

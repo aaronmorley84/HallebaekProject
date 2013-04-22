@@ -5,7 +5,6 @@
 package Presentation;
 
 import Domain.Controller;
-import Resources.Product;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -42,7 +41,6 @@ public class GUI extends javax.swing.JFrame {
         setVisibleItemsInOrderPane(false);
         NavigationDropMenu.setEnabled(false);
         AdminDropMenu.setEnabled(false);
-
     }
 
     /**
@@ -1428,7 +1426,6 @@ public class GUI extends javax.swing.JFrame {
     private void SearchForProductIDButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchForProductIDButtonActionPerformed
         con.clearProductList();
         con.buildProductList();
-
         int searchID = Integer.parseInt(ProductIDSearchField.getText());
         int index = con.searchProdByIDinArray(searchID);
         if (index >= 0) {
@@ -1474,41 +1471,41 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_OrderNewOrderButtonActionPerformed
 
     private void OrderAddProductToOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderAddProductToOrderButtonActionPerformed
-        Product prodForOrder, newProduct;
-        prodForOrder = (Product) OrderProductsList.getSelectedValue();
-        if (prodForOrder.getQuantity() >= (int) OrderQuantitySpinner.getValue()) {
-            newProduct = new Product(prodForOrder.getProductID(),
-                    prodForOrder.getName(), prodForOrder.getVolume(), (int) OrderQuantitySpinner.getValue(),
-                    prodForOrder.getDescription(), prodForOrder.getPrice());
-            if (con.addItemToOrderList(newProduct)) {
-                model5.addElement(newProduct);
-                OrderProductsInOrderList.setModel(model5);
-            } else {
-                JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+//        Product prodForOrder, newProduct;
+//        prodForOrder = (Product) OrderProductsList.getSelectedValue();
+//        if (prodForOrder.getQuantity() >= (int) OrderQuantitySpinner.getValue()) {
+//            newProduct = new Product(prodForOrder.getProductID(),
+//                    prodForOrder.getName(), prodForOrder.getVolume(), (int) OrderQuantitySpinner.getValue(),
+//                    prodForOrder.getDescription(), prodForOrder.getPrice());
+//            if (con.addItemToOrderList(newProduct)) {
+//                model5.addElement(newProduct);
+//                OrderProductsInOrderList.setModel(model5);
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
+//        }
         /* US 3.2 User can see number of trucks
          needed for delivery from size of
          products in customer order table */
-        int totalVolume = 0;
-        for (int i = 0; i < model5.size(); i++) {
-            totalVolume = +((Product) model5.get(i)).getVolume();
-        }
-        OrderTrucksNeededField.setText("" + con.getOrderTruckAmount(totalVolume));
+//        int totalVolume = 0;
+//        for (int i = 0; i < model5.size(); i++) {
+//            totalVolume = +((Product) model5.get(i)).getVolume();
+//        }
+//        OrderTrucksNeededField.setText("" + con.getOrderTruckAmount(totalVolume));
     }//GEN-LAST:event_OrderAddProductToOrderButtonActionPerformed
 
     private void OrderRemoveFromOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderRemoveFromOrderButtonActionPerformed
-        Product prodForRemoval = (Product) OrderProductsInOrderList.getSelectedValue();
-        con.removeFromOrderList(prodForRemoval);
-        model5.removeElement(prodForRemoval);
-        OrderProductsInOrderList.setModel(model5);
-        int totalVolume = 0;
-        for (int i = 0; i < model2.size(); i++) {
-            totalVolume = +((Product) model2.get(i)).getVolume();
-        }
-        OrderTrucksNeededField.setText("" + con.getOrderTruckAmount(totalVolume));
+//        Product prodForRemoval = (Product) OrderProductsInOrderList.getSelectedValue();
+//        con.removeFromOrderList(prodForRemoval);
+//        model5.removeElement(prodForRemoval);
+//        OrderProductsInOrderList.setModel(model5);
+//        int totalVolume = 0;
+//        for (int i = 0; i < model2.size(); i++) {
+//            totalVolume = +((Product) model2.get(i)).getVolume();
+//        }
+//        OrderTrucksNeededField.setText("" + con.getOrderTruckAmount(totalVolume));
     }//GEN-LAST:event_OrderRemoveFromOrderButtonActionPerformed
 
     private void OrderSaveOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSaveOrderButtonActionPerformed
@@ -1542,8 +1539,8 @@ public class GUI extends javax.swing.JFrame {
         String descrip = PackageDescTextArea.getText();
         int price = Integer.parseInt(PackagePriceField.getText());
         con.addPackage(name, descrip, price);
-        clearPackageFields();
         EditPackProdButtonActionPerformed(evt);        
+        clearPackageFields();
         
         AddPackageButton.setEnabled(true);
         EditPackProdButton.setEnabled(false);
@@ -1631,9 +1628,10 @@ public class GUI extends javax.swing.JFrame {
 
         PackageIDField2.setText(PackageIDField.getText());
         PackageNameField2.setText(PackageNameField.getText());
-        con.loadPackageProducts();
+        if (con.loadPackageProducts()){
         for (int i = 0; i < con.getPackageProductListSize(); i++) {
             model5.addElement(con.getPackageProductList(i));
+        }
         }
         ProductsInPackageList.setModel(model5);
         con.buildProductList();
@@ -1642,27 +1640,27 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_EditPackProdButtonActionPerformed
 
     private void AddProductToPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductToPackageButtonActionPerformed
-        Product prodForOrder, newProduct;
-        prodForOrder = (Product) OrderProductsList1.getSelectedValue();
-        if (prodForOrder.getQuantity() >= (int) OrderQuantitySpinner1.getValue()) {
-            newProduct = new Product(prodForOrder.getProductID(),
-                    prodForOrder.getName(), prodForOrder.getVolume(), (int) OrderQuantitySpinner1.getValue(),
-                    prodForOrder.getDescription(), prodForOrder.getPrice());
-            if (con.addItemToPackageList(newProduct)) {
-                model5.addElement(newProduct);
-                ProductsInPackageList.setModel(model5);
-            } else {
-                JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+//        Product prodForOrder, newProduct;
+//        prodForOrder = (Product) OrderProductsList1.getSelectedValue();
+//        if (prodForOrder.getQuantity() >= (int) OrderQuantitySpinner1.getValue()) {
+//            newProduct = new Product(prodForOrder.getProductID(),
+//                    prodForOrder.getName(), prodForOrder.getVolume(), (int) OrderQuantitySpinner1.getValue(),
+//                    prodForOrder.getDescription(), prodForOrder.getPrice());
+//            if (con.addItemToPackageList(newProduct)) {
+//                model5.addElement(newProduct);
+//                ProductsInPackageList.setModel(model5);
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
+//        }
     }//GEN-LAST:event_AddProductToPackageButtonActionPerformed
 
     private void RemoveFromPackageButtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveFromPackageButtoActionPerformed
-        Product prodForRemoval = (Product) ProductsInPackageList.getSelectedValue();
-        con.removeFromPackageList(prodForRemoval);
-        model5.removeElement(prodForRemoval);
+//        Product prodForRemoval = (Product) ProductsInPackageList.getSelectedValue();
+//        con.removeFromPackageList(prodForRemoval);
+//        model5.removeElement(prodForRemoval);
         ProductsInPackageList.setModel(model5);
     }//GEN-LAST:event_RemoveFromPackageButtoActionPerformed
 
