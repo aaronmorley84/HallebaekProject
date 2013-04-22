@@ -10,11 +10,18 @@ public class Controller{
     PackageList packageList = new PackageList();
     OrderList orderList = new OrderList();
     TruckList truckList = new TruckList();
+    PickUpList pickupList = new PickUpList();
     UserList userlist = new UserList();
 
     public Controller() {
         
         
+    }
+    /*
+     * methods for PickUpList()
+     */
+    public boolean addPickUp(int orderID, int customerID, String startDate, String finishDate){
+        return pickupList.addPickUp(orderID, customerID, startDate, finishDate);
     }
     /*
      * methods for ProductList()
@@ -90,17 +97,13 @@ public class Controller{
         orderList.getCurrentOrder(i);
         return orderList.getOrderID();
     }
-    public int getOrderArrDate(int i){
+    public int getOrderStartDate(int i){
         orderList.getCurrentOrder(i);
-        return orderList.getOrderArrDate();
+        return orderList.getOrderStartDate();
     }
-    public int getOrderPickUpDate(int i){
+    public int getOrderFinishDate(int i){
         orderList.getCurrentOrder(i);
-        return orderList.getOrderPickUpDate();
-    }
-    public int getOrderTruckAmount(int i){
-        orderList.getCurrentOrder(i);
-        return orderList.getTrucksAmount();
+        return orderList.getOrderFinishDate();
     }
     public int getOrderCutomerID(int i){
         orderList.getCurrentOrder(i);
@@ -131,6 +134,9 @@ public class Controller{
     public boolean addCustomerOrder(int customerID, String startDate, String finishDate){
         return orderList.addCustomerOrder(customerID, startDate, finishDate);
     }
+    public boolean editCustomerOrder(int customerID, String startdate, String finishdate){
+        return orderList.editCustomerOrder(customerID, startdate, finishdate);
+    }
     
     //Methods for TruckList()
     public void clearTruckOrderList(){
@@ -160,6 +166,9 @@ public class Controller{
         truckList.getcurrTruckOrder(i);
         return truckList.getTruckOrderTruckID();
     }
+    public int getAvailableTruckListSize(){
+        return truckList.getAvailableTruckListSize();
+    }
     public String getTruckOrderStatus(int i){
         truckList.getcurrTruckOrder(i);
         return truckList.getTruckOrderStatus();
@@ -168,8 +177,17 @@ public class Controller{
         truckList.getcurrTruckOrder(i);
         return truckList.getTruckOrderDate();
     }
-    public boolean buildTruckList(TruckList trucklist){
-        return truckList.buildTruckList(trucklist);
+    public int getAvailableTruck(int index){
+        return truckList.getAvailableTruck(index);
+    }
+    public int getTrucksRequired(int totalVolume){
+        return truckList.getTrucksRequired(totalVolume);
+    }
+    public void checkFreeTrucks(String date){
+        truckList.checkFreeTrucks(date);
+    }
+    public boolean buildTruckList(){
+        return truckList.buildTruckList(truckList);
     }
     public boolean buildTruckOrderList(TruckList trucklist){
         return truckList.buildTruckOrderList(trucklist);

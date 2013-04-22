@@ -20,7 +20,7 @@ public class OrderGateway {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * "
-                + "FROM orders";
+                + "FROM customer_order";
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
@@ -31,8 +31,8 @@ public class OrderGateway {
                         rs.getInt(2),
                         rs.getInt(3),
                         rs.getInt(4),
-                        rs.getInt(5),
-                        rs.getInt(6));
+                        rs.getInt(5));
+            
             }
             success = true;
         } catch (Exception e) {
@@ -106,6 +106,34 @@ public class OrderGateway {
 
         return success;
     }//end of add customer order
+    public boolean editCustomerOrder(int customerID, String startDate, String finishDate){
+        boolean success = false;
+        Connection con = ConnectionTools.getInstance().getCurrentConnection();
+        String SQLString1 = "Update Customer_Order "
+                + "SET startdate = ?, "
+                + "SET finishdate = ? "
+                + "WHERE customerID = ? ";
+        PreparedStatement statement = null;
+        try{
+            statement = con.prepareStatement(SQLString1);
+            statement.setString(1, startDate);
+            statement.setString(2, finishDate);
+            statement.setInt(3, customerID);
+            statement.executeUpdate();
+            success = true;
+        }catch (Exception e){
+            System.out.println("Error on CustomerOrder edit!");
+            System.out.println(e.getMessage());
+        }finally{
+            try{
+                statement.close();
+            }catch(SQLException e){
+                System.out.println("Statement close error!");
+                System.out.println(e.getMessage());
+            }
+        }
+        return success;
+    }
 
     /*
      * Fetches a unique identifier for each order.

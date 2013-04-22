@@ -9,16 +9,14 @@ import java.util.ArrayList;
 public class Order {
     public ArrayList<Product> orderProductList = new ArrayList<>();
     private int customerID;
-    private int dateArrival, datePickUp;
-    private int trucksforDelivery;
+    private int startDate, finishDate;
     private int orderID;
     private int balance;
 
-    public Order(int customerID, int dateArrival, int datePickUp, int trucksforDelivery, int orderId, int balance) {
+    public Order(int customerID, int startDate, int finishDate, int orderId, int balance) {
         this.customerID = customerID;
-        this.dateArrival = dateArrival;
-        this.datePickUp = datePickUp;
-        this.trucksforDelivery = trucksforDelivery;
+        this.startDate = startDate;
+        this.finishDate = finishDate;
         this.orderID = orderId;
         this.balance = balance;
     }
@@ -69,28 +67,20 @@ public class Order {
         return customerID;
     }
     
-    public int getDateArrival() {
-        return dateArrival;
+    public int getStartDate() {
+        return startDate;
     }
 
-    public void setDateArrival(int dateArrival) {
-        this.dateArrival = dateArrival;
+    public void setStartDate(int startDate) {
+        this.startDate = startDate;
     }
 
-    public int getDatePickUp() {
-        return datePickUp;
+    public int getFinishDate() {
+        return finishDate;
     }
 
-    public void setDatePickUp(int datePickUp) {
-        this.datePickUp = datePickUp;
-    }
-
-    public int getTrucksforDelivery() {
-        return trucksforDelivery;
-    }
-
-    public void setTrucksforDelivery(int trucksforDelivery) {
-        this.trucksforDelivery = trucksforDelivery;
+    public void setFinishDate(int finishDate) {
+        this.finishDate = finishDate;
     }
     
     public void setOrderId (int orderId) {
@@ -104,8 +94,8 @@ public class Order {
     
     @Override
     public String toString() {
-        return "CustomerID: "+customerID+" OrderID: "+orderID+" Start date: "+dateArrival+" End date: "+datePickUp
-                +" Trucks: "+trucksforDelivery+ "Balance: "+balance;
+        return "CustomerID: "+customerID+" OrderID: "+orderID+" Start date: "+startDate+" End date: "+finishDate
+                + "Balance: "+balance;
     }
     
 }

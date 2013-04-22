@@ -14,8 +14,8 @@ public class OrderList {
     Facade facade = new Facade();
     
     public void addToOrderList(int customerID, int dateArrival, int datePickUp, 
-            int trucksforDelivery, int orderId, int balance){
-        orderList.add(new Order(customerID,dateArrival,datePickUp,trucksforDelivery,orderId,balance));
+            int orderId, int balance){
+        orderList.add(new Order(customerID,dateArrival,datePickUp,orderId,balance));
     }
     
     public Order getCurrentOrder(int i){
@@ -33,14 +33,11 @@ public class OrderList {
     public int getOrderID(){
         return currentOrder.getOrderID();
     }
-    public int getOrderArrDate(){
-        return currentOrder.getDateArrival();
+    public int getOrderStartDate(){
+        return currentOrder.getStartDate();
     }
-    public int getOrderPickUpDate(){
-        return currentOrder.getDatePickUp();
-    }
-    public int getTrucksAmount(){
-        return currentOrder.getTrucksforDelivery();
+    public int getOrderFinishDate(){
+        return currentOrder.getFinishDate();
     }
     public int getCustomerID(){
         return currentOrder.getCustomer();
@@ -56,14 +53,11 @@ public class OrderList {
     public void setOrderID(int orderID){
         currentOrder.setOrderId(orderID);
     }
-    public void setOrderArrDate(int arrDate){
-        currentOrder.setDateArrival(arrDate);
+    public void setOrderStartDate(int startDate){
+        currentOrder.setStartDate(startDate);
     }
-    public void setOrderPickUpDate(int pickUpDate){
-        currentOrder.setDatePickUp(pickUpDate);
-    }
-    public void setOrderTrucksAmount(int amount){
-        currentOrder.setTrucksforDelivery(amount);
+    public void setOrderFinishDate(int finishDate){
+        currentOrder.setFinishDate(finishDate);
     }
     public void setOrderCustID(int custID){
         currentOrder.setCustomer(custID);
@@ -92,6 +86,9 @@ public class OrderList {
     }
     public int getUniqueOrderID(){
         return facade.getUniqueOrderID();
+    }
+    public boolean editCustomerOrder(int customerID, String startdate, String finishdate){
+        return facade.editCustomerOrder(customerID, startdate, finishdate);
     }
     
     

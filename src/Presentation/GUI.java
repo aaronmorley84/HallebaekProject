@@ -6,6 +6,7 @@ package Presentation;
 
 import Domain.Controller;
 import Resources.Product;
+import Resources.Truck;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
 public class GUI extends javax.swing.JFrame {
 
     Controller con = new Controller();
-    DefaultListModel model1, model2, model3, model4, model5, model6, model7;
+    DefaultListModel model1, model2, model3, model4, model5, model6, model7, model8, model9;
     private int userRank;
 
     /**
@@ -32,11 +33,15 @@ public class GUI extends javax.swing.JFrame {
         model5 = new DefaultListModel();
         model6 = new DefaultListModel();
         model7 = new DefaultListModel();
+        model8 = new DefaultListModel();
+        model9 = new DefaultListModel();
         LogInPanel.setVisible(true);
         MainPanel.setVisible(false);
         CustomerPanel.setVisible(false);
         ProductPanel.setVisible(false);
         OrderPanel.setVisible(false);
+        EditOrderPanel.setVisible(false);
+        PickUpOrTruckOrderPanel.setVisible(false);
         PackagePanel.setVisible(false);
         EditPackagePanel.setVisible(false);
         setVisibleItemsInOrderPane(false);
@@ -114,6 +119,22 @@ public class GUI extends javax.swing.JFrame {
         SearchForProductNameButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         OrderPanel = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        CustIDField = new javax.swing.JTextField();
+        CustNameField = new javax.swing.JTextField();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        CustDetailsArea = new javax.swing.JTextArea();
+        jLabel9 = new javax.swing.JLabel();
+        GetCustomersButton = new javax.swing.JButton();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        ExistingCustomersList = new javax.swing.JList();
+        CreateOrderButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        EditOrderPanel = new javax.swing.JPanel();
         OrderMenuLabel = new javax.swing.JLabel();
         OrderProductNameSearchField = new javax.swing.JTextField();
         OrderSearchProductButton = new javax.swing.JButton();
@@ -136,6 +157,17 @@ public class GUI extends javax.swing.JFrame {
         OrderStartDateLabel = new javax.swing.JLabel();
         OrderEndDateLabel = new javax.swing.JLabel();
         OrderSaveOrderButton = new javax.swing.JButton();
+        PickUpOrTruckOrderPanel = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        StartDateField = new javax.swing.JTextField();
+        FinishDateField = new javax.swing.JTextField();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        AvailableTrucksList = new javax.swing.JList();
+        GetAvailableTrucksButton = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        PickUpOrderButton = new javax.swing.JButton();
+        TruckOrderButton = new javax.swing.JButton();
         PackagePanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         PackageIDLabel = new javax.swing.JLabel();
@@ -367,7 +399,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(EditCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(DeleteCustomerbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         CustomerPanelLayout.setVerticalGroup(
             CustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,7 +447,7 @@ public class GUI extends javax.swing.JFrame {
                             .addGroup(CustomerPanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         getContentPane().add(CustomerPanel);
@@ -633,17 +665,134 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(EditProductButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(DeleteProductButton)))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         getContentPane().add(ProductPanel);
         ProductPanel.setBounds(0, 0, 850, 700);
 
-        OrderPanel.setMinimumSize(new java.awt.Dimension(850, 700));
-        OrderPanel.setPreferredSize(new java.awt.Dimension(850, 700));
+        OrderPanel.setMinimumSize(new java.awt.Dimension(910, 707));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel5.setText("Order Menu");
+
+        jLabel6.setText("Customer ID:");
+
+        jLabel7.setText("Customer name:");
+
+        jLabel8.setText("Customer details:");
+
+        CustDetailsArea.setColumns(20);
+        CustDetailsArea.setRows(5);
+        CustDetailsArea.setWrapStyleWord(true);
+        jScrollPane10.setViewportView(CustDetailsArea);
+
+        jLabel9.setText("Existing customers:");
+
+        GetCustomersButton.setText("Get Customers");
+        GetCustomersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GetCustomersButtonActionPerformed(evt);
+            }
+        });
+
+        jScrollPane11.setViewportView(ExistingCustomersList);
+
+        jScrollPane12.setViewportView(jScrollPane11);
+
+        CreateOrderButton.setText("Create Order");
+        CreateOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreateOrderButtonActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Get Customer info");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout OrderPanelLayout = new javax.swing.GroupLayout(OrderPanel);
+        OrderPanel.setLayout(OrderPanelLayout);
+        OrderPanelLayout.setHorizontalGroup(
+            OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(OrderPanelLayout.createSequentialGroup()
+                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(OrderPanelLayout.createSequentialGroup()
+                        .addGap(324, 324, 324)
+                        .addComponent(jLabel5))
+                    .addGroup(OrderPanelLayout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(CustNameField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGroup(OrderPanelLayout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(CustIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(OrderPanelLayout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(CreateOrderButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(106, 106, 106)
+                        .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(171, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OrderPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(GetCustomersButton)
+                .addGap(287, 287, 287))
+        );
+        OrderPanelLayout.setVerticalGroup(
+            OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(OrderPanelLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(GetCustomersButton)
+                .addGap(33, 33, 33)
+                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(OrderPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(OrderPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(5, 5, 5)
+                        .addComponent(CustIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CustNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(OrderPanelLayout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(CreateOrderButton))
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(337, 337, 337))
+        );
+
+        getContentPane().add(OrderPanel);
+        OrderPanel.setBounds(0, 0, 1071, 852);
+
+        EditOrderPanel.setMinimumSize(new java.awt.Dimension(850, 700));
+        EditOrderPanel.setPreferredSize(new java.awt.Dimension(850, 700));
 
         OrderMenuLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        OrderMenuLabel.setText("Order Menu");
+        OrderMenuLabel.setText("Edit Order Menu");
 
         OrderSearchProductButton.setText("Search For Product");
         OrderSearchProductButton.addActionListener(new java.awt.event.ActionListener() {
@@ -681,7 +830,19 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        OrderTrucksNeededLabel.setText("Truck Needed:");
+        OrderTrucksNeededLabel.setText("Trucks Needed:");
+
+        OrderTrucksNeededField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OrderTrucksNeededFieldActionPerformed(evt);
+            }
+        });
+
+        OrderCustomerIDField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OrderCustomerIDFieldActionPerformed(evt);
+            }
+        });
 
         OrderCustomerIDLabel.setText("CustomerID:");
 
@@ -696,23 +857,23 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout OrderPanelLayout = new javax.swing.GroupLayout(OrderPanel);
-        OrderPanel.setLayout(OrderPanelLayout);
-        OrderPanelLayout.setHorizontalGroup(
-            OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(OrderPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout EditOrderPanelLayout = new javax.swing.GroupLayout(EditOrderPanel);
+        EditOrderPanel.setLayout(EditOrderPanelLayout);
+        EditOrderPanelLayout.setHorizontalGroup(
+            EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditOrderPanelLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(OrderPanelLayout.createSequentialGroup()
+                .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EditOrderPanelLayout.createSequentialGroup()
                         .addComponent(OrderProductNameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(OrderProductNameSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(OrderSearchProductButton)
-                    .addGroup(OrderPanelLayout.createSequentialGroup()
+                    .addGroup(EditOrderPanelLayout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OrderPanelLayout.createSequentialGroup()
+                        .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditOrderPanelLayout.createSequentialGroup()
                                 .addComponent(OrderProductQuantityLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(OrderQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -721,95 +882,189 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(OrderRemoveFromOrderButton, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(OrderPanelLayout.createSequentialGroup()
+                .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EditOrderPanelLayout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(OrderPanelLayout.createSequentialGroup()
-                                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(OrderStartDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                        .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(EditOrderPanelLayout.createSequentialGroup()
+                                .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(OrderStartDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(OrderEndDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(OrderCustomerIDLabel, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, OrderPanelLayout.createSequentialGroup()
+                                .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditOrderPanelLayout.createSequentialGroup()
                                         .addGap(10, 10, 10)
-                                        .addComponent(OrderStartDateField, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
-                                    .addGroup(OrderPanelLayout.createSequentialGroup()
+                                        .addComponent(OrderStartDateField))
+                                    .addGroup(EditOrderPanelLayout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(OrderCustomerIDField))
-                                    .addGroup(OrderPanelLayout.createSequentialGroup()
+                                    .addGroup(EditOrderPanelLayout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(OrderEndDateField)))
                                 .addGap(34, 34, 34))
-                            .addGroup(OrderPanelLayout.createSequentialGroup()
+                            .addGroup(EditOrderPanelLayout.createSequentialGroup()
                                 .addComponent(OrderTrucksNeededLabel)
                                 .addGap(18, 18, 18)
                                 .addComponent(OrderTrucksNeededField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(OrderPanelLayout.createSequentialGroup()
+                    .addGroup(EditOrderPanelLayout.createSequentialGroup()
                         .addGap(79, 79, 79)
                         .addComponent(OrderSaveOrderButton)
-                        .addGap(0, 69, Short.MAX_VALUE))))
-            .addGroup(OrderPanelLayout.createSequentialGroup()
+                        .addGap(0, 21, Short.MAX_VALUE))))
+            .addGroup(EditOrderPanelLayout.createSequentialGroup()
                 .addGap(291, 291, 291)
-                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(OrderMenuLabel)
                     .addComponent(OrderNewOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-        OrderPanelLayout.setVerticalGroup(
-            OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(OrderPanelLayout.createSequentialGroup()
+        EditOrderPanelLayout.setVerticalGroup(
+            EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditOrderPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(OrderMenuLabel)
-                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(OrderPanelLayout.createSequentialGroup()
+                .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EditOrderPanelLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(OrderSearchProductButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(OrderProductNameSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(OrderProductNameLabel))
-                        .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(OrderPanelLayout.createSequentialGroup()
+                        .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(EditOrderPanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
                                     .addComponent(jScrollPane4)))
-                            .addGroup(OrderPanelLayout.createSequentialGroup()
+                            .addGroup(EditOrderPanelLayout.createSequentialGroup()
                                 .addGap(36, 36, 36)
-                                .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(OrderQuantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(OrderProductQuantityLabel)
                                     .addComponent(OrderAddProductToOrderButton))
                                 .addGap(67, 67, 67)
                                 .addComponent(OrderRemoveFromOrderButton))))
-                    .addGroup(OrderPanelLayout.createSequentialGroup()
+                    .addGroup(EditOrderPanelLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(OrderNewOrderButton)
                         .addGap(18, 18, 18)
-                        .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(OrderCustomerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(OrderCustomerIDLabel))
                         .addGap(26, 26, 26)
-                        .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(OrderStartDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(OrderStartDateLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(OrderEndDateLabel)
                             .addComponent(OrderEndDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(OrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(OrderTrucksNeededLabel)
                             .addComponent(OrderTrucksNeededField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(61, 61, 61)
                         .addComponent(OrderSaveOrderButton)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        getContentPane().add(OrderPanel);
-        OrderPanel.setBounds(0, 0, 850, 700);
+        getContentPane().add(EditOrderPanel);
+        EditOrderPanel.setBounds(0, 0, 850, 700);
+
+        PickUpOrTruckOrderPanel.setMinimumSize(new java.awt.Dimension(700, 500));
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel10.setText("Pick Up Or Truck Order");
+
+        jScrollPane13.setViewportView(AvailableTrucksList);
+
+        GetAvailableTrucksButton.setText("Get Trucks");
+        GetAvailableTrucksButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GetAvailableTrucksButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Startdate:");
+
+        jLabel12.setText("Finishdate:");
+
+        PickUpOrderButton.setText("Order Pick Up");
+        PickUpOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PickUpOrderButtonActionPerformed(evt);
+            }
+        });
+
+        TruckOrderButton.setText("Order TruckDelivery");
+        TruckOrderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TruckOrderButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PickUpOrTruckOrderPanelLayout = new javax.swing.GroupLayout(PickUpOrTruckOrderPanel);
+        PickUpOrTruckOrderPanel.setLayout(PickUpOrTruckOrderPanelLayout);
+        PickUpOrTruckOrderPanelLayout.setHorizontalGroup(
+            PickUpOrTruckOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PickUpOrTruckOrderPanelLayout.createSequentialGroup()
+                .addGroup(PickUpOrTruckOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PickUpOrTruckOrderPanelLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addGroup(PickUpOrTruckOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PickUpOrTruckOrderPanelLayout.createSequentialGroup()
+                                .addComponent(GetAvailableTrucksButton)
+                                .addGap(278, 278, 278)
+                                .addComponent(PickUpOrderButton))
+                            .addGroup(PickUpOrTruckOrderPanelLayout.createSequentialGroup()
+                                .addGroup(PickUpOrTruckOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane13)
+                                    .addGroup(PickUpOrTruckOrderPanelLayout.createSequentialGroup()
+                                        .addGroup(PickUpOrTruckOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel11)
+                                            .addComponent(StartDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(48, 48, 48)
+                                        .addGroup(PickUpOrTruckOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(FinishDateField))))
+                                .addGap(116, 116, 116)
+                                .addComponent(TruckOrderButton))))
+                    .addGroup(PickUpOrTruckOrderPanelLayout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(jLabel10)))
+                .addContainerGap(196, Short.MAX_VALUE))
+        );
+        PickUpOrTruckOrderPanelLayout.setVerticalGroup(
+            PickUpOrTruckOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PickUpOrTruckOrderPanelLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel10)
+                .addGap(51, 51, 51)
+                .addGroup(PickUpOrTruckOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
+                .addGap(18, 18, 18)
+                .addGroup(PickUpOrTruckOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(StartDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FinishDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(PickUpOrTruckOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PickUpOrTruckOrderPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(PickUpOrTruckOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(GetAvailableTrucksButton)
+                            .addComponent(PickUpOrderButton))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41))
+                    .addGroup(PickUpOrTruckOrderPanelLayout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(TruckOrderButton)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
+        getContentPane().add(PickUpOrTruckOrderPanel);
+        PickUpOrTruckOrderPanel.setBounds(0, 0, 799, 570);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel2.setText("Packages Menu");
@@ -905,7 +1160,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(ExistingPackageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(EditPackageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
         );
         PackagePanelLayout.setVerticalGroup(
             PackagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1051,7 +1306,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(PackageNameLabel2)
                         .addGap(56, 56, 56)
                         .addComponent(PackageNameField2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
         EditPackagePanelLayout.setVerticalGroup(
             EditPackagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1096,7 +1351,7 @@ public class GUI extends javax.swing.JFrame {
         );
 
         getContentPane().add(EditPackagePanel);
-        EditPackagePanel.setBounds(-8, 0, 910, 693);
+        EditPackagePanel.setBounds(-8, 0, 910, 707);
 
         LogInPanel.setLayout(null);
 
@@ -1233,7 +1488,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_CustomerMenuButtonActionPerformed
 
     private void OrderMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderMenuButtonActionPerformed
-        selectPanel(5);
+        selectPanel(8);
+        CreateOrderButton.setEnabled(false);
     }//GEN-LAST:event_OrderMenuButtonActionPerformed
 
     private void CustNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustNavDropActionPerformed
@@ -1467,8 +1723,6 @@ public class GUI extends javax.swing.JFrame {
 
     private void OrderNewOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderNewOrderButtonActionPerformed
         setVisibleItemsInOrderPane(true);
-
-        //con.currentOrder();
         con.buildProductList();
 
     }//GEN-LAST:event_OrderNewOrderButtonActionPerformed
@@ -1481,22 +1735,20 @@ public class GUI extends javax.swing.JFrame {
                     prodForOrder.getName(), prodForOrder.getVolume(), (int) OrderQuantitySpinner.getValue(),
                     prodForOrder.getDescription(), prodForOrder.getPrice());
             if (con.addItemToOrderList(newProduct)) {
-                model5.addElement(newProduct);
-                OrderProductsInOrderList.setModel(model5);
+                model6.addElement(newProduct);
+                OrderProductsInOrderList.setModel(model6);
             } else {
                 JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        /* US 3.2 User can see number of trucks
-         needed for delivery from size of
-         products in customer order table */
+        /* Shows number of trucks required for delivery */
         int totalVolume = 0;
-        for (int i = 0; i < model5.size(); i++) {
-            totalVolume = +((Product) model5.get(i)).getVolume();
+        for (int i = 0; i < model6.size(); i++) {
+            totalVolume = +((Product) model6.get(i)).getVolume();
         }
-        OrderTrucksNeededField.setText("" + con.getOrderTruckAmount(totalVolume));
+        OrderTrucksNeededField.setText(""+con.getTrucksRequired(totalVolume));
     }//GEN-LAST:event_OrderAddProductToOrderButtonActionPerformed
 
     private void OrderRemoveFromOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderRemoveFromOrderButtonActionPerformed
@@ -1508,7 +1760,6 @@ public class GUI extends javax.swing.JFrame {
         for (int i = 0; i < model2.size(); i++) {
             totalVolume = +((Product) model2.get(i)).getVolume();
         }
-        OrderTrucksNeededField.setText("" + con.getOrderTruckAmount(totalVolume));
     }//GEN-LAST:event_OrderRemoveFromOrderButtonActionPerformed
 
     private void OrderSaveOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSaveOrderButtonActionPerformed
@@ -1517,24 +1768,14 @@ public class GUI extends javax.swing.JFrame {
         String finishDate = OrderEndDateField.getText();
         String empty = "";
         if (!customerID.equals(empty) && !startDate.equals(empty) && !finishDate.equals(empty)) {
-            con.addCustomerOrder(Integer.parseInt(customerID), startDate, finishDate);
+            con.editCustomerOrder(Integer.parseInt(customerID), startDate, finishDate);
             JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Could not save to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        /*US 3.4 User can book delivery truck(s)
-         for customer order (if available)*/
-
-        int trucksForOrder = Integer.parseInt(OrderTrucksNeededField.getText());
-//        if (con.bookTrucks(trucksForOrder)){
-//            if (con.commitTruckOrder(0,0,"","")){
-//                JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
-//            }else{
-//                JOptionPane.showMessageDialog(this, "Could not save truck order to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
-//            }
-//        }else {
-//            JOptionPane.showMessageDialog(this, "Not enough trucks for delivery!", "ERROR", JOptionPane.ERROR_MESSAGE);
-//        }
+        StartDateField.setText(OrderStartDateField.getText());
+        FinishDateField.setText(OrderEndDateField.getText());
+        selectPanel(9);
     }//GEN-LAST:event_OrderSaveOrderButtonActionPerformed
 
     private void AddPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddPackageButtonActionPerformed
@@ -1716,6 +1957,61 @@ public class GUI extends javax.swing.JFrame {
         SaveProductChangesButton.setEnabled(false);
     }//GEN-LAST:event_SearchForProductNameButtonActionPerformed
 
+    private void GetCustomersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetCustomersButtonActionPerformed
+        model8.clear();
+        ExistingCustomersList.setModel(model8);
+        con.clearCustomerList();
+        con.buildCustomerList();
+        for (int i = 0; i < con.getCustomerListSize(); i++) {
+            model8.addElement(con.getCustomerID(i) + "-" + con.getCustomerName(i));
+        }
+        ExistingCustomersList.setModel(model8);
+    }//GEN-LAST:event_GetCustomersButtonActionPerformed
+
+    private void CreateOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateOrderButtonActionPerformed
+        con.addCustomerOrder(Integer.parseInt(CustIDField.getText()), null, null);
+        selectPanel(5);
+        OrderCustomerIDField.setText(CustIDField.getText());
+    }//GEN-LAST:event_CreateOrderButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CustIDField.setText("" + con.getCustomerID(ExistingCustomersList.getSelectedIndex()));
+        CustNameField.setText(con.getCustomerName(ExistingCustomersList.getSelectedIndex()));
+        CustDetailsArea.setText(""+con.getCustomerAddress(ExistingCustomersList.getSelectedIndex())+"\n"+con.getCustomerEmail(ExistingCustomersList.getSelectedIndex()));
+        
+        CreateOrderButton.setEnabled(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void OrderCustomerIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderCustomerIDFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OrderCustomerIDFieldActionPerformed
+
+    private void OrderTrucksNeededFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderTrucksNeededFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OrderTrucksNeededFieldActionPerformed
+
+    private void GetAvailableTrucksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetAvailableTrucksButtonActionPerformed
+        model9.clear();
+        con.checkFreeTrucks(StartDateField.getText());
+        con.buildTruckList();
+         for (int i = 0; i < con.getAvailableTruckListSize(); i++) {
+            model9.addElement(con.getAvailableTruck(i));
+        }
+        CustomerJList.setModel(model9);
+    }//GEN-LAST:event_GetAvailableTrucksButtonActionPerformed
+
+    private void PickUpOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PickUpOrderButtonActionPerformed
+        if(con.addPickUp(Integer.parseInt(CustIDField.getText()), Integer.parseInt(OrderCustomerIDField.getText()), StartDateField.getText(), FinishDateField.getText())){
+            JOptionPane.showMessageDialog(null, "Saved PickUp Order!", "Saved", JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(null, "Error Saving PickUP Order!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_PickUpOrderButtonActionPerformed
+
+    private void TruckOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TruckOrderButtonActionPerformed
+        con.addTruckOrder(Integer.parseInt(CustIDField.getText()), con.getTruckID(con.getAvailableTruck(AvailableTrucksList.getSelectedIndex())), "Delivery", StartDateField.getText());
+    }//GEN-LAST:event_TruckOrderButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1764,6 +2060,8 @@ public class GUI extends javax.swing.JFrame {
         CustomerPanel.setVisible(false);
         ProductPanel.setVisible(false);
         OrderPanel.setVisible(false);
+        EditOrderPanel.setVisible(false);
+        PickUpOrTruckOrderPanel.setVisible(false);
         PackagePanel.setVisible(false);
         EditPackagePanel.setVisible(false);
 
@@ -1781,13 +2079,19 @@ public class GUI extends javax.swing.JFrame {
                 ProductPanel.setVisible(true);
                 break;
             case 5:
-                OrderPanel.setVisible(true);
+                EditOrderPanel.setVisible(true);
                 break;
             case 6:
                 PackagePanel.setVisible(true);
                 break;
             case 7:
                 EditPackagePanel.setVisible(true);
+                break;
+            case 8:
+                OrderPanel.setVisible(true);
+                break;
+            case 9:
+                PickUpOrTruckOrderPanel.setVisible(true);
                 break;
         }
     }
@@ -1843,6 +2147,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton AddProductButton;
     private javax.swing.JButton AddProductToPackageButton;
     private javax.swing.JMenu AdminDropMenu;
+    private javax.swing.JList AvailableTrucksList;
+    private javax.swing.JButton CreateOrderButton;
+    private javax.swing.JTextArea CustDetailsArea;
+    private javax.swing.JTextField CustIDField;
+    private javax.swing.JTextField CustNameField;
     private javax.swing.JMenuItem CustNavDrop;
     private javax.swing.JLabel CustPhoneLabel;
     private javax.swing.JTextArea CustPhoneTextArea;
@@ -1862,16 +2171,21 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton DeletePackageButton;
     private javax.swing.JButton DeleteProductButton;
     private javax.swing.JButton EditCustomerButton;
+    private javax.swing.JPanel EditOrderPanel;
     private javax.swing.JButton EditPackProdButton;
     private javax.swing.JButton EditPackageButton;
     private javax.swing.JPanel EditPackagePanel;
     private javax.swing.JButton EditProductButton;
     private javax.swing.JLabel ExistingCustLabel;
+    private javax.swing.JList ExistingCustomersList;
     private javax.swing.JLabel ExistingPackLabel;
     private javax.swing.JButton ExistingPackageButton;
     private javax.swing.JMenuItem ExitDrop;
     private javax.swing.JMenu FileDropMenu;
+    private javax.swing.JTextField FinishDateField;
+    private javax.swing.JButton GetAvailableTrucksButton;
     private javax.swing.JButton GetCustomerButton;
+    private javax.swing.JButton GetCustomersButton;
     private javax.swing.JButton GetProductsButton;
     private javax.swing.JPanel LogInPanel;
     private javax.swing.JMenuItem LogOutDrop;
@@ -1928,6 +2242,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel PackagePriceLabel;
     private javax.swing.JTextField PasswordField;
     private javax.swing.JLabel PasswordLabel;
+    private javax.swing.JPanel PickUpOrTruckOrderPanel;
+    private javax.swing.JButton PickUpOrderButton;
     private javax.swing.JMenuItem ProdNavDrop;
     private javax.swing.JTextField ProductDescriptionField;
     private javax.swing.JTextField ProductIDField;
@@ -1956,17 +2272,32 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel SearchForAProduct;
     private javax.swing.JButton SearchForProductIDButton;
     private javax.swing.JButton SearchForProductNameButton;
+    private javax.swing.JTextField StartDateField;
+    private javax.swing.JButton TruckOrderButton;
     private javax.swing.JTextField UserNameField;
     private javax.swing.JLabel UserNameLabel;
     private javax.swing.JMenuItem UserRankDrop;
     private javax.swing.JMenuItem UsersDrop;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

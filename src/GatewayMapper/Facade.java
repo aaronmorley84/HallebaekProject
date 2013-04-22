@@ -92,6 +92,10 @@ public class Facade {
         OrderGateway og = new OrderGateway();
         return og.getUniqueOrderID();
     }
+    public boolean editCustomerOrder(int customerID, String startdate, String finishdate){
+        OrderGateway og = new OrderGateway();
+        return og.editCustomerOrder(customerID, startdate, finishdate);
+    }
     
     //Package Gateway
     public boolean buildPackageList(PackageList packageList){
@@ -162,5 +166,9 @@ public class Facade {
         return ug.saveEditedUser(ID, pw,pou);
   }// end of Edituser, added by Andrew
     
-    
+    //PickUpGateway
+    public boolean addPickUp(int orderID, int customerID, String startDate, String finishDate){
+        PickUpGateway pug = new PickUpGateway();
+        return pug.addPickUp(orderID, customerID, startDate, finishDate);
+    }// end of pickup ordering, added by Kris
 }
