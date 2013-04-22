@@ -111,7 +111,7 @@ public class ProductList {
         else {
             JOptionPane.showMessageDialog(null, "One or more fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        return facade.addProduct(prodName, prodVol, prodQTY, prodDisc, prodPrice);
+        return success;
     }
     
     public boolean saveEditedProduct(int prodID, String prodName, int prodVol, int prodQTY, String prodDisc, int prodPrice) {

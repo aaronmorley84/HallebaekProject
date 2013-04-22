@@ -1333,7 +1333,8 @@ public class GUI extends javax.swing.JFrame {
         String description = ProductDescriptionField.getText();
         int price = Integer.parseInt(ProductPriceField.getText());
         con.addProduct(name, volume, quantity, description, price);
-
+        
+        GetProductsButtonActionPerformed(evt);
         clearProductFields();
     }//GEN-LAST:event_AddProductButtonActionPerformed
 
@@ -1373,6 +1374,7 @@ public class GUI extends javax.swing.JFrame {
         ProductQuantityField.setText("" + con.getProductQuantiy(ProductJList.getSelectedIndex()));
         ProductPriceField.setText("" + con.getProductPrice(ProductJList.getSelectedIndex()));
         ProductDescriptionField.setText(con.getProductDescription(ProductJList.getSelectedIndex()));
+        
 
         AddProductButton.setEnabled(false);
         DeleteProductButton.setEnabled(true);
@@ -1390,6 +1392,7 @@ public class GUI extends javax.swing.JFrame {
         int price = Integer.parseInt(ProductPriceField.getText());
 
         con.saveEditedProduct(ID, name, volume, quantity, description, price);
+        GetProductsButtonActionPerformed(evt);
         clearProductFields();
 
         AddProductButton.setEnabled(true);
@@ -1400,56 +1403,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveProductChangesButtonActionPerformed
 
     private void SearchForProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchForProductButtonActionPerformed
-//        String name = ProductNameSearchField.getText();
-//        String empty = "";
-//        int ID = 0;
-//        if (!ProductIDSearchField.getText().equals(empty)) {
-//            ID = Integer.parseInt(ProductIDSearchField.getText());
-//        }
-//        if (!name.isEmpty() && ID > 0) {
-//            if (con.searchForProduct(ID)) {
-//                int counter = 0;
-//                model3.clear();
-//                while (counter < con.getProductListSize()) {
-//                    model3.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
-//                    counter++;
-//                }
-//                ProductJList.setModel(model3);
-//
-//            }
-//        } else {
-//            if (!name.isEmpty()) {
-//                if (con.searchForProduct(name)) {
-//                    int counter = 0;
-//                    model3.clear();
-//                    while (counter < con.getProductListSize()) {
-//                        model3.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
-//                        counter++;
-//                    }
-//                    ProductJList.setModel(model3);
-//                } else {
-//                    JOptionPane.showMessageDialog(this, "Could not find product!", "Error", JOptionPane.ERROR_MESSAGE);
-//                }
-//            } else {
-//                if (ID > 0) {
-//                    if (con.searchForProduct(ID)) {
-//                        int counter = 0;
-//                        model3.clear();
-//                        while (counter < con.getProductListSize()) {
-//                            model3.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
-//                            counter++;
-//                        }
-//                        ProductJList.setModel(model3);
-//                    } else {
-//                        JOptionPane.showMessageDialog(this, "Could not find product!", "Error", JOptionPane.ERROR_MESSAGE);
-//                    }
-//                }
-//            }
-//
-//
-//        }
-//        ProductIDSearchField.setText(null);
-//        ProductNameSearchField.setText(null);
+        
     }//GEN-LAST:event_SearchForProductButtonActionPerformed
 
     private void OrderSearchProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSearchProductButtonActionPerformed
