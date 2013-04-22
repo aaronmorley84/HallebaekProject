@@ -1234,11 +1234,21 @@ public class GUI extends javax.swing.JFrame {
     private void ProductMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductMenuButtonActionPerformed
         selectPanel(4);
         clearProductFields();
+        AddProductButton.setEnabled(true);
+        DeleteProductButton.setEnabled(false);
+        EditProductButton.setEnabled(false);
+        GetProductsButton.setEnabled(true);
+        SaveProductChangesButton.setEnabled(false);
     }//GEN-LAST:event_ProductMenuButtonActionPerformed
 
     private void ProdNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProdNavDropActionPerformed
         selectPanel(4);
         clearProductFields();
+        AddProductButton.setEnabled(true);
+        DeleteProductButton.setEnabled(false);
+        EditProductButton.setEnabled(false);
+        GetProductsButton.setEnabled(true);
+        SaveProductChangesButton.setEnabled(false);
     }//GEN-LAST:event_ProdNavDropActionPerformed
 
     private void GetCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetCustomerButtonActionPerformed
@@ -1317,54 +1327,43 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveCustomerChangeButtonActionPerformed
 
     private void AddProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductButtonActionPerformed
-        String empty = "";
-        if (!ProductNameField.getText().equals(empty) && !ProductVolumeField.getText().equals(empty)
-                && !ProductQuantityField.getText().equals(empty) && !ProductDescriptionField.getText().equals(empty)
-                && !ProductPriceField.getText().equals(empty)) {
+        String name = ProductNameField.getText();
+        int volume = Integer.parseInt(ProductVolumeField.getText());
+        int quantity = Integer.parseInt(ProductQuantityField.getText());
+        String description = ProductDescriptionField.getText();
+        int price = Integer.parseInt(ProductPriceField.getText());
+        con.addProduct(name, volume, quantity, description, price);
 
-            String name = ProductNameField.getText();
-            int volume = Integer.parseInt(ProductVolumeField.getText());
-            int quantity = Integer.parseInt(ProductQuantityField.getText());
-            String description = ProductDescriptionField.getText();
-            int price = Integer.parseInt(ProductPriceField.getText());
-            if (con.addProduct(name, volume, quantity, description, price)) {
-                JOptionPane.showMessageDialog(this, "Product added!", "ADDED", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Could not add product!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(this, "One or more fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-
+        clearProductFields();
     }//GEN-LAST:event_AddProductButtonActionPerformed
 
     private void GetProductsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetProductsButtonActionPerformed
         con.clearProductList();
-        if (con.buildProductList()) {
-            int counter = 0;
-            model3.clear();
-            while (counter < con.getProductListSize()) {
-                model3.addElement(con.getProductId(counter) + "-" + con.getProductName(counter));
-                counter++;
-            }
-            ProductJList.setModel(model3);
-        } else {
-            JOptionPane.showMessageDialog(this, "Could not fetch products!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        con.buildProductList();
+        int counter = 0;
+        model3.clear();
+        while (counter < con.getProductListSize()) {
+            model3.addElement(con.getProductId(counter) + "-" + con.getProductName(counter));
+            counter++;
         }
+        ProductJList.setModel(model3);
+        AddProductButton.setEnabled(true);
+        DeleteProductButton.setEnabled(false);
+        EditProductButton.setEnabled(true);
+        GetProductsButton.setEnabled(false);
+        SaveProductChangesButton.setEnabled(false);
     }//GEN-LAST:event_GetProductsButtonActionPerformed
-
     private void DeleteProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteProductButtonActionPerformed
-        Product deleteProd;
-        deleteProd = (Product) ProductJList.getSelectedValue();
-
-        int ID = deleteProd.getProductID();
-        if (con.deleteProduct(ID)) {
-            JOptionPane.showMessageDialog(this, "Product deleted!", "DELETED!", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Could not delete product!", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+        int prodID = Integer.parseInt(ProductIDField.getText());
+        con.deleteProduct(prodID);
         GetProductsButtonActionPerformed(evt);
+        clearProductFields();
+
+        AddProductButton.setEnabled(true);
+        DeleteProductButton.setEnabled(false);
+        EditProductButton.setEnabled(true);
+        GetProductsButton.setEnabled(true);
+        SaveProductChangesButton.setEnabled(false);
     }//GEN-LAST:event_DeleteProductButtonActionPerformed
 
     private void EditProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditProductButtonActionPerformed
@@ -1376,9 +1375,9 @@ public class GUI extends javax.swing.JFrame {
         ProductDescriptionField.setText(con.getProductDescription(ProductJList.getSelectedIndex()));
 
         AddProductButton.setEnabled(false);
-        DeleteProductButton.setEnabled(false);
+        DeleteProductButton.setEnabled(true);
         EditProductButton.setEnabled(true);
-        GetProductsButton.setEnabled(false);
+        GetProductsButton.setEnabled(true);
         SaveProductChangesButton.setEnabled(true);
     }//GEN-LAST:event_EditProductButtonActionPerformed
 
@@ -1389,27 +1388,15 @@ public class GUI extends javax.swing.JFrame {
         int quantity = Integer.parseInt(ProductQuantityField.getText());
         String description = ProductDescriptionField.getText();
         int price = Integer.parseInt(ProductPriceField.getText());
-        String empty = "";
-        if (!ProductNameField.getText().equals(empty) && !ProductVolumeField.getText().equals(empty)
-                && !ProductQuantityField.getText().equals(empty) && !ProductDescriptionField.getText().equals(empty)
-                && !ProductPriceField.getText().equals(empty)) {
-            if (con.saveEditedProduct(ID, name, volume, quantity, description, price)) {
-                JOptionPane.showMessageDialog(this, "Product edited!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
-                clearProductFields();
 
-                AddProductButton.setEnabled(true);
-                DeleteProductButton.setEnabled(true);
-                EditProductButton.setEnabled(true);
-                GetProductsButton.setEnabled(true);
-                SaveProductChangesButton.setEnabled(false);
-            } else {
-                JOptionPane.showMessageDialog(this, "Could not save product!", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "One or more fields are empty!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        con.saveEditedProduct(ID, name, volume, quantity, description, price);
+        clearProductFields();
 
-
+        AddProductButton.setEnabled(true);
+        DeleteProductButton.setEnabled(false);
+        EditProductButton.setEnabled(true);
+        GetProductsButton.setEnabled(true);
+        SaveProductChangesButton.setEnabled(false);
     }//GEN-LAST:event_SaveProductChangesButtonActionPerformed
 
     private void SearchForProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchForProductButtonActionPerformed
@@ -1489,7 +1476,7 @@ public class GUI extends javax.swing.JFrame {
 
         //con.currentOrder();
         con.buildProductList();
-        
+
     }//GEN-LAST:event_OrderNewOrderButtonActionPerformed
 
     private void OrderAddProductToOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderAddProductToOrderButtonActionPerformed
@@ -1542,8 +1529,8 @@ public class GUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Could not save to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         /*US 3.4 User can book delivery truck(s)
-          for customer order (if available)*/
-        
+         for customer order (if available)*/
+
         int trucksForOrder = Integer.parseInt(OrderTrucksNeededField.getText());
 //        if (con.bookTrucks(trucksForOrder)){
 //            if (con.commitTruckOrder(0,0,"","")){
@@ -1617,12 +1604,12 @@ public class GUI extends javax.swing.JFrame {
     private void EditPackProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackProdButtonActionPerformed
         selectPanel(7);
         model5.clear();
-        
+
         PackageIDField2.setText(PackageIDField.getText());
         PackageNameField2.setText(PackageNameField.getText());
         con.loadPackageProducts();
         for (int i = 0; i < con.getPackageProductListSize(); i++) {
-            model5.addElement(con.getPackageProductList(i)); 
+            model5.addElement(con.getPackageProductList(i));
         }
         ProductsInPackageList.setModel(model5);
         con.buildProductList();
@@ -1659,10 +1646,9 @@ public class GUI extends javax.swing.JFrame {
 
     private void SavePackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavePackageButtonActionPerformed
         con.deletePackageProducts();
-        if (con.addProductsToPackageInDB()){
+        if (con.addProductsToPackageInDB()) {
             JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else{
+        } else {
             JOptionPane.showMessageDialog(this, "Could not save truck order to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_SavePackageButtonActionPerformed
@@ -1676,27 +1662,26 @@ public class GUI extends javax.swing.JFrame {
         userRank = 0;
         String UserID = UserNameField.getText();
         String UserPass = PasswordField.getText();
-        if (con.checkUserNPw(UserID, UserPass)){
+        if (con.checkUserNPw(UserID, UserPass)) {
             NavigationDropMenu.setEnabled(true);
             AdminDropMenu.setEnabled(true);
             selectPanel(2);
             userRank = con.getCurrUserRank();
             UserNameField.setText(null);
             PasswordField.setText(null);
-            if (userRank > 1){
+            if (userRank > 1) {
                 AdminDropMenu.setEnabled(false);
                 ProdNavDrop.setEnabled(false);
                 PackNavDrop.setEnabled(false);
                 ProductMenuButton.setEnabled(false);
                 PackageMenuButton.setEnabled(false);
             }
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Wrong User/Password", "Fail", JOptionPane.ERROR_MESSAGE);
             UserNameField.setText(null);
             PasswordField.setText(null);
         }
-        
+
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void PasswordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFieldActionPerformed
@@ -1723,16 +1708,22 @@ public class GUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -1743,8 +1734,9 @@ public class GUI extends javax.swing.JFrame {
             }
         });
     }
-    public void selectPanel(int panel){
-        
+
+    public void selectPanel(int panel) {
+
         LogInPanel.setVisible(false);
         MainPanel.setVisible(false);
         CustomerPanel.setVisible(false);
@@ -1752,8 +1744,8 @@ public class GUI extends javax.swing.JFrame {
         OrderPanel.setVisible(false);
         PackagePanel.setVisible(false);
         EditPackagePanel.setVisible(false);
-        
-        switch(panel){
+
+        switch (panel) {
             case 1:
                 LogInPanel.setVisible(true);
                 break;

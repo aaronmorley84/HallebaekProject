@@ -72,8 +72,16 @@ public class CustomerList {
     
     //communication to customerGateway
     public boolean buildCustomerList(CustomerList customerList){
-        return facade.buildCustomerList(customerList);
+        Boolean success = false;
+        if (facade.buildCustomerList(customerList)){
+            success = true;
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Could not fetch customers!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        return success;
     }
+    
     public boolean addCustomer(String name, String address, String email){
         String empty = "";
         boolean success = false;
@@ -92,6 +100,7 @@ public class CustomerList {
         }
         return success;
     }
+    
     public boolean saveEditedCustomer(int cusID, String cusName, String cusAddress, String cusEmail) {
         String empty = "";
         boolean success = false;
