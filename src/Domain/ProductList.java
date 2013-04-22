@@ -148,27 +148,31 @@ public class ProductList {
     
     
     //product search
-    public String searchProdByNameinArray(String name) {
-            
+    public ArrayList searchProdByNameinArray(String name) {
+        ArrayList<Product> temp = new ArrayList();
+           
         for (int i = 0; i < productList.size(); i++) {
-            getCurrentProduct(i);
+            currentProduct = getCurrentProduct(i);
             if (getProdName().equals(name)) {
-                return getProdName();
+                 temp.add(currentProduct);
             }
         }
-        return "Not found";
+        return temp;
     }
-    public int searchProdByIDinArray(int ID){          
+    
+    public int searchProdByIDinArray(int ID){
+        int productIndex = -1;
         for (int i = 0; i < getProductListsize(); i++) {
-            getCurrentProduct(i);
+            currentProduct = getCurrentProduct(i);
             if(getProdID() == ID){
-                
-                return getProdID();
+                productIndex = i;
+                return productIndex;
             }
         }
-        return 0;
+        JOptionPane.showMessageDialog(null, "No Product Matches the Product ID Given", "Error", JOptionPane.ERROR_MESSAGE);
+        return productIndex;
     }
-    //need to be changed to java not SQL
+    
     
     
 }

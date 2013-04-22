@@ -1,6 +1,7 @@
 package Domain;
 
 import Resources.Product;
+import java.util.ArrayList;
 
 
 public class Controller{
@@ -61,7 +62,7 @@ public class Controller{
     public boolean deleteProduct(int cusID) {
         return productList.deleteProduct(cusID);
     }
-    public String searchProdByNameinArray(String name){
+    public ArrayList searchProdByNameinArray(String name){
         return productList.searchProdByNameinArray(name);
     }
     public int searchProdByIDinArray(int ID){

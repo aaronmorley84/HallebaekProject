@@ -110,7 +110,9 @@ public class GUI extends javax.swing.JFrame {
         ProductIDSearchField = new javax.swing.JTextField();
         ProductSearchName = new javax.swing.JLabel();
         ProductNameSearchField = new javax.swing.JTextField();
-        SearchForProductButton = new javax.swing.JButton();
+        SearchForProductIDButton = new javax.swing.JButton();
+        SearchForProductNameButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         OrderPanel = new javax.swing.JPanel();
         OrderMenuLabel = new javax.swing.JLabel();
         OrderProductNameSearchField = new javax.swing.JTextField();
@@ -485,29 +487,35 @@ public class GUI extends javax.swing.JFrame {
 
         ProductSearchName.setText("Product Name:");
 
-        SearchForProductButton.setText("Search For Item");
-        SearchForProductButton.addActionListener(new java.awt.event.ActionListener() {
+        ProductNameSearchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchForProductButtonActionPerformed(evt);
+                ProductNameSearchFieldActionPerformed(evt);
             }
         });
+
+        SearchForProductIDButton.setText("Search By ID");
+        SearchForProductIDButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchForProductIDButtonActionPerformed(evt);
+            }
+        });
+
+        SearchForProductNameButton.setText("Search By Name");
 
         javax.swing.GroupLayout SearchForAProductLayout = new javax.swing.GroupLayout(SearchForAProduct);
         SearchForAProduct.setLayout(SearchForAProductLayout);
         SearchForAProductLayout.setHorizontalGroup(
             SearchForAProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SearchForAProductLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(SearchForAProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SearchForAProductLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(SearchForAProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ProductSearchID)
-                            .addComponent(ProductIDSearchField)
-                            .addComponent(ProductSearchName)
-                            .addComponent(ProductNameSearchField, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)))
-                    .addGroup(SearchForAProductLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(SearchForProductButton)))
+                    .addGroup(SearchForAProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(ProductSearchID)
+                        .addComponent(ProductIDSearchField)
+                        .addComponent(ProductSearchName)
+                        .addComponent(ProductNameSearchField, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
+                    .addComponent(SearchForProductIDButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SearchForProductNameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         SearchForAProductLayout.setVerticalGroup(
@@ -516,14 +524,18 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(ProductSearchID)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ProductIDSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SearchForProductIDButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(ProductSearchName)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ProductNameSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SearchForProductButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(SearchForProductNameButton)
+                .addGap(20, 20, 20))
         );
+
+        jLabel4.setText("Search For Product");
 
         javax.swing.GroupLayout ProductPanelLayout = new javax.swing.GroupLayout(ProductPanel);
         ProductPanel.setLayout(ProductPanelLayout);
@@ -556,10 +568,12 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(GetProductsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(30, 30, 30)
-                                .addGroup(ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(DeleteProductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(EditProductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(SearchForAProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addGroup(ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(DeleteProductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(EditProductButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(SearchForAProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ProductPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(ProductMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -571,11 +585,12 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(ProductPanelLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(ProductMenuLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addGroup(ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ProductIDLabel)
-                    .addComponent(productListLabel))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel4)
+                    .addComponent(productListLabel)
+                    .addComponent(ProductIDLabel))
+                .addGap(7, 7, 7)
                 .addGroup(ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ProductPanelLayout.createSequentialGroup()
                         .addComponent(ProductIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -606,15 +621,14 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(ProductPanelLayout.createSequentialGroup()
                         .addComponent(GetProductsButton)
                         .addGap(15, 15, 15)
-                        .addGroup(ProductPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ProductPanelLayout.createSequentialGroup()
-                                .addComponent(SearchForAProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(EditProductButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(DeleteProductButton))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(148, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ProductPanelLayout.createSequentialGroup()
+                        .addComponent(SearchForAProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(EditProductButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(DeleteProductButton)))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         getContentPane().add(ProductPanel);
@@ -1402,9 +1416,18 @@ public class GUI extends javax.swing.JFrame {
         SaveProductChangesButton.setEnabled(false);
     }//GEN-LAST:event_SaveProductChangesButtonActionPerformed
 
-    private void SearchForProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchForProductButtonActionPerformed
+    private void SearchForProductIDButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchForProductIDButtonActionPerformed
+        con.clearProductList();
+        con.buildProductList();
         
-    }//GEN-LAST:event_SearchForProductButtonActionPerformed
+        int searchID = Integer.parseInt(ProductIDSearchField.getText());
+        int index = con.searchProdByIDinArray(searchID);
+        if (index >= 0){
+        model3.clear();
+        model3.addElement(con.getProductId(index) + "-" + con.getProductName(index));
+        ProductJList.setModel(model3);
+        }
+    }//GEN-LAST:event_SearchForProductIDButtonActionPerformed
 
     private void OrderSearchProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSearchProductButtonActionPerformed
         String name = OrderProductNameSearchField.getText();
@@ -1648,6 +1671,10 @@ public class GUI extends javax.swing.JFrame {
         AdminDropMenu.setEnabled(false);
     }//GEN-LAST:event_LogOutDropActionPerformed
 
+    private void ProductNameSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductNameSearchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProductNameSearchFieldActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1886,7 +1913,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton SavePackageButton;
     private javax.swing.JButton SaveProductChangesButton;
     private javax.swing.JPanel SearchForAProduct;
-    private javax.swing.JButton SearchForProductButton;
+    private javax.swing.JButton SearchForProductIDButton;
+    private javax.swing.JButton SearchForProductNameButton;
     private javax.swing.JTextField UserNameField;
     private javax.swing.JLabel UserNameLabel;
     private javax.swing.JMenuItem UserRankDrop;
@@ -1894,6 +1922,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
