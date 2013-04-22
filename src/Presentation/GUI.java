@@ -1370,7 +1370,7 @@ public class GUI extends javax.swing.JFrame {
         AddProductButton.setEnabled(true);
         DeleteProductButton.setEnabled(false);
         EditProductButton.setEnabled(true);
-        GetProductsButton.setEnabled(false);
+        GetProductsButton.setEnabled(true);
         SaveProductChangesButton.setEnabled(false);
     }//GEN-LAST:event_GetProductsButtonActionPerformed
     private void DeleteProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteProductButtonActionPerformed
@@ -1437,6 +1437,8 @@ public class GUI extends javax.swing.JFrame {
         ProductJList.setModel(model3);
         }
         ProductJList.setModel(model3);
+        ProductNameSearchField.setText(null);
+        ProductIDSearchField.setText(null);
         AddProductButton.setEnabled(true);
         DeleteProductButton.setEnabled(false);
         EditProductButton.setEnabled(true);
@@ -1705,6 +1707,8 @@ public class GUI extends javax.swing.JFrame {
         ProductJList.setModel(model3);
         }
         ProductJList.setModel(model3);
+        ProductNameSearchField.setText(null);
+        ProductIDSearchField.setText(null);
         AddProductButton.setEnabled(true);
         DeleteProductButton.setEnabled(false);
         EditProductButton.setEnabled(true);

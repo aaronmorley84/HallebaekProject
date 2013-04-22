@@ -162,7 +162,7 @@ public class ProductList {
         productSearchList.clear();
         for (int i = 0; i < productList.size(); i++) {
             currentProduct = getCurrentProduct(i);
-            if (getProdName().contains(name)) {
+            if (getProdName().toLowerCase().contains(name.toLowerCase())) {
                 productSearchList.add(currentProduct);
                 success = true;
             }
