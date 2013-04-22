@@ -61,11 +61,12 @@ public class UserList {
     }
     
     public boolean checkUserNPw(String id, String pw){
+        currentUser = null;
        boolean succes = false;
         for (int i = 0; i < getUserListSize(); i++) {
             getCurrentUser(i);   
             if(getUserName().equals(id) && getUserPassword().equals(pw)){
-                currentUser = getCurrentUser(i);
+                    currentUser = getCurrentUser(i);
                         succes = true;
             }
           }
