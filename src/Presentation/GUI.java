@@ -1628,11 +1628,11 @@ public class GUI extends javax.swing.JFrame {
 
         PackageIDField2.setText(PackageIDField.getText());
         PackageNameField2.setText(PackageNameField.getText());
-        if (con.loadPackageProducts()){
+        con.loadPackageProducts();
         for (int i = 0; i < con.getPackageProductListSize(); i++) {
             model5.addElement(con.getPackageProductList(i));
         }
-        }
+        
         ProductsInPackageList.setModel(model5);
         con.buildProductList();
         
