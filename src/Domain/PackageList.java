@@ -8,6 +8,7 @@ import GatewayMapper.Facade;
 import Resources.Packages;
 import Resources.Product;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -75,40 +76,67 @@ public class PackageList {
         currentPackage.removeFromPackageList(prod);
     } 
     
-    //communication to customerGateway
-    public boolean buildPackageList(PackageList packageList){
+   //communication to PackageGateway
+    public boolean buildPackageList(PackageList packageList) {
         return facade.buildPackageList(packageList);
     }
-    public boolean addPackage(String packName, String packDesc, int packPrice){
-        return facade.addPackage(packName, packDesc, packPrice);
-    }
-    public boolean addProductsToPackageInDB(){
-        return facade.addProductsToPackageInDB();
-    }
-    public boolean loadPackageProducts(){
-        return facade.loadPackageProducts();
-    }
-    public boolean deletePackageProducts(){
-        return facade.deletePackageProducts();
-    }
-    public boolean deletePackage(){
-        return facade.deletePackage();
-    }
-    
-    
-    
-    
-    
-//    public Product getPackageProductList(int i) {
-//        return currentPackage.packageProductList.get(i);
-//    }
 
-    
-   
-//    public void setCurrentPackage(Packages pack) {
-//        currentPackage = pack;
-//    }
+    public boolean addPackage(String packName, String packDesc, int packPrice) {
+        String empty = "";
+        String tempPackPrice = "" + packPrice;
+        if (!packName.equals(empty) && !packDesc.equals(empty) && !tempPackPrice.equals(empty)) {
+            JOptionPane.showMessageDialog(null, "Package Added to Database", "Success", JOptionPane.INFORMATION_MESSAGE);
+            return facade.addPackage(packName, packDesc, packPrice);
+        } else {
+            JOptionPane.showMessageDialog(null, "Error Adding Package to Database", "Error", JOptionPane.ERROR_MESSAGE);
 
+            return false;
+        }
+    }
+
+    public boolean addProductsToPackageInDB() {
+        if (facade.addProductsToPackageInDB()) {
+            JOptionPane.showMessageDialog(null, "Product Added to PackageDatabase", "Success", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Error Adding Product to Package Database", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    public boolean loadPackageProducts() {
+
+        if (facade.loadPackageProducts()) {
+            JOptionPane.showMessageDialog(null, "Products loaded into Packages", "Success", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Error loading Products from Package Database", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+    }
+
+    public boolean deletePackageProducts() {
+        if (facade.deletePackageProducts()) {
+            JOptionPane.showMessageDialog(null, "Products deleted frm Package Database", "Success", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Error deleting Poducts from Package Database", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+    }
+
+    public boolean deletePackage() {
+        if (facade.deletePackage()) {
+            JOptionPane.showMessageDialog(null, "Package deleted from Database", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            return true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Error deleting Package from Database", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+
+    }
     
 
 }
