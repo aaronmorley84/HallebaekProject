@@ -1543,16 +1543,33 @@ public class GUI extends javax.swing.JFrame {
         int price = Integer.parseInt(PackagePriceField.getText());
         con.addPackage(name, descrip, price);
         clearPackageFields();
+        EditPackProdButtonActionPerformed(evt);        
+        
+        AddPackageButton.setEnabled(true);
+        EditPackProdButton.setEnabled(false);
+        DeletePackageButton.setEnabled(false);
+        ExistingPackageButton.setEnabled(true);
+        EditPackageButton.setEnabled(false);
     }//GEN-LAST:event_AddPackageButtonActionPerformed
 
     private void PackageMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackageMenuButtonActionPerformed
         selectPanel(6);
         clearPackageFields();
+        AddPackageButton.setEnabled(true);
+        EditPackProdButton.setEnabled(false);
+        DeletePackageButton.setEnabled(false);
+        ExistingPackageButton.setEnabled(true);
+        EditPackageButton.setEnabled(false);
     }//GEN-LAST:event_PackageMenuButtonActionPerformed
 
     private void PackNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackNavDropActionPerformed
         selectPanel(6);
         clearPackageFields();
+        AddPackageButton.setEnabled(true);
+        EditPackProdButton.setEnabled(false);
+        DeletePackageButton.setEnabled(false);
+        ExistingPackageButton.setEnabled(true);
+        EditPackageButton.setEnabled(false);
     }//GEN-LAST:event_PackNavDropActionPerformed
 
     private void PackageNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackageNameFieldActionPerformed
@@ -1568,6 +1585,12 @@ public class GUI extends javax.swing.JFrame {
             model7.addElement(con.getPackageID(i) + "-" + con.getPackageName(i));
         }
         PackageJList.setModel(model7);
+        
+        AddPackageButton.setEnabled(true);
+        EditPackProdButton.setEnabled(false);
+        DeletePackageButton.setEnabled(false);
+        ExistingPackageButton.setEnabled(true);
+        EditPackageButton.setEnabled(true);
     }//GEN-LAST:event_ExistingPackageButtonActionPerformed
 
     private void EditPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackageButtonActionPerformed
@@ -1575,6 +1598,12 @@ public class GUI extends javax.swing.JFrame {
         PackageNameField.setText("" + con.getPackageName(PackageJList.getSelectedIndex()));
         PackageDescTextArea.setText("" + con.getPackageDiscription(PackageJList.getSelectedIndex()));
         PackagePriceField.setText("" + con.getPackagePrice(PackageJList.getSelectedIndex()));
+        
+        AddPackageButton.setEnabled(true);
+        EditPackProdButton.setEnabled(true);
+        DeletePackageButton.setEnabled(true);
+        ExistingPackageButton.setEnabled(true);
+        EditPackageButton.setEnabled(true);
     }//GEN-LAST:event_EditPackageButtonActionPerformed
 
     private void OrderSearchProductButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSearchProductButton1ActionPerformed
@@ -1608,6 +1637,8 @@ public class GUI extends javax.swing.JFrame {
         }
         ProductsInPackageList.setModel(model5);
         con.buildProductList();
+        
+      
     }//GEN-LAST:event_EditPackProdButtonActionPerformed
 
     private void AddProductToPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductToPackageButtonActionPerformed
@@ -1651,6 +1682,12 @@ public class GUI extends javax.swing.JFrame {
     private void DeletePackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletePackageButtonActionPerformed
         con.deletePackageProducts();
         con.deletePackage();
+        
+        AddPackageButton.setEnabled(true);
+        EditPackProdButton.setEnabled(false);
+        DeletePackageButton.setEnabled(false);
+        ExistingPackageButton.setEnabled(true);
+        EditPackageButton.setEnabled(true);
     }//GEN-LAST:event_DeletePackageButtonActionPerformed
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
