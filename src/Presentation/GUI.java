@@ -1625,18 +1625,16 @@ public class GUI extends javax.swing.JFrame {
     private void EditPackProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackProdButtonActionPerformed
         selectPanel(7);
         model5.clear();
-
+        
         PackageIDField2.setText(PackageIDField.getText());
         PackageNameField2.setText(PackageNameField.getText());
-        con.loadPackageProducts();
+        con.loadPackageProducts(Integer.parseInt(PackageIDField.getText()));
         for (int i = 0; i < con.getPackageProductListSize(); i++) {
             model5.addElement(con.getPackageProductList(i));
         }
         
         ProductsInPackageList.setModel(model5);
         con.buildProductList();
-        
-      
     }//GEN-LAST:event_EditPackProdButtonActionPerformed
 
     private void AddProductToPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductToPackageButtonActionPerformed

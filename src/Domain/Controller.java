@@ -266,8 +266,8 @@ public class Controller{
     public boolean addProductsToPackageInDB(){
         return packageList.addProductsToPackageInDB();
     }
-    public boolean loadPackageProducts(){
-        return packageList.loadPackageProducts();
+    public boolean loadPackageProducts(int index){
+        return packageList.loadPackageProducts(index);
     }
     public boolean deletePackageProducts(){
         return packageList.deletePackageProducts();

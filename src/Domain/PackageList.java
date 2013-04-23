@@ -122,8 +122,9 @@ public class PackageList {
         }
     }
 
-    public boolean loadPackageProducts() {
+    public boolean loadPackageProducts(int index) {
         boolean success = facade.loadPackageProducts();
+        getCurrentPackage(index);
         if (success) {
             JOptionPane.showMessageDialog(null, "Products loaded into Packages", "Success", JOptionPane.INFORMATION_MESSAGE);
             return success;
