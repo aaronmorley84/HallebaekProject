@@ -1996,7 +1996,7 @@ public class GUI extends javax.swing.JFrame {
     private void CreateOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateOrderButtonActionPerformed
         con.addCustomerOrder(Integer.parseInt(CustIDField.getText()), OrderStartDateField.getText(), OrderEndDateField.getText());
         con.buildOrderList();
-        OrderIDField.setText(""+con.getNewOrderID());
+        //8OrderIDField.setText(""+con.getNewOrderID());
         selectPanel(5);
         OrderCustomerIDField.setText(CustIDField.getText());
     }//GEN-LAST:event_CreateOrderButtonActionPerformed

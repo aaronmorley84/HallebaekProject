@@ -24,14 +24,8 @@ public class CustomerList {
     }
 
     public Customer getCurrentCustomer(int i){
-        facade.commit();
-       if(facade.lockCustomer(customerList.get(i).getCustomerID())){
           currentCustomer = customerList.get(i);
           return currentCustomer; 
-       }else{
-           JOptionPane.showMessageDialog(null, "Customer is in use!", "ERROR", JOptionPane.ERROR_MESSAGE);
-           return null;
-       }
     }
 
     public int getCustomerListSize() {
