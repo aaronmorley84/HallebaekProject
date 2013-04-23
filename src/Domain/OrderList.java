@@ -14,6 +14,7 @@ public class OrderList {
     Facade facade = new Facade();
     
     public void addToOrderList(int orderID, int customerID, String dateArrival, String datePickUp, int balance){
+        System.out.println(orderID+"\n"+customerID+"\n"+dateArrival+"\n"+datePickUp+"\n"+balance);
         orderList.add(new Order(orderID,customerID,dateArrival,datePickUp,balance));
     }
     

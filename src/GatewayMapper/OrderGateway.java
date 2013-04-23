@@ -20,7 +20,7 @@ public class OrderGateway {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * "
-                + "FROM customer_order";
+                + "FROM customer_order ";
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
@@ -29,8 +29,8 @@ public class OrderGateway {
                 orderlist.addToOrderList(
                         rs.getInt(1),
                         rs.getInt(2),
-                        ""+rs.getDate(3),
-                        ""+rs.getDate(4),
+                        (""+rs.getDate(3)),
+                        (""+rs.getDate(4)),
                         rs.getInt(5));
             
             }
