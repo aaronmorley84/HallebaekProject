@@ -88,13 +88,10 @@ public class Facade {
         OrderGateway og = new OrderGateway();
         return og.addCustomerOrder(customerID, startDate, finishDate);
     }
-    public int getUniqueOrderID(){
+    
+    public boolean editCustomerOrder(int customerID, String startdate, String finishdate, int balance){
         OrderGateway og = new OrderGateway();
-        return og.getUniqueOrderID();
-    }
-    public boolean editCustomerOrder(int customerID, String startdate, String finishdate){
-        OrderGateway og = new OrderGateway();
-        return og.editCustomerOrder(customerID, startdate, finishdate);
+        return og.editCustomerOrder(customerID, startdate, finishdate, balance);
     }
     
     //Package Gateway

@@ -99,11 +99,11 @@ public class Controller{
         orderList.getCurrentOrder(i);
         return orderList.getOrderID();
     }
-    public int getOrderStartDate(int i){
+    public String getOrderStartDate(int i){
         orderList.getCurrentOrder(i);
         return orderList.getOrderStartDate();
     }
-    public int getOrderFinishDate(int i){
+    public String getOrderFinishDate(int i){
         orderList.getCurrentOrder(i);
         return orderList.getOrderFinishDate();
     }
@@ -127,8 +127,8 @@ public class Controller{
     public void removeFromOrderList(Product prod){
         orderList.removeProductFromOrderList(prod);
     }
-    public boolean buildOrderList(OrderList orderlist){
-        return orderList.buildOrderList(orderlist);
+    public boolean buildOrderList(){
+        return orderList.buildOrderList(orderList);
     }
     public boolean addOrder(){
         return orderList.addOrder();
@@ -136,8 +136,11 @@ public class Controller{
     public boolean addCustomerOrder(int customerID, String startDate, String finishDate){
         return orderList.addCustomerOrder(customerID, startDate, finishDate);
     }
-    public boolean editCustomerOrder(int customerID, String startdate, String finishdate){
-        return orderList.editCustomerOrder(customerID, startdate, finishdate);
+    public boolean editCustomerOrder(int customerID, String startdate, String finishdate, int balance){
+        return orderList.editCustomerOrder(customerID, startdate, finishdate, balance);
+    }
+    public int getNewOrderID(){
+        return orderList.getNewOrderID();
     }
     
     //Methods for TruckList()

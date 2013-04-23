@@ -29,8 +29,8 @@ public class OrderGateway {
                 orderlist.addToOrderList(
                         rs.getInt(1),
                         rs.getInt(2),
-                        rs.getInt(3),
-                        rs.getInt(4),
+                        rs.getString(3),
+                        rs.getString(4),
                         rs.getInt(5));
             
             }
@@ -82,7 +82,7 @@ public class OrderGateway {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into Customer_Order "
-                + "VALUES (orderseq.currval,?,?,?)";
+                + "VALUES (orderseq.nextval,?,?,?,?)";
 
         PreparedStatement statement = null;
         try {
@@ -90,6 +90,7 @@ public class OrderGateway {
             statement.setInt(1, customerID);
             statement.setDate(2, Date.valueOf(startDate));
             statement.setDate(3, Date.valueOf(finishDate));
+            statement.setInt(4, 0);
             statement.executeUpdate();
             success = true;
         } catch (Exception e) {
@@ -102,23 +103,27 @@ public class OrderGateway {
                 System.out.println("Statement close error!");
                 System.out.println(e.getMessage());
             }
+            
         }
 
         return success;
     }//end of add customer order
-    public boolean editCustomerOrder(int customerID, String startDate, String finishDate){
+    public boolean editCustomerOrder(int customerID, String startDate, String finishDate, int balance){
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "Update Customer_Order "
                 + "SET startdate = ?, "
-                + "SET finishdate = ? "
+                + "SET finishdate = ?, "
+                + "SET balance = ? "
                 + "WHERE customerID = ? ";
         PreparedStatement statement = null;
         try{
             statement = con.prepareStatement(SQLString1);
             statement.setString(1, startDate);
             statement.setString(2, finishDate);
-            statement.setInt(3, customerID);
+            statement.setInt(3, balance);
+            statement.setInt(4, customerID);
+            
             statement.executeUpdate();
             success = true;
         }catch (Exception e){
@@ -138,32 +143,6 @@ public class OrderGateway {
     /*
      * Fetches a unique identifier for each order.
      */
-    public int getUniqueOrderID() {
-        int temp = 0;
-        Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "SELECT orderseq.nextval "
-                + "FROM dual";
-        PreparedStatement statement = null;
-        try {
-            statement = con.prepareStatement(SQLString1);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) {
-                temp = rs.getInt(1);
-            }
-
-        } catch (Exception e) {
-            System.out.println("Something wrong build" + e.getMessage());
-
-        } finally {
-            try {
-                statement.close();
-            } catch (SQLException e) {
-                System.out.println("Statment close error\n" + e.getMessage());
-            }
-        }
-
-        return temp;
-
-    }//end of get unique identifier
+    
     
 }// END

@@ -13,9 +13,8 @@ public class OrderList {
     private Order currentOrder;
     Facade facade = new Facade();
     
-    public void addToOrderList(int customerID, int dateArrival, int datePickUp, 
-            int orderId, int balance){
-        orderList.add(new Order(customerID,dateArrival,datePickUp,orderId,balance));
+    public void addToOrderList(int orderID, int customerID, String dateArrival, String datePickUp, int balance){
+        orderList.add(new Order(orderID,customerID,dateArrival,datePickUp,balance));
     }
     
     public Order getCurrentOrder(int i){
@@ -33,10 +32,10 @@ public class OrderList {
     public int getOrderID(){
         return currentOrder.getOrderID();
     }
-    public int getOrderStartDate(){
+    public String getOrderStartDate(){
         return currentOrder.getStartDate();
     }
-    public int getOrderFinishDate(){
+    public String getOrderFinishDate(){
         return currentOrder.getFinishDate();
     }
     public int getCustomerID(){
@@ -53,10 +52,10 @@ public class OrderList {
     public void setOrderID(int orderID){
         currentOrder.setOrderId(orderID);
     }
-    public void setOrderStartDate(int startDate){
+    public void setOrderStartDate(String startDate){
         currentOrder.setStartDate(startDate);
     }
-    public void setOrderFinishDate(int finishDate){
+    public void setOrderFinishDate(String finishDate){
         currentOrder.setFinishDate(finishDate);
     }
     public void setOrderCustID(int custID){
@@ -84,11 +83,14 @@ public class OrderList {
     public boolean addCustomerOrder(int customerID, String startDate, String finishDate){
         return facade.addCustomerOrder(customerID, startDate, finishDate);
     }
-    public int getUniqueOrderID(){
-        return facade.getUniqueOrderID();
+    
+    public boolean editCustomerOrder(int customerID, String startdate, String finishdate, int balance){
+        return facade.editCustomerOrder(customerID, startdate, finishdate, balance);
     }
-    public boolean editCustomerOrder(int customerID, String startdate, String finishdate){
-        return facade.editCustomerOrder(customerID, startdate, finishdate);
+    
+    //get orderID of new order
+    public int getNewOrderID(){
+        return orderList.get(orderList.size()-1).getOrderID();
     }
     
     

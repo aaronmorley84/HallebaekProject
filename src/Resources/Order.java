@@ -9,11 +9,11 @@ import java.util.ArrayList;
 public class Order {
     public ArrayList<Product> orderProductList = new ArrayList<>();
     private int customerID;
-    private int startDate, finishDate;
+    private String startDate, finishDate;
     private int orderID;
     private int balance;
 
-    public Order(int customerID, int startDate, int finishDate, int orderId, int balance) {
+    public Order(int orderId, int customerID, String startDate, String finishDate , int balance) {
         this.customerID = customerID;
         this.startDate = startDate;
         this.finishDate = finishDate;
@@ -67,19 +67,19 @@ public class Order {
         return customerID;
     }
     
-    public int getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(int startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public int getFinishDate() {
+    public String getFinishDate() {
         return finishDate;
     }
 
-    public void setFinishDate(int finishDate) {
+    public void setFinishDate(String finishDate) {
         this.finishDate = finishDate;
     }
     
