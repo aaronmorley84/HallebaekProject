@@ -14,6 +14,7 @@ public class TruckList {
     Facade facade = new Facade();
     private ArrayList<Truck> trucks;
     private ArrayList<TruckOrder> truckOrders;
+    private ArrayList<Truck> availableTrucks;
     private TruckOrder currTruckOrder;
     private Truck currTruck;
     
@@ -30,6 +31,9 @@ public class TruckList {
     public void getcurrTruckOrder(int i ){
         this.currTruckOrder = truckOrders.get(i);
     }
+    public int getAvailableTruck(int index){
+        return availableTrucks.get(index).getTruckID();
+    }
     
     public void addToTruckList(int truckID, String model, int capacity, String bookdate){
         trucks.add(new Truck(truckID, model, capacity, bookdate));
@@ -43,27 +47,44 @@ public class TruckList {
     public int getTruckOrderListSize() {
         return truckOrders.size();
     }
+    public int getAvailableTruckListSize(){
+        return availableTrucks.size();
+    }
     public void clearTruckList(){
         trucks.clear();
     }
     public void clearTruckOrderList(){
         truckOrders.clear();
     }
-        public void checkFreeTrucks(String date){
-        for (Truck truck1 : trucks) {
-            for (TruckOrder truckorder1 : truckOrders) {
-                if(truckorder1.getTruckID() == truck1.getTruckID()){
-                    truck1.setBookDate(truckorder1.getDate());
+    public void clearAvailableTruckList(){
+        availableTrucks.clear();
+    }
+    
+    public void checkFreeTrucks(String date){
+        for (int i = 0; i < trucks.size(); i++) {
+            int counter = 0;
+            while(counter<truckOrders.size()){
+                if(!trucks.get(i).getBookDate().equals(truckOrders.get(counter).getDate())){
+                    availableTrucks.add(trucks.get(i));
                 }
             }
-            
         }
-        for (int i = 0; i < trucks.size(); i++) {
-            System.out.println(trucks.get(i).getBookDate());
-            if(trucks.get(i).getBookDate().contains(date)){
-                trucks.remove(i);//needs work
-            }
-        }
+//        for (Truck truck1 : trucks) {
+//            for (TruckOrder truckorder1 : truckOrders) {
+//                if(truckorder1.getTruckID() == truck1.getTruckID()){
+//                    truck1.setBookDate(truckorder1.getDate());
+//                }
+//            }
+//            
+//        }
+//        for (int i = 0; i < trucks.size(); i++) {
+//            System.out.println(trucks.get(i).getBookDate());
+//            if(trucks.get(i).getBookDate().contains(date)){
+//                trucks.remove(i);//needs work
+//            }else{
+//                availableTrucks.add(currTruck);
+//            }
+//        }
     }
     
     public int getTrucksRequired(int totalVolume) {

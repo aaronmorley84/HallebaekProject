@@ -816,15 +816,15 @@ public class UserFrame extends javax.swing.JFrame {
             ID = Integer.parseInt(textFieldSearchID.getText());
         }
         if (name.isEmpty() && ID > 0) {
-           if(con.searchProdByIDinArray(ID)){
-                int counter = 0;
-                model2.clear();
-                while (counter < con.getProductListSize()) {
-                    model2.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
-                    counter++;
-                }
-                listSearchResult.setModel(model2);
-        }
+//           if(con.searchProdByIDinArray(ID)){
+//                int counter = 0;
+//                model2.clear();
+//                while (counter < con.getProductListSize()) {
+//                    model2.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
+//                    counter++;
+//                }
+//                listSearchResult.setModel(model2);
+//        }
             
         }
         if (!name.isEmpty()) {
@@ -841,17 +841,17 @@ public class UserFrame extends javax.swing.JFrame {
             }
         } else {
             if (ID > 0) {
-                if (con.searchProdByIDinArray(ID)) {
-                    int counter = 0;
-                    model2.clear();
-                    while (counter < con.getProductListSize()) {
-                        model2.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
-                        counter++;
-                    }
-                    listSearchResult.setModel(model2);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Could not find product!", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+//                if (con.searchProdByIDinArray(ID)) {
+//                    int counter = 0;
+//                    model2.clear();
+//                    while (counter < con.getProductListSize()) {
+//                        model2.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
+//                        counter++;
+//                    }
+//                    listSearchResult.setModel(model2);
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "Could not find product!", "Error", JOptionPane.ERROR_MESSAGE);
+//                }
             }
         }
 
@@ -948,8 +948,8 @@ public class UserFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonDeleteProdActionPerformed
 
     private void buttonNewOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewOrderActionPerformed
-        control2.currentOrder();
-        control2.currentTruckOrder();
+//        control2.currentOrder();
+//        control2.currentTruckOrder();
         con.buildProductList();
         int counter = 0;
         model1.clear();
@@ -967,23 +967,23 @@ public class UserFrame extends javax.swing.JFrame {
         Product prodForRemoval = (Product) jList2.getSelectedValue();
         int tempQuant = 0; // ???????? con.searchProdByNameinArray(prodForRemoval.getName()).getQuantity() + prodForRemoval.getQuantity();
         prodForRemoval.setQuantity(tempQuant);
-        control2.removeFromOrderList(prodForRemoval);
-        model2.removeElement(prodForRemoval);
-        jList2.setModel(model2);
-        int runningTotal = control2.getOrderBalance();
-        jLabel23.setText(""+runningTotal);
-        int counter = 0;
-        model1.clear();
-        while (counter < con.getProductListSize()) {
-            model1.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
-            counter++;
-        }
-        jList1.setModel(model1);
-        int totalVolume=0;
-        for (int i = 0; i < model2.size(); i++) {
-            totalVolume =+ ((Product)model2.get(i)).getVolume();
-        }
-        labelTrucksRequiredForOrder.setText(""+control2.getTrucksRequired(totalVolume));
+//        control2.removeFromOrderList(prodForRemoval);
+//        model2.removeElement(prodForRemoval);
+//        jList2.setModel(model2);
+////        int runningTotal = control2.getOrderBalance();
+//        jLabel23.setText(""+runningTotal);
+//        int counter = 0;
+//        model1.clear();
+//        while (counter < con.getProductListSize()) {
+//            model1.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
+//            counter++;
+//        }
+//        jList1.setModel(model1);
+//        int totalVolume=0;
+//        for (int i = 0; i < model2.size(); i++) {
+//            totalVolume =+ ((Product)model2.get(i)).getVolume();
+//        }
+//        labelTrucksRequiredForOrder.setText(""+control2.getTrucksRequired(totalVolume));
     }//GEN-LAST:event_buttonRemoveFromOrderActionPerformed
 
     /*US 3.1 Demo */
@@ -995,21 +995,21 @@ public class UserFrame extends javax.swing.JFrame {
             newProduct = new Product(prodForOrder.getProductID(),
                     prodForOrder.getName(), prodForOrder.getVolume(), (int) spinnerQuantityToOrder.getValue(),
                     prodForOrder.getDescription(), prodForOrder.getPrice());                                    
-            if (control2.addItemToOrderList(newProduct)) {
-                model2.addElement(newProduct);
-                jList2.setModel(model2);
-                prodForOrder.setQuantity(prodForOrder.getQuantity() - (int) spinnerQuantityToOrder.getValue());
-                prodForOrder.setQuantity(prodForOrder.getQuantity());
-                model1.clear();
-                int counter = 0;
-                while (counter < con.getProductListSize()) {
-                    model1.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
-                    counter++;
-                }
-                listAllProducts.setModel(model1);
-            } else {
-                JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
+//            if (control2.addItemToOrderList(newProduct)) {
+//                model2.addElement(newProduct);
+//                jList2.setModel(model2);
+//                prodForOrder.setQuantity(prodForOrder.getQuantity() - (int) spinnerQuantityToOrder.getValue());
+//                prodForOrder.setQuantity(prodForOrder.getQuantity());
+//                model1.clear();
+//                int counter = 0;
+//                while (counter < con.getProductListSize()) {
+//                    model1.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
+//                    counter++;
+//                }
+//                listAllProducts.setModel(model1);
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
+//            }
         } else {
             JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
@@ -1020,9 +1020,9 @@ public class UserFrame extends javax.swing.JFrame {
         for (int i = 0; i < model2.size(); i++) {
             totalVolume =+ ((Product)model2.get(i)).getVolume();
         }
-        labelTrucksRequiredForOrder.setText(""+control2.getTrucksRequired(totalVolume));
-        int runningTotal = control2.getOrderBalance();
-        jLabel23.setText(""+runningTotal);
+//        labelTrucksRequiredForOrder.setText(""+control2.getTrucksRequired(totalVolume));
+//        int runningTotal = control2.getOrderBalance();
+//        jLabel23.setText(""+runningTotal);
     }//GEN-LAST:event_buttonAddToOrderActionPerformed
 
     private void buttonSearchProdForOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchProdForOrderActionPerformed
@@ -1068,19 +1068,19 @@ public class UserFrame extends javax.swing.JFrame {
         int truckid = Integer.parseInt(textFieldTruckIDr.getText());
         String status = "Delivering";
         String message = null;
-        control2.currentTruckOrder.setTruckID(truckid);
-        control2.currentTruckOrder.setStatus(status);
-        control2.currentTruckOrder.setDate(startDate);
+//        control2.currentTruckOrder.setTruckID(truckid);
+//        control2.currentTruckOrder.setStatus(status);
+//        control2.currentTruckOrder.setDate(startDate);
         
         if (!customerID.equals("") && !startDate.equals("") && !finishDate.equals("")) {
-            if(control2.addToCustomerOrderTable(Integer.parseInt(customerID), startDate, finishDate)&&control2.addOrderToDB()){
-                message = "Order saved!";
-                if(!textFieldTruckIDr.getText().isEmpty()){
-                    if(control2.commitTruckOrder()){
-                        message = "Order and truck delivery saved!";
-                    }
-                }
-            }
+//            if(control2.addToCustomerOrderTable(Integer.parseInt(customerID), startDate, finishDate)&&control2.addOrderToDB()){
+//                message = "Order saved!";
+//                if(!textFieldTruckIDr.getText().isEmpty()){
+//                    if(control2.commitTruckOrder()){
+//                        message = "Order and truck delivery saved!";
+//                    }
+//                }
+//            }
             JOptionPane.showMessageDialog(this, message, "SAVED", JOptionPane.INFORMATION_MESSAGE);
             
         }else{
@@ -1094,13 +1094,13 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         
-        control2.getTrucks();
+//        control2.getTrucks();
         model3.clear();
         int counter = 0;
-        while(counter < control2.getTruckOrderListSize()){
-            model3.addElement(control2.getTruckOrder(counter));
-            counter++;
-        }
+//        while(counter < control2.getTruckOrderListSize()){
+//            model3.addElement(control2.getTruckOrder(counter));
+//            counter++;
+//        }
         jList4.setModel(model3);
         jFrame7.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -1108,13 +1108,13 @@ public class UserFrame extends javax.swing.JFrame {
     private void seeDeliveriesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seeDeliveriesButtonActionPerformed
         jLabel22.setText("Planned deliveries:");
         jTextField1.setText(textFieldNewOrderStartDate.getText());
-        control2.getTrucks();
-        model4.clear();
-        int counter = 0;
-        while(counter < control2.getTruckOrderListSize()){
-            model4.addElement(control2.getTruckOrder(counter));
-            counter++;
-        }
+//        control2.getTrucks();
+//        model4.clear();
+//        int counter = 0;
+//        while(counter < control2.getTruckOrderListSize()){
+//            model4.addElement(control2.getTruckOrder(counter));
+//            counter++;
+//        }
         jList5.setModel(model4);
         jFrame8.setVisible(true);
     }//GEN-LAST:event_seeDeliveriesButtonActionPerformed
@@ -1123,12 +1123,12 @@ public class UserFrame extends javax.swing.JFrame {
         jLabel22.setText("Available trucks for "+jTextField1.getText());
         model4.clear();
         String date = jTextField1.getText();
-        control2.checkFreeTrucks(date);
-        int counter = 0;
-        while (counter<control2.getTruckListSize()){
-            model4.addElement(control2.getTruck(counter));
-            counter++;
-        }
+//        control2.checkFreeTrucks(date);
+//        int counter = 0;
+//        while (counter<control2.getTruckListSize()){
+//            model4.addElement(control2.getTruck(counter));
+//            counter++;
+//        }
         jList5.setModel(model4);
     }//GEN-LAST:event_checkDateButtonActionPerformed
 
