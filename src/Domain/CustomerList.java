@@ -72,7 +72,7 @@ public class CustomerList {
     
     //communication to customerGateway
     public boolean buildCustomerList(CustomerList customerList){
-        Boolean success = false;
+        boolean success = false;
         if (facade.buildCustomerList(customerList)){
             success = true;
         }

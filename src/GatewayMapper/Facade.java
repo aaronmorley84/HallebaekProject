@@ -21,16 +21,6 @@ import java.util.logging.Logger;
  */
 public class Facade {
     //method for unlocking.
-    public void commit(){
-        Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        try {
-            con.commit();
-        } catch (SQLException ex) {
-            System.out.println("Error in commit");
-            System.out.println(ex.getMessage());
-        }
-    }
-    
     
     //Customer gateway
     public boolean buildCustomerList(CustomerList customerList){
@@ -49,10 +39,11 @@ public class Facade {
          CustomerGateway cg = new CustomerGateway();
         return cg.deleteCustomer(cusID);
     }
-    public boolean lockCustomer(int cusID){
-        CustomerGateway cg = new CustomerGateway();
-        return cg.lockCustomer(cusID);
-    }
+    
+//    public boolean lockCustomer(int cusID){
+//        CustomerGateway cg = new CustomerGateway();
+//        return cg.lockCustomer(cusID);
+//    }
     //Product Gateway
     public boolean buildProductList(ProductList productList){
         ProductGateway pg = new ProductGateway();

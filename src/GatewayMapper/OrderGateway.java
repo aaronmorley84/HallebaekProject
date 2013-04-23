@@ -15,12 +15,14 @@ import java.sql.SQLException;
 public class OrderGateway {
     OrderList orderlist;
         
-    public boolean buildOrderList(OrderList orderlist) {
-        this.orderlist = orderlist;
+    public boolean buildOrderList(OrderList orderList) {
+        this.orderlist = orderList;
+        orderlist.clearOrderList();
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * "
                 + "FROM customer_order ";
+        
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
@@ -29,10 +31,9 @@ public class OrderGateway {
                 orderlist.addToOrderList(
                         rs.getInt(1),
                         rs.getInt(2),
-                        (""+rs.getDate(3)),
-                        (""+rs.getDate(4)),
-                        rs.getInt(5));
-            
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getInt(5));            
             }
             success = true;
         } catch (Exception e) {

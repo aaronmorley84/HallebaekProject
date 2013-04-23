@@ -2,6 +2,7 @@ package DBConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionTools {
 
@@ -35,4 +36,7 @@ public class ConnectionTools {
             return null;
         }
     }
+    
+  
+    
 }

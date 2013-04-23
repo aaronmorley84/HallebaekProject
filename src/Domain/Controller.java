@@ -92,10 +92,7 @@ public class Controller{
     /*
      * Methods for OrderList()
      */
-    public void clearOrderList(){
-        orderList.clearOrderList();
-    }
-    public int getOrderID(int i){
+     public int getOrderID(int i){
         orderList.getCurrentOrder(i);
         return orderList.getOrderID();
     }
@@ -203,10 +200,6 @@ public class Controller{
     public boolean addTruck(int truckid, String model, int capacity, String bookeddate){
         return truckList.addTruck(truckid, model, capacity, bookeddate);
     }
-    
-    
-    
-    
     
     
     //Methods for CustomerList()

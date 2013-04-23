@@ -9,12 +9,15 @@ import java.util.ArrayList;
  * @author Kris
  */
 public class OrderList {
-    private ArrayList<Order> orderList;
+    private ArrayList<Order> orderList = new ArrayList<Order>();
+    
     private Order currentOrder;
     Facade facade = new Facade();
     
     public void addToOrderList(int orderID, int customerID, String dateArrival, String datePickUp, int balance){
+        
         System.out.println(orderID+"\n"+customerID+"\n"+dateArrival+"\n"+datePickUp+"\n"+balance);
+        
         orderList.add(new Order(orderID,customerID,dateArrival,datePickUp,balance));
     }
     
@@ -78,6 +81,7 @@ public class OrderList {
     public boolean buildOrderList(OrderList orderlist){
         return facade.buildOrderList(orderlist);
     }
+    
     public boolean addOrder(){
         return facade.addOrder();
     }
