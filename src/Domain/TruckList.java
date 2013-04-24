@@ -18,14 +18,8 @@ public class TruckList {
     private TruckOrder currTruckOrder;
     private Truck currTruck;
     
-    public void getcurrTruck(int i){
-        
-        
-      if(facade.lockTruck(currTruck.getTruckID())){
+    public void getcurrTruck(int i){ 
           this.currTruck = trucks.get(i);
-      }else{
-         JOptionPane.showMessageDialog(null, "Truck is in use!", "ERROR", JOptionPane.ERROR_MESSAGE); 
-      }
     }
     
     public void getcurrTruckOrder(int i ){

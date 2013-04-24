@@ -756,7 +756,7 @@ public class GUI extends javax.swing.JFrame {
         OrderEndDateField.setBounds(640, 340, 104, 20);
 
         getContentPane().add(OrderPanel);
-        OrderPanel.setBounds(0, 0, 1031, 843);
+        OrderPanel.setBounds(0, 0, 910, 707);
 
         EditOrderPanel.setMinimumSize(new java.awt.Dimension(850, 700));
         EditOrderPanel.setPreferredSize(new java.awt.Dimension(850, 700));
@@ -764,7 +764,7 @@ public class GUI extends javax.swing.JFrame {
         OrderMenuLabel.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         OrderMenuLabel.setText("Edit Order Menu");
 
-        OrderSearchProductButton.setText("Search For Product");
+        OrderSearchProductButton.setText("Get All Products");
         OrderSearchProductButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OrderSearchProductButtonActionPerformed(evt);
@@ -819,6 +819,12 @@ public class GUI extends javax.swing.JFrame {
 
         OrderIDLabel.setText("OrderID");
 
+        OrderIDField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OrderIDFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout EditOrderPanelLayout = new javax.swing.GroupLayout(EditOrderPanel);
         EditOrderPanel.setLayout(EditOrderPanelLayout);
         EditOrderPanelLayout.setHorizontalGroup(
@@ -836,7 +842,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(OrderProductNameLabel)
                         .addGap(4, 4, 4)
                         .addComponent(OrderProductNameSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(476, 476, 476)
+                        .addGap(468, 468, 468)
                         .addComponent(OrderIDLabel))
                     .addGroup(EditOrderPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -1686,51 +1692,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void OrderAddProductToOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderAddProductToOrderButtonActionPerformed
 
-//        Product prodForOrder, newProduct;
-//        prodForOrder = (Product) OrderProductsList.getSelectedValue();
-//        if (prodForOrder.getQuantity() >= (int) OrderQuantitySpinner.getValue()) {
-//            newProduct = new Product(prodForOrder.getProductID(),
-//                    prodForOrder.getName(), prodForOrder.getVolume(), (int) OrderQuantitySpinner.getValue(),
-//                    prodForOrder.getDescription(), prodForOrder.getPrice());
-//            if (con.addItemToOrderList(newProduct)) {
-//                model5.addElement(newProduct);
-//                OrderProductsInOrderList.setModel(model5);
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
-//        }
-        /* US 3.2 User can see number of trucks
-         needed for delivery from size of
-         products in customer order table */
-//        int totalVolume = 0;
-//        for (int i = 0; i < model5.size(); i++) {
-//            totalVolume = +((Product) model5.get(i)).getVolume();
-//        }
-//        OrderTrucksNeededField.setText("" + con.getOrderTruckAmount(totalVolume));
 
-//        Product prodForOrder, newProduct;
-//        prodForOrder = (Product) OrderProductsList.getSelectedValue();
-//        if (prodForOrder.getQuantity() >= (int) OrderQuantitySpinner.getValue()) {
-//            newProduct = new Product(prodForOrder.getProductID(),
-//                    prodForOrder.getName(), prodForOrder.getVolume(), (int) OrderQuantitySpinner.getValue(),
-//                    prodForOrder.getDescription(), prodForOrder.getPrice());
-//            if (con.addItemToOrderList(newProduct)) {
-//                model6.addElement(newProduct);
-//                OrderProductsInOrderList.setModel(model6);
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
-//        }
-//        /* Shows number of trucks required for delivery */
-//        int totalVolume = 0;
-//        for (int i = 0; i < model6.size(); i++) {
-//            totalVolume = +((Product) model6.get(i)).getVolume();
-//        }
-//        OrderTrucksNeededField.setText(""+con.getTrucksRequired(totalVolume));
 
     }//GEN-LAST:event_OrderAddProductToOrderButtonActionPerformed
 
@@ -2008,7 +1970,7 @@ public class GUI extends javax.swing.JFrame {
     private void CreateOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateOrderButtonActionPerformed
         con.addCustomerOrder(Integer.parseInt(CustIDField.getText()), OrderStartDateField.getText(), OrderEndDateField.getText());
         con.buildOrderList();
-        OrderIDField.setText(""+con.getNewOrderID());
+        OrderIDField.setText(""+con.getNewOrderID(Integer.parseInt(CustIDField.getText()), OrderStartDateField.getText(), OrderEndDateField.getText()));
         selectPanel(5);
         OrderCustomerIDField.setText(CustIDField.getText());
     }//GEN-LAST:event_CreateOrderButtonActionPerformed
@@ -2050,6 +2012,10 @@ public class GUI extends javax.swing.JFrame {
     private void TruckOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TruckOrderButtonActionPerformed
         con.addTruckOrder(Integer.parseInt(CustIDField.getText()), con.getTruckID(con.getAvailableTruck(AvailableTrucksList.getSelectedIndex())), "Delivery", StartDateField.getText());
     }//GEN-LAST:event_TruckOrderButtonActionPerformed
+
+    private void OrderIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderIDFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OrderIDFieldActionPerformed
 
     /**
      * @param args the command line arguments

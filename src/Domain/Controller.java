@@ -118,8 +118,8 @@ public class Controller{
     public int getOrderListSize(){
         return orderList.getOrderListSize();
     }
-    public boolean addItemToOrderList(Product prod){
-        return orderList.addProductToOrderList(prod);
+    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price){
+        return orderList.addItemToOrderList(prodID, name, vol, quantity, descrip, price);
     }
     public void removeFromOrderList(Product prod){
         orderList.removeProductFromOrderList(prod);
@@ -136,8 +136,8 @@ public class Controller{
     public boolean editCustomerOrder(int customerID, String startdate, String finishdate, int balance){
         return orderList.editCustomerOrder(customerID, startdate, finishdate, balance);
     }
-    public int getNewOrderID(){
-        return orderList.getNewOrderID();
+    public int getNewOrderID(int custID, String startDate, String endDate){
+        return orderList.getNewOrderID(custID, startDate, endDate);
     }
     
     //Methods for TruckList()

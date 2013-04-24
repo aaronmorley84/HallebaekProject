@@ -1040,7 +1040,7 @@
                           <Component id="OrderProductNameLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
                           <Component id="OrderProductNameSearchField" min="-2" pref="71" max="-2" attributes="0"/>
-                          <EmptySpace min="476" pref="476" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="468" max="-2" attributes="0"/>
                           <Component id="OrderIDLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -1105,7 +1105,7 @@
                           <Component id="OrderIDField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
@@ -1166,7 +1166,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="OrderSearchProductButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Search For Product"/>
+            <Property name="text" type="java.lang.String" value="Get All Products"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderSearchProductButtonActionPerformed"/>
@@ -1269,6 +1269,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="OrderIDField">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderIDFieldActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
