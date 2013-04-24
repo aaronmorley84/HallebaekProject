@@ -6,7 +6,6 @@ package Domain;
 
 import Resources.Customer;
 import GatewayMapper.Facade;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -102,7 +101,7 @@ public class CustomerList {
         return success;
     }
     
-    public boolean saveEditedCustomer(int cusID, String cusName, String cusAddress, String cusEmail) throws SQLException {
+    public boolean saveEditedCustomer(int cusID, String cusName, String cusAddress, String cusEmail) {
         String empty = "";
         boolean success = false;
         if (!cusName.equals(empty) && !cusAddress.equals(empty) && !cusEmail.equals(empty)) {
