@@ -22,8 +22,8 @@ public class CustomerGateway {
     CustomerList customerList;
     
     /*Used to build a list of customers. */
-    public boolean buildCustomerList(CustomerList customerList) {
-        this.customerList = customerList;
+    public boolean buildCustomerList(CustomerList customerlist) {
+        this.customerList = customerlist;
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * " 

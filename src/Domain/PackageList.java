@@ -25,7 +25,7 @@ public class PackageList {
     }
     
     public Packages getCurrentPackage(int i){
-        facade.commit();
+        
         if (facade.lockPackage(packageList.get(i).getPackageID())){
             currentPackage = packageList.get(i);
             return currentPackage;

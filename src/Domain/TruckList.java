@@ -19,7 +19,7 @@ public class TruckList {
     private Truck currTruck;
     
     public void getcurrTruck(int i){
-        facade.commit();
+        
         
       if(facade.lockTruck(currTruck.getTruckID())){
           this.currTruck = trucks.get(i);
