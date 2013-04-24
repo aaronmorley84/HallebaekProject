@@ -239,6 +239,7 @@ public class Controller{
     }
 
     public boolean lockCustomer(int cusID){
+        
         return customerList.lockCustomer(cusID);
     }
     /*
