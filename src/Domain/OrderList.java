@@ -4,6 +4,7 @@ import GatewayMapper.Facade;
 import Resources.Order;
 import Resources.Product;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Kris
@@ -21,6 +22,9 @@ public class OrderList {
     public Order getCurrentOrder(int i){
         currentOrder = orderList.get(i);
         return currentOrder;
+    }
+    public int getCurrentOrderProductListSize(){
+        return currentOrder.orderProductList.size();
     }
     public int getOrderListSize(){
         return orderList.size();
@@ -67,8 +71,13 @@ public class OrderList {
     }
     
     //communication to orderProductList
-    public boolean addProductToOrderList(Product prod){
-        return currentOrder.addItemToOrderList(prod);
+    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price){        
+        if(currentOrder.addItemToOrderList(prodID, name, vol, quantity, descrip, price)){
+            return true;
+        }else{
+            JOptionPane.showMessageDialog(null, "Product already exists in order!", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
     public void removeProductFromOrderList(Product prod) {
         currentOrder.removeFromOrderList(prod);
@@ -91,8 +100,16 @@ public class OrderList {
     }
     
     //get orderID of new order
-    public int getNewOrderID(){
-        return orderList.get(orderList.size()-1).getOrderID();
+    public int getNewOrderID(int custID, String startDate, String endDate){
+        int orderid = 0;
+        for (int i = 0; i < orderList.size(); i++) {
+            if(orderList.get(i).getCustomer()==custID && orderList.get(i).getStartDate().equals(startDate)
+                    && orderList.get(i).getFinishDate().equals(endDate)){
+                orderid = orderList.get(i).getOrderID();
+                currentOrder = orderList.get(i);
+            }
+        }
+        return orderid;
     }
     
     

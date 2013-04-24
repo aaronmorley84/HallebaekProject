@@ -20,7 +20,8 @@ public class Order {
         this.orderID = orderId;
         this.balance = balance;
     }
-    public boolean addItemToOrderList(Product prod){
+    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price){
+       Product prod = new Product(prodID, name, vol, quantity, descrip, price);
        boolean success=false;
        if(!checkForDuplicate(prod.getProductID())){
             balance = balance + (prod.price * prod.quantity);
