@@ -1519,16 +1519,17 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_GetCustomerButtonActionPerformed
 
     private void EditCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditCustomerButtonActionPerformed
-        CustomerIDField.setText("" + con.getCustomerID(CustomerJList.getSelectedIndex()));
-        CustomerNameField.setText(con.getCustomerName(CustomerJList.getSelectedIndex()));
-        CustomerAddressField.setText(con.getCustomerAddress(CustomerJList.getSelectedIndex()));
-        CustomerEmailField.setText(con.getCustomerEmail(CustomerJList.getSelectedIndex()));
-        
+       
         
         if(con.lockCustomer(con.getCustomerID(CustomerJList.getSelectedIndex())) && !lockCustomer){
             lockCustomer = true;
             System.out.println("lockCusID" + con.getCustomerID(CustomerJList.getSelectedIndex()));
             System.out.println("locked");
+        CustomerIDField.setText("" + con.getCustomerID(CustomerJList.getSelectedIndex()));
+        CustomerNameField.setText(con.getCustomerName(CustomerJList.getSelectedIndex()));
+        CustomerAddressField.setText(con.getCustomerAddress(CustomerJList.getSelectedIndex()));
+        CustomerEmailField.setText(con.getCustomerEmail(CustomerJList.getSelectedIndex()));
+        
         }
         
         AddCustomerButton.setEnabled(false);
