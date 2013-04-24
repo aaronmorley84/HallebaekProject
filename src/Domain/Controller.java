@@ -1,6 +1,7 @@
 package Domain;
 
 import Resources.Product;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -231,7 +232,7 @@ public class Controller{
     public boolean addCustomer(String name, String address, String email) {
         return customerList.addCustomer(name, address, email);
     }
-    public boolean saveEditedCustomer(int cusID, String cusName, String cusAddress, String cusEmail) {
+    public boolean saveEditedCustomer(int cusID, String cusName, String cusAddress, String cusEmail) throws SQLException {
         return customerList.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
     }
     public boolean deleteCustomer(int cusID) {
