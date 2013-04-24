@@ -27,7 +27,7 @@ public class CustomerGateway {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * " 
-                + "FROM customers WITH ";
+                + "FROM customers ";
 
         PreparedStatement statement = null;
         try {
