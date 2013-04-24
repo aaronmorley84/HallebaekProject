@@ -17,7 +17,7 @@ public class GUI extends javax.swing.JFrame {
     Controller con = new Controller();
     DefaultListModel model1, model2, model3, model4, model5, model6, model7, model8, model9;
     private int userRank;
-
+    private boolean lockCustomer;
     /**
      * Creates new form GUI
      */
@@ -1501,7 +1501,14 @@ public class GUI extends javax.swing.JFrame {
         CustomerNameField.setText(con.getCustomerName(CustomerJList.getSelectedIndex()));
         CustomerAddressField.setText(con.getCustomerAddress(CustomerJList.getSelectedIndex()));
         CustomerEmailField.setText(con.getCustomerEmail(CustomerJList.getSelectedIndex()));
-
+        
+        
+        if(con.lockCustomer(con.getCustomerID(CustomerJList.getSelectedIndex())) && !lockCustomer){
+            lockCustomer = true;
+            System.out.println("lockCusID" + con.getCustomerID(CustomerJList.getSelectedIndex()));
+            System.out.println("locked");
+        }
+        
         AddCustomerButton.setEnabled(false);
         AddEditPhoneButton.setEnabled(false);
         DeleteCustomerbutton.setEnabled(true);
@@ -1539,8 +1546,12 @@ public class GUI extends javax.swing.JFrame {
         String cusName = CustomerNameField.getText();
         String cusAddress = CustomerAddressField.getText();
         String cusEmail = CustomerEmailField.getText();
-
-        con.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
+        
+        if(lockCustomer){
+            con.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
+            
+            lockCustomer = false;
+         }
         GetCustomerButtonActionPerformed(evt);
 
         clearCustomerFields();

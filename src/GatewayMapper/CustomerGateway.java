@@ -27,8 +27,7 @@ public class CustomerGateway {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * " 
-                + "FROM customers ";
-
+                + "FROM customers WITH ";
 
         PreparedStatement statement = null;
         try {
@@ -64,9 +63,9 @@ public class CustomerGateway {
                 + "FROM customers "
                 + "WHERE customerID = ? "
                 + "FOR UPDATE NOWAIT";
+        
         PreparedStatement statement = null;
         try {
-            con.setAutoCommit(false);
             statement = con.prepareStatement(sqlString);
             statement.setInt(1, ID);
             statement.execute();
@@ -116,22 +115,24 @@ public class CustomerGateway {
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "UPDATE customers "
                             + "SET name = ?, "
-                            + "address = ?, "                            
-                            
+                            + "address = ?, "                        
                             + "email = ? "
                             + "WHERE customerID = ?";
         PreparedStatement statement = null;
+        
         try {
             statement = con.prepareStatement(SQLString1);
             statement.setString(1, cusName);
             statement.setString(2,cusAddress);
             statement.setString(3, cusEmail);
             statement.setInt(4, cusID);
-            statement.executeUpdate(); //stops here for some reason
+            statement.executeUpdate(); 
+            
             success = true;            
         }catch (Exception e){
             System.out.println("Insertion error!");
             System.out.println(e.getMessage());
+        
         }finally {
             try {
                 statement.close();

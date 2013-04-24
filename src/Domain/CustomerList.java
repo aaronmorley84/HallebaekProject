@@ -131,4 +131,8 @@ public class CustomerList {
         return success;
     }
     
+    public boolean lockCustomer(int cusID){
+        return facade.lockCustomer(cusID);
+    }
+    
 }

@@ -33,17 +33,17 @@ public class Facade {
     }
     public boolean saveEditedCustomer(int cusID, String cusName, String cusAddress, String cusEmail) {
          CustomerGateway cg = new CustomerGateway();
-        return cg.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
+         return cg.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
     }
     public boolean deleteCustomer(int cusID) {
          CustomerGateway cg = new CustomerGateway();
         return cg.deleteCustomer(cusID);
     }
     
-//    public boolean lockCustomer(int cusID){
-//        CustomerGateway cg = new CustomerGateway();
-//        return cg.lockCustomer(cusID);
-//    }
+    public boolean lockCustomer(int cusID){
+        CustomerGateway cg = new CustomerGateway();
+        return cg.lockCustomer(cusID);
+    }
     //Product Gateway
     public boolean buildProductList(ProductList productList){
         ProductGateway pg = new ProductGateway();
@@ -81,9 +81,10 @@ public class Facade {
     }
     
     public boolean editCustomerOrder(int customerID, String startdate, String finishdate, int balance){
-        OrderGateway og = new OrderGateway();
+        OrderGateway og = new OrderGateway();        
         return og.editCustomerOrder(customerID, startdate, finishdate, balance);
     }
+    
     
     //Package Gateway
     public boolean buildPackageList(PackageList packageList){

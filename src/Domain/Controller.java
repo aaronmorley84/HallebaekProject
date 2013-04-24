@@ -237,7 +237,10 @@ public class Controller{
     public boolean deleteCustomer(int cusID) {
         return customerList.deleteCustomer(cusID);
     }
-    
+
+    public boolean lockCustomer(int cusID){
+        return customerList.lockCustomer(cusID);
+    }
     /*
      * Methods for PackageList()
      */
