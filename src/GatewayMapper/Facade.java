@@ -10,10 +10,7 @@ import Domain.PackageList;
 import Domain.ProductList;
 import Domain.TruckList;
 import Domain.UserList;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -31,7 +28,7 @@ public class Facade {
         CustomerGateway cg = new CustomerGateway();
         return cg.addCustomer(name, address, email);
     }
-    public boolean saveEditedCustomer(int cusID, String cusName, String cusAddress, String cusEmail) {
+    public boolean saveEditedCustomer(int cusID, String cusName, String cusAddress, String cusEmail) throws SQLException {
          CustomerGateway cg = new CustomerGateway();
          return cg.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
     }
