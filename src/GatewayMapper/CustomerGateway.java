@@ -113,7 +113,7 @@ public class CustomerGateway {
     public boolean saveEditedCustomer(int cusID,String cusName,String cusAddress,String cusEmail) throws SQLException{
          boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString    = "Select * for update nowait"; 
+        String SQLString   = "Select * from customers for update nowait"; 
         String SQLString1 = "UPDATE customers "
                             + "SET name = ?, "
                             + "address = ?, "                        
@@ -123,7 +123,7 @@ public class CustomerGateway {
         
         try {
             con.setAutoCommit(false);
-            statement = con.prepareStatement(SQLString);
+            statement = con.prepareStatement(SQLString);          
             statement = con.prepareStatement(SQLString1);
             statement.setString(1, cusName);
             statement.setString(2,cusAddress);
