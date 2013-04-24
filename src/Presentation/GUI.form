@@ -1031,50 +1031,62 @@
                           <EmptySpace min="291" pref="291" max="-2" attributes="0"/>
                           <Component id="OrderMenuLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Component id="OrderSearchProductButton" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Component id="OrderProductNameLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                          <Component id="OrderProductNameSearchField" min="-2" pref="71" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="468" max="-2" attributes="0"/>
-                          <Component id="OrderIDLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Component id="jScrollPane4" min="-2" pref="165" max="-2" attributes="0"/>
-                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                          <Component id="OrderProductQuantityLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                          <Component id="OrderQuantitySpinner" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="OrderAddProductToOrderButton" min="-2" pref="169" max="-2" attributes="0"/>
-                              <Component id="OrderRemoveFromOrderButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Component id="jScrollPane5" min="-2" pref="156" max="-2" attributes="0"/>
-                          <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="OrderTrucksNeededLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                                  <Component id="OrderTrucksNeededField" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane4" min="-2" pref="165" max="-2" attributes="0"/>
+                                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                  <Component id="OrderProductQuantityLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                  <Component id="OrderQuantitySpinner" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="53" pref="53" max="-2" attributes="0"/>
-                                  <Component id="OrderSaveOrderButton" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="OrdergetAllProductsButton" alignment="1" min="-2" pref="146" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="OrderProductNameLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                          <Component id="OrderProductNameSearchField" min="-2" pref="71" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Component id="OrderProductSearchButton" min="-2" pref="92" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="OrderAddProductToOrderButton" min="-2" pref="169" max="-2" attributes="0"/>
+                                      <Component id="OrderRemoveFromOrderButton" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane5" min="-2" pref="156" max="-2" attributes="0"/>
+                                  <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="OrderTrucksNeededLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                                          <Component id="OrderTrucksNeededField" min="-2" pref="23" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="53" pref="53" max="-2" attributes="0"/>
+                                          <Component id="OrderSaveOrderButton" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="OrderCustomerIDLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="OrderIDField" min="-2" pref="110" max="-2" attributes="0"/>
+                                              <Component id="OrderCustomerIDField" min="-2" pref="110" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="OrderCustomerIDLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="OrderIDField" min="-2" pref="110" max="-2" attributes="0"/>
-                                      <Component id="OrderCustomerIDField" min="-2" pref="110" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
+                                  <Component id="OrderIDLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -1089,7 +1101,7 @@
                   <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
                   <Component id="OrderMenuLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
-                  <Component id="OrderSearchProductButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="OrdergetAllProductsButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -1097,15 +1109,18 @@
                           <Component id="OrderProductNameLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                          <Component id="OrderProductNameSearchField" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="OrderProductNameSearchField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="OrderProductSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="OrderIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="OrderIDField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
@@ -1164,12 +1179,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="OrderProductNameSearchField">
         </Component>
-        <Component class="javax.swing.JButton" name="OrderSearchProductButton">
+        <Component class="javax.swing.JButton" name="OrdergetAllProductsButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Get All Products"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderSearchProductButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrdergetAllProductsButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="OrderProductNameLabel">
@@ -1271,6 +1286,14 @@
         <Component class="javax.swing.JTextField" name="OrderIDField">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderIDFieldActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="OrderProductSearchButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Search"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderProductSearchButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
