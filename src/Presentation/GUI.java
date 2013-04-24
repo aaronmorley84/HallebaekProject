@@ -5,6 +5,9 @@
 package Presentation;
 
 import Domain.Controller;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -1569,7 +1572,11 @@ public class GUI extends javax.swing.JFrame {
         String cusEmail = CustomerEmailField.getText();
 
         if (lockCustomer) {
-            con.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
+            try {
+                con.saveEditedCustomer(cusID, cusName, cusAddress, cusEmail);
+            } catch (SQLException ex) {
+                Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             lockCustomer = false;
         }
