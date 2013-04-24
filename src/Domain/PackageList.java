@@ -25,14 +25,8 @@ public class PackageList {
     }
     
     public Packages getCurrentPackage(int i){
-        
-        if (facade.lockPackage(packageList.get(i).getPackageID())){
             currentPackage = packageList.get(i);
             return currentPackage;
-        }else{
-            JOptionPane.showMessageDialog(null, "Package is in use!", "Error", JOptionPane.ERROR_MESSAGE);
-            return null;
-        }
     }
 
     public int getPackageListSize() {
