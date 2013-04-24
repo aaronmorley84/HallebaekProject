@@ -116,6 +116,9 @@ public class Controller{
     public Product getOrderProductList(int i){
         return orderList.getProductList(i);
     }
+    public int getCurrentOrderProductListSize(){
+        return orderList.getCurrentOrderProductListSize();
+    }
     public int getOrderListSize(){
         return orderList.getOrderListSize();
     }
@@ -240,7 +243,6 @@ public class Controller{
     }
 
     public boolean lockCustomer(int cusID){
-        
         return customerList.lockCustomer(cusID);
     }
     /*

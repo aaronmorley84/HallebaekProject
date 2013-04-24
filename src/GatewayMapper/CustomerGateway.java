@@ -110,10 +110,9 @@ public class CustomerGateway {
         
     }
     
-    public boolean saveEditedCustomer(int cusID,String cusName,String cusAddress,String cusEmail) throws SQLException{
+    public boolean saveEditedCustomer(int cusID,String cusName,String cusAddress,String cusEmail){
          boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString   = "Select * from customers for update nowait"; 
         String SQLString1 = "UPDATE customers "
                             + "SET name = ?, "
                             + "address = ?, "                        
@@ -122,8 +121,6 @@ public class CustomerGateway {
         PreparedStatement statement = null;
         
         try {
-            con.setAutoCommit(false);
-            statement = con.prepareStatement(SQLString);          
             statement = con.prepareStatement(SQLString1);
             statement.setString(1, cusName);
             statement.setString(2,cusAddress);
@@ -138,12 +135,10 @@ public class CustomerGateway {
         
         }finally {
             try {
-                con.commit();
                 statement.close();
             } catch (SQLException e) {
                 System.out.println("Statement close error!");
                 System.out.println(e.getMessage());
-                con.rollback();
             }
         }
         return success;
