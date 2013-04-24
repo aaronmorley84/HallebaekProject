@@ -1699,10 +1699,12 @@ public class GUI extends javax.swing.JFrame {
 
     private void OrderAddProductToOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderAddProductToOrderButtonActionPerformed
         int searchID = Integer.parseInt(("" + OrderProductsList.getSelectedValue()).substring(0, 5));
-        System.out.println(searchID);
+        int quantityForOrder = (Integer)OrderQuantitySpinner.getValue();
         int index = con.searchProdByIDinArray(searchID);
-
-        con.addItemToOrderList(con.getProductId(index), con.getProductName(index), con.getProductVolume(index), con.getProductQuantiy(index), con.getProductDescription(index), con.getProductPrice(index));
+        
+        con.addItemToOrderList(con.getProductId(index), con.getProductName(index), con.getProductVolume(index), 
+                quantityForOrder, con.getProductDescription(index), 
+                con.getProductPrice(index), con.getProductQuantiy(index));
         int counter = 0;
         model6.clear();
         while (counter < con.getCurrentOrderProductListSize()) {
@@ -1710,28 +1712,19 @@ public class GUI extends javax.swing.JFrame {
             counter++;
         }
         OrderProductsInOrderList.setModel(model6);
-
-
     }//GEN-LAST:event_OrderAddProductToOrderButtonActionPerformed
 
     private void OrderRemoveFromOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderRemoveFromOrderButtonActionPerformed
-//        Product prodForRemoval = (Product) OrderProductsInOrderList.getSelectedValue();
-//        con.removeFromOrderList(prodForRemoval);
-//        model5.removeElement(prodForRemoval);
-//        OrderProductsInOrderList.setModel(model5);
-//        int totalVolume = 0;
-//        for (int i = 0; i < model2.size(); i++) {
-//            totalVolume = +((Product) model2.get(i)).getVolume();
-//        }
-//        OrderTrucksNeededField.setText("" + con.getOrderTruckAmount(totalVolume));
-//        Product prodForRemoval = (Product) OrderProductsInOrderList.getSelectedValue();
-//        con.removeFromOrderList(prodForRemoval);
-//        model5.removeElement(prodForRemoval);
-//        OrderProductsInOrderList.setModel(model5);
-//        int totalVolume = 0;
-//        for (int i = 0; i < model2.size(); i++) {
-//            totalVolume = +((Product) model2.get(i)).getVolume();
-//        }
+        int searchID = Integer.parseInt(("" + OrderProductsInOrderList.getSelectedValue()).substring(0, 5));
+        int index = con.searchProdByIDinArray(searchID);
+        con.removeFromOrderList(index);
+        int counter = 0;
+        model6.clear();
+        while (counter < con.getCurrentOrderProductListSize()) {
+            model6.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + " QTY: " + con.getProductQuantiy(counter));
+            counter++;
+        }
+        OrderProductsInOrderList.setModel(model6);
     }//GEN-LAST:event_OrderRemoveFromOrderButtonActionPerformed
 
     private void OrderSaveOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSaveOrderButtonActionPerformed

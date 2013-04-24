@@ -71,16 +71,28 @@ public class OrderList {
     }
     
     //communication to orderProductList
-    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price){        
-        if(currentOrder.addItemToOrderList(prodID, name, vol, quantity, descrip, price)){
+    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity){        
+        if(currentOrder.addItemToOrderList(prodID, name, vol, quantity, descrip, price, availableQuantity)){            
             return true;
         }else{
+            if(quantity > availableQuantity){
+                JOptionPane.showMessageDialog(null, "Requested quantity exceeds available quantity of this product!", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
             JOptionPane.showMessageDialog(null, "Product already exists in order!", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
     }
-    public void removeProductFromOrderList(Product prod) {
-        currentOrder.removeFromOrderList(prod);
+    public void removeProductFromOrderList(int index) {
+        currentOrder.removeFromOrderList(index);
+    }
+    
+    public boolean checkProdForOrderQuantity(int quantityForOrder, int existingQuantity){
+        if (quantityForOrder <= existingQuantity){
+            return true;
+        } else{               
+              return false;
+        }
     }
     
     //communication to the ordergateway

@@ -122,11 +122,14 @@ public class Controller{
     public int getOrderListSize(){
         return orderList.getOrderListSize();
     }
-    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price){
-        return orderList.addItemToOrderList(prodID, name, vol, quantity, descrip, price);
+    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity){
+        return orderList.addItemToOrderList(prodID, name, vol, quantity, descrip, price, availableQuantity);
     }
-    public void removeFromOrderList(Product prod){
-        orderList.removeProductFromOrderList(prod);
+    public void removeFromOrderList(int index){
+        orderList.removeProductFromOrderList(index);
+    }
+    public boolean checkProdForOrderQuantity(int quantityForOrder, int existingQuantity){
+        return orderList.checkProdForOrderQuantity(quantityForOrder, existingQuantity);
     }
     public boolean buildOrderList(){
         return orderList.buildOrderList(orderList);
