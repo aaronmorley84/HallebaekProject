@@ -52,7 +52,7 @@ public class OrderGateway {
     
     public boolean addOrder() {
         boolean success = false;
-        System.out.println(orderlist.getProductList(0).getProductID());
+//        System.out.println(orderlist.getProductList(0).getProductID());
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into order_product "
                 + "VALUES (orderseq.currval,?,?)";
