@@ -20,16 +20,16 @@ public class Order {
         this.orderID = orderId;
         this.balance = balance;
     }
-    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity){
+    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price){//, int availableQuantity){
        Product prod = new Product(prodID, name, vol, quantity, descrip, price);
        boolean success=false;
        if(!checkForDuplicate(prod.getProductID())){
-           if(quantity <= availableQuantity){
+           //if(quantity <= availableQuantity){
             balance = balance + (prod.price * prod.quantity);
             setBalance(balance);
             success = true;
             orderProductList.add(prod);
-           }
+           //}
         }
         return success;
     }

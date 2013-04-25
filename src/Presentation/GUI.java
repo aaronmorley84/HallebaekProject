@@ -1735,16 +1735,17 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_OrderRemoveFromOrderButtonActionPerformed
 
     private void OrderSaveOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSaveOrderButtonActionPerformed
-        String customerID = OrderCustomerIDField.getText();
+        int customerID = Integer.parseInt(OrderCustomerIDField.getText());
+        System.out.println("Customer ID="+customerID);
         String startDate = OrderStartDateField.getText();
+        System.out.println("startdate="+startDate);
         String finishDate = OrderEndDateField.getText();
+        System.out.println("finishdate="+finishDate);
+        int orderID = Integer.parseInt(OrderIDField.getText());
         String empty = "";
-        if (!customerID.equals(empty) && !startDate.equals(empty) && !finishDate.equals(empty)) {
-            con.editCustomerOrder(Integer.parseInt(customerID), startDate, finishDate, 0);
-            JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Could not save to Data Base!", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+        con.editCustomerOrder(customerID, startDate, finishDate, 999);
+        //int orderID, int customerID, String dateArrival, String datePickUp, int balance
+        con.addOrder();
         StartDateField.setText(OrderStartDateField.getText());
         FinishDateField.setText(OrderEndDateField.getText());
         selectPanel(9);

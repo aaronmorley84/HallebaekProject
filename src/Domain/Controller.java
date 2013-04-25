@@ -120,7 +120,7 @@ public class Controller{
         return orderList.getCurrentOrderProductListSize();
     }
     public int getOrderListSize(){
-        return orderList.getOrderListSize();
+        return orderList.getOrderListSize();        
     }
     public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity){
         return orderList.addItemToOrderList(prodID, name, vol, quantity, descrip, price, availableQuantity);
