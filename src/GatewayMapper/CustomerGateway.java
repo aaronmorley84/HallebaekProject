@@ -139,6 +139,7 @@ public class CustomerGateway {
         }finally {
             try {
                 con.commit();
+                con.setAutoCommit(true);
                 statement.close();
             } catch (SQLException e) {
                 System.out.println("Statement close error!");
@@ -150,12 +151,14 @@ public class CustomerGateway {
     }
     
     public boolean deleteCustomer(int cusID){
+        System.out.println("Deleting CustomerID" + cusID);
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "DELETE from customers "
-                            + "WHERE customerID = ? ";
+        String SQLString1 = "DELETE FROM Customers WHERE customerID = ?";
+                                  
         PreparedStatement statement = null;
-        try {
+        
+        try {            
             statement = con.prepareStatement(SQLString1);
             statement.setInt(1, cusID);
             statement.executeUpdate();
@@ -164,6 +167,16 @@ public class CustomerGateway {
             System.out.println("Error in deleting!");
             System.out.println(e.getMessage());
         }
+        finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                System.out.println("Statement close error!");
+                System.out.println(e.getMessage());
+                
+            }
+        }
+        
         return success;
     }
 
