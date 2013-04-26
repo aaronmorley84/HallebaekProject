@@ -109,7 +109,7 @@ public class CustomerGateway {
         return success;
         
     }
-    
+    /*Saves the edits to customer found by ID. Also releases the lock.*/
     public boolean saveEditedCustomer(int cusID,String cusName,String cusAddress,String cusEmail) throws SQLException{
          boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
