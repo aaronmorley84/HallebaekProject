@@ -16,7 +16,7 @@ public class OrderList {
     Facade facade = new Facade();
     
     public void addToOrderList(int orderID, int customerID, String dateArrival, String datePickUp, int balance){
-        orderList.add(new Order(orderID,customerID,dateArrival,datePickUp,balance));
+        orderList.add(new Order(orderID, customerID, dateArrival, datePickUp, balance));
     }
     
     public Order getCurrentOrder(int i){
@@ -70,9 +70,11 @@ public class OrderList {
         currentOrder.setBalance(balance);
     }
     
-    //communication to orderProductList
-    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity){        
-        if(currentOrder.addItemToOrderList(prodID, name, vol, quantity, descrip, price, availableQuantity)){            
+    //communication to orderProductList (10001, "tent", 1, 1, "a tent", 100, 1)
+    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity){ 
+        if(currentOrder.addItemToOrderList(prodID, name, vol, quantity, descrip, price)){//, availableQuantity)){            
+            System.out.println("added!!!!!!!");
+            System.out.println(currentOrder.orderProductList.toString());
             return true;
         }else{
             if(quantity > availableQuantity){
@@ -101,14 +103,31 @@ public class OrderList {
     }
     
     public boolean addOrder(){
-        return facade.addOrder();
+        boolean success = false;
+        if(facade.addOrder()){
+            JOptionPane.showMessageDialog(null, "Product order saved to database!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            success = true;
+        }else{
+            JOptionPane.showMessageDialog(null, "Error while saving product order to database!", "Error", JOptionPane.INFORMATION_MESSAGE);
+            success = false;
+        }
+        return success;
     }
     public boolean addCustomerOrder(int customerID, String startDate, String finishDate){
+        getNewOrderID(customerID, startDate, finishDate);
         return facade.addCustomerOrder(customerID, startDate, finishDate);
     }
     
     public boolean editCustomerOrder(int customerID, String startdate, String finishdate, int balance){
-        return facade.editCustomerOrder(customerID, startdate, finishdate, balance);
+        boolean success = false;        
+        if(facade.editCustomerOrder(customerID, startdate, finishdate, balance)){
+            JOptionPane.showMessageDialog(null, "Customer order edited and saved to database!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            success = true;
+        }else{
+            JOptionPane.showMessageDialog(null, "Error while saving customer order!", "Error", JOptionPane.INFORMATION_MESSAGE);
+            success = false;
+        }
+        return success;
     }
     
     //get orderID of new order
@@ -118,11 +137,12 @@ public class OrderList {
             if(orderList.get(i).getCustomer()==custID && orderList.get(i).getStartDate().equals(startDate)
                     && orderList.get(i).getFinishDate().equals(endDate)){
                 orderid = orderList.get(i).getOrderID();
-                currentOrder = orderList.get(i);
+//                currentOrder = orderList.get(i);
             }
         }
+        Order newOrder = new Order(orderid, custID, startDate, endDate, 0);
+        orderList.add(newOrder);  
+        currentOrder = newOrder;
         return orderid;
     }
-    
-    
 }

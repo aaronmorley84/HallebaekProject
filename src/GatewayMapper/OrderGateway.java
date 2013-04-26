@@ -52,17 +52,18 @@ public class OrderGateway {
     
     public boolean addOrder() {
         boolean success = false;
+//        System.out.println(orderlist.getProductList(0).getProductID());
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into order_product "
                 + "VALUES (orderseq.currval,?,?)";
         PreparedStatement statement = null;
-        for (int i = 0; i < orderlist.getOrderListSize(); i++) {
+        for (int i = 0; i < orderlist.getCurrentOrderProductListSize(); i++) {
             try {
                 statement = con.prepareStatement(SQLString1);
                 statement.setInt(1, orderlist.getProductList(i).getProductID());
                 statement.setInt(2, orderlist.getProductList(i).getQuantity());
                 statement.executeUpdate();
-                success = true;
+                success = true;                
             } catch (Exception e) {
                 System.out.println("products Insertion error!");
                 System.out.println(e.getMessage());
@@ -112,18 +113,18 @@ public class OrderGateway {
     public boolean editCustomerOrder(int customerID, String startDate, String finishDate, int balance){
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "Update Customer_Order "
-                + "SET startdate = ?, "
-                + "SET finishdate = ?, "
+        String SQLString1 = "Update customer_order "
                 + "SET balance = ? "
-                + "WHERE customerID = ? ";
+                + "WHERE startdate = ? and "
+                + "finishdate = ? and "
+                + "customerid = ? ";
         PreparedStatement statement = null;
         try{
             statement = con.prepareStatement(SQLString1);
-            statement.setString(1, startDate);
-            statement.setString(2, finishDate);
-            statement.setInt(3, balance);
-            statement.setInt(4, customerID);
+            statement.setInt(1, balance);
+            statement.setDate(2, Date.valueOf(startDate));
+            statement.setDate(3, Date.valueOf(finishDate));
+            statement.setInt(4, customerID);            
             
             statement.executeUpdate();
             success = true;
