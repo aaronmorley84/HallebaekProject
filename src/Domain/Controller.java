@@ -135,7 +135,7 @@ public class Controller{
         return orderList.buildOrderList(orderList);
     }
     public boolean addOrder(){
-        return orderList.addOrder();
+        return orderList.addOrder(orderList);
     }
     public boolean addCustomerOrder(int customerID, String startDate, String finishDate){
         return orderList.addCustomerOrder(customerID, startDate, finishDate);

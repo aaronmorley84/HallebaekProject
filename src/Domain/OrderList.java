@@ -30,7 +30,19 @@ public class OrderList {
         return orderList.size();
     }
     public void clearOrderList(){
-        orderList.clear();
+        try{
+        if(!orderList.isEmpty()){
+            for (int i = 0; i < orderList.size(); i++) {
+                orderList.remove(i);
+            }
+        }
+        else{
+            System.out.println("orderList empty!");
+        }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
     }
     
     //These are the getters
@@ -102,9 +114,9 @@ public class OrderList {
         return facade.buildOrderList(orderlist);
     }
     
-    public boolean addOrder(){
+    public boolean addOrder(OrderList orderlist){
         boolean success = false;
-        if(facade.addOrder()){
+        if(facade.addOrder(orderlist)){
             JOptionPane.showMessageDialog(null, "Product order saved to database!", "Success", JOptionPane.INFORMATION_MESSAGE);
             success = true;
         }else{
