@@ -290,8 +290,7 @@ public class CustomerListTest {
         System.out.println("deleteCustomer");
         CustomerList instance = new CustomerList();
         instance.buildCustomerList(instance);
-        instance.getCurrentCustomer(instance.getCustomerListSize()-1);
-        
+        instance.getCurrentCustomer(instance.getCustomerListSize()-1);        
         int expSize =instance.getCustomerListSize();
         boolean expResult = true;
         boolean result = instance.deleteCustomer(instance.getCusID());
@@ -310,20 +309,14 @@ public class CustomerListTest {
     @Test
     public void testLockCustomer() throws SQLException {
         System.out.println("lockCustomer");
-        int cusID = 0;
         CustomerList instance = new CustomerList();
         instance.buildCustomerList(instance);
         instance.getCurrentCustomer(instance.getCustomerListSize()-1);
-        cusID = instance.getCusID();
+        int cusID = instance.getCusID();
         boolean expResult = true;
         boolean result = instance.lockCustomer(cusID);
-        assertEquals(expResult, result);
-        
-        boolean expResultFromLock = false;
-        boolean resultFromLock = instance.deleteCustomer(cusID);
-        assertEquals(expResultFromLock,resultFromLock);
-        instance.saveEditedCustomer(cusID, "LockReleased", "f", "d");
-        instance.deleteCustomer(cusID);
+        assertEquals(expResult, result);        
         
     }
+    
 }
