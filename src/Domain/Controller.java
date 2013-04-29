@@ -134,8 +134,8 @@ public class Controller{
     public boolean buildOrderList(){
         return orderList.buildOrderList(orderList);
     }
-    public boolean addOrder(){
-        return orderList.addOrder(orderList);
+    public boolean addOrder(int orderid){
+        return orderList.addOrder(orderid, orderList);
     }
     public boolean addCustomerOrder(int customerID, String startDate, String finishDate){
         return orderList.addCustomerOrder(customerID, startDate, finishDate);
@@ -148,6 +148,9 @@ public class Controller{
     }
     
     //Methods for TruckList()
+    public void getcurrTruck(int i){
+        truckList.getcurrTruck(i);
+    }
     public void clearTruckOrderList(){
         truckList.clearTruckOrderList();
     }
@@ -198,8 +201,8 @@ public class Controller{
     public boolean buildTruckList(){
         return truckList.buildTruckList(truckList);
     }
-    public boolean buildTruckOrderList(TruckList trucklist){
-        return truckList.buildTruckOrderList(trucklist);
+    public boolean buildTruckOrderList(){
+        return truckList.buildTruckOrderList(truckList);
     }
     public boolean addTruckOrder(int orderid, int truckid, String status, String date){
         return truckList.addTruckOrder(orderid,truckid,status,date);
