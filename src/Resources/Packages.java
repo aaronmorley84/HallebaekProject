@@ -19,17 +19,20 @@ public class Packages {
         this.description = description;
     }
 
-    public boolean addItemToPackageList(Product prod) {
+    public boolean addItemToPackageList(int prodID, String name, int vol, int quantity, String descrip, int price) {
+        Product newProduct = new Product(prodID, name, vol, quantity, descrip, price);
         boolean success = false;
-        if (!checkForDuplicate(prod.getProductID())) {
+        if (!checkForDuplicate(newProduct.getProductID())) {
             success = true;
-            packageProductList.add(prod);
+            packageProductList.add(newProduct);
         }
         return success;
     }
 
-    public void removeFromPackageList(Product prod) {
-        packageProductList.remove(prod);
+    public void removeFromPackageList(int index) {
+        System.out.println(packageProductList.toString());
+        System.out.println(index);
+        packageProductList.remove(packageProductList.get(index));
     }
 
     public boolean checkForDuplicate(int ID) {
@@ -40,6 +43,15 @@ public class Packages {
             }
         }
         return same;
+    }
+    public int searchPackProdByIDinArray(int ID) {
+        int productIndex = -1;
+        for (int i = 0; i < packageProductList.size(); i++) {
+            if (packageProductList.get(i).getProductID() == ID) {
+                productIndex = i;
+            }
+        }
+        return productIndex;
     }
 
     public int getPackageID() {

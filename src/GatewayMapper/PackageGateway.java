@@ -139,7 +139,7 @@ public class PackageGateway {
         return success;
     }
 
-    public boolean loadPackageProducts() {
+    public boolean loadPackageProducts(int packID) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT products.productid,products.pname,products.pvolume,package_product.quanity,products.pdescription,products.pprice "
@@ -150,10 +150,10 @@ public class PackageGateway {
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, packageList.getPackID());
+            statement.setInt(1, packID);
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
-                packageList.addItemToPackageList(new Product(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6)));
+                packageList.addItemToPackageList(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6));
             }
         } catch (Exception e) {
             System.out.println("packages Insertion error!");

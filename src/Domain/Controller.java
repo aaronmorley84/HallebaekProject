@@ -135,7 +135,7 @@ public class Controller{
         return orderList.buildOrderList(orderList);
     }
     public boolean addOrder(){
-        return orderList.addOrder();
+        return orderList.addOrder(orderList);
     }
     public boolean addCustomerOrder(int customerID, String startDate, String finishDate){
         return orderList.addCustomerOrder(customerID, startDate, finishDate);
@@ -146,7 +146,15 @@ public class Controller{
     public int getNewOrderID(int custID, String startDate, String endDate){
         return orderList.getNewOrderID(custID, startDate, endDate);
     }
-    
+     public int getOrderProductID(int i){
+        return orderList.getOrderProductID(i);
+    }
+    public String getOrderProductName(int i){
+        return orderList.getOrderProductName(i);
+    }
+    public int getOrderProductQTY(int i){
+        return orderList.getOrderProductQTY(i);
+    }
     //Methods for TruckList()
     public void clearTruckOrderList(){
         truckList.clearTruckOrderList();
@@ -285,17 +293,17 @@ public class Controller{
     public boolean addPackage(String name, String description, int price){
         return packageList.addPackage(name, description, price);
     }
-    public boolean addItemToPackageList(Product prod){
-        return packageList.addItemToPackageList(prod);
+    public boolean addItemToPackageList(int prodID, String name, int vol, int quantity, String descrip, int price){
+        return packageList.addItemToPackageList(prodID, name, vol, quantity, descrip, price);
     }
-    public void removeFromPackageList(Product prod){
-        packageList.removeFromPackageList(prod);
+    public void removeFromPackageList(int index){
+        packageList.removeFromPackageList(index);
     }
     public boolean addProductsToPackageInDB(){
         return packageList.addProductsToPackageInDB();
     }
-    public boolean loadPackageProducts(int index){
-        return packageList.loadPackageProducts(index);
+    public boolean loadPackageProducts(int packID){
+        return packageList.loadPackageProducts(packID);
     }
     public boolean deletePackageProducts(){
         return packageList.deletePackageProducts();
@@ -303,7 +311,21 @@ public class Controller{
     public boolean deletePackage(){
         return packageList.deletePackage();
     }
-    
+    public int getNewPackageID(String packName, String packDis, int packPrice){
+        return packageList.getNewPackageID(packName, packDis, packPrice);
+    }
+    public int getPackageProductID(int i){
+        return packageList.getPackageProductID(i);
+    }
+    public String getPackageProductName(int i){
+        return packageList.getPackageProductName(i);
+    }
+    public int getPackageProductQTY(int i){
+        return packageList.getPackageProductQTY(i);
+    }
+    public int searchPackProdByIDinArray(int ID){
+        return packageList.searchPackProdByIDinArray(ID);
+    }
     
     //UserList functionality 
     

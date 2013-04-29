@@ -53,6 +53,15 @@ public class PackageList {
     public Product getPackageProductList(int i){
         return currentPackage.packageProductList.get(i);
     }
+    public int getPackageProductID(int i){
+        return currentPackage.packageProductList.get(i).getProductID();
+    }
+    public String getPackageProductName(int i){
+        return currentPackage.packageProductList.get(i).getName();
+    }
+    public int getPackageProductQTY(int i){
+        return currentPackage.packageProductList.get(i).getQuantity();
+    }
     
     //theses are the setter
     public void editPackName(String newName) {
@@ -69,12 +78,15 @@ public class PackageList {
     public int getPackageProductListSize() {
         return currentPackage.packageProductList.size();
     }
-    public boolean addItemToPackageList(Product prod) {
-        return currentPackage.addItemToPackageList(prod);
+    public boolean addItemToPackageList(int prodID, String name, int vol, int quantity, String descrip, int price) {
+        return currentPackage.addItemToPackageList(prodID, name, vol, quantity, descrip, price);
     }
-    public void removeFromPackageList(Product prod) {
-        currentPackage.removeFromPackageList(prod);
+    public void removeFromPackageList(int index) {
+        currentPackage.removeFromPackageList(index);
     } 
+    public int searchPackProdByIDinArray(int ID){
+        return currentPackage.searchPackProdByIDinArray(ID);
+    }
     
    //communication to PackageGateway
     public boolean buildPackageList(PackageList packageList) {
@@ -116,9 +128,9 @@ public class PackageList {
         }
     }
 
-    public boolean loadPackageProducts(int index) {
-        boolean success = facade.loadPackageProducts();
-        getCurrentPackage(index);
+    public boolean loadPackageProducts(int packID) {
+        boolean success = facade.loadPackageProducts(packID);
+        //getCurrentPackage(index);
         if (success) {
             JOptionPane.showMessageDialog(null, "Products loaded into Packages", "Success", JOptionPane.INFORMATION_MESSAGE);
             return success;
@@ -157,5 +169,17 @@ public class PackageList {
 
     }
     
+    public int getNewPackageID(String packName, String packDis, int packPrice){
+        System.out.println(packageList.toString());
+        int packid = 0;
+        for (int i = 0; i < packageList.size(); i++) {
+            if(packageList.get(i).getName().equals(packName) && packageList.get(i).getDescription().equals(packDis)
+                    && packageList.get(i).getPrice() == packPrice){
+                packid = packageList.get(i).getPackageID();
+            }
+        }
+        
+        return packid;
+    }
 
 }

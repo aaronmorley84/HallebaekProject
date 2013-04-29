@@ -5,6 +5,7 @@
 package Domain;
 
 import Resources.Customer;
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -289,8 +290,7 @@ public class CustomerListTest {
         System.out.println("deleteCustomer");
         CustomerList instance = new CustomerList();
         instance.buildCustomerList(instance);
-        instance.getCurrentCustomer(instance.getCustomerListSize()-1);
-        
+        instance.getCurrentCustomer(instance.getCustomerListSize()-1);        
         int expSize =instance.getCustomerListSize();
         boolean expResult = true;
         boolean result = instance.deleteCustomer(instance.getCusID());
@@ -307,14 +307,16 @@ public class CustomerListTest {
      * Test of lockCustomer method, of class CustomerList.
      */
     @Test
-    public void testLockCustomer() {
+    public void testLockCustomer() throws SQLException {
         System.out.println("lockCustomer");
-        int cusID = 0;
         CustomerList instance = new CustomerList();
-        boolean expResult = false;
+        instance.buildCustomerList(instance);
+        instance.getCurrentCustomer(instance.getCustomerListSize()-1);
+        int cusID = instance.getCusID();
+        boolean expResult = true;
         boolean result = instance.lockCustomer(cusID);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result);        
+        
     }
+    
 }

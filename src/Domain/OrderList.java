@@ -30,7 +30,19 @@ public class OrderList {
         return orderList.size();
     }
     public void clearOrderList(){
-        orderList.clear();
+        try{
+        if(!orderList.isEmpty()){
+            for (int i = 0; i < orderList.size(); i++) {
+                orderList.remove(i);
+            }
+        }
+        else{
+            System.out.println("orderList empty!");
+        }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
     }
     
     //These are the getters
@@ -51,6 +63,15 @@ public class OrderList {
     }
     public Product getProductList(int i){
         return currentOrder.orderProductList.get(i);
+    }
+    public int getOrderProductID(int i){
+        return currentOrder.orderProductList.get(i).getProductID();
+    }
+    public String getOrderProductName(int i){
+        return currentOrder.orderProductList.get(i).getName();
+    }
+    public int getOrderProductQTY(int i){
+        return currentOrder.orderProductList.get(i).getQuantity();
     }
     
     //These are the setters
@@ -102,9 +123,9 @@ public class OrderList {
         return facade.buildOrderList(orderlist);
     }
     
-    public boolean addOrder(){
+    public boolean addOrder(OrderList orderlist){
         boolean success = false;
-        if(facade.addOrder()){
+        if(facade.addOrder(orderlist)){
             JOptionPane.showMessageDialog(null, "Product order saved to database!", "Success", JOptionPane.INFORMATION_MESSAGE);
             success = true;
         }else{
@@ -140,9 +161,6 @@ public class OrderList {
 //                currentOrder = orderList.get(i);
             }
         }
-        Order newOrder = new Order(orderid, custID, startDate, endDate, 0);
-        orderList.add(newOrder);  
-        currentOrder = newOrder;
         return orderid;
     }
 }
