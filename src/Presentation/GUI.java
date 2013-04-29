@@ -1736,7 +1736,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void OrderRemoveFromOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderRemoveFromOrderButtonActionPerformed
         int searchID = Integer.parseInt(("" + OrderProductsInOrderList.getSelectedValue()).substring(0, 5));
-        int index = con.searchProdByIDinArray(searchID);
+        int index = con.searchProdByIDinArray(searchID);// this needs to be changed so it goes through right arraylist
         con.removeFromOrderList(index);
         int counter = 0;
         model6.clear();
