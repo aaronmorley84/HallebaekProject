@@ -64,6 +64,15 @@ public class OrderList {
     public Product getProductList(int i){
         return currentOrder.orderProductList.get(i);
     }
+    public int getOrderProductID(int i){
+        return currentOrder.orderProductList.get(i).getProductID();
+    }
+    public String getOrderProductName(int i){
+        return currentOrder.orderProductList.get(i).getName();
+    }
+    public int getOrderProductQTY(int i){
+        return currentOrder.orderProductList.get(i).getQuantity();
+    }
     
     //These are the setters
     public void setOrderID(int orderID){

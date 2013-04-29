@@ -29,8 +29,10 @@ public class Packages {
         return success;
     }
 
-    public void removeFromPackageList(Product prod) {
-        packageProductList.remove(prod);
+    public void removeFromPackageList(int index) {
+        System.out.println(packageProductList.toString());
+        System.out.println(index);
+        packageProductList.remove(packageProductList.get(index));
     }
 
     public boolean checkForDuplicate(int ID) {
@@ -41,6 +43,15 @@ public class Packages {
             }
         }
         return same;
+    }
+    public int searchPackProdByIDinArray(int ID) {
+        int productIndex = -1;
+        for (int i = 0; i < packageProductList.size(); i++) {
+            if (packageProductList.get(i).getProductID() == ID) {
+                productIndex = i;
+            }
+        }
+        return productIndex;
     }
 
     public int getPackageID() {

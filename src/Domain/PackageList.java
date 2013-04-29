@@ -53,6 +53,15 @@ public class PackageList {
     public Product getPackageProductList(int i){
         return currentPackage.packageProductList.get(i);
     }
+    public int getPackageProductID(int i){
+        return currentPackage.packageProductList.get(i).getProductID();
+    }
+    public String getPackageProductName(int i){
+        return currentPackage.packageProductList.get(i).getName();
+    }
+    public int getPackageProductQTY(int i){
+        return currentPackage.packageProductList.get(i).getQuantity();
+    }
     
     //theses are the setter
     public void editPackName(String newName) {
@@ -72,9 +81,12 @@ public class PackageList {
     public boolean addItemToPackageList(int prodID, String name, int vol, int quantity, String descrip, int price) {
         return currentPackage.addItemToPackageList(prodID, name, vol, quantity, descrip, price);
     }
-    public void removeFromPackageList(Product prod) {
-        currentPackage.removeFromPackageList(prod);
+    public void removeFromPackageList(int index) {
+        currentPackage.removeFromPackageList(index);
     } 
+    public int searchPackProdByIDinArray(int ID){
+        return currentPackage.searchPackProdByIDinArray(ID);
+    }
     
    //communication to PackageGateway
     public boolean buildPackageList(PackageList packageList) {

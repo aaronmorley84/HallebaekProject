@@ -1721,14 +1721,14 @@ public class GUI extends javax.swing.JFrame {
         int searchID = Integer.parseInt(("" + OrderProductsList.getSelectedValue()).substring(0, 5));
         int quantityForOrder = (Integer)OrderQuantitySpinner.getValue();
         int index = con.searchProdByIDinArray(searchID);
-        
+        System.out.println(index);
         con.addItemToOrderList(con.getProductId(index), con.getProductName(index), con.getProductVolume(index), 
                 quantityForOrder, con.getProductDescription(index), 
                 con.getProductPrice(index), con.getProductQuantiy(index));
         int counter = 0;
         model6.clear();
         while (counter < con.getCurrentOrderProductListSize()) {
-            model6.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + " QTY: " + con.getProductQuantiy(counter));
+            model6.addElement(con.getOrderProductID(counter) + "-" + con.getOrderProductName(counter) + " QTY: " + con.getOrderProductQTY(counter));
             counter++;
         }
         OrderProductsInOrderList.setModel(model6);
@@ -1741,7 +1741,7 @@ public class GUI extends javax.swing.JFrame {
         int counter = 0;
         model6.clear();
         while (counter < con.getCurrentOrderProductListSize()) {
-            model6.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + " QTY: " + con.getProductQuantiy(counter));
+            model6.addElement(con.getOrderProductID(counter) + "-" + con.getOrderProductName(counter) + " QTY: " + con.getOrderProductQTY(counter));
             counter++;
         }
         OrderProductsInOrderList.setModel(model6);
@@ -1769,9 +1769,9 @@ public class GUI extends javax.swing.JFrame {
         con.addPackage(name, descrip, price);
         con.buildPackageList();
         packID = con.getNewPackageID(name, descrip, price);
-        EditPackProdButtonActionPerformed(evt);
         clearPackageFields();
-
+        ExistingPackageButtonActionPerformed(evt);
+       
         AddPackageButton.setEnabled(true);
         EditPackProdButton.setEnabled(false);
         DeletePackageButton.setEnabled(false);
@@ -1856,25 +1856,10 @@ public class GUI extends javax.swing.JFrame {
         }
         ProductsInPackageList.setModel(model5);
         con.buildProductList();
+        clearPackageFields();
     }//GEN-LAST:event_EditPackProdButtonActionPerformed
 
     private void AddProductToPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductToPackageButtonActionPerformed
-//        Product prodForOrder, newProduct;
-//        prodForOrder = (Product) OrderProductsList1.getSelectedValue();
-//        if (prodForOrder.getQuantity() >= (int) OrderQuantitySpinner1.getValue()) {
-//            newProduct = new Product(prodForOrder.getProductID(),
-//                    prodForOrder.getName(), prodForOrder.getVolume(), (int) OrderQuantitySpinner1.getValue(),
-//                    prodForOrder.getDescription(), prodForOrder.getPrice());
-//            if (con.addItemToPackageList(newProduct)) {
-//                model5.addElement(newProduct);
-//                ProductsInPackageList.setModel(model5);
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Item whit that ID already in order!", "ERROR", JOptionPane.ERROR_MESSAGE);
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
-//        }
-        
         int searchID = Integer.parseInt(("" + PackProductsList.getSelectedValue()).substring(0, 5));
         int quantityForOrder = (Integer)OrderQuantitySpinner1.getValue();
         int index = con.searchProdByIDinArray(searchID);
@@ -1882,20 +1867,27 @@ public class GUI extends javax.swing.JFrame {
         con.addItemToPackageList(con.getProductId(index), con.getProductName(index), con.getProductVolume(index), 
                 quantityForOrder, con.getProductDescription(index), 
                 con.getProductPrice(index));
+        
         int counter = 0;
         model6.clear();
-        while (counter < con.getCurrentOrderProductListSize()) {
-            model6.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + " QTY: " + con.getProductQuantiy(counter));
+        while (counter < con.getPackageProductListSize()) {
+            model6.addElement(con.getPackageProductID(counter) + "-" + con.getPackageProductName(counter) + " QTY: " + con.getPackageProductQTY(counter));
             counter++;
         }
-        OrderProductsInOrderList.setModel(model6);
+        ProductsInPackageList.setModel(model6);
     }//GEN-LAST:event_AddProductToPackageButtonActionPerformed
 
     private void RemoveFromPackageButtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveFromPackageButtoActionPerformed
-//        Product prodForRemoval = (Product) ProductsInPackageList.getSelectedValue();
-//        con.removeFromPackageList(prodForRemoval);
-//        model5.removeElement(prodForRemoval);
-        ProductsInPackageList.setModel(model5);
+        int searchID = Integer.parseInt(("" + ProductsInPackageList.getSelectedValue()).substring(0, 5));
+        int index = con.searchPackProdByIDinArray(searchID);
+        con.removeFromPackageList(index);
+        int counter = 0;
+        model6.clear();
+        while (counter < con.getPackageProductListSize()) {
+            model6.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + " QTY: " + con.getProductQuantiy(counter));
+            counter++;
+        }
+        ProductsInPackageList.setModel(model6);
     }//GEN-LAST:event_RemoveFromPackageButtoActionPerformed
 
     private void PackageNameField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackageNameField2ActionPerformed
