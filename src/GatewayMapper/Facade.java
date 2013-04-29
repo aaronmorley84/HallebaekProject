@@ -95,9 +95,9 @@ public class Facade {
         PackageGateway pg = new PackageGateway();
         return pg.addProductsToPackageInDB();
     }
-    public boolean loadPackageProducts(){
+    public boolean loadPackageProducts(int packID){
         PackageGateway pg = new PackageGateway();
-        return pg.loadPackageProducts();
+        return pg.loadPackageProducts(packID);
     }
     public boolean deletePackageProducts(){
         PackageGateway pg = new PackageGateway();

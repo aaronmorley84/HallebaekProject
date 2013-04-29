@@ -1690,15 +1690,13 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                          <Component id="OrderSearchProductButton1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="OrderProductNameLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                  <Component id="OrderProductNameSearchField1" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="PackProductNameSearchField" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="PackageSearchProductButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jScrollPane8" min="-2" pref="181" max="-2" attributes="0"/>
@@ -1730,6 +1728,10 @@
                           <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                           <Component id="PackageNameField2" min="-2" pref="146" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                          <Component id="PackageGetAllProductButton" min="-2" pref="165" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="203" max="32767" attributes="0"/>
               </Group>
@@ -1758,16 +1760,19 @@
                       </Group>
                   </Group>
                   <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
-                  <Component id="OrderSearchProductButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
+                  <Component id="PackageGetAllProductButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                           <Component id="OrderProductNameLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="OrderProductNameSearchField1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="PackProductNameSearchField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="PackageSearchProductButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
+                  <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jScrollPane9" pref="301" max="32767" attributes="0"/>
                       <Component id="jScrollPane8" max="32767" attributes="0"/>
@@ -1827,12 +1832,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PackageNameField2ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="OrderSearchProductButton1">
+        <Component class="javax.swing.JButton" name="PackageGetAllProductButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Search For Product"/>
+            <Property name="text" type="java.lang.String" value="Get All Products"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderSearchProductButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PackageGetAllProductButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="OrderProductNameLabel1">
@@ -1840,7 +1845,7 @@
             <Property name="text" type="java.lang.String" value="Product Name:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="OrderProductNameSearchField1">
+        <Component class="javax.swing.JTextField" name="PackProductNameSearchField">
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane8">
           <AuxValues>
@@ -1849,7 +1854,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="OrderProductsList1">
+            <Component class="javax.swing.JList" name="PackProductsList">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="0"/>
@@ -1903,6 +1908,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SavePackageButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="PackageSearchProductButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Search"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PackageSearchProductButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -19,7 +19,7 @@ public class GUI extends javax.swing.JFrame {
 
     Controller con = new Controller();
     DefaultListModel model1, model2, model3, model4, model5, model6, model7, model8, model9;
-    private int userRank;
+    private int userRank, packID;
     private boolean lockCustomer;
 
     /**
@@ -195,11 +195,11 @@ public class GUI extends javax.swing.JFrame {
         PackageIDField2 = new javax.swing.JTextField();
         PackageNameLabel2 = new javax.swing.JLabel();
         PackageNameField2 = new javax.swing.JTextField();
-        OrderSearchProductButton1 = new javax.swing.JButton();
+        PackageGetAllProductButton = new javax.swing.JButton();
         OrderProductNameLabel1 = new javax.swing.JLabel();
-        OrderProductNameSearchField1 = new javax.swing.JTextField();
+        PackProductNameSearchField = new javax.swing.JTextField();
         jScrollPane8 = new javax.swing.JScrollPane();
-        OrderProductsList1 = new javax.swing.JList();
+        PackProductsList = new javax.swing.JList();
         OrderProductQuantityLabel1 = new javax.swing.JLabel();
         OrderQuantitySpinner1 = new javax.swing.JSpinner();
         AddProductToPackageButton = new javax.swing.JButton();
@@ -207,6 +207,7 @@ public class GUI extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         ProductsInPackageList = new javax.swing.JList();
         SavePackageButton = new javax.swing.JButton();
+        PackageSearchProductButton = new javax.swing.JButton();
         LogInPanel = new javax.swing.JPanel();
         LoginMenuLabel = new javax.swing.JLabel();
         UserNameLabel = new javax.swing.JLabel();
@@ -1205,16 +1206,16 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        OrderSearchProductButton1.setText("Search For Product");
-        OrderSearchProductButton1.addActionListener(new java.awt.event.ActionListener() {
+        PackageGetAllProductButton.setText("Get All Products");
+        PackageGetAllProductButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OrderSearchProductButton1ActionPerformed(evt);
+                PackageGetAllProductButtonActionPerformed(evt);
             }
         });
 
         OrderProductNameLabel1.setText("Product Name:");
 
-        jScrollPane8.setViewportView(OrderProductsList1);
+        jScrollPane8.setViewportView(PackProductsList);
 
         OrderProductQuantityLabel1.setText("Quantity:");
 
@@ -1241,6 +1242,13 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        PackageSearchProductButton.setText("Search");
+        PackageSearchProductButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PackageSearchProductButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout EditPackagePanelLayout = new javax.swing.GroupLayout(EditPackagePanel);
         EditPackagePanel.setLayout(EditPackagePanelLayout);
         EditPackagePanelLayout.setHorizontalGroup(
@@ -1253,14 +1261,13 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(EditPackagePanelLayout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addComponent(OrderSearchProductButton1))
-                    .addGroup(EditPackagePanelLayout.createSequentialGroup()
-                        .addGap(9, 9, 9)
                         .addGroup(EditPackagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(EditPackagePanelLayout.createSequentialGroup()
                                 .addComponent(OrderProductNameLabel1)
                                 .addGap(4, 4, 4)
-                                .addComponent(OrderProductNameSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(PackProductNameSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(PackageSearchProductButton))
                             .addGroup(EditPackagePanelLayout.createSequentialGroup()
                                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(EditPackagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1283,7 +1290,10 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(58, 58, 58)
                         .addComponent(PackageNameLabel2)
                         .addGap(56, 56, 56)
-                        .addComponent(PackageNameField2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(PackageNameField2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(EditPackagePanelLayout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(PackageGetAllProductButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(203, Short.MAX_VALUE))
         );
         EditPackagePanelLayout.setVerticalGroup(
@@ -1304,14 +1314,16 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(PackageNameField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13)))
                 .addGap(8, 8, 8)
-                .addComponent(OrderSearchProductButton1)
-                .addGap(11, 11, 11)
+                .addComponent(PackageGetAllProductButton)
+                .addGap(10, 10, 10)
                 .addGroup(EditPackagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(EditPackagePanelLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(OrderProductNameLabel1))
-                    .addComponent(OrderProductNameSearchField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                    .addGroup(EditPackagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(PackProductNameSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PackageSearchProductButton)))
+                .addGap(12, 12, 12)
                 .addGroup(EditPackagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                     .addComponent(jScrollPane8)
@@ -1756,6 +1768,8 @@ public class GUI extends javax.swing.JFrame {
         String descrip = PackageDescTextArea.getText();
         int price = Integer.parseInt(PackagePriceField.getText());
         con.addPackage(name, descrip, price);
+        con.buildPackageList();
+        packID = con.getNewPackageID(name, descrip, price);
         EditPackProdButtonActionPerformed(evt);
         clearPackageFields();
 
@@ -1815,10 +1829,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ExistingPackageButtonActionPerformed
 
     private void EditPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackageButtonActionPerformed
-        PackageIDField.setText("" + con.getPackageID(PackageJList.getSelectedIndex()));
+        packID = con.getPackageID(PackageJList.getSelectedIndex());
+        PackageIDField.setText("" + packID);
         PackageNameField.setText("" + con.getPackageName(PackageJList.getSelectedIndex()));
         PackageDescTextArea.setText("" + con.getPackageDiscription(PackageJList.getSelectedIndex()));
         PackagePriceField.setText("" + con.getPackagePrice(PackageJList.getSelectedIndex()));
+        
 
         AddPackageButton.setEnabled(true);
         EditPackProdButton.setEnabled(true);
@@ -1827,32 +1843,25 @@ public class GUI extends javax.swing.JFrame {
         EditPackageButton.setEnabled(true);
     }//GEN-LAST:event_EditPackageButtonActionPerformed
 
-    private void OrderSearchProductButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSearchProductButton1ActionPerformed
-        String name = OrderProductNameSearchField1.getText();
-        model4.clear();
-        if (name.isEmpty()) {
-            int counter = 0;
-            model4.clear();
-            while (counter < con.getProductListSize()) {
-                model4.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + "-" + con.getProductQuantiy(counter) + "-" + con.getProductPrice(counter));
-                counter++;
-            }
-            OrderProductsList1.setModel(model4);
-        } else {
-            model4.clear();
-            model4.addElement(con.searchProdByNameinArray(name));
-            OrderProductsList1.setModel(model4);
+    private void PackageGetAllProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackageGetAllProductButtonActionPerformed
+        con.clearProductList();
+        con.buildProductList();
+        int counter = 0;
+        model3.clear();
+        while (counter < con.getProductListSize()) {
+            model3.addElement(con.getProductId(counter) + "-" + con.getProductName(counter));
+            counter++;
         }
-        OrderProductNameSearchField1.setText("");
-    }//GEN-LAST:event_OrderSearchProductButton1ActionPerformed
+        PackProductsList.setModel(model3);
+    }//GEN-LAST:event_PackageGetAllProductButtonActionPerformed
 
     private void EditPackProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackProdButtonActionPerformed
         selectPanel(7);
         model5.clear();
 
-        PackageIDField2.setText(PackageIDField.getText());
+        
         PackageNameField2.setText(PackageNameField.getText());
-        con.loadPackageProducts(Integer.parseInt(PackageIDField.getText()));
+        con.loadPackageProducts(packID);
         for (int i = 0; i < con.getPackageProductListSize(); i++) {
             model5.addElement(con.getPackageProductList(i));
         }
@@ -2056,6 +2065,23 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_OrderProductSearchButtonActionPerformed
 
+    private void PackageSearchProductButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackageSearchProductButtonActionPerformed
+        con.clearProductList();
+        con.buildProductList();
+
+        String searchName = PackProductNameSearchField.getText();
+        if (con.searchProdByNameinArray(searchName)) {
+            int counter = 0;
+            model3.clear();
+            while (counter < con.getProductSearchListsize()) {
+                model3.addElement(con.getSearchProductId(counter) + "-" + con.getSearchProductName(counter));
+                counter++;
+            }
+            PackProductsList.setModel(model3);
+            
+        }
+    }//GEN-LAST:event_PackageSearchProductButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2254,26 +2280,26 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel OrderProductNameLabel;
     private javax.swing.JLabel OrderProductNameLabel1;
     private javax.swing.JTextField OrderProductNameSearchField;
-    private javax.swing.JTextField OrderProductNameSearchField1;
     private javax.swing.JLabel OrderProductQuantityLabel;
     private javax.swing.JLabel OrderProductQuantityLabel1;
     private javax.swing.JButton OrderProductSearchButton;
     private javax.swing.JList OrderProductsInOrderList;
     private javax.swing.JList OrderProductsList;
-    private javax.swing.JList OrderProductsList1;
     private javax.swing.JSpinner OrderQuantitySpinner;
     private javax.swing.JSpinner OrderQuantitySpinner1;
     private javax.swing.JButton OrderRemoveFromOrderButton;
     private javax.swing.JButton OrderSaveOrderButton;
-    private javax.swing.JButton OrderSearchProductButton1;
     private javax.swing.JTextField OrderStartDateField;
     private javax.swing.JLabel OrderStartDateLabel;
     private javax.swing.JTextField OrderTrucksNeededField;
     private javax.swing.JLabel OrderTrucksNeededLabel;
     private javax.swing.JButton OrdergetAllProductsButton;
     private javax.swing.JMenuItem PackNavDrop;
+    private javax.swing.JTextField PackProductNameSearchField;
+    private javax.swing.JList PackProductsList;
     private javax.swing.JTextArea PackageDescTextArea;
     private javax.swing.JLabel PackageDiscLabel;
+    private javax.swing.JButton PackageGetAllProductButton;
     private javax.swing.JTextField PackageIDField;
     private javax.swing.JTextField PackageIDField2;
     private javax.swing.JLabel PackageIDLabel;
@@ -2287,6 +2313,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JPanel PackagePanel;
     private javax.swing.JTextField PackagePriceField;
     private javax.swing.JLabel PackagePriceLabel;
+    private javax.swing.JButton PackageSearchProductButton;
     private javax.swing.JTextField PasswordField;
     private javax.swing.JLabel PasswordLabel;
     private javax.swing.JPanel PickUpOrTruckOrderPanel;

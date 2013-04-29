@@ -294,14 +294,17 @@ public class Controller{
     public boolean addProductsToPackageInDB(){
         return packageList.addProductsToPackageInDB();
     }
-    public boolean loadPackageProducts(int index){
-        return packageList.loadPackageProducts(index);
+    public boolean loadPackageProducts(int packID){
+        return packageList.loadPackageProducts(packID);
     }
     public boolean deletePackageProducts(){
         return packageList.deletePackageProducts();
     }
     public boolean deletePackage(){
         return packageList.deletePackage();
+    }
+    public int getNewPackageID(String packName, String packDis, int packPrice){
+        return packageList.getNewPackageID(packName, packDis, packPrice);
     }
     
     
