@@ -69,8 +69,8 @@ public class PackageList {
     public int getPackageProductListSize() {
         return currentPackage.packageProductList.size();
     }
-    public boolean addItemToPackageList(Product prod) {
-        return currentPackage.addItemToPackageList(prod);
+    public boolean addItemToPackageList(int prodID, String name, int vol, int quantity, String descrip, int price) {
+        return currentPackage.addItemToPackageList(prodID, name, vol, quantity, descrip, price);
     }
     public void removeFromPackageList(Product prod) {
         currentPackage.removeFromPackageList(prod);

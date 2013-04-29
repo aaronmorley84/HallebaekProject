@@ -1756,7 +1756,6 @@ public class GUI extends javax.swing.JFrame {
         System.out.println("finishdate="+finishDate);        
         int orderID = Integer.parseInt(OrderIDField.getText());
         con.editCustomerOrder(customerID, startDate, finishDate, 999);
-        //int orderID, int customerID, String dateArrival, String datePickUp, int balance
         con.addOrder();
         StartDateField.setText(OrderStartDateField.getText());
         FinishDateField.setText(OrderEndDateField.getText());
@@ -1778,8 +1777,6 @@ public class GUI extends javax.swing.JFrame {
         DeletePackageButton.setEnabled(false);
         ExistingPackageButton.setEnabled(true);
         EditPackageButton.setEnabled(false);
-        
-        
     }//GEN-LAST:event_AddPackageButtonActionPerformed
 
     private void PackageMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackageMenuButtonActionPerformed
@@ -1807,20 +1804,13 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_PackageNameFieldActionPerformed
 
     private void ExistingPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExistingPackageButtonActionPerformed
-        
-        
-        
-        
         con.clearPackageList();
         con.buildPackageList();
         model7.clear();
-        
-        
         for (int i = 0; i < con.getPackageListSize(); i++) {
             model7.addElement(con.getPackageID(i) + "-" + con.getPackageName(i));
         }
         PackageJList.setModel(model7);
-
         AddPackageButton.setEnabled(true);
         EditPackProdButton.setEnabled(false);
         DeletePackageButton.setEnabled(false);
@@ -1858,14 +1848,12 @@ public class GUI extends javax.swing.JFrame {
     private void EditPackProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackProdButtonActionPerformed
         selectPanel(7);
         model5.clear();
-
-        
         PackageNameField2.setText(PackageNameField.getText());
+        PackageIDField2.setText(""+packID);
         con.loadPackageProducts(packID);
         for (int i = 0; i < con.getPackageProductListSize(); i++) {
             model5.addElement(con.getPackageProductList(i));
         }
-
         ProductsInPackageList.setModel(model5);
         con.buildProductList();
     }//GEN-LAST:event_EditPackProdButtonActionPerformed
@@ -1886,6 +1874,21 @@ public class GUI extends javax.swing.JFrame {
 //        } else {
 //            JOptionPane.showMessageDialog(this, "You are exceeding allowed quantity!", "ERROR", JOptionPane.ERROR_MESSAGE);
 //        }
+        
+        int searchID = Integer.parseInt(("" + PackProductsList.getSelectedValue()).substring(0, 5));
+        int quantityForOrder = (Integer)OrderQuantitySpinner1.getValue();
+        int index = con.searchProdByIDinArray(searchID);
+        
+        con.addItemToPackageList(con.getProductId(index), con.getProductName(index), con.getProductVolume(index), 
+                quantityForOrder, con.getProductDescription(index), 
+                con.getProductPrice(index));
+        int counter = 0;
+        model6.clear();
+        while (counter < con.getCurrentOrderProductListSize()) {
+            model6.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + " QTY: " + con.getProductQuantiy(counter));
+            counter++;
+        }
+        OrderProductsInOrderList.setModel(model6);
     }//GEN-LAST:event_AddProductToPackageButtonActionPerformed
 
     private void RemoveFromPackageButtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveFromPackageButtoActionPerformed

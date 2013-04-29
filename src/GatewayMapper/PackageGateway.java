@@ -153,7 +153,7 @@ public class PackageGateway {
             statement.setInt(1, packID);
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
-                packageList.addItemToPackageList(new Product(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6)));
+                packageList.addItemToPackageList(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6));
             }
         } catch (Exception e) {
             System.out.println("packages Insertion error!");

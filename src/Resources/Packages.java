@@ -19,11 +19,12 @@ public class Packages {
         this.description = description;
     }
 
-    public boolean addItemToPackageList(Product prod) {
+    public boolean addItemToPackageList(int prodID, String name, int vol, int quantity, String descrip, int price) {
+        Product newProduct = new Product(prodID, name, vol, quantity, descrip, price);
         boolean success = false;
-        if (!checkForDuplicate(prod.getProductID())) {
+        if (!checkForDuplicate(newProduct.getProductID())) {
             success = true;
-            packageProductList.add(prod);
+            packageProductList.add(newProduct);
         }
         return success;
     }

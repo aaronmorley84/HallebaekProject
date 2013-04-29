@@ -285,8 +285,8 @@ public class Controller{
     public boolean addPackage(String name, String description, int price){
         return packageList.addPackage(name, description, price);
     }
-    public boolean addItemToPackageList(Product prod){
-        return packageList.addItemToPackageList(prod);
+    public boolean addItemToPackageList(int prodID, String name, int vol, int quantity, String descrip, int price){
+        return packageList.addItemToPackageList(prodID, name, vol, quantity, descrip, price);
     }
     public void removeFromPackageList(Product prod){
         packageList.removeFromPackageList(prod);
