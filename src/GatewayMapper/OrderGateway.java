@@ -11,6 +11,7 @@ import java.sql.SQLException;
 /**
  *
  * @author Adrian & Kris
+ * dont use orderList just construct a "currentOrder"
  */
 public class OrderGateway {
     OrderList orderlist;
@@ -50,18 +51,22 @@ public class OrderGateway {
         return success;
     }//end of build order
     
-    public boolean addOrder() {
+    public boolean addOrder(OrderList orderlist) {
+        this.orderlist = orderlist;
         boolean success = false;
 //        System.out.println(orderlist.getProductList(0).getProductID());
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into order_product "
                 + "VALUES (orderseq.currval,?,?)";
         PreparedStatement statement = null;
-        for (int i = 0; i < orderlist.getCurrentOrderProductListSize(); i++) {
+        System.out.println(orderlist.getOrderListSize());
+        for (int i = 0; i < orderlist.getOrderListSize(); i++) {
             try {
                 statement = con.prepareStatement(SQLString1);
                 statement.setInt(1, orderlist.getProductList(i).getProductID());
+                System.out.println(orderlist.getProductList(i).getProductID());
                 statement.setInt(2, orderlist.getProductList(i).getQuantity());
+                System.out.println(orderlist.getProductList(i).getQuantity());
                 statement.executeUpdate();
                 success = true;                
             } catch (Exception e) {

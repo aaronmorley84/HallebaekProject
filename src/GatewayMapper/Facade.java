@@ -67,9 +67,9 @@ public class Facade {
         OrderGateway og = new OrderGateway();
         return og.buildOrderList(orderlist);
     }
-    public boolean addOrder(){
+    public boolean addOrder(OrderList orderlist){
         OrderGateway og = new OrderGateway();
-        return og.addOrder();
+        return og.addOrder(orderlist);
     }
     public boolean addCustomerOrder(int customerID, String startDate, String finishDate){
         OrderGateway og = new OrderGateway();

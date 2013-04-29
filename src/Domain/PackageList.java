@@ -157,5 +157,17 @@ public class PackageList {
 
     }
     
+    public int getNewPackageID(String packName, String packDis, int packPrice){
+        int packid = 0;
+        for (int i = 0; i < packageList.size(); i++) {
+            if(packageList.get(i).getName().equals(packName) && packageList.get(i).getDescription().equals(packDis)
+                    && packageList.get(i).getPrice() == packPrice){
+                packid = packageList.get(i).getPackageID();
+//                currentOrder = orderList.get(i);
+            }
+        }
+        
+        return packid;
+    }
 
 }
