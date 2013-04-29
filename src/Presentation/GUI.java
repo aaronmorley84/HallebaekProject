@@ -1481,7 +1481,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_CustNavDropActionPerformed
 
     private void OrdNavDropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrdNavDropActionPerformed
-        selectPanel(5);
+        selectPanel(8);
+        CreateOrderButton.setEnabled(false);
     }//GEN-LAST:event_OrdNavDropActionPerformed
 
     private void ProductMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProductMenuButtonActionPerformed
@@ -1763,6 +1764,8 @@ public class GUI extends javax.swing.JFrame {
         DeletePackageButton.setEnabled(false);
         ExistingPackageButton.setEnabled(true);
         EditPackageButton.setEnabled(false);
+        
+        
     }//GEN-LAST:event_AddPackageButtonActionPerformed
 
     private void PackageMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PackageMenuButtonActionPerformed
@@ -1790,10 +1793,15 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_PackageNameFieldActionPerformed
 
     private void ExistingPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExistingPackageButtonActionPerformed
-        model7.clear();
-        PackageJList.setModel(model7);
+        
+        
+        
+        
         con.clearPackageList();
         con.buildPackageList();
+        model7.clear();
+        
+        
         for (int i = 0; i < con.getPackageListSize(); i++) {
             model7.addElement(con.getPackageID(i) + "-" + con.getPackageName(i));
         }

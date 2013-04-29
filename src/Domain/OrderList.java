@@ -152,9 +152,6 @@ public class OrderList {
 //                currentOrder = orderList.get(i);
             }
         }
-        Order newOrder = new Order(orderid, custID, startDate, endDate, 0);
-        orderList.add(newOrder);  
-        currentOrder = newOrder;
         return orderid;
     }
 }
