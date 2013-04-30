@@ -1728,7 +1728,7 @@ public class GUI extends javax.swing.JFrame {
         int counter = 0;
         model6.clear();
         while (counter < con.getCurrentOrderProductListSize()) {
-            model6.addElement(con.getOrderProductID(counter) + "-" + con.getOrderProductName(counter) + " QTY: " + con.getOrderProductQTY(counter));
+            model6.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + " QTY: " + con.getProductQuantiy(counter));
             counter++;
         }
         OrderProductsInOrderList.setModel(model6);
