@@ -306,13 +306,13 @@ public class Controller{
         return packageList.addProductsToPackageInDB(packageList);
     }
     public boolean loadPackageProducts(int packID){
-        return packageList.loadPackageProducts(packID);
+        return packageList.loadPackageProducts(packID, packageList);
     }
     public boolean deletePackageProducts(int packID){
         return packageList.deletePackageProducts(packID);
     }
-    public boolean deletePackage(){
-        return packageList.deletePackage();
+    public boolean deletePackage(int packID){
+        return packageList.deletePackage(packID);
     }
     public int getNewPackageID(String packName, String packDis, int packPrice){
         return packageList.getNewPackageID(packName, packDis, packPrice);

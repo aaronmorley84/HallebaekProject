@@ -128,12 +128,12 @@ public class PackageList {
         }
     }
 
-    public boolean loadPackageProducts(int packID) {
-        boolean success = facade.loadPackageProducts(packID);
+    public boolean loadPackageProducts(int packID, PackageList packageList) {
+        boolean success = false;
         //getCurrentPackage(index);
-        if (success) {
+        if (facade.loadPackageProducts(packID, packageList)) {
             JOptionPane.showMessageDialog(null, "Products loaded into Packages", "Success", JOptionPane.INFORMATION_MESSAGE);
-            return success;
+            success = true;
         } else {
             if (currentPackage.packageProductList.isEmpty()){
             JOptionPane.showMessageDialog(null, "There are no products in this package Yet", "Infomation", JOptionPane.INFORMATION_MESSAGE);
@@ -148,25 +148,24 @@ public class PackageList {
     }
 
     public boolean deletePackageProducts(int packID) {
+        boolean success = false;
         if (facade.deletePackageProducts(packID)) {
-            JOptionPane.showMessageDialog(null, "Products deleted frm Package Database", "Success", JOptionPane.INFORMATION_MESSAGE);
-            return true;
-        } else {
-            JOptionPane.showMessageDialog(null, "Error deleting Poducts from Package Database", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+            success  = true;
         }
+        return success;
     }
 
-    public boolean deletePackage() {
-        if (facade.deletePackage()) {
+    public boolean deletePackage(int packID) {
+        boolean success = false;
+        if (facade.deletePackage(packID)) {
             JOptionPane.showMessageDialog(null, "Package deleted from Database", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-            return true;
+           success = true;
         } else {
             JOptionPane.showMessageDialog(null, "Error deleting Package from Database", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+           
         }
-
+        return success;
     }
     
     public int getNewPackageID(String packName, String packDis, int packPrice){
