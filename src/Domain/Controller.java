@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 
 public class Controller{
-    CustomerList customerList = new CustomerList();
+    CustomerListInterface customerList = new CustomerList();
     ProductList productList = new ProductList();
     PackageList packageList = new PackageList();
     OrderList orderList = new OrderList();
@@ -303,16 +303,16 @@ public class Controller{
         packageList.removeFromPackageList(index);
     }
     public boolean addProductsToPackageInDB(){
-        return packageList.addProductsToPackageInDB();
+        return packageList.addProductsToPackageInDB(packageList);
     }
     public boolean loadPackageProducts(int packID){
-        return packageList.loadPackageProducts(packID);
+        return packageList.loadPackageProducts(packID, packageList);
     }
-    public boolean deletePackageProducts(){
-        return packageList.deletePackageProducts();
+    public boolean deletePackageProducts(int packID){
+        return packageList.deletePackageProducts(packID);
     }
-    public boolean deletePackage(){
-        return packageList.deletePackage();
+    public boolean deletePackage(int packID){
+        return packageList.deletePackage(packID);
     }
     public int getNewPackageID(String packName, String packDis, int packPrice){
         return packageList.getNewPackageID(packName, packDis, packPrice);

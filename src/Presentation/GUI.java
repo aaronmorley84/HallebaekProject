@@ -19,7 +19,7 @@ public class GUI extends javax.swing.JFrame {
 
     Controller con = new Controller();
     DefaultListModel model1, model2, model3, model4, model5, model6, model7, model8, model9;
-    private int userRank, packID;
+    private int userRank;
     private boolean lockCustomer;
 
     /**
@@ -1728,7 +1728,7 @@ public class GUI extends javax.swing.JFrame {
         int counter = 0;
         model6.clear();
         while (counter < con.getCurrentOrderProductListSize()) {
-            model6.addElement(con.getOrderProductID(counter) + "-" + con.getOrderProductName(counter) + " QTY: " + con.getOrderProductQTY(counter));
+            model6.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + " QTY: " + con.getProductQuantiy(counter));
             counter++;
         }
         OrderProductsInOrderList.setModel(model6);
@@ -1768,7 +1768,7 @@ public class GUI extends javax.swing.JFrame {
         int price = Integer.parseInt(PackagePriceField.getText());
         con.addPackage(name, descrip, price);
         con.buildPackageList();
-        packID = con.getNewPackageID(name, descrip, price);
+        //packID = con.getNewPackageID(name, descrip, price);
         clearPackageFields();
         ExistingPackageButtonActionPerformed(evt);
        
@@ -1819,8 +1819,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_ExistingPackageButtonActionPerformed
 
     private void EditPackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackageButtonActionPerformed
-        packID = con.getPackageID(PackageJList.getSelectedIndex());
-        PackageIDField.setText("" + packID);
+        PackageIDField.setText(""+con.getPackageID(PackageJList.getSelectedIndex()));
         PackageNameField.setText("" + con.getPackageName(PackageJList.getSelectedIndex()));
         PackageDescTextArea.setText("" + con.getPackageDiscription(PackageJList.getSelectedIndex()));
         PackagePriceField.setText("" + con.getPackagePrice(PackageJList.getSelectedIndex()));
@@ -1847,14 +1846,16 @@ public class GUI extends javax.swing.JFrame {
 
     private void EditPackProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPackProdButtonActionPerformed
         selectPanel(7);
-        model5.clear();
-        PackageNameField2.setText(PackageNameField.getText());
+        model6.clear();
+        int packID = Integer.parseInt(PackageIDField.getText());
         PackageIDField2.setText(""+packID);
+        PackageNameField2.setText(PackageNameField.getText());
+        System.out.println(packID);
         con.loadPackageProducts(packID);
         for (int i = 0; i < con.getPackageProductListSize(); i++) {
-            model5.addElement(con.getPackageProductList(i));
+            model6.addElement(con.getPackageProductID(i) + "-" + con.getPackageProductName(i) + " QTY: " + con.getPackageProductQTY(i));
         }
-        ProductsInPackageList.setModel(model5);
+        ProductsInPackageList.setModel(model6);
         con.buildProductList();
         clearPackageFields();
     }//GEN-LAST:event_EditPackProdButtonActionPerformed
@@ -1895,7 +1896,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_PackageNameField2ActionPerformed
 
     private void SavePackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavePackageButtonActionPerformed
-        con.deletePackageProducts();
+        int packID = Integer.parseInt(PackageIDField2.getText());
+        con.deletePackageProducts(packID);
         if (con.addProductsToPackageInDB()) {
             JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -1904,8 +1906,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_SavePackageButtonActionPerformed
 
     private void DeletePackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletePackageButtonActionPerformed
-        con.deletePackageProducts();
-        con.deletePackage();
+        int packID = Integer.parseInt(PackageIDField.getText());
+        con.deletePackageProducts(packID);
+        con.deletePackage(packID);
 
         AddPackageButton.setEnabled(true);
         EditPackProdButton.setEnabled(false);

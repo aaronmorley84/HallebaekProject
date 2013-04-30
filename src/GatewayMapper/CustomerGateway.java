@@ -5,7 +5,7 @@
 package GatewayMapper;
 
 import DBConnection.ConnectionTools;
-import Domain.CustomerList;
+import Domain.CustomerListInterface;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,10 +18,10 @@ import java.sql.SQLException;
  * @author Foxy, 05-04-31, v0.01
  */
 public class CustomerGateway {
-    CustomerList customerList;
+    CustomerListInterface customerList;
     
     /*Used to build a list of customers. */
-    public boolean buildCustomerList(CustomerList customerlist) {
+    public boolean buildCustomerList(CustomerListInterface customerlist) {
         this.customerList = customerlist;
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();

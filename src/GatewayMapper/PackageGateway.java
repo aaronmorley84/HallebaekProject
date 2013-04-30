@@ -109,7 +109,7 @@ public class PackageGateway {
 
     
 
-    public boolean addProductsToPackageInDB() {
+    public boolean addProductsToPackageInDB(PackageList packageList) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into package_product "
@@ -139,12 +139,13 @@ public class PackageGateway {
         return success;
     }
 
-    public boolean loadPackageProducts(int packID) {
+    public boolean loadPackageProducts(int packID, PackageList packageList) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT products.productid,products.pname,products.pvolume,package_product.quanity,products.pdescription,products.pprice "
-                + "fROM products JOIN package_product ON products.productid = package_product.productid "
-                + "WHERE package_product.packageid = ?";
+                + "FROM products JOIN package_product ON products.productid = package_product.productid "
+                + "WHERE package_product.packageid = ? ";
+        
         
 
         PreparedStatement statement = null;
@@ -152,9 +153,11 @@ public class PackageGateway {
             statement = con.prepareStatement(SQLString1);
             statement.setInt(1, packID);
             ResultSet rs = statement.executeQuery();
+            System.out.println("RS"+rs);
             while (rs.next()){
                 packageList.addItemToPackageList(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getInt(6));
             }
+            success = true;
         } catch (Exception e) {
             System.out.println("packages Insertion error!");
             System.out.println(e.getMessage());
@@ -162,7 +165,7 @@ public class PackageGateway {
 
         return success;
     }
-    public boolean deletePackageProducts(){
+    public boolean deletePackageProducts(int packID){
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "DELETE FROM package_product WHERE packageid = ?";
@@ -170,8 +173,9 @@ public class PackageGateway {
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, packageList.getPackID());
+            statement.setInt(1, packID);
             statement.executeUpdate();
+            success = true;
         } catch (Exception e) {
             System.out.println("packages Delete error!");
             System.out.println(e.getMessage());
@@ -179,7 +183,7 @@ public class PackageGateway {
         return success;
     }
     
-    public boolean deletePackage(){
+    public boolean deletePackage(int packID){
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "DELETE FROM packages WHERE packageid = ?";
@@ -187,8 +191,9 @@ public class PackageGateway {
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, packageList.getPackID());
+            statement.setInt(1, packID);
             statement.executeUpdate();
+            success = true;
         } catch (Exception e) {
             System.out.println("packages Delete error!");
             System.out.println(e.getMessage());
