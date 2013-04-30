@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author Aaron, Lars, 18/04/2013
  */
-public class CustomerList {
+public class CustomerList implements CustomerListInterface{
 
     private ArrayList<Customer> customerList = new ArrayList<>();
     private Customer currentCustomer;
@@ -72,7 +72,7 @@ public class CustomerList {
     }
     
     //communication to customerGateway
-    public boolean buildCustomerList(CustomerList customerList){
+    public boolean buildCustomerList(CustomerListInterface customerList){
         boolean success = false;
         if (facade.buildCustomerList(customerList)){
             success = true;

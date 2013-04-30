@@ -4,6 +4,7 @@
  */
 package GatewayMapper;
 import Domain.CustomerList;
+import Domain.CustomerListInterface;
 import Domain.OrderList;
 import Domain.PackageList;
 import Domain.ProductList;
@@ -19,7 +20,7 @@ public class Facade {
     //method for unlocking.
     
     //Customer gateway
-    public boolean buildCustomerList(CustomerList customerList){
+    public boolean buildCustomerList(CustomerListInterface customerList){
         CustomerGateway cg = new CustomerGateway();
         return cg.buildCustomerList(customerList);
     }

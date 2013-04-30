@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 
 public class Controller{
-    CustomerList customerList = new CustomerList();
+    CustomerListInterface customerList = new CustomerList();
     ProductList productList = new ProductList();
     PackageList packageList = new PackageList();
     OrderList orderList = new OrderList();
