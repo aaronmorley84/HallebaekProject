@@ -16,7 +16,7 @@ public class NewMain {
     public static void main(String[] args) {
         Controller c = new Controller();
         
-        if(c.addCustomerOrder(100001, "2014-01-01", "2014-01-02")){
+        if(c.addCustomerOrder(100002, "2014-01-01", "2014-01-02")){
             System.out.println("Customer order added!");
         }else{
             System.out.println("Did not add customer order!");
@@ -47,7 +47,7 @@ public class NewMain {
             System.out.println("Did not add product order!");
         }
         
-        if(c.addPickUp(orderid, 100001, "2014-01-01", "2014-01-02")){
+        if(c.addPickUp(orderid, 100002, "2014-01-01", "2014-01-02")){
             System.out.println("Pick up added!");
         }else{
             System.out.println("Did not add pick up!");
