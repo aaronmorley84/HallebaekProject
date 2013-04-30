@@ -15,28 +15,29 @@ public class NewMain {
      */
     public static void main(String[] args) {
         Controller c = new Controller();
-        
-        if(c.addCustomerOrder(100002, "2014-01-01", "2014-01-02")){
+        int custID = 100002;
+        String startdate = "4015-01-01";
+        String finishdate = "4015-01-02";
+        if(c.addCustomerOrder(custID, startdate, finishdate)){
             System.out.println("Customer order added!");
         }else{
             System.out.println("Did not add customer order!");
         }
         if(c.buildOrderList()){
             System.out.println("Built order list!");
-            System.out.println("OrderID at index 0  int order list = "+c.getOrderID(0));
         }else{
             System.out.println("Did not build order list!");
         }
         
         if(c.buildProductList()){
             System.out.println("Built product list!");
-            System.out.println("ProductID at index 0 in product list = "+c.getProductId(0));
+            System.out.println("ProductID at index 1 in product list = "+c.getProductId(1));
         }else{
             System.out.println("Did not build product list!");
         }
-        System.out.println("Adding "+c.getProductName(0)+" to order list!");
-        c.addItemToOrderList(c.getProductId(0), c.getProductName(0), c.getProductVolume(0), 
-                1, c.getProductDescription(0), c.getProductPrice(0), 1);
+        System.out.println("Adding "+c.getProductName(1)+" to order list!");
+        c.addItemToOrderList(c.getProductId(1), c.getProductName(1), c.getProductVolume(1), 
+                1, c.getProductDescription(1), c.getProductPrice(1), 1);
         
         int orderid = c.getOrderID(0);
         System.out.println("Order ID = "+orderid);
@@ -47,28 +48,34 @@ public class NewMain {
             System.out.println("Did not add product order!");
         }
         
-        if(c.addPickUp(orderid, 100002, "2014-01-01", "2014-01-02")){
+        if(c.addPickUp(orderid, custID, startdate, finishdate)){
             System.out.println("Pick up added!");
         }else{
             System.out.println("Did not add pick up!");
         }
-        
-        c.checkFreeTrucks("2014-01-01");
-        
+                
         if(c.buildTruckList()){
             System.out.println("Built truck list!");
             System.out.println("TruckID at index 0 in truck list = "+c.getAvailableTruck(0));
         }else{
             System.out.println("Did not build truck list!");
         }
-        if(c.addTruckOrder(orderid, c.getAvailableTruck(0), "delivery", "2014-01-01")){
+        if(c.buildTruckOrderList()){
+            System.out.println("Built truck order list!");
+        }else{
+            System.out.println("Did not build truck order list!");
+        }
+        
+        c.checkFreeTrucks(startdate);
+        
+        if(c.addTruckOrder(orderid, c.getAvailableTruck(0), "delivery", startdate)){
             System.out.println("Truck order added!");
         }else{
             System.out.println("Did not add truck order!");
         }
         
         if(c.buildTruckOrderList()){
-            System.out.println("Built truck order lsit!");
+            System.out.println("Built truck order list again!");
         }else{
             System.out.println("Did not build truck order list");
         }

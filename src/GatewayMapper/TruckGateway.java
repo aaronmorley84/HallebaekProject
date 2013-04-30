@@ -20,7 +20,7 @@ public class TruckGateway {
         this.trucklist = trucklist;
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "SELECT *"
+        String SQLString1 = "SELECT * "
                 + "FROM trucks ";
         PreparedStatement statement = null;
         try {
@@ -30,7 +30,7 @@ public class TruckGateway {
                 trucklist.addToTruckList(rs.getInt(1),
                         rs.getString(2),
                         rs.getInt(3),
-                        rs.getString(4));
+                        null);
             }
             success = true;
         } catch (Exception e) {
@@ -52,7 +52,7 @@ public class TruckGateway {
         this.trucklist = trucklist;
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
-        String SQLString1 = "SELECT *"
+        String SQLString1 = "SELECT * "
                 + "FROM truck_order ";
         PreparedStatement statement = null;
         try {
