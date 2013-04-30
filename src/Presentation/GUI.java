@@ -1756,7 +1756,7 @@ public class GUI extends javax.swing.JFrame {
         System.out.println("finishdate="+finishDate);        
         int orderID = Integer.parseInt(OrderIDField.getText());
         con.editCustomerOrder(customerID, startDate, finishDate, 999);
-        con.addOrder();
+        con.addOrder(orderID);
         StartDateField.setText(OrderStartDateField.getText());
         FinishDateField.setText(OrderEndDateField.getText());
         selectPanel(9);
