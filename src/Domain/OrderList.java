@@ -64,6 +64,7 @@ public class OrderList {
     public Product getProductList(int i){
         return currentOrder.orderProductList.get(i);
     }
+
     public int getOrderProductID(int i){
         return currentOrder.orderProductList.get(i).getProductID();
     }
@@ -72,6 +73,10 @@ public class OrderList {
     }
     public int getOrderProductQTY(int i){
         return currentOrder.orderProductList.get(i).getQuantity();
+    }
+
+    public Order getCurrOrder(){
+        return currentOrder;
     }
     
     //These are the setters
@@ -123,9 +128,9 @@ public class OrderList {
         return facade.buildOrderList(orderlist);
     }
     
-    public boolean addOrder(OrderList orderlist){
+    public boolean addOrder(int orderid, OrderList orderlist){
         boolean success = false;
-        if(facade.addOrder(orderlist)){
+        if(facade.addOrder(orderid, orderlist)){
             JOptionPane.showMessageDialog(null, "Product order saved to database!", "Success", JOptionPane.INFORMATION_MESSAGE);
             success = true;
         }else{
@@ -157,10 +162,16 @@ public class OrderList {
         for (int i = 0; i < orderList.size(); i++) {
             if(orderList.get(i).getCustomer()==custID && orderList.get(i).getStartDate().equals(startDate)
                     && orderList.get(i).getFinishDate().equals(endDate)){
+                System.out.println("Order at index "+i+" in order list: "+orderList.get(i).toString());
                 orderid = orderList.get(i).getOrderID();
 //                currentOrder = orderList.get(i);
+            }else{
+                System.out.println("Did not find order at index "+i+" in order list.");
             }
         }
+
+        
+
         return orderid;
     }
 }

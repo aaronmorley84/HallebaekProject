@@ -11,14 +11,13 @@ import java.sql.SQLException;
 /**
  *
  * @author Adrian & Kris
- * dont use orderList just construct a "currentOrder"
  */
 public class OrderGateway {
     OrderList orderlist;
         
     public boolean buildOrderList(OrderList orderList) {
         this.orderlist = orderList;
-        orderlist.clearOrderList();
+        orderList.clearOrderList();
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * "
@@ -51,22 +50,21 @@ public class OrderGateway {
         return success;
     }//end of build order
     
-    public boolean addOrder(OrderList orderlist) {
-        this.orderlist = orderlist;
+    public boolean addOrder(int orderid, OrderList orderlist) {
+//        this.orderlist = orderlist;
         boolean success = false;
 //        System.out.println(orderlist.getProductList(0).getProductID());
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into order_product "
-                + "VALUES (orderseq.currval,?,?)";
+                + "VALUES (?,?,?)";
         PreparedStatement statement = null;
-        System.out.println(orderlist.getOrderListSize());
-        for (int i = 0; i < orderlist.getOrderListSize(); i++) {
+        for (int i = 0; i < orderlist.getCurrOrder().orderProductList.size(); i++) {
+            System.out.println("Product at index "+i+" = "+orderlist.getCurrOrder().orderProductList.get(i).getProductID());
             try {
                 statement = con.prepareStatement(SQLString1);
-                statement.setInt(1, orderlist.getProductList(i).getProductID());
-                System.out.println(orderlist.getProductList(i).getProductID());
-                statement.setInt(2, orderlist.getProductList(i).getQuantity());
-                System.out.println(orderlist.getProductList(i).getQuantity());
+                statement.setInt(1, orderid);
+                statement.setInt(2, orderlist.getCurrOrder().orderProductList.get(i).getProductID());
+                statement.setInt(3, orderlist.getCurrOrder().orderProductList.get(i).getQuantity());
                 statement.executeUpdate();
                 success = true;                
             } catch (Exception e) {
