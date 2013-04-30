@@ -1895,7 +1895,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_PackageNameField2ActionPerformed
 
     private void SavePackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SavePackageButtonActionPerformed
-        con.deletePackageProducts();
+        int packID = Integer.parseInt(PackageIDField2.getText());
+        con.deletePackageProducts(packID);
         if (con.addProductsToPackageInDB()) {
             JOptionPane.showMessageDialog(this, "Order saved to Data Base!", "SAVED!", JOptionPane.INFORMATION_MESSAGE);
         } else {
@@ -1904,7 +1905,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_SavePackageButtonActionPerformed
 
     private void DeletePackageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletePackageButtonActionPerformed
-        con.deletePackageProducts();
+        int packID = Integer.parseInt(PackageIDField.getText());
+        con.deletePackageProducts(packID);
         con.deletePackage();
 
         AddPackageButton.setEnabled(true);

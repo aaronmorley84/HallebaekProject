@@ -118,8 +118,8 @@ public class PackageList {
         return success;
     }
 
-    public boolean addProductsToPackageInDB() {
-        if (facade.addProductsToPackageInDB()) {
+    public boolean addProductsToPackageInDB(PackageList packageList) {
+        if (facade.addProductsToPackageInDB(packageList)) {
             JOptionPane.showMessageDialog(null, "Product Added to PackageDatabase", "Success", JOptionPane.INFORMATION_MESSAGE);
             return true;
         } else {
@@ -147,8 +147,8 @@ public class PackageList {
         return success;
     }
 
-    public boolean deletePackageProducts() {
-        if (facade.deletePackageProducts()) {
+    public boolean deletePackageProducts(int packID) {
+        if (facade.deletePackageProducts(packID)) {
             JOptionPane.showMessageDialog(null, "Products deleted frm Package Database", "Success", JOptionPane.INFORMATION_MESSAGE);
             return true;
         } else {

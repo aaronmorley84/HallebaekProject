@@ -109,7 +109,7 @@ public class PackageGateway {
 
     
 
-    public boolean addProductsToPackageInDB() {
+    public boolean addProductsToPackageInDB(PackageList packageList) {
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "INSERT into package_product "
@@ -162,7 +162,7 @@ public class PackageGateway {
 
         return success;
     }
-    public boolean deletePackageProducts(){
+    public boolean deletePackageProducts(int packID){
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "DELETE FROM package_product WHERE packageid = ?";
@@ -170,7 +170,7 @@ public class PackageGateway {
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, packageList.getPackID());
+            statement.setInt(1, packID);
             statement.executeUpdate();
         } catch (Exception e) {
             System.out.println("packages Delete error!");

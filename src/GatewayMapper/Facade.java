@@ -92,17 +92,17 @@ public class Facade {
         PackageGateway pg = new PackageGateway();
         return pg.addPackage(packName, packDesc, packPrice);
     }
-    public boolean addProductsToPackageInDB(){
+    public boolean addProductsToPackageInDB(PackageList packageList){
         PackageGateway pg = new PackageGateway();
-        return pg.addProductsToPackageInDB();
+        return pg.addProductsToPackageInDB(packageList);
     }
     public boolean loadPackageProducts(int packID){
         PackageGateway pg = new PackageGateway();
         return pg.loadPackageProducts(packID);
     }
-    public boolean deletePackageProducts(){
+    public boolean deletePackageProducts(int packID){
         PackageGateway pg = new PackageGateway();
-        return pg.deletePackageProducts();
+        return pg.deletePackageProducts(packID);
     }
     public boolean deletePackage(){
         PackageGateway pg = new PackageGateway();

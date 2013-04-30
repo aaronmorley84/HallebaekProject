@@ -303,13 +303,13 @@ public class Controller{
         packageList.removeFromPackageList(index);
     }
     public boolean addProductsToPackageInDB(){
-        return packageList.addProductsToPackageInDB();
+        return packageList.addProductsToPackageInDB(packageList);
     }
     public boolean loadPackageProducts(int packID){
         return packageList.loadPackageProducts(packID);
     }
-    public boolean deletePackageProducts(){
-        return packageList.deletePackageProducts();
+    public boolean deletePackageProducts(int packID){
+        return packageList.deletePackageProducts(packID);
     }
     public boolean deletePackage(){
         return packageList.deletePackage();
