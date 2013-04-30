@@ -98,18 +98,20 @@ public class OrderList {
     
     //communication to orderProductList (10001, "tent", 1, 1, "a tent", 100, 1)
     public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity){ 
-        if(currentOrder.addItemToOrderList(prodID, name, vol, quantity, descrip, price)){//, availableQuantity)){            
+        boolean success = false;
+        if(currentOrder.addItemToOrderList(prodID, name, vol, quantity, descrip, price)){           
             System.out.println("added!!!!!!!");
             System.out.println(currentOrder.orderProductList.toString());
-            return true;
+            success = true;
         }else{
             if(quantity > availableQuantity){
                 JOptionPane.showMessageDialog(null, "Requested quantity exceeds available quantity of this product!", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
+                success = false;
             }
             JOptionPane.showMessageDialog(null, "Product already exists in order!", "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
+            success = false;
         }
+        return success;
     }
     public void removeProductFromOrderList(int index) {
         currentOrder.removeFromOrderList(index);
