@@ -122,7 +122,8 @@ public class Controller{
     public int getOrderListSize(){
         return orderList.getOrderListSize();        
     }
-    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity){
+    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity, int indexOfOrder){
+        orderList.getCurrentOrder(indexOfOrder);
         return orderList.addItemToOrderList(prodID, name, vol, quantity, descrip, price, availableQuantity);
     }
     public void removeFromOrderList(int index){

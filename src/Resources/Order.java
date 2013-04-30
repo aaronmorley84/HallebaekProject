@@ -25,13 +25,13 @@ public class Order {
     public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price) {//, int availableQuantity){
         Product prod = new Product(prodID, name, vol, quantity, descrip, price);
         boolean success = false;
-        if (!checkForDuplicate(prod.getProductID())) {
-            //if(quantity <= availableQuantity){
-            balance = balance + (prod.price * prod.quantity);
+        
+        if (!checkForDuplicate(prod.getProductID())) {            
+            this.balance = balance + (prod.price * prod.quantity);
             setBalance(balance);
             success = true;
             orderProductList.add(prod);
-            //}
+            
         }
         return success;
     }
@@ -43,14 +43,15 @@ public class Order {
     }
 
     public boolean checkForDuplicate(int ID) {
+        boolean checker = false;
         if (!orderProductList.isEmpty()) {
             for (int i = 0; i < orderProductList.size(); i++) {
                 if (orderProductList.get(i).getProductID() == ID) {
-                    return true;
+                    checker = true;
                 }
             }
         }
-        return false;
+        return checker;
     }
 
     public void addDiscount(double discount) {
