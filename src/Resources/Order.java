@@ -35,6 +35,16 @@ public class Order {
         }
         return success;
     }
+    
+    public int searchOrderProdByIDinArray(int ID) {
+        int productIndex = -1;
+        for (int i = 0; i < orderProductList.size(); i++) {
+            if (orderProductList.get(i).getProductID() == ID) {
+                productIndex = i;
+            }
+        }
+        return productIndex;
+    }
 
     public void removeFromOrderList(int index) {
         balance = balance - (orderProductList.get(index).price * orderProductList.get(index).quantity);

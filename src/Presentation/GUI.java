@@ -1728,7 +1728,7 @@ public class GUI extends javax.swing.JFrame {
         int counter = 0;
         model6.clear();
         while (counter < con.getCurrentOrderProductListSize()) {
-            model6.addElement(con.getProductId(counter) + "-" + con.getProductName(counter) + " QTY: " + con.getProductQuantiy(counter));
+            model6.addElement(con.getOrderProductID(counter) + "-" + con.getOrderProductName(counter) + " QTY: " + con.getOrderProductQTY(counter));
             counter++;
         }
         OrderProductsInOrderList.setModel(model6);
@@ -1736,7 +1736,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void OrderRemoveFromOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderRemoveFromOrderButtonActionPerformed
         int searchID = Integer.parseInt(("" + OrderProductsInOrderList.getSelectedValue()).substring(0, 5));
-        int index = con.searchProdByIDinArray(searchID);// this needs to be changed so it goes through right arraylist
+        int index = con.searchOrderProdByIDinArray(searchID);// this needs to be changed so it goes through right arraylist
         con.removeFromOrderList(index);
         int counter = 0;
         model6.clear();

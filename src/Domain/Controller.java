@@ -122,8 +122,7 @@ public class Controller{
     public int getOrderListSize(){
         return orderList.getOrderListSize();        
     }
-    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity, int indexOfOrder){
-        orderList.getCurrentOrder(indexOfOrder);
+    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity){
         return orderList.addItemToOrderList(prodID, name, vol, quantity, descrip, price, availableQuantity);
     }
     public void removeFromOrderList(int index){
@@ -155,6 +154,9 @@ public class Controller{
     }
     public int getOrderProductQTY(int i){
         return orderList.getOrderProductQTY(i);
+    }
+    public int searchOrderProdByIDinArray(int ID){
+        return orderList.searchOrderProdByIDinArray(ID);
     }
     //Methods for TruckList()
     public void getcurrTruck(int i){
