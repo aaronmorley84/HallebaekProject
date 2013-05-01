@@ -183,10 +183,6 @@ public class Controller{
         truckList.getcurrTruck(i);
         return truckList.getTruckmodel();
     }
-    public String getTruckDate(int i){
-        truckList.getcurrTruck(i);
-        return truckList.getTruckDate();
-    }
     public int getTruckOrderID(int i){
         truckList.getcurrTruckOrder(i);
         return truckList.getTruckOrderID();

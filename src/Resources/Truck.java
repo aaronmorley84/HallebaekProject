@@ -8,13 +8,11 @@ public class Truck {
     private int truckID;
     private String truckName;
     private int truckCapacity;
-    private String bookdate;
     
-public Truck(int truckID, String truckName, int truckCapacity, String bookdate){
+public Truck(int truckID, String truckName, int truckCapacity){
     this.truckID = truckID;
     this.truckName = truckName;
     this.truckCapacity = truckCapacity;
-    this.bookdate = bookdate;
 }   
 
    
@@ -23,12 +21,6 @@ public Truck(int truckID, String truckName, int truckCapacity, String bookdate){
     }
     public void setTruckModel(String model){
         this.truckName = model;
-    }
-    public String getBookDate(){
-        return bookdate;
-    }
-    public void setBookDate(String bookdate){
-        this.bookdate = bookdate;
     }
     public int getTruckID(){
         return truckID;
@@ -49,7 +41,7 @@ public Truck(int truckID, String truckName, int truckCapacity, String bookdate){
         return truckCapacity;
     }
     public String toString(){
-        return truckID +""+ truckName +""+ truckCapacity +""+ bookdate;
+        return truckID +""+ truckName +""+ truckCapacity;
     }
     
     //this method checks if there is space in the truck for the order. If there is it will return true

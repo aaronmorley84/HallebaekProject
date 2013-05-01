@@ -2014,7 +2014,6 @@ public class GUI extends javax.swing.JFrame {
         con.buildTruckList();
         con.buildTruckOrderList();
         con.checkFreeTrucks(StartDateField.getText());
-        con.buildTruckList();
         for (int i = 0; i < con.getAvailableTruckListSize(); i++) {
             model9.addElement(con.getAvailableTruck(i));
         }
