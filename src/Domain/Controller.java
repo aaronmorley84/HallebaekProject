@@ -109,9 +109,12 @@ public class Controller{
         orderList.getCurrentOrder(i);
         return orderList.getCustomerID();
     }
-    public int getOrderBalance(int i){
-        orderList.getCurrentOrder(i);
+    public int getOrderBalance(){
+        //orderList.getCurrentOrder(i);
         return orderList.getOrderBalance();
+    }
+    public void setOrderBalance(int balance){
+        orderList.setOrderBalance(balance);
     }
     public Product getOrderProductList(int i){
         return orderList.getProductList(i);
@@ -154,6 +157,9 @@ public class Controller{
     }
     public int getOrderProductQTY(int i){
         return orderList.getOrderProductQTY(i);
+    }
+    public int getOrderProductPrice(int i){
+        return orderList.getOrderProductPrice(i);
     }
     public int searchOrderProdByIDinArray(int ID){
         return orderList.searchOrderProdByIDinArray(ID);

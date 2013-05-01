@@ -151,14 +151,14 @@ public class GUI extends javax.swing.JFrame {
         OrderProductQuantityLabel = new javax.swing.JLabel();
         OrderAddProductToOrderButton = new javax.swing.JButton();
         OrderRemoveFromOrderButton = new javax.swing.JButton();
-        OrderTrucksNeededLabel = new javax.swing.JLabel();
-        OrderTrucksNeededField = new javax.swing.JTextField();
         OrderCustomerIDField = new javax.swing.JTextField();
         OrderCustomerIDLabel = new javax.swing.JLabel();
         OrderSaveOrderButton = new javax.swing.JButton();
         OrderIDLabel = new javax.swing.JLabel();
         OrderIDField = new javax.swing.JTextField();
         OrderProductSearchButton = new javax.swing.JButton();
+        runningTotalField = new javax.swing.JTextField();
+        runningTotalLabel = new javax.swing.JLabel();
         PickUpOrTruckOrderPanel = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         StartDateField = new javax.swing.JTextField();
@@ -684,11 +684,11 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel6.setText("Customer ID:");
         OrderPanel.add(jLabel6);
-        jLabel6.setBounds(570, 190, 90, 14);
+        jLabel6.setBounds(570, 180, 90, 14);
 
         jLabel7.setText("Customer name:");
         OrderPanel.add(jLabel7);
-        jLabel7.setBounds(570, 250, 110, 14);
+        jLabel7.setBounds(570, 240, 110, 14);
 
         jLabel8.setText("Customer details:");
         OrderPanel.add(jLabel8);
@@ -696,11 +696,11 @@ public class GUI extends javax.swing.JFrame {
 
         CustIDField.setEditable(false);
         OrderPanel.add(CustIDField);
-        CustIDField.setBounds(570, 210, 130, 20);
+        CustIDField.setBounds(570, 200, 130, 30);
 
         CustNameField.setEditable(false);
         OrderPanel.add(CustNameField);
-        CustNameField.setBounds(570, 270, 230, 20);
+        CustNameField.setBounds(570, 260, 230, 30);
 
         CustDetailsArea.setEditable(false);
         CustDetailsArea.setColumns(20);
@@ -713,7 +713,7 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel9.setText("Existing customers:");
         OrderPanel.add(jLabel9);
-        jLabel9.setBounds(50, 190, 93, 14);
+        jLabel9.setBounds(50, 190, 120, 14);
 
         GetCustomersButton.setText("Get Customers");
         GetCustomersButton.addActionListener(new java.awt.event.ActionListener() {
@@ -749,17 +749,17 @@ public class GUI extends javax.swing.JFrame {
         OrderPanel.add(AddCutomerToOrderButton);
         AddCutomerToOrderButton.setBounds(360, 360, 170, 23);
         OrderPanel.add(OrderStartDateField);
-        OrderStartDateField.setBounds(640, 300, 104, 20);
+        OrderStartDateField.setBounds(640, 300, 104, 30);
 
         OrderStartDateLabel.setText("Start Date:");
         OrderPanel.add(OrderStartDateLabel);
-        OrderStartDateLabel.setBounds(570, 300, 61, 14);
+        OrderStartDateLabel.setBounds(570, 310, 61, 14);
 
         OrderEndDateLabel.setText("End Date:");
         OrderPanel.add(OrderEndDateLabel);
-        OrderEndDateLabel.setBounds(570, 340, 61, 14);
+        OrderEndDateLabel.setBounds(570, 350, 61, 14);
         OrderPanel.add(OrderEndDateField);
-        OrderEndDateField.setBounds(640, 340, 104, 20);
+        OrderEndDateField.setBounds(640, 340, 104, 30);
 
         getContentPane().add(OrderPanel);
         OrderPanel.setBounds(0, 0, 910, 707);
@@ -799,14 +799,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        OrderTrucksNeededLabel.setText("Trucks Needed:");
-
-        OrderTrucksNeededField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OrderTrucksNeededFieldActionPerformed(evt);
-            }
-        });
-
         OrderCustomerIDField.setEditable(false);
         OrderCustomerIDField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -823,8 +815,9 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        OrderIDLabel.setText("OrderID");
+        OrderIDLabel.setText("OrderID:");
 
+        OrderIDField.setEditable(false);
         OrderIDField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 OrderIDFieldActionPerformed(evt);
@@ -837,6 +830,11 @@ public class GUI extends javax.swing.JFrame {
                 OrderProductSearchButtonActionPerformed(evt);
             }
         });
+
+        runningTotalField.setEditable(false);
+        runningTotalField.setText("0");
+
+        runningTotalLabel.setText("Total:");
 
         javax.swing.GroupLayout EditOrderPanelLayout = new javax.swing.GroupLayout(EditOrderPanel);
         EditOrderPanel.setLayout(EditOrderPanelLayout);
@@ -865,32 +863,27 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(OrderProductNameSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(10, 10, 10)
                                 .addComponent(OrderProductSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(6, 6, 6)
+                        .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(OrderAddProductToOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(OrderRemoveFromOrderButton))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
                         .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(EditOrderPanelLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(OrderAddProductToOrderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(OrderRemoveFromOrderButton))
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(EditOrderPanelLayout.createSequentialGroup()
-                                        .addComponent(OrderTrucksNeededLabel)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(OrderTrucksNeededField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(EditOrderPanelLayout.createSequentialGroup()
-                                        .addGap(53, 53, 53)
-                                        .addComponent(OrderSaveOrderButton))
-                                    .addGroup(EditOrderPanelLayout.createSequentialGroup()
-                                        .addComponent(OrderCustomerIDLabel)
-                                        .addGap(4, 4, 4)
-                                        .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(OrderIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(OrderCustomerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(53, 53, 53)
+                                .addComponent(OrderSaveOrderButton))
                             .addGroup(EditOrderPanelLayout.createSequentialGroup()
-                                .addGap(358, 358, 358)
-                                .addComponent(OrderIDLabel)))))
+                                .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(OrderCustomerIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(runningTotalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(OrderIDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(OrderIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(OrderCustomerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(runningTotalField, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(34, 34, 34))
         );
         EditOrderPanelLayout.setVerticalGroup(
@@ -938,13 +931,11 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(3, 3, 3)
                                 .addComponent(OrderCustomerIDLabel))
                             .addComponent(OrderCustomerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(102, 102, 102)
-                        .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(EditOrderPanelLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(OrderTrucksNeededLabel))
-                            .addComponent(OrderTrucksNeededField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(61, 61, 61)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(EditOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(runningTotalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(runningTotalLabel))
+                        .addGap(152, 152, 152)
                         .addComponent(OrderSaveOrderButton))))
         );
 
@@ -1721,7 +1712,6 @@ public class GUI extends javax.swing.JFrame {
         int searchID = Integer.parseInt(("" + OrderProductsList.getSelectedValue()).substring(0, 5));
         int quantityForOrder = (Integer)OrderQuantitySpinner.getValue();
         int index = con.searchProdByIDinArray(searchID);
-        System.out.println(index);
         con.addItemToOrderList(con.getProductId(index), con.getProductName(index), con.getProductVolume(index), 
                 quantityForOrder, con.getProductDescription(index), 
                 con.getProductPrice(index), con.getProductQuantiy(index));
@@ -1732,19 +1722,21 @@ public class GUI extends javax.swing.JFrame {
             counter++;
         }
         OrderProductsInOrderList.setModel(model6);
+        runningTotalField.setText(""+con.getOrderBalance());
     }//GEN-LAST:event_OrderAddProductToOrderButtonActionPerformed
 
     private void OrderRemoveFromOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderRemoveFromOrderButtonActionPerformed
-        int searchID = Integer.parseInt(("" + OrderProductsInOrderList.getSelectedValue()).substring(0, 5));
-        int index = con.searchOrderProdByIDinArray(searchID);// this needs to be changed so it goes through right arraylist
+               int searchID = Integer.parseInt(("" + OrderProductsInOrderList.getSelectedValue()).substring(0, 5));
+        int index = con.searchOrderProdByIDinArray(searchID);// this needs to be changed so it goes through right arraylist        
         con.removeFromOrderList(index);
         int counter = 0;
         model6.clear();
         while (counter < con.getCurrentOrderProductListSize()) {
             model6.addElement(con.getOrderProductID(counter) + "-" + con.getOrderProductName(counter) + " QTY: " + con.getOrderProductQTY(counter));
-            counter++;
+           counter++;
         }
         OrderProductsInOrderList.setModel(model6);
+        runningTotalField.setText(""+con.getOrderBalance());
     }//GEN-LAST:event_OrderRemoveFromOrderButtonActionPerformed
 
     private void OrderSaveOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderSaveOrderButtonActionPerformed
@@ -1755,7 +1747,7 @@ public class GUI extends javax.swing.JFrame {
         String finishDate = OrderEndDateField.getText();
         System.out.println("finishdate="+finishDate);        
         int orderID = Integer.parseInt(OrderIDField.getText());
-        con.editCustomerOrder(customerID, startDate, finishDate, 999);
+        con.editCustomerOrder(customerID, startDate, finishDate, con.getOrderBalance());
         con.addOrder(orderID);
         StartDateField.setText(OrderStartDateField.getText());
         FinishDateField.setText(OrderEndDateField.getText());
@@ -2017,12 +2009,10 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_OrderCustomerIDFieldActionPerformed
 
-    private void OrderTrucksNeededFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderTrucksNeededFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_OrderTrucksNeededFieldActionPerformed
-
     private void GetAvailableTrucksButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GetAvailableTrucksButtonActionPerformed
         model9.clear();
+        con.buildTruckList();
+        con.buildTruckOrderList();
         con.checkFreeTrucks(StartDateField.getText());
         con.buildTruckList();
         for (int i = 0; i < con.getAvailableTruckListSize(); i++) {
@@ -2040,7 +2030,9 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_PickUpOrderButtonActionPerformed
 
     private void TruckOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TruckOrderButtonActionPerformed
-        con.addTruckOrder(Integer.parseInt(CustIDField.getText()), con.getTruckID(con.getAvailableTruck(AvailableTrucksList.getSelectedIndex())), "Delivery", StartDateField.getText());
+        con.addTruckOrder(Integer.parseInt(CustIDField.getText()), 
+                con.getTruckID(con.getAvailableTruck(AvailableTrucksList.getSelectedIndex())), 
+                "Delivery", StartDateField.getText());
     }//GEN-LAST:event_TruckOrderButtonActionPerformed
 
     private void OrderIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderIDFieldActionPerformed
@@ -2204,8 +2196,6 @@ public class GUI extends javax.swing.JFrame {
         OrderEndDateField.setVisible(state);
         OrderStartDateLabel.setVisible(state);
         OrderStartDateField.setVisible(state);
-        OrderTrucksNeededLabel.setVisible(state);
-        OrderTrucksNeededField.setVisible(state);
         OrderSaveOrderButton.setVisible(state);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2289,8 +2279,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton OrderSaveOrderButton;
     private javax.swing.JTextField OrderStartDateField;
     private javax.swing.JLabel OrderStartDateLabel;
-    private javax.swing.JTextField OrderTrucksNeededField;
-    private javax.swing.JLabel OrderTrucksNeededLabel;
     private javax.swing.JButton OrdergetAllProductsButton;
     private javax.swing.JMenuItem PackNavDrop;
     private javax.swing.JTextField PackProductNameSearchField;
@@ -2378,5 +2366,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel productListLabel;
+    private javax.swing.JTextField runningTotalField;
+    private javax.swing.JLabel runningTotalLabel;
     // End of variables declaration//GEN-END:variables
 }

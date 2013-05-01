@@ -77,7 +77,9 @@ public class OrderList {
     public int getOrderProductQTY(int i){
         return currentOrder.orderProductList.get(i).getQuantity();
     }
-
+    public int getOrderProductPrice(int i){
+        return currentOrder.orderProductList.get(i).getPrice();
+    }
     public Order getCurrOrder(){
         return currentOrder;
     }

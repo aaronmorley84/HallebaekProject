@@ -111,6 +111,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -829,7 +830,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="570" y="190" width="90" height="-1"/>
+              <AbsoluteConstraints x="570" y="180" width="90" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -839,7 +840,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="570" y="250" width="110" height="-1"/>
+              <AbsoluteConstraints x="570" y="240" width="110" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -859,7 +860,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="570" y="210" width="130" height="-1"/>
+              <AbsoluteConstraints x="570" y="200" width="130" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -869,7 +870,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="570" y="270" width="230" height="-1"/>
+              <AbsoluteConstraints x="570" y="260" width="230" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -901,7 +902,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="50" y="190" width="-1" height="-1"/>
+              <AbsoluteConstraints x="50" y="190" width="120" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -974,7 +975,7 @@
         <Component class="javax.swing.JTextField" name="OrderStartDateField">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="640" y="300" width="104" height="-1"/>
+              <AbsoluteConstraints x="640" y="300" width="104" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -984,7 +985,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="570" y="300" width="61" height="-1"/>
+              <AbsoluteConstraints x="570" y="310" width="61" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -994,14 +995,14 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="570" y="340" width="61" height="-1"/>
+              <AbsoluteConstraints x="570" y="350" width="61" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="OrderEndDateField">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="640" y="340" width="104" height="-1"/>
+              <AbsoluteConstraints x="640" y="340" width="104" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1054,39 +1055,31 @@
                                   <Component id="OrderProductSearchButton" min="-2" pref="92" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="OrderAddProductToOrderButton" min="-2" pref="169" max="-2" attributes="0"/>
-                                      <Component id="OrderRemoveFromOrderButton" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane5" min="-2" pref="156" max="-2" attributes="0"/>
-                                  <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="OrderTrucksNeededLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                                          <Component id="OrderTrucksNeededField" min="-2" pref="23" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="53" pref="53" max="-2" attributes="0"/>
-                                          <Component id="OrderSaveOrderButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="OrderCustomerIDLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="OrderIDField" min="-2" pref="110" max="-2" attributes="0"/>
-                                              <Component id="OrderCustomerIDField" min="-2" pref="110" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
+                              <Component id="OrderAddProductToOrderButton" min="-2" pref="169" max="-2" attributes="0"/>
+                              <Component id="OrderRemoveFromOrderButton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Component id="jScrollPane5" min="-2" pref="156" max="-2" attributes="0"/>
+                          <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="53" pref="53" max="-2" attributes="0"/>
+                                  <Component id="OrderSaveOrderButton" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="358" max="-2" attributes="0"/>
-                                  <Component id="OrderIDLabel" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="OrderCustomerIDLabel" max="32767" attributes="0"/>
+                                      <Component id="runningTotalLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="OrderIDLabel" alignment="0" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="OrderIDField" min="-2" pref="110" max="-2" attributes="0"/>
+                                      <Component id="OrderCustomerIDField" min="-2" pref="110" max="-2" attributes="0"/>
+                                      <Component id="runningTotalField" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -1152,15 +1145,12 @@
                               </Group>
                               <Component id="OrderCustomerIDField" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                                  <Component id="OrderTrucksNeededLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="OrderTrucksNeededField" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="runningTotalField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="runningTotalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="61" pref="61" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
                           <Component id="OrderSaveOrderButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -1247,16 +1237,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderRemoveFromOrderButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="OrderTrucksNeededLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Trucks Needed:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="OrderTrucksNeededField">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderTrucksNeededFieldActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JTextField" name="OrderCustomerIDField">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
@@ -1280,10 +1260,13 @@
         </Component>
         <Component class="javax.swing.JLabel" name="OrderIDLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="OrderID"/>
+            <Property name="text" type="java.lang.String" value="OrderID:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="OrderIDField">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderIDFieldActionPerformed"/>
           </Events>
@@ -1295,6 +1278,17 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="OrderProductSearchButtonActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="runningTotalField">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="0"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="runningTotalLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Total:"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
