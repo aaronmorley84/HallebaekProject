@@ -26,11 +26,11 @@ public class TruckGateway {
         try {
             statement = con.prepareStatement(SQLString1);
             ResultSet rs = statement.executeQuery();
+            System.out.println("Rs"+rs);
             while (rs.next()) {
                 trucklist.addToTruckList(rs.getInt(1),
                         rs.getString(2),
-                        rs.getInt(3),
-                        null);
+                        rs.getInt(3));
             }
             success = true;
         } catch (Exception e) {
@@ -62,7 +62,7 @@ public class TruckGateway {
                 trucklist.addToTruckOrderList(rs.getInt(1), 
                         rs.getInt(2), 
                         rs.getString(3), 
-                        rs.getString(5));
+                        ""+rs.getDate(4));
             }
             success = true;
         } catch (Exception e) {

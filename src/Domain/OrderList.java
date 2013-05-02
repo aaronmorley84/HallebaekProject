@@ -44,6 +44,9 @@ public class OrderList {
         }
         
     }
+    public int searchOrderProdByIDinArray(int ID){
+        return currentOrder.searchOrderProdByIDinArray(ID);
+    }
     
     //These are the getters
     public int getOrderID(){
@@ -74,7 +77,9 @@ public class OrderList {
     public int getOrderProductQTY(int i){
         return currentOrder.orderProductList.get(i).getQuantity();
     }
-
+    public int getOrderProductPrice(int i){
+        return currentOrder.orderProductList.get(i).getPrice();
+    }
     public Order getCurrOrder(){
         return currentOrder;
     }
@@ -167,11 +172,13 @@ public class OrderList {
                     && orderList.get(i).getFinishDate().equals(endDate)){
                 System.out.println("Order at index "+i+" in order list: "+orderList.get(i).toString());
                 orderid = orderList.get(i).getOrderID();
+                getCurrentOrder(i);
 //                currentOrder = orderList.get(i);
             }else{
                 System.out.println("Did not find order at index "+i+" in order list.");
             }
         }
+        
 
         
 

@@ -109,9 +109,12 @@ public class Controller{
         orderList.getCurrentOrder(i);
         return orderList.getCustomerID();
     }
-    public int getOrderBalance(int i){
-        orderList.getCurrentOrder(i);
+    public int getOrderBalance(){
+        //orderList.getCurrentOrder(i);
         return orderList.getOrderBalance();
+    }
+    public void setOrderBalance(int balance){
+        orderList.setOrderBalance(balance);
     }
     public Product getOrderProductList(int i){
         return orderList.getProductList(i);
@@ -122,8 +125,7 @@ public class Controller{
     public int getOrderListSize(){
         return orderList.getOrderListSize();        
     }
-    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity, int indexOfOrder){
-        orderList.getCurrentOrder(indexOfOrder);
+    public boolean addItemToOrderList(int prodID, String name, int vol, int quantity, String descrip, int price, int availableQuantity){
         return orderList.addItemToOrderList(prodID, name, vol, quantity, descrip, price, availableQuantity);
     }
     public void removeFromOrderList(int index){
@@ -156,6 +158,12 @@ public class Controller{
     public int getOrderProductQTY(int i){
         return orderList.getOrderProductQTY(i);
     }
+    public int getOrderProductPrice(int i){
+        return orderList.getOrderProductPrice(i);
+    }
+    public int searchOrderProdByIDinArray(int ID){
+        return orderList.searchOrderProdByIDinArray(ID);
+    }
     //Methods for TruckList()
     public void getcurrTruck(int i){
         truckList.getcurrTruck(i);
@@ -174,10 +182,6 @@ public class Controller{
     public String getTruckModel(int i){
         truckList.getcurrTruck(i);
         return truckList.getTruckmodel();
-    }
-    public String getTruckDate(int i){
-        truckList.getcurrTruck(i);
-        return truckList.getTruckDate();
     }
     public int getTruckOrderID(int i){
         truckList.getcurrTruckOrder(i);
