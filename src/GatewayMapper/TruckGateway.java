@@ -16,17 +16,18 @@ import java.sql.SQLException;
 public class TruckGateway {
     TruckList trucklist;
     
-    public boolean buildTruckList(TruckList trucklist) {
-        this.trucklist = trucklist;
+    public boolean buildTruckList(TruckList truckList) {
+        this.trucklist = truckList;
+        trucklist.clearTruckList();
         boolean success = false;
         Connection con = ConnectionTools.getInstance().getCurrentConnection();
         String SQLString1 = "SELECT * "
-                + "FROM trucks ";
+                + "FROM Trucks";
         PreparedStatement statement = null;
         try {
             statement = con.prepareStatement(SQLString1);
             ResultSet rs = statement.executeQuery();
-            System.out.println("Rs"+rs);
+            
             while (rs.next()) {
                 trucklist.addToTruckList(rs.getInt(1),
                         rs.getString(2),

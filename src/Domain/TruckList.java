@@ -12,9 +12,9 @@ import javax.swing.JOptionPane;
  */
 public class TruckList {
     Facade facade = new Facade();
-    private ArrayList<Truck> trucks;
-    private ArrayList<TruckOrder> truckOrders;
-    private ArrayList<Truck> availableTrucks;
+    private ArrayList<Truck> trucks = new ArrayList<>();
+    private ArrayList<TruckOrder> truckOrders = new ArrayList<>();;
+    private ArrayList<Truck> availableTrucks = new ArrayList<>();;
     private TruckOrder currTruckOrder;
     private Truck currTruck;
     
@@ -93,7 +93,7 @@ public class TruckList {
                 System.out.println("problem in 'getTrucksRequired(int)'");
             }
         } catch (Exception e) {
-            System.out.println("Something went wrong trucks required method.");
+            System.out.println("Something went wrong trucks required method." + e.getMessage());
         }
         return amountOfTrucks;
     }

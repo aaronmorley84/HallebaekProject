@@ -14,7 +14,7 @@ public class test {
     
     public static void main(String args[]){
         test t = new test();
-        t.testForAaron();
+        t.testTruckBuildLIst();
     }
     
     public void testForAaron(){
@@ -22,6 +22,13 @@ public class test {
       //  con.buildOrderList();
       //  con.addItemToOrderList(1," ",2,2,"",3,3,0);
         con.buildTruckList();
+        System.out.println(""+con.getTruckID(0));
+        
     }
     
+    public void testTruckBuildLIst(){
+        Controller con = new Controller();
+        con.buildTruckList();
+        con.buildTruckOrderList();
+    }
 }

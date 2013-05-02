@@ -2,7 +2,7 @@ package Domain;
 
 import Resources.Product;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 
 
 public class Controller{
@@ -110,7 +110,6 @@ public class Controller{
         return orderList.getCustomerID();
     }
     public int getOrderBalance(){
-        //orderList.getCurrentOrder(i);
         return orderList.getOrderBalance();
     }
     public void setOrderBalance(int balance){

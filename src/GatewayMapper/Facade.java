@@ -3,7 +3,6 @@
  * and open the template in the editor.
  */
 package GatewayMapper;
-import Domain.CustomerList;
 import Domain.CustomerListInterface;
 import Domain.OrderList;
 import Domain.PackageList;
