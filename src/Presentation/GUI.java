@@ -2017,7 +2017,7 @@ public class GUI extends javax.swing.JFrame {
         for (int i = 0; i < con.getAvailableTruckListSize(); i++) {
             model9.addElement(con.getAvailableTruck(i));
         }
-        CustomerJList.setModel(model9);
+        AvailableTrucksList.setModel(model9);
     }//GEN-LAST:event_GetAvailableTrucksButtonActionPerformed
 
     private void PickUpOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PickUpOrderButtonActionPerformed
@@ -2026,12 +2026,14 @@ public class GUI extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Error Saving PickUP Order!", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        selectPanel(2);
     }//GEN-LAST:event_PickUpOrderButtonActionPerformed
 
     private void TruckOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TruckOrderButtonActionPerformed
-        con.addTruckOrder(Integer.parseInt(CustIDField.getText()), 
-                con.getTruckID(con.getAvailableTruck(AvailableTrucksList.getSelectedIndex())), 
+        con.addTruckOrder(Integer.parseInt(OrderIDField.getText()), 
+                con.getAvailableTruck(AvailableTrucksList.getSelectedIndex()), 
                 "Delivery", StartDateField.getText());
+        selectPanel(2);
     }//GEN-LAST:event_TruckOrderButtonActionPerformed
 
     private void OrderIDFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OrderIDFieldActionPerformed

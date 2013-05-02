@@ -41,7 +41,7 @@ public Truck(int truckID, String truckName, int truckCapacity){
         return truckCapacity;
     }
     public String toString(){
-        return truckID +""+ truckName +""+ truckCapacity;
+        return truckID +" "+ truckName +" "+ truckCapacity;
     }
     
     //this method checks if there is space in the truck for the order. If there is it will return true

@@ -58,21 +58,14 @@ public class TruckList {
         System.out.println(trucks.toString());
         for (int i = 0; i < trucks.size(); i++) {
             int truckid = trucks.get(i).getTruckID();
+            availableTrucks.add(trucks.get(i));
             for (int j = 0; j < truckOrders.size(); j++) {
-                availableTrucks.add(trucks.get(i));
-                if(truckOrders.get(i).getTruckID()== truckid && truckOrders.get(j).getDate().equals(date)){
+                if(truckOrders.get(j).getTruckID() == truckid && truckOrders.get(j).getDate().equals(date)){
                     availableTrucks.remove(trucks.get(i));
                 }
             }
         }
-//        for (int i = 0; i < trucks.size(); i++) {
-//            int counter = 0;
-//            while(counter<truckOrders.size()){
-//                if(!trucks.get(i).getBookDate().equals(truckOrders.get(counter).getDate())){
-//                    availableTrucks.add(trucks.get(i));
-//                }
-//            }
-//        }
+        System.out.println(availableTrucks.toString());
     }
     
     public int getTrucksRequired(int totalVolume) {
@@ -156,8 +149,14 @@ public class TruckList {
     public boolean buildTruckOrderList(TruckList trucklist){
         return facade.buildTruckOrderList(trucklist);
     }
-    public boolean addTruckOrder(int orderid, int truckid, String status, String date){
-        return facade.addTruckOrder(orderid,truckid,status,date);
+    public boolean addTruckOrder(int orderid, int truckid, String status, String date){        
+        if(facade.addTruckOrder(orderid,truckid,status,date)){
+            JOptionPane.showMessageDialog(null, "Added truck order to database!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        }else{
+            JOptionPane.showMessageDialog(null, "Could not save truck order!", "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
     public boolean addTruck(int truckid, String model, int capacity, String bookeddate){
         return facade.addTruck(truckid, model, capacity, bookeddate);
